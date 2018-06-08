@@ -6,5 +6,5 @@ class OrganisationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
-        fields = ('id', 'name', 'is_active')
+        fields = ('id', 'name', 'is_active', 'owner')
 
