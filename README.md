@@ -43,10 +43,10 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - http://www.django-rest-framework.org/tutorial/quickstart/
 - https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ/videos
 - https://www.udemy.com/django-python/
+- https://godjango.com/41-start-your-api-django-rest-framework-part-1/
 
 #### React
 
-- https://www.reactacademy.io/
 - https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
 - https://egghead.io/courses/the-beginner-s-guide-to-react
 - https://egghead.io/courses/getting-started-with-redux
