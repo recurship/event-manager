@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Container,
+    Row,
+    Col,
+    Jumbotron,
+    Button
+  } from 'reactstrap';
 
 class App extends Component {
 
     constructor() {
         super();
-        this.state = { events: [] };
+        this.state = {
+            events: [],
+            isOpen: false
+        };
+
+        this.toggle = this.toggle.bind(this);
         this.getData();
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     getData() {
@@ -38,16 +63,50 @@ class App extends Component {
 
     render() {
         return (
-          <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Welcome to Event Manager</h1>
-            </header>
-            <div className="App-intro">
-            {(this.state.events.length === 0) ? <div> No events found! </div> : <div></div> }
-            {this.state.events.map( event => {
-                return <div key={event.id}>{event.title} by {event.organisation}</div>
-            })}
-            </div>
+            <div>
+            <Navbar color="dark" dark exapand="true">
+              <NavbarToggler right="true" onClick={this.toggle} />
+              <NavbarBrand href="/">community-manager</NavbarBrand>
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <NavLink href="/components/">About</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+                  </NavItem>
+                </Nav>
+              </Collapse>
+            </Navbar>
+            <Jumbotron>
+              <Container>
+                <Row>
+                  <Col>
+                    <h1>Welcome to Event Management for communities...</h1>
+                    <p>
+                      <Button
+                        tag="a"
+                        color="success"
+                        size="large"
+                        onClick={ this.getData.bind(this) }
+                      >
+                        Fetch events!
+                      </Button>
+                    </p>
+                  </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div className="App-intro">
+                        {(this.state.events.length === 0) ? <div> No events found! </div> : <div></div> }
+                        {this.state.events.map( event => {
+                            return <div key={event.id}>{event.title} by {event.organisation}</div>
+                        })}
+                        </div>
+                    </Col>
+                </Row>
+              </Container>
+            </Jumbotron>
           </div>
         );
     }
