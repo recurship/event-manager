@@ -22,7 +22,7 @@ class App extends Component {
             return response.json();
         }).then(auth => {
             console.log('Got the auth', auth);
-            return fetch(`/events`, {
+            return fetch(`/api/events`, {
                 accept: 'application/json',
                 headers: {
                     'Authorization': `Bearer ${ auth.access }`
@@ -32,7 +32,7 @@ class App extends Component {
             return response.json()
         }).then(data => {
            console.log('Got the data', data);
-           this.setState({ events: data });
+           this.setState({ events: data.results ? data.results : [] });
         });
     }
 
@@ -43,6 +43,7 @@ class App extends Component {
               <h1 className="App-title">Welcome to Event Manager</h1>
             </header>
             <div className="App-intro">
+            {(this.state.events.length === 0) ? <div> No events found! </div> : <div></div> }
             {this.state.events.map( event => {
                 return <div key={event.id}>{event.title} by {event.organisation}</div>
             })}
