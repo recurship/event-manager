@@ -1,6 +1,7 @@
 .PHONY: up
 
-APPS = event_manager organisation event
+APPS = event_manager organisation event user
+NEWAPP = new_app
 
 up:
 	docker-compose up
@@ -14,3 +15,10 @@ migrate:
 
 shell:
 	docker-compose run web python manage.py shell
+
+superuser:
+	docker-compose run web python manage.py createsuperuser
+
+newapp:
+	echo "Set $NEWAPP ENV as the name: make newapp NEWAPP=<NAME>"
+	docker-compose run web python manage.py startapp $(NEWAPP)
