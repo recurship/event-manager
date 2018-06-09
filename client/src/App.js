@@ -15,6 +15,10 @@ import {
     Jumbotron,
     Button
   } from 'reactstrap';
+import AuthService from './services/auth';
+import EventService from './services/events';
+
+
 
 class App extends Component {
 
@@ -36,25 +40,13 @@ class App extends Component {
     }
 
     getData() {
-        let formData = new FormData();
-        formData.append('username', 'admin');
-        formData.append('password', '1299459ML');
+        let service  = new AuthService();
+        let events = new EventService();
 
-        return fetch(`/api/token`, {
-            method: 'POST',
-            body: formData
-        }).then(response => {
-            return response.json();
-        }).then(auth => {
+        return service.login('admin', '1299459ML').then(auth => {
             console.log('Got the auth', auth);
-            return fetch(`/api/events`, {
-                accept: 'application/json',
-                headers: {
-                    'Authorization': `Bearer ${ auth.access }`
-                }
-            })
-        }).then(response => {
-            return response.json()
+            events.accessToken = auth.access;
+            return events.getAll();
         }).then(data => {
            console.log('Got the data', data);
            this.setState({ events: data.results ? data.results : [] });
