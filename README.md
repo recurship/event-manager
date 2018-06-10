@@ -41,9 +41,17 @@ I have found which is using the latest ViewSets available. Im not sure of the ba
 how well the old code works. This is Django2 with Django REST framework 3.8 and Python 3.6.
 
 - http://www.django-rest-framework.org/tutorial/quickstart/
+- http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
 - https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ/videos
+- https://teamtreehouse.com/library/django-rest-framework
 - https://www.udemy.com/django-python/
 - https://godjango.com/41-start-your-api-django-rest-framework-part-1/
+- https://www.digitalocean.com/community/tutorials/how-to-scale-django-beyond-the-basics
+- https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
+- https://thinkster.io/topics/django
+- https://realpython.com/django-rest-framework-quick-start/
+- https://www.andreagrandi.it/2016/09/28/creating-production-ready-api-python-django-rest-framework-part-1/
+
 
 #### React
 
@@ -52,3 +60,10 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - https://egghead.io/courses/getting-started-with-redux
 - https://github.com/enaqx/awesome-react
 - https://www.udemy.com/react-redux-tutorial/
+- https://learnreact.com/lessons/2018-the-context-api-overview
+- https://www.educative.io/collection/5687753853370368/5707702298738688
+- https://github.com/markerikson/react-redux-links
+- https://camjackson.net/post/9-things-every-reactjs-beginner-should-know
+- https://engineering.siftscience.com/best-practices-for-building-large-react-applications/
+- https://www.youtube.com/watch?v=PF0Vi-iIyoo&index=28&t=0s&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0
+- https://tylermcginnis.com/courses/react-fundamentals-udacity/
