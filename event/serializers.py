@@ -1,10 +1,12 @@
 
 from rest_framework import serializers
+from organisation.serializer import OrganisationSerializer
 from .models import Event
 
 class EventSerializer(serializers.ModelSerializer):
 
-    class Meta:
+    organisation = OrganisationSerializer()
 
+    class Meta:
         model = Event
         fields = ('id', 'title', 'description', 'start_datetime', 'end_datetime', 'organisation')
