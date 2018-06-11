@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import PropTypes from 'prop-types'
 import {
     Collapse,
     Navbar,
@@ -14,13 +14,15 @@ import {
     Jumbotron,
     Button
   } from 'reactstrap';
-import AuthService from '../../services/auth';
-import EventService from '../../services/events';
+
 import {
-    BrowserRouter as Router,
     Route,
     Link
   } from 'react-router-dom'
+
+import { userLogin, fetchEvents } from '../../actions';
+
+import { connect } from 'react-redux';
 
 const Home = () => (
 <div>
@@ -37,14 +39,23 @@ const About = () => (
 
 class App extends Component {
 
+    static propTypes = {
+        userState: PropTypes.object.isRequired,
+        events: PropTypes.object.isRequired,
+        appState: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
+    }
+
     constructor() {
         super();
         this.state = {
-            events: [],
             isOpen: false
         };
 
         this.toggle = this.toggle.bind(this);
+    }
+
+    componentDidMount() {
         this.getData();
     }
 
@@ -55,17 +66,9 @@ class App extends Component {
     }
 
     getData() {
-        let service  = new AuthService();
-        this.eventsService = new EventService();
-
-        return service.login('admin', '1299459ML').then(auth => {
-            console.log('Got the auth', auth);
-            this.eventsService.accessToken = auth.access;
-            return this.eventsService.getAll();
-        }).then(data => {
-           console.log('Got the data', data);
-           this.setState({ events: data.results ? data.results : [] });
-        });
+        const { dispatch } = this.props;
+        dispatch(userLogin({ username: 'admin',password: '1299459ML' }));
+        dispatch(fetchEvents());
     }
 
     handleSubmit = event => {
@@ -83,6 +86,7 @@ class App extends Component {
     }
 
     render() {
+        const { appState, userState, events } = this.props;
         return (
             <div>
                 <Navbar color="dark" dark exapand="true">
@@ -119,8 +123,10 @@ class App extends Component {
                         <Row>
                             <Col>
                                 <div className="App-intro">
-                                {(this.state.events.length === 0) ? <div> No events found! </div> : <div></div> }
-                                {this.state.events.map( event => {
+                                <p>{ (appState.loading.length > 0) ? 'Loading' : '' }</p>
+                                <p>{ (userState.token) ? 'User is logged in.' : 'User is not logged in.'}</p>
+                                {(events.events.length === 0) ? <div> No events found! </div> : <div></div> }
+                                {events.events.map( event => {
                                     return <div key={event.id}>{event.title} by {event.organisation.name}</div>
                                 })}
                                 </div>
@@ -156,4 +162,10 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    // const { appState, userState, events } = state;
+
+    return state;
+}
+
+export default connect(mapStateToProps)(App);
