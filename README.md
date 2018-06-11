@@ -58,6 +58,7 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
 - https://egghead.io/courses/the-beginner-s-guide-to-react
 - https://egghead.io/courses/getting-started-with-redux
+- https://redux.js.org/basics/usage-with-react
 - https://github.com/enaqx/awesome-react
 - https://www.udemy.com/react-redux-tutorial/
 - https://learnreact.com/lessons/2018-the-context-api-overview
