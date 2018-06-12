@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { TRIGGER_REQUEST, TRIGGER_FAILURE, END_REQUEST, USER_LOGIN, FETCH_EVENTS } from '../actions';
+import { TRIGGER_REQUEST, TRIGGER_FAILURE, END_REQUEST, USER_LOGIN, FETCH_EVENTS, ADD_EVENT } from '../actions';
 
 const defaultAppState = {
   loading: [],
@@ -74,6 +74,9 @@ const events = (
       return {
         events: [... action.events]
       }
+
+    // cant use ADD_EVENT here since we are using different serializers for read and write
+    // in write mode the organisation object isnt returned. So we simply fetch all again
 
     default:
       return state

@@ -51,6 +51,7 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - https://thinkster.io/topics/django
 - https://realpython.com/django-rest-framework-quick-start/
 - https://www.andreagrandi.it/2016/09/28/creating-production-ready-api-python-django-rest-framework-part-1/
+- https://github.com/Brobin/drf-generators
 
 
 #### React

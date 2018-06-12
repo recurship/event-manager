@@ -20,7 +20,7 @@ import {
     Link
   } from 'react-router-dom'
 
-import { userLogin, fetchEvents } from '../../actions';
+import { userLogin, fetchEvents, postEvent } from '../../actions';
 
 import { connect } from 'react-redux';
 
@@ -76,13 +76,13 @@ class App extends Component {
 
         const { title, description, start_datetime, end_datetime, organisation } = event.nativeEvent.target.elements;
 
-        this.eventsService.add({
+        this.props.dispatch(postEvent({
             title: title.value,
             description: description.value,
             start_datetime: start_datetime.value,
             end_datetime: end_datetime.value,
             organisation: organisation.value
-        });
+        }));
     }
 
     render() {

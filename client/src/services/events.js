@@ -1,15 +1,16 @@
-import BaseService from "./base";
 
+import { makeRequest } from './helper';
 
-export default class EventService extends BaseService {
+const baseUri = '/api/events/'
 
+export default {
 
-  getAll() {
-    return this.makeRequest('/api/events/');
-  }
+  getAll: () => {
+    return makeRequest(baseUri);
+  },
 
-  add(event) {
-    return this.makeRequest('/api/events/', {
+  add: (event) => {
+    return makeRequest(baseUri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

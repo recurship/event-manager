@@ -13,11 +13,10 @@ export const TRIGGER_FAILURE = 'TRIGGER_FAILURE'
 export const USER_LOGIN = 'USER_LOGIN'
 
 // events
+
 export const FETCH_EVENTS = 'FETCH_EVENTS'
 
-
-const authService = new AuthService();
-const eventService = new EventService();
+export const ADD_EVENT = 'ADD_EVENT';
 
 // app actions
 
@@ -46,8 +45,9 @@ export const userLoginSuccess = token => ({
 
 export const userLogin = credentials => (dispatch, getState) => {
   dispatch(triggerRequest(USER_LOGIN))
-  return authService.login(credentials.username, credentials.password)
+  return AuthService.login(credentials.username, credentials.password)
     .then(token => {
+      localStorage.setItem('token', token.access)
       dispatch(userLoginSuccess(token.access))
       dispatch(endRequest(USER_LOGIN))
     })
@@ -63,13 +63,32 @@ export const getEvents = events => ({
   events
 })
 
+export const addEvent = event => ({
+  type: ADD_EVENT,
+  event
+})
+
 export const fetchEvents = () => (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS))
-  return eventService.getAll().then(response => {
+  return EventService.getAll().then(response => {
     dispatch(getEvents(response.results))
     dispatch(endRequest(FETCH_EVENTS))
   })
   .catch(err => {
     dispatch(triggerFailure(FETCH_EVENTS, err))
+  })
+}
+
+export const postEvent = event => (dispatch, getState) => {
+  dispatch(triggerRequest(ADD_EVENT))
+  return EventService.add(event).then(event => {
+    // dispatch(addEvent(event))
+    // cant use ADD_EVENT here since we are using different serializers for read and write
+    // in write mode the organisation object isnt returned. So we simply fetch all again
+    dispatch(fetchEvents())
+    dispatch(endRequest(ADD_EVENT))
+  })
+  .catch(err => {
+    dispatch(triggerFailure(ADD_EVENT, err))
   })
 }
