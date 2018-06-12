@@ -8,7 +8,7 @@ This is a simple event manager app - built to learn Django REST and React.
 
 To run the backend simply have Docker installed on your machine and run `make up`
 
-If you are running the first time you will need to run `make migrate` to run the migrations
+If you are running the first time you will need to run `make migrate && make loaddata` to run the migrations and load sample data
 
 To run the frontend you can use:
 - cd client
@@ -41,6 +41,7 @@ I have found which is using the latest ViewSets available. Im not sure of the ba
 how well the old code works. This is Django2 with Django REST framework 3.8 and Python 3.6.
 
 - http://www.django-rest-framework.org/tutorial/quickstart/
+- https://www.youtube.com/watch?v=w0xgJ5C9Be8
 - http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
 - https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ/videos
 - https://teamtreehouse.com/library/django-rest-framework
