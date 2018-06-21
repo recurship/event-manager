@@ -68,3 +68,7 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - https://engineering.siftscience.com/best-practices-for-building-large-react-applications/
 - https://www.youtube.com/watch?v=PF0Vi-iIyoo&index=28&t=0s&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0
 - https://tylermcginnis.com/courses/react-fundamentals-udacity/
+- https://www.youtube.com/watch?v=SuzutbwjUp8
+- https://courses.totalreact.com/courses/250055/lectures/3897343
+- https://github.com/kentcdodds/ama
+- https://frontendmasters.com/courses/testing-react/
