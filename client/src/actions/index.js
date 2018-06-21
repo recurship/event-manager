@@ -1,6 +1,9 @@
 
 import AuthService from '../services/auth';
 import EventService from '../services/events';
+import { normalize } from 'normalizr';
+import * as schema from '../schemas/eventSchema';
+import * as humps from 'humps';
 
 
 // app
@@ -71,7 +74,8 @@ export const addEvent = event => ({
 export const fetchEvents = () => (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS))
   return EventService.getAll().then(response => {
-    dispatch(getEvents(response.results))
+    let camelCaseKeys = humps.camelizeKeys(response.results);
+    dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
     dispatch(endRequest(FETCH_EVENTS))
   })
   .catch(err => {
