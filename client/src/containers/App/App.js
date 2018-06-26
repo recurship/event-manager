@@ -5,7 +5,7 @@ import {
     Route
   } from 'react-router-dom'
 
-import Login from '../Login';
+import Login from '../Login/Login';
 import AuthContainer from './AuthContainer';
 import PrivateRoute from '../../components/PrivateRoute';
 

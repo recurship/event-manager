@@ -5,6 +5,7 @@ import Root from './containers/Root/Root'
 import configureStore from './store/configureStore'
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const store = configureStore()
 

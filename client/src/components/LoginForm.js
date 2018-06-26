@@ -3,6 +3,7 @@ import {
     Input,
     Button
 } from 'reactstrap';
+import './LoginForm.css';
 
 const LoginForm = ({ onSubmit }) => {
     return <form onSubmit={onSubmit}>
