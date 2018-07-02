@@ -7,14 +7,6 @@ import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-const LoginContainer = ({ onSubmit }) => {
-    // TODO make this login-container generic so we can also use it on signup
-    return <Container className="login-container">
-        <h4>Login</h4>
-        <LoginForm onSubmit={onSubmit} /> 
-    </Container>
-}
-
 class Login extends Component {
 
     static propTypes = {
@@ -36,7 +28,10 @@ class Login extends Component {
 
     render() { 
         return ((this.props.userState.token === null) ? 
-            <LoginContainer onSubmit={this.login} /> :
+            <Container className="login-container">
+                <h4>Login</h4>
+                <LoginForm onSubmit={this.login} /> 
+            </Container> :
             <Redirect to={{
                 pathname: "/",
             }}/>)
