@@ -3,12 +3,14 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
+import persistState from 'redux-localstorage'
 
 const configureStore = preloadedState => {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
+      persistState(['userState', { key: 'eMgr'}]),
       applyMiddleware(thunk, createLogger()),
       DevTools.instrument()
     )
