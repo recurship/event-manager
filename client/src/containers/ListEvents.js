@@ -8,7 +8,7 @@ import {
     Button
   } from 'reactstrap';
 
-import { userLogin, fetchEvents, postEvent } from '../actions';
+import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
 
 import { connect } from 'react-redux';
 
@@ -26,10 +26,15 @@ class ListEvents extends Component {
         this.getData();
     }
     
-    getData() {
+    getData = () => {
         const { dispatch } = this.props;
         dispatch(userLogin({ username: 'admin',password: '1299459ML' }));
         dispatch(fetchEvents());
+    }
+
+    logout = () => {
+        const { dispatch } = this.props;
+        dispatch(userLogout());
     }
 
     handleSubmit = event => {
@@ -54,12 +59,25 @@ class ListEvents extends Component {
                     <Row>
                         <Col>
                             <h1>Welcome to Event Management for communities...</h1>
+                            {
+                                (userState.token) ? 
+                                <Button
+                                    tag="a"
+                                    color="success"
+                                    size="large"
+                                    onClick={ this.logout }
+                                >
+                                    Logout
+                                </Button>
+                                : 
+                                ''
+                            }
                             <p>
                             <Button
                                 tag="a"
                                 color="success"
                                 size="large"
-                                onClick={ this.getData.bind(this) }
+                                onClick={ this.getData }
                             >
                                 Fetch events!
                             </Button>
@@ -70,7 +88,6 @@ class ListEvents extends Component {
                         <Col>
                             <div className="App-intro">
                             <p>{ (appState.loading.length > 0) ? 'Loading' : '' }</p>
-                            <p>{ (userState.token) ? 'User is logged in.' : 'User is not logged in.'}</p>
                             {(events.events.length === 0) ? <div> No events found! </div> : <div></div> }
                             {events.events.map( event => {
                                 return <div key={event.id}>{event.title} by {event.organisation.name}</div>

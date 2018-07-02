@@ -14,6 +14,7 @@ export const TRIGGER_FAILURE = 'TRIGGER_FAILURE'
 
 // current user
 export const USER_LOGIN = 'USER_LOGIN'
+export const USER_LOGOUT = 'USER_LOGOUT'
 
 // events
 
@@ -46,11 +47,18 @@ export const userLoginSuccess = token => ({
   token
 })
 
+export const userLogoutSuccess = () => ({
+  type: USER_LOGOUT
+})
+
+export const userLogout = () => (dispatch, getState) => {
+  dispatch(userLogoutSuccess())
+}
+
 export const userLogin = credentials => (dispatch, getState) => {
   dispatch(triggerRequest(USER_LOGIN))
   return AuthService.login(credentials.username, credentials.password)
     .then(token => {
-      localStorage.setItem('token', token.access)
       dispatch(userLoginSuccess(token.access))
       dispatch(endRequest(USER_LOGIN))
     })
