@@ -1,6 +1,6 @@
 
 # Build the frontend
-FROM node:8.9.11
+FROM node:8.11.3-alpine
 WORKDIR /client
 COPY ./client/package.json package.json
 COPY ./client/package-lock.json package-lock.json
