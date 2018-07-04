@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -59,7 +60,9 @@ ROOT_URLCONF = 'event_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,6 +131,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, 'frontend/static'),
+]
+
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
@@ -143,3 +150,6 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'SIGNING_KEY': 'thisismysecret'
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

@@ -1,8 +1,8 @@
 ## event-manager
 =====================
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f29bf9dc6dc4bb498b7ff21aca4a267)](https://www.codacy.com/app/mashhoodr/event-manager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=recurship/event-manager&amp;utm_campaign=Badge_Grade)
 
 This is a simple event manager app - built to learn Django REST and React.
-
 
 ### Setup
 
