@@ -6,6 +6,7 @@ import {
   } from 'react-router-dom'
 
 import Login from '../Login/Login';
+import Signup from '../Signup/Signup'
 import AuthContainer from './AuthContainer';
 import PrivateRoute from '../../components/PrivateRoute';
 
@@ -18,6 +19,7 @@ class App extends Component {
             <div>
                 <PrivateRoute path="/" component={AuthContainer} />
                 <Route path="/login" component={Login}/>
+                <Route path="/signup" component={Signup} />
             </div>
         );
     }
