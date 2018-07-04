@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userLogin } from '../../actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
 class Login extends Component {
 
-    static propTypes = {
-        userState: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    }
 
     login = (e) => {
         e.preventDefault();
@@ -31,10 +27,14 @@ class Login extends Component {
             <Container className="login-container">
                 <h4>Login</h4>
                 <LoginForm onSubmit={this.login} /> 
-            </Container> :
-            <Redirect to={{
-                pathname: "/",
-            }}/>)
+                <hr />
+                <p className="centralized">
+                    Not registered yet? <Link to="/signup"> Sign Up </Link>
+                </p>
+            </Container> 
+            :
+            <Redirect to={{ pathname: "/" }}/>
+        )
     }
 }
 
@@ -44,5 +44,9 @@ const mapStateToProps = state => {
         userState
     };
 }
- 
+const propTypes = {
+    userState: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
+
 export default connect(mapStateToProps)(Login);
