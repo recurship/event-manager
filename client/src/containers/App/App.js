@@ -18,9 +18,9 @@ class App extends Component<Props> {
         return (
             <div>
                 <PrivateRoute path="/" component={AuthContainer} />
-                <Route path="/login" component={Login}/>
+                <Route path="/login" component={Login} />
             </div>
-        )
+        );
     }
 }
 

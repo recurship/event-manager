@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import App from '../App/App'
 
-const Root = ({ store }: any) => (
+const Root = ({ store }: Object) => (
   <Provider store={store}>
     <div>
       <App />

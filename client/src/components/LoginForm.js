@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 import './LoginForm.css';
 
-const LoginForm = ({ onSubmit }: any) => {
+const LoginForm = ({ onSubmit }: Object) => {
     return <form onSubmit={onSubmit}>
         <Input type="text" placeholder="Username" name="username" />
         <Input type="password" placeholder="Password" name="password" />

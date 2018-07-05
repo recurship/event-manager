@@ -9,7 +9,7 @@ import {
     Nav,
     NavItem
   } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 type Props = { /* props */ };
 
