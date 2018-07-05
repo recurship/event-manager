@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,12 +9,12 @@ import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-class Login extends Component {
+type Props = {
+    userState: Object,
+    dispatch: function
+};
 
-    static propTypes = {
-        userState: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    }
+class Login extends Component<Props> {
 
     login = (e) => {
         e.preventDefault();

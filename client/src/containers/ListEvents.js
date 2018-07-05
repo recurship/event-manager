@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
@@ -12,15 +14,14 @@ import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
 
 import { connect } from 'react-redux';
 
+type Props = {
+    userState: Object,
+    events: Object,
+    appState: Object,
+    dispatch: function
+};
   
-class ListEvents extends Component { 
-    
-    static propTypes = {
-        userState: PropTypes.object.isRequired,
-        events: PropTypes.object.isRequired,
-        appState: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    }
+class ListEvents extends Component<Props> {
 
     componentDidMount() {
         this.getData();

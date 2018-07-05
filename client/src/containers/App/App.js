@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import './App.css';
 
@@ -9,17 +11,16 @@ import Login from '../Login/Login';
 import AuthContainer from './AuthContainer';
 import PrivateRoute from '../../components/PrivateRoute';
 
+type Props = {};
 
-class App extends Component {
-
-    
+class App extends Component<Props> { 
     render() {
         return (
             <div>
                 <PrivateRoute path="/" component={AuthContainer} />
                 <Route path="/login" component={Login}/>
             </div>
-        );
+        )
     }
 }
 
