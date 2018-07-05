@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { EMNavbar } from '../../components/EMNavbar';
 import ListEvents from '../ListEvents';
 import { Container } from 'reactstrap';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 
 const AuthContainer = () => (
     <Fragment>
@@ -11,6 +11,6 @@ const AuthContainer = () => (
             <Route exact path="/" component={ListEvents}/>
         </Container>
     </Fragment>
-)
+);
  
 export default AuthContainer;

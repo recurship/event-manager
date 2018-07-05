@@ -33,8 +33,8 @@ class Login extends Component {
                 <LoginForm onSubmit={this.login} /> 
             </Container> :
             <Redirect to={{
-                pathname: "/",
-            }}/>)
+                pathname: '/',
+            }}/>);
     }
 }
 
@@ -43,6 +43,6 @@ const mapStateToProps = state => {
     return {
         userState
     };
-}
+};
  
 export default connect(mapStateToProps)(Login);

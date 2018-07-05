@@ -1,4 +1,4 @@
-import { makeRequest } from './helper'
+import { makeRequest } from './helper';
 
 
 export default {
@@ -10,4 +10,4 @@ export default {
     return makeRequest('/api/token', { method: 'POST', body: formData });
   }
 
-}
+};
