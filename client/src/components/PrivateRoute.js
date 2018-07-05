@@ -20,19 +20,19 @@ class PrivateRoute extends Component {
 	}
 
 	static defaultProps = {
-		"path": "/",
-		"appState": {
-			"loading": [],
-			"errors": []
+		'path': '/',
+		'appState': {
+			'loading': [],
+			'errors': []
 		},
-		"userState": {
-			"token": "test_token",
-			"currentUser": null
+		'userState': {
+			'token': 'test_token',
+			'currentUser': null
 		},
-		"events": {
-			"events": []
+		'events': {
+			'events': []
 		},
-		"store": {}
+		'store': {}
 	}
 
 	render() {
@@ -41,34 +41,34 @@ class PrivateRoute extends Component {
 			component: Component,
 			...rest
 		} = this.props;
-		console.log(this.props);
 		return ( <
 			Route { ...rest
 			}
 			render = {
-				props =>
-				userState.token ? ( <
-					Component { ...props
-					}
-					/>
-				) : ( <
-					Redirect to = {
-						{
-							pathname: "/login",
-							state: {
-								from: props.location
+				(props) => {
+					userState.token ? ( <
+						Component { ...props
+						}
+						/>
+					) : ( <
+						Redirect to = {
+							{
+								pathname: "/login",
+								state: {
+									from: props.location
+								}
 							}
 						}
-					}
-					/>
-				)
+						/>
+					)
+				}
 			}
 			/>
 		);
 	}
 
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	// const { appState, userState, events } = state;
 	return state;
 }
