@@ -19,6 +19,22 @@ class PrivateRoute extends Component {
 		component: PropTypes.func.isRequired
 	}
 
+	static defaultProps = {
+		"path": "/",
+		"appState": {
+			"loading": [],
+			"errors": []
+		},
+		"userState": {
+			"token": "test_token",
+			"currentUser": null
+		},
+		"events": {
+			"events": []
+		},
+		"store": {}
+	}
+
 	render() {
 		const {
 			userState,
@@ -55,25 +71,6 @@ class PrivateRoute extends Component {
 const mapStateToProps = state => {
 	// const { appState, userState, events } = state;
 	return state;
-}
-
-const map
-
-// TODO: Doesn't set default props for the component
-PrivateRoute.defaultProps = {
-	"path": "/",
-	"appState": {
-		"loading": [],
-		"errors": []
-	},
-	"userState": {
-		"token": "test_token",
-		"currentUser": null
-	},
-	"events": {
-		"events": []
-	},
-	"store": {}
 }
 
 export default connect(mapStateToProps)(PrivateRoute);
