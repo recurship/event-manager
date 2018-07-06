@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { TRIGGER_REQUEST, TRIGGER_FAILURE, END_REQUEST, USER_LOGIN } from '../actions';
+import { TRIGGER_REQUEST, TRIGGER_FAILURE, END_REQUEST, USER_LOGIN, USER_LOGOUT } from '../actions';
 
 const defaultAppState = {
   loading: [],
   errors: []
-}
+};
 
 const appState = (
   state = defaultAppState,
@@ -15,7 +15,7 @@ const appState = (
     case TRIGGER_REQUEST:
       return {
         ...state,
-        loading: [... state.loading, action.name]
+        loading: [...state.loading, action.name]
       }
 
     case TRIGGER_FAILURE:
@@ -47,13 +47,21 @@ const userState = (
 ) => {
 
   switch(action.type) {
+    
     case USER_LOGIN:
       return {
         ...state,
         token: action.token
       }
+
+    case USER_LOGOUT:
+      return {
+        ...state,
+        token: null
+      }
+
     default:
-      return state
+      return state;
   }
 }
 

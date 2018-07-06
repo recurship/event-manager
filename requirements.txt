@@ -7,3 +7,4 @@ django-resized
 boto
 boto3
 django-storages
+django-heroku

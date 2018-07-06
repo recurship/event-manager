@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -60,7 +61,9 @@ ROOT_URLCONF = 'event_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,6 +132,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/static'),
+]
+
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
@@ -149,7 +156,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if not DEBUG:
-    STATICFILES_DIRS = [
+    STATICFILES_DIRS += [
         os.path.join(BASE_DIR, 'media'),
     ]
 
@@ -159,7 +166,10 @@ if not DEBUG:
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
     AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
+        'CacheControl': 'max-age=86400',
     }
 
     DEFAULT_FILE_STORAGE = 'event_manager.storage_backends.MediaStorage'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
