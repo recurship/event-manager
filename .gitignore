@@ -110,5 +110,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# media folder contains all images which are saved during development mode and we don't need
+# its content to be pushed to git that's why ignoring its content
 # media files
 media/
