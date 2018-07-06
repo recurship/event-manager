@@ -14,7 +14,6 @@ export const TRIGGER_FAILURE = 'TRIGGER_FAILURE'
 
 // current user
 export const USER_LOGIN = 'USER_LOGIN'
-export const USER_SIGNUP = 'USER_SIGNUP'
 export const USER_LOGOUT = 'USER_LOGOUT'
 
 // events
@@ -48,11 +47,6 @@ export const userLoginSuccess = token => ({
   token
 })
 
-export const userSignupSuccess = token => ({
-  type: USER_SIGNUP,
-  token
-})
-
 export const userLogoutSuccess = () => ({
   type: USER_LOGOUT
 })
@@ -72,17 +66,6 @@ export const userLogin = credentials => (dispatch, getState) => {
       dispatch(triggerFailure(USER_LOGIN, err))
     })
 }
-  export const userSignup = payload => async (dispatch, getState) => {
-    dispatch(triggerRequest(USER_SIGNUP));
-    try {
-      const token = await AuthService.signup(payload);
-      dispatch(userSignupSuccess(token.access))
-      dispatch(endRequest(USER_SIGNUP));
-    } catch (e) {
-      dispatch(triggerFailure(USER_SIGNUP, e));
-    }
-  }
-
 
 // event actions
 
