@@ -2,9 +2,4 @@ django<2.1
 psycopg2<2.8
 djangorestframework<3.8
 djangorestframework_simplejwt
-pillow
-django-resized
-boto
-boto3
-django-storages
 django-heroku

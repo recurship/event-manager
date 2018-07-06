@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'event',
     'organisation',
-    'user',
-    'storages'
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -133,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static'),
+  os.path.join(BASE_DIR, 'frontend/static'),
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -151,25 +150,6 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'SIGNING_KEY': 'thisismysecret'
 }
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-if not DEBUG:
-    STATICFILES_DIRS += [
-        os.path.join(BASE_DIR, 'media'),
-    ]
-
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-
-    DEFAULT_FILE_STORAGE = 'event_manager.storage_backends.MediaStorage'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

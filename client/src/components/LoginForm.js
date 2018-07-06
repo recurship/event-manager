@@ -10,7 +10,7 @@ const LoginForm = ({ onSubmit }) => {
         <Input type="text" placeholder="Username" name="username" />
         <Input type="password" placeholder="Password" name="password" />
         <Button type="submit">Login</Button>
-    </form>;
-};
+    </form>
+}
  
 export default LoginForm;

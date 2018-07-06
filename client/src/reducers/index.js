@@ -4,7 +4,7 @@ import { TRIGGER_REQUEST, TRIGGER_FAILURE, END_REQUEST, USER_LOGIN, USER_LOGOUT 
 const defaultAppState = {
   loading: [],
   errors: []
-};
+}
 
 const appState = (
   state = defaultAppState,
@@ -15,7 +15,7 @@ const appState = (
     case TRIGGER_REQUEST:
       return {
         ...state,
-        loading: [...state.loading, action.name]
+        loading: [... state.loading, action.name]
       }
 
     case TRIGGER_FAILURE:
@@ -61,7 +61,7 @@ const userState = (
       }
 
     default:
-      return state;
+      return state
   }
 }
 
