@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import {
     Row,
@@ -38,16 +38,16 @@ class ListEvents extends Component<Props> {
         dispatch(userLogout());
     }
 
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         event.preventDefault();
 
-        const { title, description, start_datetime, end_datetime, organisation } = event.nativeEvent.target.elements;
+        const { title, description, startDateTime, endDateTime, organisation } = event.nativeEvent.target.elements;
 
         this.props.dispatch(postEvent({
             title: title.value,
             description: description.value,
-            start_datetime: start_datetime.value,
-            end_datetime: end_datetime.value,
+            startDateTime: startDateTime.value,
+            endDateTime: endDateTime.value,
             organisation: organisation.value
         }));
     }
@@ -90,8 +90,8 @@ class ListEvents extends Component<Props> {
                             <div className="App-intro">
                             <p>{ (appState.loading.length > 0) ? 'Loading' : '' }</p>
                             {(events.events.length === 0) ? <div> No events found! </div> : <div></div> }
-                            {events.events.map( event => {
-                                return <div key={event.id}>{event.title} by {event.organisation.name}</div>
+                            {events.events.map( (event) => {
+                                return <div key={event.id}>{event.title} by {event.organisation.name}</div>;
                             })}
                             </div>
                         </Col>
@@ -102,8 +102,8 @@ class ListEvents extends Component<Props> {
                             <form onSubmit={this.handleSubmit}>
                                 <input className="form-control" type="text" name="title" />
                                 <input className="form-control" type="text" name="description" />
-                                <input className="form-control" type="datetime-local" name="start_datetime" />
-                                <input className="form-control" type="datetime-local" name="end_datetime" />
+                                <input className="form-control" type="datetime-local" name="startDateTime" />
+                                <input className="form-control" type="datetime-local" name="endDateTime" />
                                 <select name="organisation">
                                     <option value="1">Angular Pakistan</option>
                                 </select>
@@ -123,7 +123,7 @@ class ListEvents extends Component<Props> {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     // const { appState, userState, events } = state;
 
     return state;

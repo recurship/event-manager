@@ -14,6 +14,6 @@ const Root = ({ store }: Props) => (
       <App />
     </div>
   </Provider>
-)
+);
 
-export default Root
+export default Root;
