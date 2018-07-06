@@ -3,7 +3,7 @@ import './App.css';
 
 import {
     Route
-  } from 'react-router-dom'
+  } from 'react-router-dom';
 
 import Login from '../Login/Login';
 import AuthContainer from './AuthContainer';
