@@ -1,8 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import App from './../containers/App/App';
+import { Provider } from 'react-redux';
+import configureStore from '../store/configureStore';
+import { BrowserRouter as Router } from 'react-router-dom'
 
-storiesOf('Authentication', module).add('App', () => <App />); // Generating Error
+
+
+const store = configureStore()
+storiesOf('Authentication', module).add('App', () => 
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+); // Generating Error
 
 /*
 storiesOf('Button', module)
