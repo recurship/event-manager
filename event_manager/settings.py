@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'storages'
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,6 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # TODO Disabled this csrf token for now, we will going to enable it afterwards
+    'event_manager.disablecsrf.DisableCSRF',    
 ]
 
 ROOT_URLCONF = 'event_manager.urls'
