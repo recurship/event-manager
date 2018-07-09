@@ -24,9 +24,30 @@ The scope of the application is very simple. We are looking to create a simple e
 local community leaders can manage their events, and notify anybody subscribed to an event or organisation with updates.
 We will maintain tickets as issues
 
-### Editor Settings for VSCode
-update the VSCode settings with following
-```json
+### Commit Message Format
+
+```bash
+git commit -m "foo: this will fail"
+husky > npm run -s commitmsg
+
+⧗   input: foo: this will fail
+✖   type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
+✖   found 1 problems, 0 warnings
+
+husky > commit-msg hook failed (add --no-verify to bypass)
+
+git commit -m "chore: lint on commitmsg"
+husky > npm run -s commitmsg
+
+⧗   input: chore: lint on commitmsg
+✔   found 0 problems, 0 warnings
+```
+
+### Format Staging Files Code On Commit
+
+```bash
+Extend your vscode user settings with following settings to auto format code on save file.
+
 {
 "editor.formatOnSave": true,
 "[javascript]": {
@@ -43,8 +64,8 @@ update the VSCode settings with following
 "eslint.alwaysShowStatus": true,
 "editor.tabSize": 2
 }
-
 ```
+
 
 ### Resources
 
