@@ -16,10 +16,6 @@ type dispatch = {
 
 type Props = dispatch & {
     userState: Object,
-<<<<<<< HEAD
-=======
-    dispatch: Function
->>>>>>> e17d8990e2c9a2947150de8839087107c928a46c
 };
 
 class Login extends Component<Props> {

@@ -11,7 +11,7 @@ import {
   } from 'reactstrap';
 
 import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
-import { Action } from 'redux'
+import { Action } from 'redux';
 
 import { connect } from 'react-redux';
 
