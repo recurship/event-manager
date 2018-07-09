@@ -3,15 +3,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-type Props = {
+type dispatch = {
+    dispatch: (action: Action ) => any
+}
+
+type Props = dispatch & {
     userState: Object,
-    dispatch: Function
 };
 
 class Login extends Component<Props> {

@@ -11,14 +11,18 @@ import {
   } from 'reactstrap';
 
 import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
+import { Action } from 'redux';
 
 import { connect } from 'react-redux';
 
-type Props = {
+type dispatch = {
+    dispatch: (action: Action ) => any
+}
+
+type Props =  dispatch & {
     userState: Object,
     events: Object,
     appState: Object,
-    dispatch: Function
 };
   
 class ListEvents extends Component<Props> {
