@@ -12,8 +12,8 @@ type Props = {
     userState: Object,
     events: Object,
     appState: Object,
-    dispatch: function,
-    component: function
+    dispatch: Function,
+    component: Function
 };
 
 class PrivateRoute extends Component<Props> {

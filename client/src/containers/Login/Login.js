@@ -11,7 +11,7 @@ import './Login.css';
 
 type Props = {
     userState: Object,
-    dispatch: function
+    dispatch: Function
 };
 
 class Login extends Component<Props> {

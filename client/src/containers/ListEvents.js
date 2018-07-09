@@ -18,7 +18,7 @@ type Props = {
     userState: Object,
     events: Object,
     appState: Object,
-    dispatch: function
+    dispatch: Function
 };
   
 class ListEvents extends Component<Props> {
