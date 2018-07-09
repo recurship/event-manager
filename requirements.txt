@@ -2,3 +2,5 @@ django<2.1
 psycopg2<2.8
 djangorestframework<3.8
 djangorestframework_simplejwt
+celery==4.1.1
+redis==2.10.5

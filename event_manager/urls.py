@@ -22,6 +22,8 @@ from organisation.views import OrganisationView
 from event.views import EventView
 from user.views import UserView
 
+from .celery import add
+add.delay(4, 4)
 
 router = DefaultRouter()
 router.register('users', UserView)

@@ -10,6 +10,16 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
+      - redis
+
+  celery:
+    build: .
+    command: celery -A event_manager.celery worker --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - postgres
+      - redis
 
   postgres:
       image: postgres:10.4
@@ -18,3 +28,8 @@ services:
       environment:
         - POSTGRES_PASSWORD=123456
         - POSTGRES_DB=mydb
+
+  redis:
+    image: redis:3.2
+    ports:
+      - "6379:6379"
