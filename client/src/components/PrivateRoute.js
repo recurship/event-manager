@@ -1,22 +1,27 @@
 // @flow
 
-import React, { Component } from 'react'; 
+import * as React from 'react'
 import { connect } from 'react-redux';
+import { Action } from 'redux';
 import PropTypes from 'prop-types';
+
 import {
     Route,
     Redirect
 } from 'react-router-dom';
 
-type Props = {
+type dispatch = {
+    dispatch: (action: Action ) => any,
+    component: (React.ComponentType<PropTypes>)
+}
+
+type Props =dispatch & {
     userState: Object,
     events: Object,
-    appState: Object,
-    dispatch: function,
-    component: function
+    appState: Object
 };
 
-class PrivateRoute extends Component<Props> {
+class PrivateRoute extends React.Component<Props> {
     
     render() {
         const { userState, component: Component, ...rest } = this.props;
