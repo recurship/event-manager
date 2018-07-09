@@ -22,6 +22,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from organisation.views import OrganisationView
 from event.views import EventView
 from user.views import UserView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 router = DefaultRouter()
@@ -34,5 +36,11 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/token', TokenObtainPairView.as_view()),
     path('api/token/refresh', TokenRefreshView.as_view()),
-    re_path('.*', TemplateView.as_view(template_name='index.html'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [re_path('.*',
+                        TemplateView.as_view(template_name='index.html'))]

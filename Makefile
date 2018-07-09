@@ -16,6 +16,9 @@ migrate:
 loaddata:
 	docker-compose run web python manage.py loaddata db.json
 
+dumpdata:
+	docker-compose run web python manage.py dumpdata > db.json
+
 shell:
 	docker-compose run web python manage.py shell
 
