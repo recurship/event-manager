@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { userLogin } from '../../actions';
@@ -10,12 +10,10 @@ import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-type dispatch = {
-    dispatch: (action: Action ) => any
-}
-
-type Props = dispatch & {
-    userState: Object,
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
 };
 
 class Login extends Component<Props> {

@@ -3,22 +3,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
-import PropTypes from 'prop-types';
-
+import type { BaseReducerPropsTypes, BaseReduxPropTypes } from '../types/base-props-types';
 import {
     Route,
     Redirect
 } from 'react-router-dom';
 
-type dispatch = {
-    dispatch: (action: Action ) => any,
-    component: (React.ComponentType<PropTypes>)
-}
-
-type Props =dispatch & {
-    userState: Object,
-    events: Object,
-    appState: Object
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
 };
 
 class PrivateRoute extends React.Component<Props> {
@@ -30,7 +24,7 @@ class PrivateRoute extends React.Component<Props> {
             {...rest}
             render={ (props) =>
                 userState.token ? (
-                <Component {...props} />
+                <React.Component {...props} />
                 ) : (
                 <Redirect
                     to={{

@@ -1,30 +1,23 @@
 // @flow
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 import {
     Row,
     Col,
     Jumbotron,
     Button
   } from 'reactstrap';
-
 import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
 import { Action } from 'redux';
-
+import type { BaseReduxPropTypes } from '../types/base-props-types';
 import { connect } from 'react-redux';
 
-type dispatch = {
-    dispatch: (action: Action ) => any
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
 }
 
-type Props =  dispatch & {
-    userState: Object,
-    events: Object,
-    appState: Object,
-};
-  
 class ListEvents extends Component<Props> {
 
     componentDidMount() {
@@ -39,10 +32,10 @@ class ListEvents extends Component<Props> {
 
     logout = () => {
         const { dispatch } = this.props;
-        dispatch(userLogout());
+				dispatch(userLogout());
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = (event: any) => {
         event.preventDefault();
 
         const { title, description, startDateTime, endDateTime, organisation } = event.nativeEvent.target.elements;
@@ -129,7 +122,6 @@ class ListEvents extends Component<Props> {
 
 const mapStateToProps = (state) => {
     // const { appState, userState, events } = state;
-
     return state;
 }
 
