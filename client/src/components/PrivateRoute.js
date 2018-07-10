@@ -34,19 +34,20 @@ class PrivateRoute extends Component {
 		},
 		"store": {}
 	}
-
-	render() {
-        const { userState, component: Component, ... rest } = this.props;
+    
+    render() {
+        const { userState, component: Component, ...rest } = this.props;
+      
         return (
             <Route
             {...rest}
-            render={ props =>
+            render={ (props) =>
                 userState.token ? (
                 <Component {...props} />
                 ) : (
                 <Redirect
                     to={{
-                    pathname: "/login",
+                    pathname: '/login',
                     state: { from: props.location }
                     }}
                 />
@@ -57,6 +58,7 @@ class PrivateRoute extends Component {
     }
 
 }
+
 const mapStateToProps = (state) => {
 	// const { appState, userState, events } = state;
 	return state;

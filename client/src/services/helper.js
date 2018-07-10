@@ -19,8 +19,8 @@ export const makeRequest = (path, options) => {
     options.headers['Authorization'] =  `Bearer ${ token }`;
   }
 
-  return fetch(BASE_URL + path, options).then(response => {
+  return fetch(BASE_URL + path, options).then((response) => {
     return response.json();
   });
 
-}
+};
