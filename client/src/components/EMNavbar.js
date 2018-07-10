@@ -1,3 +1,4 @@
+// @flow
 
 import React, { Component } from 'react';
 import {
@@ -8,13 +9,15 @@ import {
     Nav,
     NavItem
   } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-  import {
-    Link
-  } from 'react-router-dom';
+type Props = { /* props */ };
+
+type State = {
+    isOpen: boolean
+}
   
-  
-export class EMNavbar extends Component {
+export class EMNavbar extends Component<Props, State> {
 
     state = {
         isOpen: false

@@ -1,15 +1,21 @@
-import React, {
-	Component
-} from "react";
+// @flow
+
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Action } from 'redux';
+import type { BaseReducerPropsTypes, BaseReduxPropTypes } from '../types/base-props-types';
 import {
-	connect
-} from "react-redux";
-import PropTypes from "prop-types";
-import {
-	Route,
-	Redirect
-} from "react-router-dom";
-class PrivateRoute extends Component {
+    Route,
+    Redirect
+} from 'react-router-dom';
+
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
+};
+
+class PrivateRoute extends React.Component<Props> {
 
 	static propTypes = {
 		userState: PropTypes.object.isRequired,
@@ -43,7 +49,7 @@ class PrivateRoute extends Component {
             {...rest}
             render={ (props) =>
                 userState.token ? (
-                <Component {...props} />
+                <React.Component {...props} />
                 ) : (
                 <Redirect
                     to={{

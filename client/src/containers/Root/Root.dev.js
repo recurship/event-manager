@@ -1,11 +1,15 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import DevTools from '../DevTools';
-import { Route } from 'react-router-dom';
 import App from '../App/App';
 
-const Root = ({ store }) => (
+type Props = {
+  store: Object
+};
+
+const Root = ({ store }: Props) => (
   <Provider store={store}>
     <div>
       <App />
@@ -13,9 +17,5 @@ const Root = ({ store }) => (
     </div>
   </Provider>
 );
-
-Root.propTypes = {
-  store: PropTypes.object.isRequired,
-};
 
 export default Root;

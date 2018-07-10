@@ -24,6 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "babel-build": "babel src/ -d lib/",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
     "commitmsg": "commitlint -e",
@@ -36,6 +37,9 @@
     ]
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.75.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",

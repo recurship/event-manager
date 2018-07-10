@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
 
+import React, { Component } from 'react';
 import {
     Row,
     Col,
     Jumbotron,
     Button
   } from 'reactstrap';
-
 import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
-
+import { Action } from 'redux';
+import type { BaseReduxPropTypes } from '../types/base-props-types';
 import { connect } from 'react-redux';
 
-  
-class ListEvents extends Component { 
-    
-    static propTypes = {
-        userState: PropTypes.object.isRequired,
-        events: PropTypes.object.isRequired,
-        appState: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    }
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
+}
+
+class ListEvents extends Component<Props> {
 
     componentDidMount() {
         this.getData();
@@ -34,10 +32,10 @@ class ListEvents extends Component {
 
     logout = () => {
         const { dispatch } = this.props;
-        dispatch(userLogout());
+				dispatch(userLogout());
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = (event: any) => {
         event.preventDefault();
 
         const { title, description, startDateTime, endDateTime, organisation } = event.nativeEvent.target.elements;
@@ -124,7 +122,6 @@ class ListEvents extends Component {
 
 const mapStateToProps = (state) => {
     // const { appState, userState, events } = state;
-
     return state;
 }
 

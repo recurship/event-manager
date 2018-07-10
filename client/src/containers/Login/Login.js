@@ -1,18 +1,22 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
+import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-class Login extends Component {
+type Props = BaseReduxPropTypes & {
+	userState: Object,
+	appState: Object,
+	events: Object
+};
 
-    static propTypes = {
-        userState: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    }
+class Login extends Component<Props> {
 
     login = (e) => {
         e.preventDefault();

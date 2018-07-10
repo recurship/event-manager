@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Fragment } from 'react';
 import { EMNavbar } from '../../components/EMNavbar';
 import ListEvents from '../ListEvents';
