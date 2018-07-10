@@ -63,7 +63,7 @@ export const userLogin = (credentials) => (dispatch, getState) => {
       dispatch(endRequest(USER_LOGIN));
     })
     .catch(err => {
-      dispatch(triggerFailure(USER_LOGIN, err));
+      //dispatch(triggerFailure(USER_LOGIN, err));
     })
 };
 
@@ -87,7 +87,7 @@ export const fetchEvents = () => (dispatch, getState) => {
     dispatch(endRequest(FETCH_EVENTS));
   })
   .catch(err => {
-    dispatch(triggerFailure(FETCH_EVENTS, err));
+    //dispatch(triggerFailure(FETCH_EVENTS, err));
   })
 };
 
