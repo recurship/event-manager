@@ -1,14 +1,14 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import App from './../containers/App/App';
-import { Provider } from 'react-redux';
-import configureStore from '../store/configureStore';
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import App from "./../containers/App/App";
+import { Provider } from "react-redux";
+import configureStore from "../store/configureStore";
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 
-const store = configureStore()
-storiesOf('Authentication', module).add('App', () => 
+const store = configureStore();
+storiesOf("Authentication", module).add("App", () => 
   <Provider store={store}>
     <Router>
       <App />

@@ -1,14 +1,14 @@
 import React, {
 	Component
-} from 'react';
+} from "react";
 import {
 	connect
-} from 'react-redux';
-import PropTypes from 'prop-types';
+} from "react-redux";
+import PropTypes from "prop-types";
 import {
 	Route,
 	Redirect
-} from 'react-router-dom'
+} from "react-router-dom";
 class PrivateRoute extends Component {
 
 	static propTypes = {
@@ -20,19 +20,19 @@ class PrivateRoute extends Component {
 	}
 
 	static defaultProps = {
-		'path': '/',
-		'appState': {
-			'loading': [],
-			'errors': []
+		"path": "/",
+		"appState": {
+			"loading": [],
+			"errors": []
 		},
-		'userState': {
-			'token': 'test_token',
-			'currentUser': null
+		"userState": {
+			"token": "test_token",
+			"currentUser": null
 		},
-		'events': {
-			'events': []
+		"events": {
+			"events": []
 		},
-		'store': {}
+		"store": {}
 	}
 
 	render() {
