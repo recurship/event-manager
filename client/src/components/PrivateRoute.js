@@ -16,9 +16,34 @@ type Props = BaseReduxPropTypes & {
 };
 
 class PrivateRoute extends React.Component<Props> {
+
+	static propTypes = {
+		userState: PropTypes.object.isRequired,
+		events: PropTypes.object.isRequired,
+		appState: PropTypes.object.isRequired,
+		dispatch: PropTypes.func.isRequired,
+		component: PropTypes.func.isRequired
+	}
+
+	static defaultProps = {
+		"path": "/",
+		"appState": {
+			"loading": [],
+			"errors": []
+		},
+		"userState": {
+			"token": "test_token",
+			"currentUser": null
+		},
+		"events": {
+			"events": []
+		},
+		"store": {}
+	}
     
     render() {
         const { userState, component: Component, ...rest } = this.props;
+      
         return (
             <Route
             {...rest}
@@ -39,9 +64,10 @@ class PrivateRoute extends React.Component<Props> {
     }
 
 }
-  const mapStateToProps = (state) => {
-    // const { appState, userState, events } = state;
-    return state;
-};
+
+const mapStateToProps = (state) => {
+	// const { appState, userState, events } = state;
+	return state;
+}
 
 export default connect(mapStateToProps)(PrivateRoute);

@@ -24,6 +24,27 @@ The scope of the application is very simple. We are looking to create a simple e
 local community leaders can manage their events, and notify anybody subscribed to an event or organisation with updates.
 We will maintain tickets as issues
 
+### Editor Settings for VSCode
+update the VSCode settings with following
+```json
+{
+"editor.formatOnSave": true,
+"[javascript]": {
+"editor.formatOnSave": false,
+"eslint.autoFixOnSave": true,
+"editor.tabSize": 2,
+"editor.insertSpaces": false,
+"editor.detectIndentation": false
+},
+"prettier.disableLanguages": [
+"js"
+],
+"eslint.autoFixOnSave": true,
+"eslint.alwaysShowStatus": true,
+"editor.tabSize": 2
+}
+
+```
 
 ### Resources
 
