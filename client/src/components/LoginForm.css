@@ -1,4 +1,3 @@
-
-input.form-control {
-    margin-bottom: 10px;
+#login-form input.form-control {
+	margin-bottom: 10px;
 }
