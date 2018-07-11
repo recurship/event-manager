@@ -1,7 +1,7 @@
-div.login-container.container {
-    width: 350px;
-    margin: 25% auto 0; 
-    background-color: #F5F5F5;
-    border-radius: 15px; 
-    padding: 30px 20px;
+div.login-container {
+  width: 400px;
+  margin: 100px auto;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 30px 20px;
 }
