@@ -1,6 +1,7 @@
 ## event-manager
 =====================
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f29bf9dc6dc4bb498b7ff21aca4a267)](https://www.codacy.com/app/mashhoodr/event-manager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=recurship/event-manager&amp;utm_campaign=Badge_Grade)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 This is a simple event manager app - built to learn Django REST and React.
 
@@ -26,22 +27,10 @@ We will maintain tickets as issues
 
 ### Commit Message Format
 
-```bash
-git commit -m "foo: this will fail"
-husky > npm run -s commitmsg
+We will need to do `npm run commit` and then will get the prompts needed to start a commit!
 
-⧗   input: foo: this will fail
-✖   type must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
-✖   found 1 problems, 0 warnings
+[![Add and commit with Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)
 
-husky > commit-msg hook failed (add --no-verify to bypass)
-
-git commit -m "chore: lint on commitmsg"
-husky > npm run -s commitmsg
-
-⧗   input: chore: lint on commitmsg
-✔   found 0 problems, 0 warnings
-```
 
 ### Format Staging Files Code On Commit
 
