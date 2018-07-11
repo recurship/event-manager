@@ -1,0 +1,707 @@
+{
+	"variables": [],
+	"info": {
+		"name": "event-manager",
+		"_postman_id": "aff1d14e-94f1-e3dc-2880-e0a2de8871a5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/organisations/",
+			"request": {
+				"url": "http://localhost:8000/api/organisations/3/",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"description": ""
+					},
+					{
+						"key": "application/json",
+						"value": "",
+						"description": ""
+					},
+					{
+						"key": "payload",
+						"value": "{\"title\":\"nvkanoenva\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Update Organisation name",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "owner",
+							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/organisations/",
+			"request": {
+				"url": "http://localhost:8000/api/organisations/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"description": ""
+					},
+					{
+						"key": "application/json",
+						"value": "",
+						"description": ""
+					},
+					{
+						"key": "payload",
+						"value": "{\"title\":\"nvkanoenva\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Update Organisation name",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "owner",
+							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/organisations/",
+			"request": {
+				"url": "http://localhost:8000/api/organisations/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"description": ""
+					},
+					{
+						"key": "application/json",
+						"value": "",
+						"description": ""
+					},
+					{
+						"key": "payload",
+						"value": "{\"title\":\"nvkanoenva\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Test Organisation",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "owner",
+							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/events/",
+			"request": {
+				"url": "http://localhost:8000/api/events/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "test event abcd",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "organisation",
+							"value": "GDG Kolachi",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/events/",
+			"request": {
+				"url": "http://localhost:8000/api/events/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "test event",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "testing",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "cover",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/events/13/",
+			"request": {
+				"url": "http://localhost:8000/api/events/13/",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"description": ""
+					},
+					{
+						"key": "application/json",
+						"value": "",
+						"description": ""
+					},
+					{
+						"key": "payload",
+						"value": "{\"title\":\"nvkanoenva\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": " update title",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "update description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "cover",
+							"value": "",
+							"description": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/token",
+			"request": {
+				"url": "http://localhost:8000/api/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"1299459ML\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/users/",
+			"request": {
+				"url": "http://localhost:8000/api/users/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "usmanabc",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1299459ML",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "is_active",
+							"value": "true",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "test name",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "enable_notifications",
+							"value": "true",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "is_staff",
+							"value": "true",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/users/",
+			"request": {
+				"url": "http://localhost:8000/api/users/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "usmandap",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1299459ML",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "is_active",
+							"value": "False",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "test name",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "enable_notifications",
+							"value": "true",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
