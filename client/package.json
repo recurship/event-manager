@@ -28,7 +28,6 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "commit": "git-cz",
-    "commitmsg": "commitlint -e",
     "precommit": "lint-staged"
   },
   "lint-staged": {
