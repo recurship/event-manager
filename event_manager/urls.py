@@ -21,7 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from organisation.views import OrganisationView
 from event.views import EventView
-from user.views import UserView
+from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -34,6 +34,8 @@ router.register('events', EventView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/register/', RegistrationAPIView.as_view()),
+    path('api/user/', UserRetrieveUpdateAPIView.as_view()),
     path('api/token', TokenObtainPairView.as_view()),
     path('api/token/refresh', TokenRefreshView.as_view()),
 ]
