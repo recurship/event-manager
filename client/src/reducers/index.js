@@ -5,6 +5,7 @@ import {
   END_REQUEST,
   USER_LOGIN,
   USER_LOGOUT,
+  RESET_PASSWORD,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -60,6 +61,22 @@ const userState = (state = defaultUserState, action) => {
   }
 };
 
+const defaultResetPasswordState = {
+  message: null,
+};
+const resetPasswordState = (state = defaultResetPasswordState, action) => {
+  switch (action.type) {
+    case RESET_PASSWORD:
+      return {
+        ...state,
+        message: action.message,
+      };
+
+    default:
+      return state;
+  }
+};
+
 const defaultEventState = {
   events: [],
 };
@@ -76,6 +93,7 @@ const events = (state = defaultEventState, action) => {
 let reducer = combineReducers({
   appState,
   userState,
+  resetPasswordState,
   events,
   form: formReducer,
 });

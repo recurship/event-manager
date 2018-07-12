@@ -17,15 +17,14 @@ export default {
     formData.append('password', payload.password);
     return makeRequest('/api/register/', { method: 'POST', body: formData });
   },
+  resetPassword(email) {
+    let formData = new FormData();
+    formData.append('email', email);
+    return fakeApi(email);
+  },
 };
-function fakeApi(path) {
-  return new Promise(resolve => {
-    setTimeout(
-      () =>
-        resolve({
-          access: 'sfdhg9384fny8273ytvb2354tvy4580tvt234tv79329t7',
-        }),
-      3000
-    );
-  });
+
+function fakeApi(email) {
+  const msg = 'Please check your email';
+  return new Promise(resolve => setTimeout(_ => resolve(msg), 2000));
 }
