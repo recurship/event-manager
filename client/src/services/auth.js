@@ -10,12 +10,12 @@ export default {
 
   signup(payload) {
     let formData = new FormData();
+    formData.append('firstname', payload.firstname);
+    formData.append('lastname', payload.lastname);
     formData.append('username', payload.username);
-    formData.append('fullname', payload.fullname);
     formData.append('email', payload.email);
     formData.append('password', payload.password);
-    return fakeApi('/api/register');
-    // return makeRequest('/api/token', { method: 'POST', body: formData });
+    return makeRequest('/api/register/', { method: 'POST', body: formData });
   },
 };
 function fakeApi(path) {

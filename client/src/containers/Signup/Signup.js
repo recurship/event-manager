@@ -9,15 +9,22 @@ import PropTypes from 'prop-types';
 class Signup extends Component {
   signup = e => {
     e.preventDefault();
-    const { username, fullname, email, password } = e.target.elements,
-      { dispatch } = this.props,
+    const {
+        username,
+        firstname,
+        lastname,
+        email,
+        password,
+      } = e.target.elements,
+      { dispatch, history } = this.props,
       payload = {
+        firstname: firstname.value,
+        lastname: lastname.value,
         username: username.value,
-        fullname: fullname.value,
         email: email.value,
         password: password.value,
       };
-    dispatch(userSignup(payload));
+    dispatch(userSignup(payload, history));
   };
 
   render() {
