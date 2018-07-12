@@ -1,12 +1,14 @@
 from rest_framework import status
 from rest_framework import viewsets
-from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.generics import RetrieveUpdateAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.views.generic import TemplateView
+from django.core.mail import EmailMessage
 
 from .models import User
-from .serializer import UserSerializer, RegistrationSerializer
+from .serializer import UserSerializer, RegistrationSerializer, PasswordResetSerializer
 
 
 class UserView(viewsets.ModelViewSet):
@@ -58,3 +60,22 @@ class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class ResetPasswordAPIView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PasswordResetSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer_data = request.data
+        serializer = self.serializer_class(
+            {}, data=serializer_data
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        data =  serializer.data
+        # If user is found and token is generated and save in user model now
+        # its time to send user an email with the password reset email
+        email = EmailMessage('Reset Password request for Event Manager', request.build_absolute_uri() + data['token'], to=[data['email']])
+        email.send()
+
+        return Response('Successfully sent reset password link to email: ' + data['email'], status=status.HTTP_200_OK)

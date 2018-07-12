@@ -71,3 +71,36 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user(**validated_data)
+
+
+class PasswordResetSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    token = serializers.CharField(max_length=255, required=False)
+
+    class Meta:
+        model = User
+        fields = ['email', 'token']
+
+    def update(self, instance, validated_data):
+        email = validated_data.get('email', None)
+        try:
+            user = User.objects.get(email=email)
+        except:
+            user = None
+        if user is None:
+            raise TypeError('No user found with the email')
+        token = self._generate_jwt_token()
+        user.token = token
+        user.save()
+        # email = EmailMessage('Reset Password request for Event Manager', token, to=[email])
+        # email.send()
+        return user
+
+    def _generate_jwt_token(self):
+        dt = datetime.now() + timedelta(days=1)
+
+        token = jwt.encode({
+            'exp': int(dt.strftime('%s'))
+        }, SIMPLE_JWT['SIGNING_KEY'], algorithm='HS256')
+
+        return token.decode('utf-8')
