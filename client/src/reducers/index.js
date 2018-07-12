@@ -5,7 +5,6 @@ import {
   END_REQUEST,
   USER_LOGIN,
   USER_LOGOUT,
-  USER_SIGNUP,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -45,12 +44,6 @@ const defaultUserState = {
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
     case USER_LOGIN:
-      return {
-        ...state,
-        token: action.token,
-      };
-
-    case USER_SIGNUP:
       return {
         ...state,
         token: action.token,

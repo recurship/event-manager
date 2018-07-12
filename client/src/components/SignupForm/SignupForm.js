@@ -9,9 +9,17 @@ let SignupForm = props => {
   return (
     <form id="signup-form" onSubmit={onSubmit}>
       <Field
-        name="fullname"
+        type="text"
+        name="firstname"
         className="form-control"
-        placeholder="Full Name"
+        placeholder="First Name"
+        component={renderField}
+      />
+      <Field
+        type="text"
+        name="lastname"
+        className="form-control"
+        placeholder="Last Name"
         component={renderField}
       />
 
