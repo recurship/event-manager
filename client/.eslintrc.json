@@ -32,7 +32,7 @@
     "no-unexpected-multiline": "warn",
     "indent": [
       "error",
-      "tab"
+      2
     ],
     "linebreak-style": [
       "error",

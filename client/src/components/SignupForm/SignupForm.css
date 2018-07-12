@@ -1,0 +1,3 @@
+#signup-form input:disabled {
+  cursor: not-allowed;
+}
