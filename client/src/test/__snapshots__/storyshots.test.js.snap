@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Authentication App 1`] = `
+<div>
+  <div
+    className="login-container container"
+  >
+    <h4>
+      Login
+    </h4>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        className="form-control"
+        name="username"
+        placeholder="Username"
+        type="text"
+      />
+      <input
+        className="form-control"
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+      <button
+        className="btn btn-secondary"
+        onClick={[Function]}
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots EMNavbar nav bar 1`] = `
+<nav
+  className="navbar navbar-dark bg-dark"
+  exapand="true"
+>
+  <button
+    className="navbar-toggler"
+    onClick={[Function]}
+    right="true"
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <a
+    className="navbar-brand"
+    href="/"
+  >
+    community-manager
+  </a>
+  <div
+    className="collapse navbar-collapse"
+    style={Object {}}
+  >
+    <ul
+      className="ml-auto navbar-nav"
+    >
+      <li
+        className="nav-item"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </li>
+      <li
+        className="nav-item"
+      >
+        <a
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`Storyshots LoginForm Login Form 1`] = `
+<div
+  className="login-container container"
+>
+  <form
+    onSubmit={undefined}
+  >
+    <input
+      className="form-control"
+      name="username"
+      placeholder="Username"
+      type="text"
+    />
+    <input
+      className="form-control"
+      name="password"
+      placeholder="Password"
+      type="password"
+    />
+    <button
+      className="btn btn-secondary"
+      onClick={[Function]}
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;
