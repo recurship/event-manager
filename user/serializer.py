@@ -133,11 +133,9 @@ class PasswordResetConfirmSerializer(serializers.ModelSerializer):
         try:
             user = User.objects.get(email=email)
         except:
-            user = None
-        if user is None:
             raise serializers.ValidationError(ERORRS['ERROR_USER_NOT_FOUND'])
         # If user is found but it is currently inactive
-        elif not user.is_active:
+        if not user.is_active:
             raise serializers.ValidationError(
                 ERORRS['ERROR_DEACTIVATED_USER']
             )
