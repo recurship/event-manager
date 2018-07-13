@@ -14,7 +14,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     enable_notifications = models.BooleanField(default=True)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
-    is_staff = models.BooleanField(default=False, blank=True)
+    token = models.CharField(max_length=255, null=True, default=None)
+    is_active = models.BooleanField(default=True)
     avatar = ResizedImageField(
         size=[300, 300], upload_to='user', blank=False, null=True)
 

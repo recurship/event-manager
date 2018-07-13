@@ -11,14 +11,46 @@ This api is used for logging in user
     "username": string,
     "password": string,
 }
+#### `/api/register/`
+
+##### `POST`
+This api is used for creating user
+
+
+# Request
+{
+    "username": string,
+    "password": string,
+    "email": string
+}
+#### `/api/reset-password/`
+
+##### `POST`
+This api is used for sending user an email for reset password
+
+
+# Request
+{
+    "email": string
+}
+#### `/api/reset-password-confirm/`
+
+##### `POST`
+This api is used for sending user new password after recieving and email for reset password
+
+
+# Request
+{
+    "email": string
+    "token": string
+    "password": string
+}
 
 ### Users
 
 #### `/api/users/`
 
 ##### `GET`
-To create new user
-##### `POST`
 To list all users
 
 # Request
@@ -31,10 +63,30 @@ To list all users
     "enable_notifications": Boolean,
     "is_staff": Boolean
 }
+#### `/api/user/`
+
+#### `HEADER`: `Bearer <Token>`
+##### `GET`
+To list loggedin user
+##### `POST`
+To update loggedin user
+
+# Request
+{
+    "username": string,
+    "password": string,
+    "is_active": Boolean,
+    "first_name": string,
+    "last_name": string,
+    "enable_notifications": Boolean,
+    "is_staff": Boolean,
+    "email": string
+}
 
 ### Organisations
 
 #### `/api/organisations/`
+#### `HEADER`: `Bearer <Token>`
 ##### `GET`
 ##### `POST`
 
@@ -61,6 +113,7 @@ Just need to provide only those properties which needed to be updated
 ### Events
 
 #### `/api/events/`
+#### `HEADER`: `Bearer <Token>`
 ##### `GET`
 ##### `POST`
 
