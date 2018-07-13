@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import SignupForm from '../../components/SignupForm/SignupForm';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup } from '../../actions/index';
 import PropTypes from 'prop-types';
 
-class Signup extends Component {
-  signup = e => {
+type Props = BaseReduxPropTypes & {
+  userState: Object,
+};
+
+class Signup extends Component<Props> {
+  signup = async e => {
     e.preventDefault();
     const {
         username,
@@ -24,7 +29,9 @@ class Signup extends Component {
         email: email.value,
         password: password.value,
       };
-    dispatch(userSignup(payload, history));
+
+    const response = await dispatch(userSignup(payload));
+    if (response && response.id) history.push('/login');
   };
 
   render() {

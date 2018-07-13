@@ -99,13 +99,13 @@ export const fetchEvents = () => (dispatch, getState) => {
       //dispatch(triggerFailure(FETCH_EVENTS, err));
     });
 };
-export const userSignup = (payload, history) => async (dispatch, getState) => {
+export const userSignup = payload => async (dispatch, getState) => {
   dispatch(triggerRequest(USER_SIGNUP));
   try {
     const token = await AuthService.signup(payload);
     dispatch(userSignupSuccess(token.access));
-    if (token && token.id) history.push('/login');
     dispatch(endRequest(USER_SIGNUP));
+    return token;
   } catch (e) {
     dispatch(triggerFailure(USER_SIGNUP, e));
   }
