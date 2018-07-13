@@ -1,5 +1,7 @@
+// @flow
 import React, { Component } from 'react';
 import ForgotPasswordForm from '../../components/ForgotPassword/ForgotPasswordForm';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
 import { resetPassword } from '../../actions';
@@ -7,7 +9,11 @@ import './ForgotPassword.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-class ForgotPassword extends Component {
+type Props = BaseReduxPropTypes & {
+  resetPasswordState: Object,
+};
+
+class ForgotPassword extends Component<Props> {
   constructor(props) {
     super(props);
   }
