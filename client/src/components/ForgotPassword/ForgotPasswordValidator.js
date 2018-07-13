@@ -1,4 +1,4 @@
-import { isEmail, isLowercase, isLength, isString } from 'validator';
+import { isEmail } from 'validator';
 
 const validate = values => {
   const errors = {},
