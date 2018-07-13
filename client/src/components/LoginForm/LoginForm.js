@@ -7,13 +7,13 @@ import { Field, reduxForm } from 'redux-form';
 import renderField from '../RenderField';
 import validate from './LoginValidator';
 
+// type LoginEvent = (Event<>;)
 type Props = {
-  onSubmit(e: any): void,
+  onSubmit(e: SyntheticEvent): void,
 };
 
 let LoginForm = (props: Props) => {
   const { valid, onSubmit } = props;
-  console.log(props);
   return (
     <form id="login-form" onSubmit={onSubmit}>
       <Field

@@ -1,5 +1,3 @@
-import { isEmail, isLowercase, isLength } from 'validator';
-
 const validate = values => {
   const errors = {},
     { username, password } = values;
