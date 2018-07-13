@@ -14,6 +14,7 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 // events
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
@@ -118,6 +119,17 @@ export const resetPassword = credentials => async (dispatch, getState) => {
     dispatch(endRequest(RESET_PASSWORD));
   } catch (e) {
     dispatch(triggerFailure(RESET_PASSWORD, e));
+  }
+};
+
+export const changePassword = credentials => async (dispatch, getState) => {
+  dispatch(triggerRequest(CHANGE_PASSWORD));
+  try {
+    const repsonseData = await AuthService.changePassword(credentials);
+    dispatch(endRequest(CHANGE_PASSWORD));
+    return repsonseData;
+  } catch (e) {
+    dispatch(triggerFailure(CHANGE_PASSWORD, e));
   }
 };
 

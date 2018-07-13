@@ -9,6 +9,7 @@ import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import AuthContainer from './AuthContainer';
 import Signup from '../Signup/Signup';
 import PrivateRoute from '../../components/PrivateRoute';
+import ChangePassword from '../ChangePassword/ChangePassword';
 
 type Props = {};
 
@@ -20,6 +21,7 @@ class App extends Component<Props> {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/change-password" component={ChangePassword} />
       </div>
     );
   }
