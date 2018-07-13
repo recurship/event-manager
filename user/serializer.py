@@ -86,9 +86,9 @@ class PasswordResetSerializer(serializers.ModelSerializer):
         try:
             user = User.objects.get(email=email)
         except:
-            user = None
-        if user is None:
+            # user = None
             raise serializers.ValidationError('No user found with the email')
+        # if user is None:
         token = self._generate_jwt_token()
         user.token = token
         user.save()
