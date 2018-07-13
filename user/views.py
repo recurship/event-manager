@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from django.core.mail import EmailMessage
 
 from .models import User
-from .serializer import UserSerializer, RegistrationSerializer, PasswordResetSerializer
+from .serializer import UserSerializer, RegistrationSerializer, PasswordResetSerializer, PasswordResetConfirmSerializer
 
 
 class UserView(viewsets.ModelViewSet):
@@ -72,10 +72,26 @@ class ResetPasswordAPIView(APIView):
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        data =  serializer.data
+        data = serializer.data
         # If user is found and token is generated and save in user model now
         # its time to send user an email with the password reset email
-        email = EmailMessage('Reset Password request for Event Manager', request.build_absolute_uri() + data['token'], to=[data['email']])
+        recipient_email = data['email']
+        email = EmailMessage('Reset Password request for Event Manager', request.build_absolute_uri()
+                             + '?token=' + data['token'] + '&email=' + recipient_email, to=[recipient_email])
         email.send()
 
         return Response('Successfully sent reset password link to email: ' + data['email'], status=status.HTTP_200_OK)
+
+
+class ResetPasswordConfirmAPIView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PasswordResetConfirmSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer_data = request.data
+        serializer = self.serializer_class(
+            {}, data=serializer_data
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response('Password has been successfully reset', status=status.HTTP_200_OK)

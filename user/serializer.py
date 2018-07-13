@@ -88,19 +88,81 @@ class PasswordResetSerializer(serializers.ModelSerializer):
         except:
             user = None
         if user is None:
-            raise TypeError('No user found with the email')
+            raise serializers.ValidationError('No user found with the email')
         token = self._generate_jwt_token()
         user.token = token
         user.save()
-        # email = EmailMessage('Reset Password request for Event Manager', token, to=[email])
-        # email.send()
         return user
 
     def _generate_jwt_token(self):
         dt = datetime.now() + timedelta(days=1)
-
         token = jwt.encode({
-            'exp': int(dt.strftime('%s'))
+            'exp': int(dt.strftime('%s')),
         }, SIMPLE_JWT['SIGNING_KEY'], algorithm='HS256')
-
         return token.decode('utf-8')
+
+
+class PasswordResetConfirmSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    token = serializers.CharField(max_length=255)
+    password = serializers.CharField(
+        max_length=128,
+        min_length=8,
+        write_only=True
+    )
+
+    class Meta:
+        model = User
+        fields = ['email', 'token', 'password']
+
+    def update(self, instance, validated_data):
+        email = validated_data.get('email', None)
+        password = validated_data.get('password', None)
+        token = validated_data.get('token', None)
+
+        # We are going to validate first if token, email and password
+        # are present in then request and the user is currently active
+        # or not
+        if email is None:
+            raise serializers.ValidationError(
+                'An email address is required'
+            )
+        elif password is None:
+            raise serializers.ValidationError(
+                'password is required'
+            )
+        elif token is None:
+            raise serializers.ValidationError(
+                'token is required'
+            )
+
+        # Now get the user by email provided
+        try:
+            user = User.objects.get(email=email)
+        except:
+            user = None
+        if user is None:
+            raise serializers.ValidationError('No user found with the email')
+        # If user is found but it is currently inactive
+        elif not user.is_active:
+            raise serializers.ValidationError(
+                'This user has been deactivated.'
+            )
+
+        if user.token != token:
+            raise serializers.ValidationError(
+                'invalid token provided'
+            )
+        else:
+            # jwt.decode will throw an exception if token is expired
+            try:
+                jwt.decode(token, SIMPLE_JWT['SIGNING_KEY'], algorithm='HS256')
+            except:
+                raise serializers.ValidationError(
+                    'token is expired'
+                )
+
+        # All the above validations are passed and we are good to update the password for user now
+        user.set_password(password)
+        user.save()
+        return user
