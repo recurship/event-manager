@@ -13,6 +13,7 @@ export const TRIGGER_FAILURE = 'TRIGGER_FAILURE';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
 // events
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
@@ -51,6 +52,11 @@ export const userLogoutSuccess = () => ({
 export const userSignupSuccess = token => ({
   type: USER_SIGNUP,
   token,
+});
+
+export const resetPasswordSuccess = message => ({
+  type: RESET_PASSWORD,
+  message,
 });
 
 export const userLogout = () => (dispatch, getState) => {
@@ -104,6 +110,17 @@ export const userSignup = (payload, history) => async (dispatch, getState) => {
     dispatch(triggerFailure(USER_SIGNUP, e));
   }
 };
+export const resetPassword = credentials => async (dispatch, getState) => {
+  dispatch(triggerRequest(RESET_PASSWORD));
+  try {
+    const message = await AuthService.resetPassword(credentials.email);
+    dispatch(resetPasswordSuccess(message));
+    dispatch(endRequest(RESET_PASSWORD));
+  } catch (e) {
+    dispatch(triggerFailure(RESET_PASSWORD, e));
+  }
+};
+
 export const postEvent = event => (dispatch, getState) => {
   dispatch(triggerRequest(ADD_EVENT));
   return EventService.add(event)

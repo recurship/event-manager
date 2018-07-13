@@ -36,6 +36,9 @@ class Login extends Component<Props> {
       <Container className="login-container">
         <h4>Login</h4>
         <LoginForm onSubmit={this.login} />
+        <Link className="forgot" to="/forgot-password">
+          Forgot Password?
+        </Link>
         <hr />
         <p className="centralized">
           Not registered yet? <Link to="/signup"> Sign Up </Link>
