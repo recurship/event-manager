@@ -5,7 +5,6 @@ from django_resized import ResizedImageField
 from user.user_manager import UserManager
 from datetime import datetime, timedelta
 import jwt
-from event_manager.settings import SIMPLE_JWT
 
 
 class User(AbstractBaseUser, PermissionsMixin):
