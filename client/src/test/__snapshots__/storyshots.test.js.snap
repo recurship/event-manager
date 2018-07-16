@@ -1538,7 +1538,7 @@ exports[`Storyshots LoginForm Login Form 1`] = `
             }
           >
             Statless reuseable login form component. In order to run this component with styles need to 
-            wrap under Container with class login-container
+wrap under Container with class login-container
           </div>
           <pre
             className="language-js"
