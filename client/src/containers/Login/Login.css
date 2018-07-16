@@ -5,3 +5,7 @@ div.login-container {
   border-radius: 15px;
   padding: 30px 20px;
 }
+div.login-container > .forgot {
+  text-align: right;
+  display: block;
+}

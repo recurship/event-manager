@@ -3,7 +3,8 @@ from .models import User
 from django.contrib.auth import authenticate
 from event_manager.settings import SIMPLE_JWT
 import jwt
-from datetime import datetime, timedelta
+from event_manager.utils import generate_jwt_token
+from event_manager.errors import ERORRS
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -71,3 +72,90 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user(**validated_data)
+
+
+class PasswordResetSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    token = serializers.CharField(max_length=255, required=False)
+
+    class Meta:
+        model = User
+        fields = ['email', 'token']
+
+    def update(self, instance, validated_data):
+        email = validated_data.get('email', None)
+        try:
+            user = User.objects.get(email=email)
+        except:
+            # user = None
+            raise serializers.ValidationError(ERORRS['ERROR_USER_NOT_FOUND'])
+        # if user is None:
+        token = generate_jwt_token(1)
+        user.token = token
+        user.save()
+        return user
+
+class PasswordResetConfirmSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    token = serializers.CharField(max_length=255)
+    password = serializers.CharField(
+        max_length=128,
+        min_length=8,
+        write_only=True
+    )
+
+    class Meta:
+        model = User
+        fields = ['email', 'token', 'password']
+
+    def update(self, instance, validated_data):
+        email = validated_data.get('email', None)
+        password = validated_data.get('password', None)
+        token = validated_data.get('token', None)
+
+        # We are going to validate first if token, email and password
+        # are present in then request and the user is currently active
+        # or not
+        if email is None:
+            raise serializers.ValidationError(
+                ERORRS['ERROR_REQUIRED']['EMAIL']
+            )
+        elif password is None:
+            raise serializers.ValidationError(
+                ERORRS['ERROR_REQUIRED']['PASSWORD']
+            )
+        elif token is None:
+            raise serializers.ValidationError(
+                ERORRS['ERROR_REQUIRED']['TOKEN']
+            )
+
+        # Now get the user by email provided
+        try:
+            user = User.objects.get(email=email)
+        except:
+            raise serializers.ValidationError(ERORRS['ERROR_USER_NOT_FOUND'])
+        # If user is found but it is currently inactive
+        if not user.is_active:
+            raise serializers.ValidationError(
+                ERORRS['ERROR_DEACTIVATED_USER']
+            )
+
+        if user.token != token:
+            raise serializers.ValidationError(
+                ERORRS['ERROR_INVALID_TOKEN']
+            )
+        else:
+            # jwt.decode will throw an exception if token is expired
+            try:
+                jwt.decode(token, SIMPLE_JWT['SIGNING_KEY'], algorithm='HS256')
+            except:
+                raise serializers.ValidationError(
+                    ERORRS['ERROR_INVALID_EXPIRED']
+                )
+
+        # All the above validations are passed and we are good to update the password for user now
+        user.set_password(password)
+        # After saving password set user.token field to empty
+        user.token = None
+        user.save()
+        return user
