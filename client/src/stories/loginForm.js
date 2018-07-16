@@ -4,8 +4,6 @@ import LoginForm from '../components/LoginForm';
 import { Container } from 'reactstrap';
 import '../containers/Login/Login.css';
 import { withInfo } from '@storybook/addon-info';
-import { specs, describe, it } from 'storybook-addon-specifications';
-import { mount } from 'enzyme';
 
 storiesOf('LoginForm', module).add(
   'Login Form',
@@ -24,15 +22,6 @@ storiesOf('LoginForm', module).add(
         {' '}
         <LoginForm />{' '}
       </Container>
-    );
-    spec(() =>
-      describe('LoginForm', () => {
-        test('simulates click event', () => {
-          const wrapper = mount(story);
-          wrapper.find('Button').simulate('click');
-          expect(onButtonClick.calledOnce).to.equal(true);
-        });
-      })
     );
 
     return story;

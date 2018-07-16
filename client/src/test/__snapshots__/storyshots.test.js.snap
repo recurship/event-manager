@@ -1379,6 +1379,7 @@ exports[`Storyshots LoginForm Login Form 1`] = `
     <div
       className="login-container container"
     >
+       
       <form
         id="login-form"
         onSubmit={undefined}
@@ -1403,6 +1404,7 @@ exports[`Storyshots LoginForm Login Form 1`] = `
           Login
         </button>
       </form>
+       
     </div>
   </div>
   <button
@@ -1656,6 +1658,24 @@ wrap under Container with class login-container
                       }
                     }
                   >
+                     
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
                     &lt;
                     LoginForm
                   </span>
@@ -1668,6 +1688,24 @@ wrap under Container with class login-container
                     }
                   >
                     /&gt;
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                     
                   </span>
                 </div>
                 <div
