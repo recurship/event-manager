@@ -6,8 +6,8 @@ import '../containers/Login/Login.css';
 import { withInfo } from '@storybook/addon-info';
 
 storiesOf('LoginForm', module).add(
-	'Login Form',
-	withInfo(`
+  'Login Form',
+  withInfo(`
       Statless reuseable login form component. In order to run this component with styles need to 
       wrap under Container with class login-container
       
@@ -16,9 +16,14 @@ storiesOf('LoginForm', module).add(
       <LoginForm />
       ~~~
     
-    `)(() => (
-		<Container className="login-container">
-			<LoginForm />
-		</Container>
-	))
+    `)(() => {
+    const story = (
+      <Container className="login-container">
+        {' '}
+        <LoginForm />{' '}
+      </Container>
+    );
+
+    return story;
+  })
 );
