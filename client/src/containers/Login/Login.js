@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
-import LoginForm from '../../components/LoginForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
@@ -19,16 +19,14 @@ type Props = BaseReduxPropTypes & {
 class Login extends Component<Props> {
   login = e => {
     e.preventDefault();
-
-    const { dispatch } = this.props;
-
+    const { username, password } = e.target.elements,
+      { dispatch } = this.props,
+      payload = {
+        username: username.value,
+        password: password.value,
+      };
     // admin / 1299459ML
-    dispatch(
-      userLogin({
-        username: e.target.elements.username.value,
-        password: e.target.elements.password.value,
-      })
-    );
+    dispatch(userLogin(payload));
   };
 
   render() {
