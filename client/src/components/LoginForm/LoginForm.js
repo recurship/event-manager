@@ -32,12 +32,14 @@ let LoginForm = (props: Props) => {
         component={renderField}
       />
 
-      <input
+      <Button
         type="submit"
         className="btn btn-primary"
         disabled={!valid}
         value="Sign in"
-      />
+      >
+        Submit
+      </Button>
     </form>
   );
 };
