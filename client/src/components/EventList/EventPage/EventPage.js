@@ -31,6 +31,9 @@ export class EventPage extends Component {
             </CardSubtitle>
             <CardTitle>{card.title}</CardTitle>
             <CardText>{card.location}</CardText>
+            <CardSubtitle>
+              <small className="text-muted">{card.organisation}</small>
+            </CardSubtitle>
           </CardBody>
         </Card>
       </div>
