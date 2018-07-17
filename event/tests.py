@@ -4,9 +4,7 @@ from event.models import Event
 from organisation.models import Organisation
 from user.models import User
 from django.utils import timezone
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse, reverse_lazy
-from event import views
 import json
 from event_manager.utils import TEST_USER_CREDENTIALS as test_user
 
