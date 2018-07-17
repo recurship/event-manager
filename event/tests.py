@@ -12,7 +12,8 @@ from event_manager.utils import TEST_USER_CREDENTIALS as test_user
 
 
 class EventTest(TestCase):
-    def create_event(self, title='test event', description='test desc'):
+    @classmethod
+    def create_event(cls, title='test event', description='test desc'):
         usr = User.objects.create(
             username=test_user['username'], email=test_user['email'])
         usr.set_password(test_user['password'])

@@ -10,7 +10,8 @@ from event_manager.utils import TEST_USER_CREDENTIALS as test_user
 
 
 class OrganisationTest(TestCase):
-    def create_organisation(self, name='test organisation'):
+    @classmethod
+    def create_organisation(cls, name='test organisation'):
         usr = User.objects.create(
             username=test_user['username'], email=test_user['email'])
         usr.set_password(test_user['password'])

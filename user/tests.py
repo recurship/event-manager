@@ -2,7 +2,6 @@
 from django.test import TestCase
 from user.models import User
 from django.urls import reverse, reverse_lazy
-from event import views
 import json
 from event_manager.utils import TEST_USER_CREDENTIALS as test_user
 
@@ -10,7 +9,8 @@ from event_manager.utils import TEST_USER_CREDENTIALS as test_user
 
 
 class UserTest(TestCase):
-    def create_user(self, username=test_user['username'],
+    @classmethod
+    def create_user(cls, username=test_user['username'],
                     email=test_user['email'], first_name='event',
                     password=test_user['password'], last_name='manager'):
         user = User.objects.create(
@@ -69,7 +69,6 @@ class UserTest(TestCase):
         self.assertEqual(login_resp.status_code, 200)
 
     def test_loggedin_user_detail_view_without_token(self):
-        a = self.create_user()
         resp = self.client.get('/api/user/')
         self.assertEqual(resp.status_code, 401)
 
