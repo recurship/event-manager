@@ -20,7 +20,7 @@ const eventsDummy = [
     description: 'Karachi',
     startDateTime: '14-July-2018',
     endDateTime: '21-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: 'ngGirls',
   },
   {
@@ -29,7 +29,7 @@ const eventsDummy = [
     description: 'Lahore',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: 'GDG Kolachi',
   },
   {
@@ -38,7 +38,7 @@ const eventsDummy = [
     description: 'Islamabad',
     startDateTime: '14-July-2018',
     endDateTime: '21-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: 'ngGirls',
   },
   {
@@ -47,7 +47,7 @@ const eventsDummy = [
     description: 'Italy',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: 'GDG Kolachi',
   },
   {
@@ -56,7 +56,7 @@ const eventsDummy = [
     description: 'Malaysia',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: 'NodeSchool Karachi Chapter',
   },
   {
@@ -65,7 +65,7 @@ const eventsDummy = [
     description: 'Hackathon',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
+    cover: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
     organisation: '10 Pearls',
   },
 ];
