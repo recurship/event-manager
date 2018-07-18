@@ -46,7 +46,6 @@ const defaultUserState = {
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
     case USER_LOGIN:
-      localStorage.setItem('token', action.token.access);
       return {
         ...state,
         token: action.token.access,
@@ -54,14 +53,11 @@ const userState = (state = defaultUserState, action) => {
       };
 
     case USER_LOGOUT:
-      localStorage.removeItem('token');
-
       return {
         ...state,
         token: null,
       };
     case REFRESH_TOKEN:
-      localStorage.setItem('token', action.payload.access);
       return {
         ...state,
         token: action.payload.access,

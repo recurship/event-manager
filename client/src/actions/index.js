@@ -4,6 +4,7 @@ import { normalize } from 'normalizr';
 import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
 // app
+
 export const TRIGGER_REQUEST = 'TRIGGER_REQUEST';
 export const END_REQUEST = 'END_REQUEST';
 export const TRIGGER_FAILURE = 'TRIGGER_FAILURE';
@@ -99,8 +100,8 @@ export const fetchEvents = () => async (dispatch, getState) => {
     dispatch(endRequest(FETCH_EVENTS));
     return response;
   } catch (e) {
+    dispatch(triggerFailure(FETCH_EVENTS, e.message));
     return e;
-    // dispatch(triggerFailure(FETCH_EVENTS, e));
   }
 };
 export const userSignup = payload => async (dispatch, getState) => {
