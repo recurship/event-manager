@@ -95,7 +95,7 @@ export const fetchEvents = () => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   try {
     const response = await EventService.getAll();
-    let camelCaseKeys = humps.camelizeKeys(response.results);
+		let camelCaseKeys = humps.camelizeKeys(response.results);
     dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
     dispatch(endRequest(FETCH_EVENTS));
     return response;
@@ -128,6 +128,7 @@ export const resetPassword = credentials => async (dispatch, getState) => {
 
 export const postEvent = event => (dispatch, getState) => {
   dispatch(triggerRequest(ADD_EVENT));
+	event = humps.decamelizeKeys(event);
   return EventService.add(event)
     .then(event => {
       // dispatch(addEvent(event))
