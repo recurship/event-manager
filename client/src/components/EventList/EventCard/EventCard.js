@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-export class EventPage extends Component {
+export class EventCard extends Component {
   render() {
     const card = this.props.event;
     return (

@@ -2,21 +2,20 @@
 
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
-import { SubHeader } from '../components/EventList/SubHeader/SubHeader';
-import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
+import { SubHeader } from '../../components/EventList/SubHeader/SubHeader';
+import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
 import { Action } from 'redux';
-import type { BaseReduxPropTypes } from '../types/base-props-types';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
-import { EventList } from '../components/EventList/EventList';
-import { EMNavbar } from '../components/EMNavbar';
+import { EventList } from '../../components/EventList/EventList';
+import { EMNavbar } from '../../components/EMNavbar';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
   events: Object,
 };
-const eventsDummy = [];
 
-class ListEvents extends Component<Props> {
+class Events extends Component<Props> {
   componentDidMount() {
     this.getData();
   }
@@ -68,7 +67,7 @@ class ListEvents extends Component<Props> {
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <h4>Not Any Event Yet</h4>
+          <h4 className="text-center">Not Any Event Yet</h4>
         )}
       </div>
     );
@@ -80,4 +79,4 @@ const mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps)(ListEvents);
+export default connect(mapStateToProps)(Events);
