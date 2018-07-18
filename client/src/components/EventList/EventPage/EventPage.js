@@ -20,7 +20,7 @@ export class EventPage extends Component {
             <CardImg
               top
               width="100%"
-              src={card.imageurl}
+              src={card.cover}
               alt="Card image cap"
               height="180"
             />
@@ -30,7 +30,7 @@ export class EventPage extends Component {
               <small className="text-muted">{card.startDateTime}</small>
             </CardSubtitle>
             <CardTitle>{card.title}</CardTitle>
-            <CardText>{card.location}</CardText>
+            <CardText>{card.description}</CardText>
             <CardSubtitle>
               <small className="text-muted">{card.organisation}</small>
             </CardSubtitle>

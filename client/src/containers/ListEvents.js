@@ -17,7 +17,7 @@ const eventsDummy = [
   {
     key: '1',
     title: 'Road to Angular',
-    location: 'Karachi',
+    description: 'Karachi',
     startDateTime: '14-July-2018',
     endDateTime: '21-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
@@ -26,7 +26,7 @@ const eventsDummy = [
   {
     key: '2',
     title: 'Google I/O',
-    location: 'Lahore',
+    description: 'Lahore',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
@@ -35,7 +35,7 @@ const eventsDummy = [
   {
     key: '3',
     title: 'Road to JavaScript',
-    location: 'Islamabad',
+    description: 'Islamabad',
     startDateTime: '14-July-2018',
     endDateTime: '21-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
@@ -44,7 +44,7 @@ const eventsDummy = [
   {
     key: '4',
     title: 'Google Devfest',
-    location: 'Italy',
+    description: 'Italy',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
@@ -53,7 +53,7 @@ const eventsDummy = [
   {
     key: '5',
     title: 'Node School Workshop',
-    location: 'Malaysia',
+    description: 'Malaysia',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
@@ -62,7 +62,7 @@ const eventsDummy = [
   {
     key: '6',
     title: 'WomenTechQuest',
-    location: 'Singapore',
+    description: 'Hackathon',
     startDateTime: '28-July-2018',
     endDateTime: '29-July-2018',
     imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
