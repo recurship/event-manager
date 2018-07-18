@@ -7,11 +7,12 @@ from django.utils import timezone
 from django.urls import reverse, reverse_lazy
 import json
 from event_manager.utils import TEST_USER_CREDENTIALS as test_user
+from django.forms.models import model_to_dict
 
 # Create your tests here.
+MODEL_FIELDS = ['id', 'title', 'description']
 
-
-class EventTest(TestCase):
+class EventViewTest(TestCase):
     @classmethod
     def create_event(cls, title='test event', description='test desc'):
         usr = User.objects.create(
@@ -22,34 +23,13 @@ class EventTest(TestCase):
         return Event.objects.create(title=title, description=description,
                                     start_datetime=timezone.now(), end_datetime=timezone.now(), organisation=org)
 
-    def test_event_creation(self):
-        a = self.create_event()
-        self.assertTrue(isinstance(a, Event))
-        self.assertEqual(str(a), a.title)
-
-    def test_event_title(self):
-        a = self.create_event()
-        self.assertEqual(str(a), a.title)
-        self.assertNotEqual(str(a), 'unmatched event title')
-
-    def test_event_description(self):
-        a = self.create_event()
-        event = Event(description=a.description)
-        self.assertEqual(a.description, event.description)
-        self.assertNotEqual(a.description, 'unmatched description')
-
-    def test_event_organisation(self):
-        a = self.create_event()
-        event = Event(organisation=a.organisation)
-        self.assertEqual(a.organisation, event.organisation)
-        self.assertNotEqual(a.organisation, 'unmatched organisation')
-
     def test_event_list_view(self):
         a = self.create_event()
         url = reverse_lazy('event-list')
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
-        self.assertIn(a.title, resp.content.decode('utf_8'))
+        json_resp = json.loads(resp.content)['results'].pop()
+        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp)
 
     def test_event_detail_view(self):
         a = self.create_event()
@@ -57,8 +37,7 @@ class EventTest(TestCase):
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
-        self.assertEqual(a.id, json_resp['id'])
-        self.assertEqual(a.title, json_resp['title'])
+        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp)
 
     def test_event_create_view_without_token(self):
         a = self.create_event()

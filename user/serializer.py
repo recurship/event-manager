@@ -3,6 +3,8 @@ from .models import User
 from django.contrib.auth import authenticate
 from event_manager.utils import generate_jwt_token
 from event_manager.errors import ERORRS
+from event_manager.settings import SIMPLE_JWT
+import jwt
 
 
 class UserSerializer(serializers.ModelSerializer):

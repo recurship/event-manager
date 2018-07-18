@@ -5,11 +5,14 @@ from user.models import User
 from django.urls import reverse, reverse_lazy
 import json
 from event_manager.utils import TEST_USER_CREDENTIALS as test_user
+from django.forms.models import model_to_dict
+
+MODEL_FIELDS = ['id', 'is_active', 'name']
 
 # Create your tests here.
 
 
-class OrganisationTest(TestCase):
+class OrganisationViewTest(TestCase):
     @classmethod
     def create_organisation(cls, name='test organisation'):
         usr = User.objects.create(
@@ -18,27 +21,13 @@ class OrganisationTest(TestCase):
         usr.save()
         return Organisation.objects.create(name=name, owner=usr)
 
-    def test_organisation_creation(self):
-        a = self.create_organisation()
-        self.assertTrue(isinstance(a, Organisation))
-
-    def test_organisation_name(self):
-        a = self.create_organisation()
-        self.assertEqual(str(a), a.name)
-        self.assertNotEqual(str(a), 'unmatched organisation name')
-
-    def test_organisation_description(self):
-        a = self.create_organisation()
-        organisation = Organisation(owner=a.owner)
-        self.assertEqual(a.owner, organisation.owner)
-        self.assertNotEqual(a.owner, 'unmatched owner')
-
     def test_organisation_list_view(self):
         a = self.create_organisation()
         url = reverse_lazy('organisation-list')
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
-        self.assertIn(a.name, resp.content.decode('utf_8'))
+        json_resp = json.loads(resp.content)['results'].pop()
+        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp, 'it should list all organisations')
 
     def test_organisation_detail_view(self):
         a = self.create_organisation()
@@ -46,15 +35,14 @@ class OrganisationTest(TestCase):
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
-        self.assertEqual(a.id, json_resp['id'])
-        self.assertEqual(a.name, json_resp['name'])
+        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp, 'it should provide detail of organisation with id')
 
     def test_organisation_create_view_without_token(self):
         a = self.create_organisation()
         url = reverse('organisation-list')
         resp = self.client.post(url, {'name': 'new organisation', 'owner': a.owner})
         # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401)
+        self.assertEqual(resp.status_code, 401, 'it should not create new organisation without token')
 
     def test_organisation_edit_view_without_token(self):
         a = self.create_organisation()
@@ -63,7 +51,7 @@ class OrganisationTest(TestCase):
         resp = self.client.patch(
             url, data, content_type='application/json')
         # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401)
+        self.assertEqual(resp.status_code, 401, 'it should not edit organisation without token')
 
     def test_organisation_create_view_with_token(self):
         a = self.create_organisation()
@@ -75,7 +63,7 @@ class OrganisationTest(TestCase):
         token = login_json_resp['access']
         organisation_resp = self.client.post(url, {'name': 'new organisation', 'owner': a.owner.id},
                                       HTTP_AUTHORIZATION='Bearer ' + token)
-        self.assertEqual(organisation_resp.status_code, 201)
+        self.assertEqual(organisation_resp.status_code, 201, 'it should create new organisation')
 
     def test_organisation_update_view_with_token(self):
         a = self.create_organisation()
@@ -91,4 +79,4 @@ class OrganisationTest(TestCase):
         self.assertEqual(organisation_resp.status_code, 200)
         organisation_json_resp = json.loads(organisation_resp.content)
         # Now the organisation is updated so its name will not match with the previously created organisation name
-        self.assertNotEqual(a.name, organisation_json_resp['name'])
+        self.assertNotEqual(a.name, organisation_json_resp['name'], 'it should update organisation')
