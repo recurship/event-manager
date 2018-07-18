@@ -8,7 +8,7 @@ import Login from '../Login/Login';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import AuthContainer from './AuthContainer';
 import Signup from '../Signup/Signup';
-import ListEvents from '../ListEvents';
+import Events from '../Events/Events';
 import PrivateRoute from '../../components/PrivateRoute';
 import { EventDetails } from '../EventDetails/EventDetails';
 
@@ -22,7 +22,7 @@ class App extends Component<Props> {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/events" component={ListEvents} />
+        <Route path="/events" component={Events} />
         <Route path="/details" component={EventDetails} />
       </div>
     );
