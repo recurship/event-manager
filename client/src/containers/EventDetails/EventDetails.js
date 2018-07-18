@@ -9,7 +9,20 @@ import {
   CardSubtitle,
   Button,
 } from 'reactstrap';
-export class EventDetails extends Component {
+import { connect } from 'react-redux';
+
+class EventDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { event: {} };
+  }
+
+  componentDidMount() {
+    const eventId = this.props.match.params.value;
+    const event = this.props.events.events.find(event => event.id == eventId);
+    this.setState({ event: event });
+  }
+
   render() {
     return (
       <div>
@@ -23,12 +36,14 @@ export class EventDetails extends Component {
             />
             <CardBody>
               <CardSubtitle>
-                <small className="text-muted">card.startDateTime</small>
+                <small className="text-muted">
+                  {this.state.event.startDateTime}
+                </small>
               </CardSubtitle>
-              <CardTitle>card.title</CardTitle>
-              <CardText>card.description</CardText>
+              <CardTitle>{this.state.event.title}</CardTitle>
+              <CardText>{this.state.event.description}</CardText>
               <CardSubtitle>
-                <small className="text-muted">card.organisation.name</small>
+                {/* <small className="text-muted">{this.state.event.organisation.name}</small> */}
               </CardSubtitle>
             </CardBody>
           </Card>
@@ -37,3 +52,13 @@ export class EventDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { userState, events } = state;
+  return { userState, events };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(EventDetails);

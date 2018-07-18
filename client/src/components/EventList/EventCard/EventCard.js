@@ -16,7 +16,7 @@ export class EventCard extends Component {
     return (
       <div>
         <Card>
-          <Link to="/details">
+          <Link to={`/details/${this.props.event.id}`}>
             <CardImg
               top
               width="100%"
