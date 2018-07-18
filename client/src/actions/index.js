@@ -128,7 +128,7 @@ export const resetPassword = credentials => async (dispatch, getState) => {
 
 export const postEvent = event => (dispatch, getState) => {
   dispatch(triggerRequest(ADD_EVENT));
-	event = humps.decamelizeKeys(event);
+  event = humps.decamelizeKeys(event);
   return EventService.add(event)
     .then(event => {
       // dispatch(addEvent(event))
