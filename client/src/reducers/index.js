@@ -6,6 +6,7 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   RESET_PASSWORD,
+  REFRESH_TOKEN,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -45,17 +46,26 @@ const defaultUserState = {
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
     case USER_LOGIN:
+      localStorage.setItem('token', action.token.access);
       return {
         ...state,
-        token: action.token,
+        token: action.token.access,
+        refresh: action.token.refresh,
       };
 
     case USER_LOGOUT:
+      localStorage.removeItem('token');
+
       return {
         ...state,
         token: null,
       };
-
+    case REFRESH_TOKEN:
+      localStorage.setItem('token', action.payload.access);
+      return {
+        ...state,
+        token: action.payload.access,
+      };
     default:
       return state;
   }
@@ -82,9 +92,11 @@ const defaultEventState = {
 };
 
 const events = (state = defaultEventState, action) => {
+  console.log(state, action);
   if (action.events) {
+    console.log('which action has event: ', action);
     return {
-      events: Object.values(action.events.entities.events),
+      events: Object.values(action.events.entities.events || {}),
     };
   }
   return state;
