@@ -92,9 +92,7 @@ const defaultEventState = {
 };
 
 const events = (state = defaultEventState, action) => {
-  console.log(state, action);
   if (action.events) {
-    console.log('which action has event: ', action);
     return {
       events: Object.values(action.events.entities.events || {}),
     };
