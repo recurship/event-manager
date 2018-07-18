@@ -6,15 +6,9 @@ import { SubHeader } from './SubHeader/SubHeader';
 export class EventList extends Component {
   render() {
     const eventArray = this.props.events;
+    console.log('eventArray', this.props);
     return (
       <Container>
-        <Jumbotron>
-          <h3 className="text-center">Welcome to Event Management</h3>
-          <h6 className="text-center">Portal for Open Source Communities</h6>
-        </Jumbotron>
-        <Container>
-          <SubHeader />
-        </Container>
         <Row>
           {eventArray.map(item => (
             <Col md="4">

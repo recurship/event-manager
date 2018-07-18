@@ -1,74 +1,20 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Row, Col, Jumbotron, Button } from 'reactstrap';
+import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
+import { SubHeader } from '../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../actions';
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../components/EventList/EventList';
+import { EMNavbar } from '../components/EMNavbar';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
-  appState: Object,
   events: Object,
 };
-const eventsDummy = [
-  {
-    key: '1',
-    title: 'Road to Angular',
-    description: 'Karachi',
-    startDateTime: '14-July-2018',
-    endDateTime: '21-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: 'ngGirls',
-  },
-  {
-    key: '2',
-    title: 'Google I/O',
-    description: 'Lahore',
-    startDateTime: '28-July-2018',
-    endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: 'GDG Kolachi',
-  },
-  {
-    key: '3',
-    title: 'Road to JavaScript',
-    description: 'Islamabad',
-    startDateTime: '14-July-2018',
-    endDateTime: '21-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: 'ngGirls',
-  },
-  {
-    key: '4',
-    title: 'Google Devfest',
-    description: 'Italy',
-    startDateTime: '28-July-2018',
-    endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: 'GDG Kolachi',
-  },
-  {
-    key: '5',
-    title: 'Node School Workshop',
-    description: 'Malaysia',
-    startDateTime: '28-July-2018',
-    endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: 'NodeSchool Karachi Chapter',
-  },
-  {
-    key: '6',
-    title: 'WomenTechQuest',
-    description: 'Hackathon',
-    startDateTime: '28-July-2018',
-    endDateTime: '29-July-2018',
-    imageurl: 'https://cdn-images-1.medium.com/max/800/0*PkFv7ExBsCL5xrHA.',
-    organisation: '10 Pearls',
-  },
-];
+const eventsDummy = [];
 
 class ListEvents extends Component<Props> {
   componentDidMount() {
@@ -77,7 +23,6 @@ class ListEvents extends Component<Props> {
 
   getData = () => {
     const { dispatch } = this.props;
-    dispatch(userLogin({ username: 'admin', password: '1299459ML' }));
     dispatch(fetchEvents());
   };
 
@@ -109,16 +54,21 @@ class ListEvents extends Component<Props> {
   };
 
   render() {
-    const { appState, userState, events } = this.props;
+    const { userState, events } = this.props;
     return (
       <div>
-        <EventList events={eventsDummy} />
-        {userState.token ? (
-          <Button tag="a" color="success" size="large" onClick={this.logout}>
-            Logout
-          </Button>
+        <EMNavbar onSubmit={this.logout} token={userState.token} />
+        <Jumbotron>
+          <h3 className="text-center">Welcome to Event Management</h3>
+          <h6 className="text-center">Portal for Open Source Communities</h6>
+        </Jumbotron>
+        <Container>
+          <SubHeader />
+        </Container>
+        {events.events.length ? (
+          <EventList events={events.events} />
         ) : (
-          ''
+          <h4>Not Any Event Yet</h4>
         )}
       </div>
     );
@@ -126,7 +76,7 @@ class ListEvents extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  // const { appState, userState, events } = state;
+  const { userState, events } = state;
   return state;
 };
 
