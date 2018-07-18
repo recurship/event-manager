@@ -67,7 +67,9 @@ class Events extends Component<Props> {
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <h4 className="text-center">Not Any Event Yet</h4>
+          <Container>
+            <h4 className="text-center">Not Any Event Yet</h4>
+          </Container>
         )}
       </div>
     );

@@ -11,7 +11,7 @@ export class EventList extends Component {
         <Row>
           {eventArray.map(item => (
             <Col md="4">
-              <EventCard key={item.key} event={item} />
+              <EventCard key={item.id} event={item} />
             </Col>
           ))}
         </Row>
