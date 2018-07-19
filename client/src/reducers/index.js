@@ -90,11 +90,21 @@ const events = (state = defaultEventState, action) => {
   return state;
 };
 
+const eventDetail = (state = defaultEventState, action) => {
+  if (action.event) {
+    return {
+      event: Object.values(action.event.entities.events),
+    };
+  }
+  return state;
+};
+
 let reducer = combineReducers({
   appState,
   userState,
   resetPasswordState,
   events,
+  eventDetail,
   form: formReducer,
 });
 

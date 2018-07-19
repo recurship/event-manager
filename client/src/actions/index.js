@@ -17,6 +17,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 // events
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const FETCH_EVENT_DETAIL = 'FETCH_EVENT_DETAIL';
 
 export const ADD_EVENT = 'ADD_EVENT';
 
@@ -82,6 +83,11 @@ export const getEvents = events => ({
   events,
 });
 
+export const getEventDetail = event => ({
+  type: FETCH_EVENT_DETAIL,
+  event,
+});
+
 export const addEvent = event => ({
   type: ADD_EVENT,
   event,
@@ -98,6 +104,18 @@ export const fetchEvents = () => (dispatch, getState) => {
     .catch(err => {
       //dispatch(triggerFailure(FETCH_EVENTS, err));
     });
+};
+
+export const fetchEventDetail = eventId => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_EVENT_DETAIL));
+  try {
+    const event = await EventService.getEventDetail(eventId);
+    let camelCaseKeys = humps.camelizeKeys(event);
+    dispatch(getEventDetail(normalize(camelCaseKeys, schema.event)));
+    dispatch(endRequest(FETCH_EVENT_DETAIL));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_EVENT_DETAIL, e));
+  }
 };
 export const userSignup = payload => async (dispatch, getState) => {
   dispatch(triggerRequest(USER_SIGNUP));
