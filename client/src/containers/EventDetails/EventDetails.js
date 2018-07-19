@@ -74,53 +74,6 @@ class EventDetails extends Component {
             </Row>
           </Container>
         ) : (
-          // <Container>
-          //   <Card>
-          //     <CardImg
-          //       top
-          //       width="100%"
-          //       src={event[0].cover}
-          //       alt="Card image cap"
-          //     />
-          //     <Container>
-          //       <Row>
-          //         <Col md="8">
-          //           <CardBody>
-          //             <CardSubtitle>
-          //               <small className="text-muted">
-          //                 {event[0].startDateTime}
-          //               </small>
-          //             </CardSubtitle>
-          //             <CardTitle>{event[0].title}</CardTitle>
-          //             <CardText>{event[0].description}</CardText>
-          //             <CardSubtitle>
-          //               <small className="text-muted">
-          //                 {event[0].organisation.name}
-          //               </small>
-          //             </CardSubtitle>
-          //           </CardBody>
-          //         </Col>
-          //         <Col md="4">
-          //           <CardBody>
-          //             <CardImg
-          //               top
-          //               width="100%"
-          //               src={event[0].organisation.logo}
-          //               alt="Card image cap"
-          //             />
-
-          //             <CardTitle>{event[0].organisation.name}</CardTitle>
-          //             <CardSubtitle>
-          //               <small className="text-muted">
-          //                 {event[0].organisation.name}
-          //               </small>
-          //             </CardSubtitle>
-          //           </CardBody>
-          //         </Col>
-          //       </Row>
-          //     </Container>
-          //   </Card>
-          // </Container>
           <Container />
         )}
       </div>
