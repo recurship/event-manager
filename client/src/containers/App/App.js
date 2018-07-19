@@ -11,6 +11,7 @@ import Signup from '../Signup/Signup';
 import Events from '../Events/Events';
 import PrivateRoute from '../../components/PrivateRoute';
 import EventDetails from '../EventDetails/EventDetails';
+import Organisation from '../Organisation/Organisation';
 
 type Props = {};
 
@@ -24,6 +25,7 @@ class App extends Component<Props> {
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/events" component={Events} />
         <Route path="/details/:value" component={EventDetails} />
+        <Route path="/organisation" component={Organisation} />
       </div>
     );
   }

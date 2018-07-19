@@ -31,9 +31,9 @@ export class EventCard extends Component {
             </CardSubtitle>
             <CardTitle>{card.title}</CardTitle>
             <CardText>{card.description}</CardText>
-            <CardSubtitle>
+            {/* <CardSubtitle>
               <small className="text-muted">{card.organisation.name}</small>
-            </CardSubtitle>
+            </CardSubtitle> */}
           </CardBody>
         </Card>
       </div>

@@ -7,10 +7,10 @@ export class EventList extends Component {
   render() {
     const eventArray = this.props.events;
     return (
-      <Container>
+      <Container id="event-list">
         <Row>
           {eventArray.map(item => (
-            <Col md="4">
+            <Col md="4" className="col-padding">
               <EventCard key={item.id} event={item} />
             </Col>
           ))}
