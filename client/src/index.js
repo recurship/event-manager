@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-const store = configureStore();
+export const store = configureStore();
 
 render(
   <Router>

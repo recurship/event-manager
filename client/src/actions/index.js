@@ -14,6 +14,7 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 // events
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
@@ -58,7 +59,10 @@ export const resetPasswordSuccess = message => ({
   type: RESET_PASSWORD,
   message,
 });
-
+export const refreshToken = payload => ({
+  type: REFRESH_TOKEN,
+  payload,
+});
 export const userLogout = () => (dispatch, getState) => {
   dispatch(userLogoutSuccess());
 };
@@ -67,7 +71,7 @@ export const userLogin = credentials => (dispatch, getState) => {
   dispatch(triggerRequest(USER_LOGIN));
   return AuthService.login(credentials.username, credentials.password)
     .then(token => {
-      dispatch(userLoginSuccess(token.access));
+      dispatch(userLoginSuccess(token));
       dispatch(endRequest(USER_LOGIN));
     })
     .catch(err => {
@@ -87,17 +91,18 @@ export const addEvent = event => ({
   event,
 });
 
-export const fetchEvents = () => (dispatch, getState) => {
+export const fetchEvents = () => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
-  return EventService.getAll()
-    .then(response => {
-      let camelCaseKeys = humps.camelizeKeys(response.results);
-      dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
-      dispatch(endRequest(FETCH_EVENTS));
-    })
-    .catch(err => {
-      //dispatch(triggerFailure(FETCH_EVENTS, err));
-    });
+  try {
+    const response = await EventService.getAll();
+		let camelCaseKeys = humps.camelizeKeys(response.results);
+    dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
+    dispatch(endRequest(FETCH_EVENTS));
+    return response;
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_EVENTS, e.message));
+    return e;
+  }
 };
 export const userSignup = payload => async (dispatch, getState) => {
   dispatch(triggerRequest(USER_SIGNUP));
@@ -123,6 +128,7 @@ export const resetPassword = credentials => async (dispatch, getState) => {
 
 export const postEvent = event => (dispatch, getState) => {
   dispatch(triggerRequest(ADD_EVENT));
+  event = humps.decamelizeKeys(event);
   return EventService.add(event)
     .then(event => {
       // dispatch(addEvent(event))

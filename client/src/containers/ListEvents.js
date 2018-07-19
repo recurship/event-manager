@@ -31,22 +31,22 @@ class ListEvents extends Component<Props> {
     }
 
     logout = () => {
-        const { dispatch } = this.props;
-				dispatch(userLogout());
+      const { dispatch } = this.props;
+      dispatch(userLogout());
     }
 
     handleSubmit = (event: any) => {
-        event.preventDefault();
+      event.preventDefault();
 
-        const { title, description, startDateTime, endDateTime, organisation } = event.nativeEvent.target.elements;
+      const { title, description, startDateTime, endDateTime, organisation } = event.nativeEvent.target.elements;
 
-        this.props.dispatch(postEvent({
-            title: title.value,
-            description: description.value,
-            startDateTime: startDateTime.value,
-            endDateTime: endDateTime.value,
-            organisation: organisation.value
-        }));
+      this.props.dispatch(postEvent({
+        title: title.value,
+        description: description.value,
+        startDatetime: startDateTime.value,
+        endDatetime: endDateTime.value,
+        organisation: organisation.value
+      }));
     }
 
     render() {
