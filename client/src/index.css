@@ -2,4 +2,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #f5f5f5;
+}
+.text-header {
+  text-align: center;
+}
+.main-container {
+  height: 100%;
+}
+.block {
+  padding: 20px 30px;
+  background-color: #fff;
+  border-bottom: solid 1px #ecf0f1;
+}
+
+.block-content {
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  position: relative;
+}
+.summary-container {
+  height: 50px;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-top: 30px;
 }
