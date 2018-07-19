@@ -20,6 +20,6 @@ class EventSerializerTest(TestCase):
                                     start_datetime=timezone.now(), end_datetime=timezone.now(), organisation=org)
 
     def test_event_creation(self):
-        a = self.create_event()
-        self.assertTrue(isinstance(a, Event))
-        self.assertEqual(str(a), a.title)
+        event_instance = self.create_event()
+        self.assertTrue(isinstance(event_instance, Event))
+        self.assertEqual(str(event_instance), event_instance.title)

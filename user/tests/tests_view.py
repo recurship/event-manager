@@ -23,20 +23,20 @@ class UserViewTest(TestCase):
         return user
 
     def test_user_list_view(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         url = reverse_lazy('user-list')
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)['results'].pop()
-        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp, 'it should list all users')
+        self.assertDictContainsSubset(model_to_dict(user_instance, MODEL_FIELDS), json_resp, 'it should list all users')
 
     def test_user_detail_view(self):
-        a = self.create_user()
-        url = reverse('user-detail', args=[a.id])
+        user_instance = self.create_user()
+        url = reverse('user-detail', args=[user_instance.id])
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
-        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp, 'it should give detail for the user asked with id')
+        self.assertDictContainsSubset(model_to_dict(user_instance, MODEL_FIELDS), json_resp, 'it should give detail for the user asked with id')
 
     def test_user_login(self):
         self.create_user()
@@ -49,7 +49,7 @@ class UserViewTest(TestCase):
         self.assertEqual(resp.status_code, 401, 'it should not give any detail of user')
 
     def test_loggedin_user_detail_view(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         login_resp = self.client.post(
             '/api/token', {'username': test_user['username'], 'password': test_user['password']})
         login_json_resp = json.loads(login_resp.content)
@@ -58,18 +58,18 @@ class UserViewTest(TestCase):
             '/api/user/', HTTP_AUTHORIZATION='Bearer ' + token)
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
-        self.assertDictContainsSubset(model_to_dict(a, MODEL_FIELDS), json_resp, 'it should give detail for logged in user')
+        self.assertDictContainsSubset(model_to_dict(user_instance, MODEL_FIELDS), json_resp, 'it should give detail for logged in user')
 
     def test_user_register_view(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         resp = self.client.post('/api/register/',
                                 {'username': 'admin', 'password': '12345678', 'email': 'admin@test.com'})
         json_resp = json.loads(resp.content)
         self.assertEqual(resp.status_code, 201)
-        self.assertNotEqual(str(a.id), json_resp['id'], 'it should register new user')
+        self.assertNotEqual(str(user_instance.id), json_resp['id'], 'it should register new user')
 
     def test_user_update_view_without_token(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         data = json.dumps({'first_name': 'update first name'})
         resp = self.client.patch(
             '/api/user/', data, content_type='application/json')
@@ -77,7 +77,7 @@ class UserViewTest(TestCase):
         self.assertEqual(resp.status_code, 401, 'it should not allow user to update its content without token')
 
     def test_user_update_view_with_token(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         login_resp = self.client.post(
             '/api/token', {'username': test_user['username'], 'password': test_user['password']})
         self.assertEqual(login_resp.status_code, 200)
@@ -89,22 +89,22 @@ class UserViewTest(TestCase):
         self.assertEqual(user_resp.status_code, 200)
         user_json_resp = json.loads(user_resp.content)
         # Now the user first name is updated so it will not match with the previously created user first name
-        self.assertNotEqual(a.first_name, user_json_resp['first_name'], 'it should change user firstname')
+        self.assertNotEqual(user_instance.first_name, user_json_resp['first_name'], 'it should change user firstname')
 
     def test_user_reset_password_view(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         resp = self.client.post('/api/reset-password/',
-                                {'email': a.email})
+                                {'email': user_instance.email})
         self.assertEqual(resp.status_code, 200, 'it should sent reset password link to user email')
 
     def test_user_reset_password_confirm_view(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         resp_email = self.client.post('/api/reset-password/',
-                                {'email': a.email})
+                                {'email': user_instance.email})
         self.assertEqual(resp_email.status_code, 200, 'it should sent reset password link to user email')
-        user = User.objects.get(email=a.email)
+        userData = User.objects.get(email=user_instance.email)
         resp_reset_password = self.client.post('/api/reset-password-confirm/',
-                                {'email': a.email, 'token': str(user.token), 'password': 'new password'})
+                                {'email': user_instance.email, 'token': str(userData.token), 'password': 'new password'})
         self.assertEqual(resp_reset_password.status_code, 200)
         login_resp_old_password = self.client.post(
             '/api/token', {'username': test_user['username'], 'password': test_user['password']})

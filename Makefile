@@ -12,6 +12,9 @@ upnew:
 test:
 	docker-compose run web python manage.py test
 
+coverage:
+	docker-compose run web python manage.py test --with-coverage
+
 migrate:
 	docker-compose run web python manage.py makemigrations
 	docker-compose run web python manage.py migrate

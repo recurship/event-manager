@@ -20,22 +20,22 @@ class UserModelTest(TestCase):
         return user
 
     def test_user_creation(self):
-        a = self.create_user()
-        self.assertTrue(isinstance(a, User))
+        user_instance = self.create_user()
+        self.assertTrue(isinstance(user_instance, User))
 
     def test_user_email(self):
-        a = self.create_user()
+        user_instance = self.create_user()
         # This str function will going to call the __str__() method defined in User model
-        self.assertEqual(str(a), a.email)
-        self.assertNotEqual(str(a), 'email@email.com')
+        self.assertEqual(str(user_instance), user_instance.email)
+        self.assertNotEqual(str(user_instance), 'email@email.com')
 
     def test_user_fullname(self):
-        a = self.create_user()
-        self.assertEqual(a.get_full_name(), a.first_name + a.last_name)
-        self.assertNotEqual(a.get_full_name(),
+        user_instance = self.create_user()
+        self.assertEqual(user_instance.get_full_name(), user_instance.first_name + user_instance.last_name)
+        self.assertNotEqual(user_instance.get_full_name(),
                             'invalid user first and last name')
 
     def test_user_shortname(self):
-        a = self.create_user()
-        self.assertEqual(a.get_short_name(), a.first_name)
-        self.assertNotEqual(a.get_short_name(), 'invalid user first name')
+        user_instance = self.create_user()
+        self.assertEqual(user_instance.get_short_name(), user_instance.first_name)
+        self.assertNotEqual(user_instance.get_short_name(), 'invalid user first name')

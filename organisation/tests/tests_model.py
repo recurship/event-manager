@@ -17,5 +17,5 @@ class OrganisationModelTest(TestCase):
         return Organisation.objects.create(name=name, owner=usr)
 
     def test_organisation_creation(self):
-        a = self.create_organisation()
-        self.assertTrue(isinstance(a, Organisation))
+        organisation_instance = self.create_organisation()
+        self.assertTrue(isinstance(organisation_instance, Organisation))
