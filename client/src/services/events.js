@@ -1,22 +1,22 @@
-
 import { makeRequest } from './helper';
 
-const baseUri = '/api/events/'
+const baseUri = '/api/events/';
 
 export default {
-
   getAll: () => {
     return makeRequest(baseUri);
   },
 
-  add: (event) => {
+  add: event => {
     return makeRequest(baseUri, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(event)
+      body: JSON.stringify(event),
     });
-  }
-
+  },
+  getEventDetail: eventId => {
+    return makeRequest(`/api/events/${eventId}/`);
+  },
 };
