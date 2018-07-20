@@ -3,7 +3,7 @@ from django.test import TestCase
 from user.models import User
 from django.urls import reverse, reverse_lazy
 import json
-from event_manager.utils import TEST_USER_CREDENTIALS as test_user
+from event_manager.test_config import TEST_USER_CREDENTIALS as test_user
 from django.forms.models import model_to_dict
 
 MODEL_FIELDS = ['id', 'username', 'email', 'enable_notifications', 'first_name', 'last_name']
