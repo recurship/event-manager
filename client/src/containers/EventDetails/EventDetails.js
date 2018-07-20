@@ -14,6 +14,7 @@ import {
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
 import { fetchEventDetail } from '../../actions';
+import ContentHeader from '../../components/ContentHeader/ContentHeader';
 
 class EventDetails extends Component {
   constructor(props) {
@@ -37,11 +38,7 @@ class EventDetails extends Component {
         {event ? (
           <Container>
             <CardImg top width="100%" src={event[0].cover} />
-            <Row className="block">
-              <Col className="text-header">
-                <h4>Event Summary</h4>
-              </Col>
-            </Row>
+            <ContentHeader heading="Event Summary" />
             <Row className="block-content">
               <SummaryContainer iconName="1" content={event[0].startDatetime} />
               <SummaryContainer iconName="2" content={event[0].endDatetime} />
@@ -51,11 +48,7 @@ class EventDetails extends Component {
                 content={event[0].organisation.name}
               />
             </Row>
-            <Row className="block">
-              <Col className="text-header">
-                <h4>Event Description</h4>
-              </Col>
-            </Row>
+            <ContentHeader heading="Event Description" />
             <Row className="block-content text-justify">
               <Col md="9">
                 This HTML file is a template. If you open it directly in the
