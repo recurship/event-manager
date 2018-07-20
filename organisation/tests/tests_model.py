@@ -2,7 +2,7 @@
 from django.test import TestCase
 from organisation.models import Organisation
 from user.models import User
-from event_manager.test_config import TEST_USER_CREDENTIALS as test_user
+from .tests_config import TEST_USER_CREDENTIALS as test_user
 
 # Create your tests here.
 

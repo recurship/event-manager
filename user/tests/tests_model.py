@@ -3,7 +3,7 @@ from django.test import TestCase
 from user.models import User
 from django.urls import reverse, reverse_lazy
 import json
-from event_manager.test_config import TEST_USER_CREDENTIALS as test_user
+from .tests_config import TEST_USER_CREDENTIALS as test_user
 
 # Create your tests here.
 

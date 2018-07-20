@@ -4,7 +4,7 @@ from organisation.models import Organisation
 from user.models import User
 from django.urls import reverse, reverse_lazy
 import json
-from event_manager.test_config import TEST_USER_CREDENTIALS as test_user
+from .tests_config import TEST_USER_CREDENTIALS as test_user
 from django.forms.models import model_to_dict
 
 MODEL_FIELDS = ['id', 'is_active', 'name']

@@ -4,7 +4,7 @@ from event.models import Event
 from organisation.models import Organisation
 from user.models import User
 from django.utils import timezone
-from event_manager.test_config import TEST_USER_CREDENTIALS as test_user
+from .tests_config import TEST_USER_CREDENTIALS as test_user
 
 # Create your tests here.
 
