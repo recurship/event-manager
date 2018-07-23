@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'organisation',
     'user',
     'location',
+    'sponser',
     'storages'
 ]
 

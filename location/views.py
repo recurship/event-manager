@@ -12,8 +12,3 @@ class LocationView(viewsets.ModelViewSet):
 
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
-
-    # def get_serializer_class(self):
-    #     if self.request.method == 'POST':
-    #         return OrganisationCreateSerializer
-    #     return OrganisationSerializer

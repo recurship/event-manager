@@ -22,6 +22,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from organisation.views import OrganisationView
 from event.views import EventView
 from location.views import LocationView
+from sponser.views import SponserView
 from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView, ResetPasswordAPIView, ResetPasswordConfirmAPIView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,6 +33,7 @@ router.register('users', UserView)
 router.register('organisations', OrganisationView)
 router.register('events', EventView)
 router.register('locations', LocationView)
+router.register('sponsers', SponserView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
