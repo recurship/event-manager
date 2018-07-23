@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'event',
     'organisation',
     'user',
+    'location',
     'storages'
 ]
 

@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from organisation.views import OrganisationView
 from event.views import EventView
+from location.views import LocationView
 from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView, ResetPasswordAPIView, ResetPasswordConfirmAPIView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,6 +31,7 @@ router = DefaultRouter()
 router.register('users', UserView)
 router.register('organisations', OrganisationView)
 router.register('events', EventView)
+router.register('locations', LocationView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
