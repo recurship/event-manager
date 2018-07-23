@@ -17,6 +17,6 @@ export default {
     });
   },
   getEventDetail: eventId => {
-    return makeRequest(`/api/events/${eventId}/`);
+    return makeRequest(baseUri + eventId + '/');
   },
 };

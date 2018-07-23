@@ -24,8 +24,8 @@ class App extends Component<Props> {
         <Route path="/signup" component={Signup} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/events" component={Events} />
-        <Route path="/details/:value" component={EventDetails} />
-        <Route path="/organisation" component={Organisation} />
+        <Route path="/event/:value" component={EventDetails} />
+        <Route path="/organisation/:value" component={Organisation} />
       </div>
     );
   }

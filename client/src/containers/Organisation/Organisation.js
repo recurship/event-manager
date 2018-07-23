@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { Container, Jumbotron, Button } from 'reactstrap';
 import { EventList } from '../../components/EventList/EventList';
+import { fetchOrganisationDetail } from '../../actions';
+import { connect } from 'react-redux';
 
-class Organisation extends Component {
-  constructor() {
-    super();
+type Props = BaseReduxPropTypes & {
+  organisation: Object,
+};
+
+class Organisation extends Component<Props> {
+  constructor(props) {
+    super(props);
     this.state = { organisation: {} };
   }
   componentDidMount() {
+    this.getOrganisationDetail();
     const mockOrganisation = {
       id: 1,
       name: 'GDG Kolachi',
@@ -57,25 +64,36 @@ class Organisation extends Component {
     };
     this.setState({ organisation: mockOrganisation });
   }
+
+  getOrganisationDetail = () => {
+    const organisationId = this.props.match.params.value;
+    const { dispatch } = this.props;
+    dispatch(fetchOrganisationDetail(organisationId));
+  };
+
   render() {
-    console.log(this.state);
+    const { organisation } = this.props.organisationDetail;
     return (
       <div>
-        <Jumbotron>
-          <h3>{this.state.organisation.name}</h3>
-          <h6>{this.state.organisation.description}</h6>
-          <Button className="btn btn-success">Subscribe</Button>
-        </Jumbotron>
-        {this.state.organisation.events ? (
-          <EventList events={this.state.organisation.events} />
+        {organisation && !organisation[0].detail ? (
+          <div>
+            <Jumbotron>
+              <h3>{organisation[0].name}</h3>
+              <h6>{this.state.organisation.description}</h6>
+              <Button className="btn btn-success">Subscribe</Button>
+            </Jumbotron>
+            <EventList events={this.state.organisation.events} />
+          </div>
         ) : (
-          <Container>
-            <h4 className="text-center">Not Any Event Yet</h4>
-          </Container>
+          <Container />
         )}
       </div>
     );
   }
 }
 
-export default Organisation;
+const mapStateToProps = state => ({
+  organisationDetail: { ...state.organisationDetail },
+});
+
+export default connect(mapStateToProps)(Organisation);

@@ -36,25 +36,28 @@ class EventDetails extends Component {
       <div className="main-container">
         {event ? (
           <Container>
-            <CardImg top width="100%" src={event[0].cover} />
+            <Row>
+              <CardImg top width="100%" src={event[0].cover} />
+            </Row>
             <Row className="block">
               <Col className="text-header">
-                <h4>Event Summary</h4>
+                <h4>{event[0].organisation.name}</h4>
               </Col>
             </Row>
             <Row className="block-content">
-              <SummaryContainer iconName="1" content={event[0].startDatetime} />
-              <SummaryContainer iconName="2" content={event[0].endDatetime} />
-              <SummaryContainer iconName="3" content={event[0].description} />
               <SummaryContainer
-                iconName="4"
-                content={event[0].organisation.name}
+                iconName="fa fa-clock-o fa-2x"
+                content={event[0].startDatetime}
               />
-            </Row>
-            <Row className="block">
-              <Col className="text-header">
-                <h4>Event Description</h4>
-              </Col>
+              <SummaryContainer
+                iconName="fa fa-clock-o fa-2x"
+                content={event[0].endDatetime}
+              />
+              <SummaryContainer
+                iconName="fa fa-file-text-o fa-2x"
+                content={event[0].description}
+              />
+              <SummaryContainer iconName="4" content="event[0].logo" />
             </Row>
             <Row className="block-content text-justify">
               <Col md="9">

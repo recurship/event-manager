@@ -9,8 +9,10 @@ class SummaryContainer extends Component {
     return (
       <Col md="3" className="summary-container">
         <Row>
-          <Col md="3">{this.props.iconName}</Col>
-          <Col md="9">{this.props.content}</Col>
+          <Col md="2">
+            <i className={this.props.iconName} />
+          </Col>
+          <Col md="10">{this.props.content}</Col>
         </Row>
       </Col>
     );
