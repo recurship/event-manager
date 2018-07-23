@@ -7,7 +7,7 @@ class SummaryContainer extends Component {
   }
   render() {
     return (
-      <Col md="3" className="summary-container">
+      <Col md="3">
         <Row>
           <Col md="2">
             <i className={this.props.iconName} />

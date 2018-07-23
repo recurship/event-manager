@@ -14,6 +14,7 @@ import {
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
 import { fetchEventDetail } from '../../actions';
+import moment from 'moment';
 
 class EventDetails extends Component {
   constructor(props) {
@@ -47,11 +48,15 @@ class EventDetails extends Component {
             <Row className="block-content">
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={event[0].startDatetime}
+                content={moment(event[0].startDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
               />
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={event[0].endDatetime}
+                content={moment(event[0].endDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
               />
               <SummaryContainer
                 iconName="fa fa-file-text-o fa-2x"
