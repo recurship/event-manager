@@ -69,7 +69,7 @@ class UserViewTest(TestCase):
         self.assertNotEqual(str(user_instance.id), json_resp['id'], 'it should register new user')
 
     def test_user_update_view_without_token(self):
-        user_instance = self.create_user()
+        self.create_user()
         data = json.dumps({'first_name': 'update first name'})
         resp = self.client.patch(
             '/api/user/', data, content_type='application/json')

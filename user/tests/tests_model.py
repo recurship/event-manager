@@ -1,8 +1,6 @@
 # from django.test import TestCase
 from django.test import TestCase
 from user.models import User
-from django.urls import reverse, reverse_lazy
-import json
 from .tests_config import TEST_USER_CREDENTIALS as test_user
 
 # Create your tests here.
@@ -22,12 +20,6 @@ class UserModelTest(TestCase):
     def test_user_creation(self):
         user_instance = self.create_user()
         self.assertTrue(isinstance(user_instance, User))
-
-    def test_user_email(self):
-        user_instance = self.create_user()
-        # This str function will going to call the __str__() method defined in User model
-        self.assertEqual(str(user_instance), user_instance.email)
-        self.assertNotEqual(str(user_instance), 'email@email.com')
 
     def test_user_fullname(self):
         user_instance = self.create_user()
