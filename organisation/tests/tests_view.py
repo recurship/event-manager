@@ -37,22 +37,6 @@ class OrganisationViewTest(TestCase):
         json_resp = json.loads(resp.content)
         self.assertDictContainsSubset(model_to_dict(organisation_instance, MODEL_FIELDS), json_resp, 'it should provide detail of organisation with id')
 
-    def test_organisation_create_view_without_token(self):
-        organisation_instance =  self.create_organisation()
-        url = reverse('organisation-list')
-        resp = self.client.post(url, {'name': 'new organisation', 'owner': organisation_instance.owner})
-        # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401, 'it should not create new organisation without token')
-
-    def test_organisation_edit_view_without_token(self):
-        organisation_instance =  self.create_organisation()
-        url = reverse('organisation-detail', args=[organisation_instance.id])
-        data = json.dumps({'name': 'update organisation name'})
-        resp = self.client.patch(
-            url, data, content_type='application/json')
-        # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401, 'it should not edit organisation without token')
-
     def test_organisation_create_view_with_token(self):
         organisation_instance =  self.create_organisation()
         login_resp = self.client.post(
@@ -80,3 +64,15 @@ class OrganisationViewTest(TestCase):
         organisation_json_resp = json.loads(organisation_resp.content)
         # Now the organisation is updated so its name will not match with the previously created organisation name
         self.assertNotEqual(organisation_instance.name, organisation_json_resp['name'], 'it should update organisation')
+
+    def test_organisation_permissions(self):
+        # 401 status code will be sent by the backend for unauthorized requests
+        organisation_instance =  self.create_organisation()
+        url = reverse('organisation-list')
+        resp = self.client.post(url, {'name': 'new organisation', 'owner': organisation_instance.owner})
+        self.assertEqual(resp.status_code, 401, 'it should not create new organisation without token')
+        url = reverse('organisation-detail', args=[organisation_instance.id])
+        data = json.dumps({'name': 'update organisation name'})
+        resp = self.client.patch(
+            url, data, content_type='application/json')
+        self.assertEqual(resp.status_code, 401, 'it should not edit organisation without token')

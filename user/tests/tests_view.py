@@ -44,10 +44,6 @@ class UserViewTest(TestCase):
             '/api/token', {'username': test_user['username'], 'password': test_user['password']})
         self.assertEqual(login_resp.status_code, 200, 'it should login')
 
-    def test_loggedin_user_detail_view_without_token(self):
-        resp = self.client.get('/api/user/')
-        self.assertEqual(resp.status_code, 401, 'it should not give any detail of user')
-
     def test_loggedin_user_detail_view(self):
         user_instance = self.create_user()
         login_resp = self.client.post(
@@ -67,14 +63,6 @@ class UserViewTest(TestCase):
         json_resp = json.loads(resp.content)
         self.assertEqual(resp.status_code, 201)
         self.assertNotEqual(str(user_instance.id), json_resp['id'], 'it should register new user')
-
-    def test_user_update_view_without_token(self):
-        self.create_user()
-        data = json.dumps({'first_name': 'update first name'})
-        resp = self.client.patch(
-            '/api/user/', data, content_type='application/json')
-        # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401, 'it should not allow user to update its content without token')
 
     def test_user_update_view_with_token(self):
         user_instance = self.create_user()
@@ -112,3 +100,14 @@ class UserViewTest(TestCase):
         login_resp_new_password = self.client.post(
             '/api/token', {'username': test_user['username'], 'password': 'new password'})
         self.assertEqual(login_resp_new_password.status_code, 200, 'it should allow user to log in with new password')
+
+    def test_user_permissions(self):
+        # 401 status code will be sent by the backend for unauthorized requests
+        self.create_user()
+        resp_user = self.client.get('/api/user/')
+        self.assertEqual(resp_user.status_code, 401, 'it should not give any detail of user')
+        data = json.dumps({'first_name': 'update first name'})
+        resp_user = self.client.patch(
+            '/api/user/', data, content_type='application/json')
+        self.assertEqual(resp_user.status_code, 401, 'it should not allow user to update its content without token')
+        

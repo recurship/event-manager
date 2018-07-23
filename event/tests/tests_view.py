@@ -39,23 +39,6 @@ class EventViewTest(TestCase):
         json_resp = json.loads(resp.content)
         self.assertDictContainsSubset(model_to_dict(event_instance, MODEL_FIELDS), json_resp)
 
-    def test_event_create_view_without_token(self):
-        event_instance = self.create_event()
-        url = reverse('event-list')
-        resp = self.client.post(url, {'title': 'new event', 'description': 'testing',
-                                      'start_datetime': timezone.now(), 'end_datetime': timezone.now(), 'organisation': event_instance.organisation})
-        # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401)
-
-    def test_event_edit_view_without_token(self):
-        event_instance = self.create_event()
-        url = reverse('event-detail', args=[event_instance.id])
-        data = json.dumps({'title': 'update event title'})
-        resp = self.client.patch(
-            url, data, content_type='application/json')
-        # 401 status code will be sent by the backend for unauthorized requests
-        self.assertEqual(resp.status_code, 401)
-
     def test_event_create_view_with_token(self):
         event_instance = self.create_event()
         login_resp = self.client.post(
@@ -84,3 +67,16 @@ class EventViewTest(TestCase):
         event_json_resp = json.loads(event_resp.content)
         # Now the event is updated so its title will not match with the previously created event title
         self.assertNotEqual(event_instance.title, event_json_resp['title'])
+
+    def test_event_permissions(self):
+        # 401 status code will be sent by the backend for unauthorized requests
+        event_instance = self.create_event()
+        url = reverse('event-list')
+        resp = self.client.post(url, {'title': 'new event', 'description': 'testing',
+                                      'start_datetime': timezone.now(), 'end_datetime': timezone.now(), 'organisation': event_instance.organisation})
+        self.assertEqual(resp.status_code, 401)
+        url = reverse('event-detail', args=[event_instance.id])
+        data = json.dumps({'title': 'update event title'})
+        resp = self.client.patch(
+            url, data, content_type='application/json')
+        self.assertEqual(resp.status_code, 401)
