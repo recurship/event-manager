@@ -19,6 +19,7 @@ class EventView(viewsets.ModelViewSet):
 
     # The following method will only gets called when we hit /events/ on GET request
     # It wil apply filter if we provide any filters in query params if not then all events will be returned
+    @classmethod
     def list(self, request):
         filter_date_from = request.GET.get('filter_date_from', '')
         filter_date_to = request.GET.get('filter_date_to', '')
