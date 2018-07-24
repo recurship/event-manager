@@ -17,23 +17,23 @@ type Props = BaseReduxPropTypes & {
 
 class Events extends Component<Props> {
   componentDidMount() {
-		this.getData();
+    this.getData();
   }
-	getSortyByOptions = () => {
-		return [{
-			label: 'Filter Organization',
-			value: 'filter_organisation'
-		},{
-			label: 'Start From',
-			value: 'filter_date_from'
-		},{
-			label: 'End Date',
-			value: 'filter_date_to'
-		},{
-			label: 'Keywords',
-			value: 'filter_keywords'
-		}]
-	}
+  getSortyByOptions = () => {
+    return [{
+      label: 'Filter Organization',
+      value: 'filter_organisation'
+    }, {
+      label: 'Start From',
+      value: 'filter_date_from'
+    }, {
+      label: 'End Date',
+      value: 'filter_date_to'
+    }, {
+      label: 'Keywords',
+      value: 'filter_keywords'
+    }]
+  }
 
   getData = () => {
     const { dispatch } = this.props;
@@ -43,13 +43,13 @@ class Events extends Component<Props> {
   logout = () => {
     const { dispatch } = this.props;
     dispatch(userLogout());
-	};
-	
-	handleSearchChange= e => {
-		const { dispatch } = this.props;
-		console.log('e: ', e);
-		dispatch(fetchEvents(e));
-	};
+  };
+
+  handleSearchChange = e => {
+    const { dispatch } = this.props;
+    console.log('e: ', e);
+    dispatch(fetchEvents(e));
+  };
 
   handleSubmit = (event: any) => {
     event.preventDefault();
@@ -74,7 +74,7 @@ class Events extends Component<Props> {
   };
 
   render() {
-		const { userState, events } = this.props;
+    const { userState, events } = this.props;
     return (
       <div>
         <EMNavbar onSubmit={this.logout} token={userState.token} />
@@ -83,23 +83,23 @@ class Events extends Component<Props> {
           <h6 className="text-center">Portal for Open Source Communities</h6>
         </Jumbotron>
         <Container>
-        <Row>
-					<Col md="12"> 
-						<DropSearch
-							sortBy={this.getSortyByOptions()} 
-							handleSearchChange={this.handleSearchChange}
-							events={events}
-							/> 
-					</Col>
-        </Row>
+          <Row>
+            <Col md="12">
+              <DropSearch
+                sortBy={this.getSortyByOptions()}
+                handleSearchChange={this.handleSearchChange}
+                events={events}
+              />
+            </Col>
+          </Row>
         </Container>
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <Container>
-            <h4 className="text-center">Not Any Event Yet</h4>
-          </Container>
-        )}
+            <Container>
+              <h4 className="text-center">Not Any Event Yet</h4>
+            </Container>
+          )}
       </div>
     );
   }
