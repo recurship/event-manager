@@ -97,10 +97,10 @@ export const addEvent = event => ({
   event,
 });
 
-export const fetchEvents = () => async (dispatch, getState) => {
+export const fetchEvents = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   try {
-    const response = await EventService.getAll();
+    const response = await EventService.getAll(query);
     let camelCaseKeys = humps.camelizeKeys(response.results);
     dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
     dispatch(endRequest(FETCH_EVENTS));
