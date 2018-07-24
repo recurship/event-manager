@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from .models import Organisation
 from event.models import Event
-from event.serializers import EventSerializer
 from .serializer import OrganisationSerializer, OrganisationCreateSerializer
 # Create your views here.
 from rest_framework.response import Response
@@ -18,6 +17,7 @@ class OrganisationView(viewsets.ModelViewSet):
             return OrganisationCreateSerializer
         return OrganisationSerializer
 
+    @classmethod
     def retrieve(self,request,pk=None):
         try:
             queryset_organisation = Organisation.objects.get(pk=pk)
