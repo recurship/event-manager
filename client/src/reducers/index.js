@@ -96,11 +96,35 @@ const events = (state = defaultEventState, action) => {
   return state;
 };
 
+const eventDetail = (state = defaultEventState, action) => {
+  if (action.event) {
+    return {
+      event: Object.values(action.event.entities.events),
+    };
+  }
+  return state;
+};
+
+const defaultOrganisationState = {
+  organisations: [],
+};
+
+const organisationDetail = (state = defaultOrganisationState, action) => {
+  if (action.organisation) {
+    return {
+      organisation: Object.values(action.organisation.entities.organisation),
+    };
+  }
+  return state;
+};
+
 let reducer = combineReducers({
   appState,
   userState,
   resetPasswordState,
   events,
+  eventDetail,
+  organisationDetail,
   form: formReducer,
 });
 
