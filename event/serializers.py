@@ -47,6 +47,7 @@ class EventUserAddSerializer(serializers.Serializer):
         model = Event
         fields = ['__all__']
 
+    @classmethod
     def update(self, instance, validated_data):
         event = Event.objects.get(id=validated_data['eventid'])
         event.attendees.add(validated_data['userid'])
