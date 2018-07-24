@@ -3,13 +3,35 @@ from organisation.models import Organisation
 from django.core.validators import FileExtensionValidator
 
 
+class EventLocation(models.Model):
+
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    logo = models.FileField(upload_to='location/', blank=False, null=True,
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+
+    def __str__(self):
+        return self.name
+
+class EventSponser(models.Model):
+
+    name = models.CharField(max_length=255)
+    logo = models.FileField(upload_to='sponser/', blank=False, null=True,
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+
+    def __str__(self):
+        return self.name
+
 class Event(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
+    registration_url = models.TextField(default=None, null=True)
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
+    location = models.ForeignKey(EventLocation, on_delete=models.SET_NULL, null=True)
+    sponser = models.ManyToManyField(EventSponser, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
 
