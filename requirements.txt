@@ -8,3 +8,6 @@ boto
 boto3
 django-storages
 django-heroku
+coverage
+nose
+django-nose
