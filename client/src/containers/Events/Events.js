@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
 import SubHeader from '../../components/EventList/SubHeader/SubHeader';
-import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
+import { userLogin, fetchEvents, postEvent } from '../../actions';
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
@@ -23,11 +23,6 @@ class Events extends Component<Props> {
   getData = () => {
     const { dispatch } = this.props;
     dispatch(fetchEvents());
-  };
-
-  logout = () => {
-    const { dispatch } = this.props;
-    dispatch(userLogout());
   };
 
   handleSubmit = (event: any) => {

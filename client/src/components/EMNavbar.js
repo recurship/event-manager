@@ -10,9 +10,11 @@ import {
   NavItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { userLogout } from '../actions';
+import type { BaseReduxPropTypes } from '../types/base-props-types';
 
 type Props = {
-  /* props */
+  userData: Object,
 };
 
 type State = {
@@ -24,6 +26,11 @@ export class EMNavbar extends Component<Props, State> {
     isOpen: false,
   };
 
+  logout = () => {
+    const { dispatch } = this.props.userData;
+    dispatch(userLogout());
+  };
+
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -31,6 +38,7 @@ export class EMNavbar extends Component<Props, State> {
   };
 
   render() {
+    const { userState } = this.props.userData;
     return (
       <Navbar color="dark" dark exapand="true">
         <NavbarToggler right="true" onClick={this.toggle} />
@@ -43,6 +51,17 @@ export class EMNavbar extends Component<Props, State> {
             <NavItem>
               <Link to="/about">About</Link>
             </NavItem>
+            {userState && userState.token ? (
+              <NavItem>
+                <Link onClick={this.logout} to="/login">
+                  Logout
+                </Link>
+              </NavItem>
+            ) : (
+              <NavItem>
+                <Link to="/login">Login</Link>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Navbar>
