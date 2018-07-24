@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Event
-from .serializers import EventSerializer, EventCreateSerializer
+from .models import Event, EventLocation, EventSponser
+from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer
 from rest_framework.response import Response
 from django.db.models import Q
 from datetime import datetime
@@ -46,3 +46,15 @@ class EventView(viewsets.ModelViewSet):
             Q(description__contains=filter_keywords)).filter(**filter_data).order_by(sort_by)
         serialized_data = EventSerializer(queryset, many=True)
         return Response(serialized_data.data)
+
+
+class EventLocationView(viewsets.ModelViewSet):
+
+    queryset = EventLocation.objects.all()
+    serializer_class = EventLocationSerializer
+
+
+class EventSponserView(viewsets.ModelViewSet):
+
+    queryset = EventSponser.objects.all()
+    serializer_class = EventSponserSerializer
