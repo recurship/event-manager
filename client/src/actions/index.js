@@ -1,7 +1,9 @@
 import AuthService from '../services/auth';
 import EventService from '../services/events';
+import OrganisationService from '../services/organisation';
 import { normalize } from 'normalizr';
-import * as schema from '../schemas/eventSchema';
+import { eventSchema, eventListSchema } from '../schemas/eventSchema';
+import { organisationSchema } from '../schemas/organisationSchema';
 import * as humps from 'humps';
 // app
 
@@ -14,12 +16,14 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
-// events
 
+// events
+export const ADD_EVENT = 'ADD_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const FETCH_EVENT_DETAIL = 'FETCH_EVENT_DETAIL';
 
-export const ADD_EVENT = 'ADD_EVENT';
+// organisation
+export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
 
 // app actions
 
@@ -88,6 +92,11 @@ export const getEventDetail = event => ({
   event,
 });
 
+export const getOrganisationDetail = organisation => ({
+  type: FETCH_ORGANISATION_DETAIL,
+  organisation,
+});
+
 export const addEvent = event => ({
   type: ADD_EVENT,
   event,
@@ -98,7 +107,7 @@ export const fetchEvents = () => (dispatch, getState) => {
   return EventService.getAll()
     .then(response => {
       let camelCaseKeys = humps.camelizeKeys(response.results);
-      dispatch(getEvents(normalize(camelCaseKeys, schema.eventsList)));
+      dispatch(getEvents(normalize(camelCaseKeys, eventListSchema)));
       dispatch(endRequest(FETCH_EVENTS));
     })
     .catch(err => {
@@ -111,10 +120,29 @@ export const fetchEventDetail = eventId => async (dispatch, getState) => {
   try {
     const event = await EventService.getEventDetail(eventId);
     let camelCaseKeys = humps.camelizeKeys(event);
-    dispatch(getEventDetail(normalize(camelCaseKeys, schema.event)));
+    dispatch(getEventDetail(normalize(camelCaseKeys, eventSchema)));
     dispatch(endRequest(FETCH_EVENT_DETAIL));
   } catch (e) {
     dispatch(triggerFailure(FETCH_EVENT_DETAIL, e));
+  }
+};
+
+export const fetchOrganisationDetail = organisationId => async (
+  dispatch,
+  getState
+) => {
+  dispatch(triggerRequest(FETCH_ORGANISATION_DETAIL));
+  try {
+    const organisation = await OrganisationService.getOrganisationDetail(
+      organisationId
+    );
+    let camelCaseKeys = humps.camelizeKeys(organisation);
+    dispatch(
+      getOrganisationDetail(normalize(camelCaseKeys, organisationSchema))
+    );
+    dispatch(endRequest(FETCH_ORGANISATION_DETAIL));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_ORGANISATION_DETAIL, e));
   }
 };
 export const userSignup = payload => async (dispatch, getState) => {

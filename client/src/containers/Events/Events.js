@@ -56,7 +56,6 @@ class Events extends Component<Props> {
     const { userState, events } = this.props;
     return (
       <div>
-        <EMNavbar onSubmit={this.logout} token={userState.token} />
         <Jumbotron>
           <h3 className="text-center">Welcome to Event Management</h3>
           <h6 className="text-center">Portal for Open Source Communities</h6>

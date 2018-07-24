@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import { Container, Row, Col, CardImg, Button } from 'reactstrap';
 import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
+import { fetchOrganisationDetail } from '../../actions';
+import { connect } from 'react-redux';
 
-class Organisation extends Component {
-  constructor() {
-    super();
+type Props = BaseReduxPropTypes & {
+  organisation: Object,
+};
+
+class Organisation extends Component<Props> {
+  constructor(props) {
+    super(props);
     this.state = { organisation: {} };
   }
   componentDidMount() {
+    this.getOrganisationDetail();
     const mockOrganisation = {
       id: 1,
       name: 'GDG Kolachi',
@@ -58,6 +65,13 @@ class Organisation extends Component {
     };
     this.setState({ organisation: mockOrganisation });
   }
+
+  getOrganisationDetail = () => {
+    const organisationId = this.props.match.params.value;
+    const { dispatch } = this.props;
+    dispatch(fetchOrganisationDetail(organisationId));
+  };
+
   render() {
     return (
       <div>
@@ -96,4 +110,8 @@ class Organisation extends Component {
   }
 }
 
-export default Organisation;
+const mapStateToProps = state => ({
+  organisationDetail: { ...state.organisationDetail },
+});
+
+export default connect(mapStateToProps)(Organisation);

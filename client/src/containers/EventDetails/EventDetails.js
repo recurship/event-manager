@@ -15,6 +15,7 @@ import SummaryContainer from '../../components/SummaryContainer/SummaryContainer
 import { connect } from 'react-redux';
 import { fetchEventDetail } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
+import moment from 'moment';
 
 class EventDetails extends Component {
   constructor(props) {
@@ -40,15 +41,25 @@ class EventDetails extends Component {
             <CardImg top width="100%" src={event[0].cover} />
             <ContentHeader heading="Event Summary" />
             <Row className="block-content">
-              <SummaryContainer iconName="1" content={event[0].startDatetime} />
-              <SummaryContainer iconName="2" content={event[0].endDatetime} />
-              <SummaryContainer iconName="3" content={event[0].description} />
               <SummaryContainer
-                iconName="4"
-                content={event[0].organisation.name}
+                iconName="fa fa-clock-o fa-2x"
+                content={moment(event[0].startDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
               />
+              <SummaryContainer
+                iconName="fa fa-clock-o fa-2x"
+                content={moment(event[0].endDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
+              />
+              <SummaryContainer
+                iconName="fa fa-file-text-o fa-2x"
+                content={event[0].description}
+              />
+              <SummaryContainer iconName="4" content="event[0].logo" />
             </Row>
-            <ContentHeader heading="Event Description" />
+            <ContentHeader heading="Event Details" />
             <Row className="block-content text-justify">
               <Col md="9">
                 This HTML file is a template. If you open it directly in the
