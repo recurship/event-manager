@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'event',
     'organisation',
     'user',
-    'storages'
+    'storages',
+    'django_nose'
 ]
 
 
@@ -155,6 +156,13 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'SIGNING_KEY': 'thisismysecret'
 }
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    # '--cover-erase',
+    '--cover-package=user,organisation,event', # Change `MY_APP` to your `app` name
+]
 
 # Configurations for sending emails using mailgun smtp server
 EMAIL_HOST = 'smtp.mailgun.org'

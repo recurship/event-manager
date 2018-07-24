@@ -8,7 +8,7 @@ class OrganisationCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
-        fields = ('id', 'name', 'is_active', 'owner', 'logo')
+        fields = ('id', 'name', 'is_active', 'owner', 'logo', 'description')
 
 
 class OrganisationSerializer(serializers.ModelSerializer):
@@ -17,4 +17,4 @@ class OrganisationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
-        fields = ('id', 'name', 'is_active', 'owner', 'logo')
+        fields = ('id', 'name', 'is_active', 'owner', 'logo', 'description')

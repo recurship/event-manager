@@ -6,6 +6,7 @@ from django.core.validators import FileExtensionValidator
 class Organisation(models.Model):
 
     name = models.CharField(max_length=255)
+    description = models.TextField(null=True)
     is_active = models.BooleanField(default=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     logo = models.FileField(upload_to='organisation/', blank=False, null=True,
