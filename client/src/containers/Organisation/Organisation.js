@@ -3,6 +3,7 @@ import { Container, Row, Col, CardImg, Button } from 'reactstrap';
 import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchOrganisationDetail } from '../../actions';
+import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 
 type Props = BaseReduxPropTypes & {

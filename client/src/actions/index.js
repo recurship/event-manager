@@ -7,6 +7,8 @@ import { organisationSchema } from '../schemas/organisationSchema';
 import * as humps from 'humps';
 // app
 
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
+
 export const TRIGGER_REQUEST = 'TRIGGER_REQUEST';
 export const END_REQUEST = 'END_REQUEST';
 export const TRIGGER_FAILURE = 'TRIGGER_FAILURE';
