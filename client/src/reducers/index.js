@@ -105,10 +105,6 @@ const defaultOrganisationState = {
 
 const organisationDetail = (state = defaultOrganisationState, action) => {
   if (action.organisation) {
-    console.log(
-      'action.organisation.entities.organisation',
-      Object.values(action.organisation.entities.organisation)
-    );
     return {
       organisation: Object.values(action.organisation.entities.organisation),
     };

@@ -23,9 +23,12 @@ class App extends Component<Props> {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/events" component={Events} />
-        <Route path="/event/:value" component={EventDetails} />
-        <Route path="/organisation/:value" component={Organisation} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/events/:event_id" component={EventDetails} />
+        <Route
+          path="/organisations/:organisation_id"
+          component={Organisation}
+        />
       </div>
     );
   }

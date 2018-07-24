@@ -28,7 +28,7 @@ class EventDetails extends Component {
   }
 
   getEventDetail = () => {
-    const eventId = this.props.match.params.value;
+    const eventId = this.props.match.params.event_id;
     const { dispatch } = this.props;
     dispatch(fetchEventDetail(eventId));
   };

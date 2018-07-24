@@ -8,6 +8,6 @@ export default {
   },
 
   getOrganisationDetail: organisationId => {
-    return makeRequest(baseUri + organisationId + '/');
+    return makeRequest(`${baseUri}${organisationId}/`);
   },
 };
