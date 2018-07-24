@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
-import { SubHeader } from '../../components/EventList/SubHeader/SubHeader';
+import SubHeader from '../../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
