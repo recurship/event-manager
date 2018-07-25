@@ -7,6 +7,9 @@ import {
   USER_LOGOUT,
   RESET_PASSWORD,
   REFRESH_TOKEN,
+  FETCH_ORGANISATIONS,
+  FETCH_SPONSORS,
+  FETCH_LOCATIONS,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -16,11 +19,11 @@ const defaultAppState = {
 
 const appState = (state = defaultAppState, action) => {
   switch (action.type) {
-    case TRIGGER_REQUEST:
-      return {
-        ...state,
-        loading: [...state.loading, action.name],
-      };
+  case TRIGGER_REQUEST:
+    return {
+      ...state,
+      loading: [...state.loading, action.name],
+    };
 
     case TRIGGER_FAILURE:
       return {
@@ -30,12 +33,12 @@ const appState = (state = defaultAppState, action) => {
 
     case END_REQUEST:
       return {
-        ...state,
-        loading: state.loading.filter(name => name !== action.name),
+      ...state,
+      loading: state.loading.filter(name => name !== action.name),
       };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
@@ -45,25 +48,25 @@ const defaultUserState = {
 };
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
-    case USER_LOGIN:
+  case USER_LOGIN:
       return {
-        ...state,
+      ...state,
         token: action.token.access,
         refresh: action.token.refresh,
       };
 
-    case USER_LOGOUT:
+  case USER_LOGOUT:
       return {
-        ...state,
-        token: null,
-      };
+      ...state,
+      token: null,
+    };
     case REFRESH_TOKEN:
       return {
-        ...state,
+      ...state,
         token: action.payload.access,
-      };
-    default:
-      return state;
+    };
+  default:
+    return state;
   }
 };
 
@@ -73,13 +76,13 @@ const defaultResetPasswordState = {
 const resetPasswordState = (state = defaultResetPasswordState, action) => {
   switch (action.type) {
     case RESET_PASSWORD:
-      return {
+    return {
         ...state,
         message: action.message,
       };
 
     default:
-      return state;
+    return state;
   }
 };
 
@@ -118,6 +121,47 @@ const organisationDetail = (state = defaultOrganisationState, action) => {
   return state;
 };
 
+const defaultOrganisationsState = {
+  organisations: [],
+};
+const organisationsState = (state = defaultOrganisationsState, action) => {
+  switch (action.type) {
+  case FETCH_ORGANISATIONS:
+      return {
+        ...state,
+        organisations: action.organisations,
+      };
+  }
+  return state;
+};
+
+const defaultSponsorsState = {
+  sponsors: [],
+};
+const sponsorsState = (state = defaultSponsorsState, action) => {
+  switch (action.type) {
+    case FETCH_SPONSORS:
+    return {
+        ...state,
+      sponsors: action.sponsors,
+      };
+  }
+  return state;
+};
+
+const defaultLocationState = {
+  locations: [],
+};
+const locationState = (state = defaultLocationState, action) => {
+  switch (action.type) {
+    case FETCH_LOCATIONS:
+    return {
+        ...state,
+      locations: action.locations,
+      };
+  }
+  return state;
+};
 let reducer = combineReducers({
   appState,
   userState,
@@ -125,6 +169,9 @@ let reducer = combineReducers({
   events,
   eventDetail,
   organisationDetail,
+  organisations: organisationsState,
+  sponsors: sponsorsState,
+  locations: locationState,
   form: formReducer,
 });
 

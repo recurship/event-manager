@@ -9,6 +9,7 @@ import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
+import DropSearch from '../../components/DropSearch/DropSearch';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
@@ -19,10 +20,48 @@ class Events extends Component<Props> {
   componentDidMount() {
     this.getData();
   }
+  getSortyByOptions = () => {
+    return [{
+      label: 'Start Date',
+      value: 'startDate'
+    }, {
+      label: 'Organisation',
+      value: 'organisation'
+    }, {
+      label: 'Sponsor',
+      value: 'sponser'
+    }, {
+      label: 'Location',
+      value: 'location'
+    }]
+  }
 
-  getData = () => {
+  makeQueryStringTransformable = (params: Object) => {
+    let transformedParams = {};
+    for (let key in params) {
+      if (params.hasOwnProperty(key)) {
+        if (typeof params[key] == "object" && Array.isArray(params[key])) {
+          transformedParams[key] = (params[key].map(x => `${x.value}`)).join(',')
+        } else if (typeof params[key] == "object" && !Array.isArray(params[key])) {
+          transformedParams[key] = `${params[key].value}`;
+        } else {
+          transformedParams[key] = params[key];
+        }
+      }
+    }
+    return transformedParams;
+  }
+
+  handleSearchChange = searchParams => {
+    if (searchParams)
+      searchParams = this.makeQueryStringTransformable(searchParams);
+    this.getData(searchParams);
+  };
+
+
+  getData = (e) => {
     const { dispatch } = this.props;
-    dispatch(fetchEvents());
+    dispatch(fetchEvents(e));
   };
 
   logout = () => {
@@ -61,15 +100,23 @@ class Events extends Component<Props> {
           <h6 className="text-center">Portal for Open Source Communities</h6>
         </Jumbotron>
         <Container>
-          <SubHeader />
+          <Row>
+            <Col md="12">
+              <DropSearch
+                sortBy={this.getSortyByOptions()}
+                handleSearchChange={this.handleSearchChange}
+                events={events}
+              />
+            </Col>
+          </Row>
         </Container>
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <Container>
-            <h4 className="text-center">Not Any Event Yet</h4>
-          </Container>
-        )}
+            <Container>
+              <h4 className="text-center">Not Any Event Yet</h4>
+            </Container>
+          )}
       </div>
     );
   }
