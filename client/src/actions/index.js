@@ -229,7 +229,7 @@ export const fetchOrganisation = query => async (dispatch, getState) => {
 export const fetchSponsors = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_SPONSORS));
   try {
-    const response = await SponsorsService.getSponsors();
+    const response = await SponsorsService.getAll();
     let normalized = humps.camelizeKeys(response.results);
     dispatch(getSponsors(normalized));
     dispatch(endRequest(FETCH_SPONSORS));
@@ -242,7 +242,7 @@ export const fetchSponsors = query => async (dispatch, getState) => {
 export const fetchLocations = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_LOCATIONS));
   try {
-    const response = await LocationService.getLocations();
+    const response = await LocationService.getAll();
     let normalized = humps.camelizeKeys(response.results);
     dispatch(getLocations(normalized));
     dispatch(endRequest(FETCH_LOCATIONS));
