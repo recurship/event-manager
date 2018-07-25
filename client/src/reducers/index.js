@@ -7,6 +7,9 @@ import {
   USER_LOGOUT,
   RESET_PASSWORD,
   REFRESH_TOKEN,
+  FETCH_ORGANISATIONS,
+  FETCH_SPONSORS,
+  FETCH_LOCATIONS,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -104,6 +107,47 @@ const eventDetail = (state = defaultEventState, action) => {
   }
   return state;
 };
+const defaultOrganisationState = {
+  organisations: [],
+};
+const organisationsState = (state = defaultOrganisationState, action) => {
+  switch (action.type) {
+   case FETCH_ORGANISATIONS:
+      return {
+        ...state,
+        organisations: action.organisations,
+      };;
+  }
+  return state;
+};
+
+const defaultSponsorsState = {
+  sponsors: [],
+};
+const sponsorsState = (state = defaultSponsorsState, action) => {
+  switch (action.type) {
+   case FETCH_SPONSORS:
+      return {
+        ...state,
+        sponsors: action.sponsors,
+      };;
+  }
+  return state;
+};
+
+const defaultLocationState = {
+  locations: [],
+};
+const locationState = (state = defaultLocationState, action) => {
+  switch (action.type) {
+   case FETCH_LOCATIONS:
+      return {
+        ...state,
+        locations: action.locations,
+      };;
+  }
+  return state;
+};
 
 const defaultOrganisationState = {
   organisations: [],
@@ -124,7 +168,9 @@ let reducer = combineReducers({
   resetPasswordState,
   events,
   eventDetail,
-  organisationDetail,
+  organisations: organisationsState,
+  sponsors: sponsorsState,
+  locations: locationState,
   form: formReducer,
 });
 

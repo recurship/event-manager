@@ -1,16 +1,21 @@
 #drop-search {
+  border: 1px solid #ccc;
+  padding: 15px;
+  position: relative;
+  margin: 20px auto;
+  
+}
+#drop-search form {
+  margin: 20px auto;
   display: flex;
   flex: 1 1 auto;
-  margin: 20px auto;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid #ccc;
-  padding: 15px;
 }
 #drop-search .legend {
   position: absolute;
-  top: 10px;
+  top: -10px;
   left: 25px;
   background: whitesmoke;
   padding: 0 15px;
@@ -33,4 +38,7 @@
   font-size: 12px;
   color: #767676;
   font-weight: bold;
+}
+#drop-search button[type="submit"] {
+  align-self: flex-end;
 }

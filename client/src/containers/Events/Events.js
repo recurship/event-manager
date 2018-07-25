@@ -9,7 +9,7 @@ import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
-import DropSearch from '../../components/drop-search/DropSearch'
+import DropSearch from '../../components/drop-search/DropSearch';
 type Props = BaseReduxPropTypes & {
   userState: Object,
   events: Object,
@@ -18,26 +18,27 @@ type Props = BaseReduxPropTypes & {
 class Events extends Component<Props> {
   componentDidMount() {
     this.getData();
-  }
+	}
+	
   getSortyByOptions = () => {
     return [{
-      label: 'Filter Organization',
-      value: 'filter_organisation'
+			label: 'Start Date',
+			value: 'startDate'
+		},{
+      label: 'Organisation',
+      value: 'organisation'
     }, {
-      label: 'Start From',
-      value: 'filter_date_from'
+      label: 'Sponsor',
+      value: 'sponser'
     }, {
-      label: 'End Date',
-      value: 'filter_date_to'
-    }, {
-      label: 'Keywords',
-      value: 'filter_keywords'
+      label: 'Location',
+      value: 'location'
     }]
   }
 
-  getData = () => {
+  getData = (e) => {
     const { dispatch } = this.props;
-    dispatch(fetchEvents());
+    dispatch(fetchEvents(e));
   };
 
   logout = () => {
@@ -45,10 +46,26 @@ class Events extends Component<Props> {
     dispatch(userLogout());
   };
 
-  handleSearchChange = e => {
-    const { dispatch } = this.props;
-    console.log('e: ', e);
-    dispatch(fetchEvents(e));
+	 makeQueryStringTransformable = (params: Object) => {
+		let transformedParams = {};
+		for(let key in params) {
+			if(params.hasOwnProperty(key)) {
+				if(typeof params[key] == "object" && Array.isArray(params[key])) {
+					transformedParams[key] = (params[key].map(x => `${x.value}`)).join(',')
+				} else if (typeof params[key] == "object" && !Array.isArray(params[key])) {
+					transformedParams[key] = `${params[key].value}`;
+				} else {
+					transformedParams[key] = params[key];
+				}
+			}
+		}
+		return transformedParams;
+	}
+
+  handleSearchChange = searchParams => {
+		if (searchParams) 
+			searchParams = this.makeQueryStringTransformable(searchParams);
+		this.getData(searchParams);
   };
 
   handleSubmit = (event: any) => {
