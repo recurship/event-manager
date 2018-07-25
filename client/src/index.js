@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 export const store = configureStore();
 

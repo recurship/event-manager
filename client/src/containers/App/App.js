@@ -11,6 +11,7 @@ import Signup from '../Signup/Signup';
 import Events from '../Events/Events';
 import PrivateRoute from '../../components/PrivateRoute';
 import EventDetails from '../EventDetails/EventDetails';
+import Organisation from '../Organisation/Organisation';
 
 type Props = {};
 
@@ -22,8 +23,12 @@ class App extends Component<Props> {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/events" component={Events} />
-        <Route path="/details/:value" component={EventDetails} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/events/:event_id" component={EventDetails} />
+        <Route
+          path="/organisations/:organisation_id"
+          component={Organisation}
+        />
       </div>
     );
   }

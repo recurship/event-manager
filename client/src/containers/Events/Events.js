@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
-import { SubHeader } from '../../components/EventList/SubHeader/SubHeader';
+import SubHeader from '../../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
@@ -77,7 +77,6 @@ class Events extends Component<Props> {
     const { userState, events } = this.props;
     return (
       <div>
-        <EMNavbar onSubmit={this.logout} token={userState.token} />
         <Jumbotron>
           <h3 className="text-center">Welcome to Event Management</h3>
           <h6 className="text-center">Portal for Open Source Communities</h6>

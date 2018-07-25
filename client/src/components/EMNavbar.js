@@ -8,13 +8,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  onSubmit: Function,
-  token: String,
+  /* props */
 };
 
 type State = {
@@ -45,15 +43,6 @@ export class EMNavbar extends Component<Props, State> {
             <NavItem>
               <Link to="/about">About</Link>
             </NavItem>
-            {this.props.token ? (
-              <NavItem>
-                <Link to="/login" onClick={this.props.onSubmit}>
-                  LogOut
-                </Link>
-              </NavItem>
-            ) : (
-              ''
-            )}
           </Nav>
         </Collapse>
       </Navbar>

@@ -14,6 +14,9 @@ import {
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
 import { fetchEventDetail } from '../../actions';
+import ContentHeader from '../../components/ContentHeader/ContentHeader';
+import moment from 'moment';
+import EventDescription from '../../components/EventDescription/EventDescription';
 
 class EventDetails extends Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class EventDetails extends Component {
   }
 
   getEventDetail = () => {
-    const eventId = this.props.match.params.value;
+    const eventId = this.props.match.params.event_id;
     const { dispatch } = this.props;
     dispatch(fetchEventDetail(eventId));
   };
@@ -37,41 +40,30 @@ class EventDetails extends Component {
         {event ? (
           <Container>
             <CardImg top width="100%" src={event[0].cover} />
-            <Row className="block">
-              <Col className="text-header">
-                <h4>Event Summary</h4>
-              </Col>
-            </Row>
+            <ContentHeader heading="Event Summary" />
             <Row className="block-content">
-              <SummaryContainer iconName="1" content={event[0].startDatetime} />
-              <SummaryContainer iconName="2" content={event[0].endDatetime} />
-              <SummaryContainer iconName="3" content={event[0].description} />
               <SummaryContainer
-                iconName="4"
-                content={event[0].organisation.name}
+                iconName="fa fa-clock-o fa-2x"
+                content={moment(event[0].startDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
+              />
+              <SummaryContainer
+                iconName="fa fa-clock-o fa-2x"
+                content={moment(event[0].endDatetime).format(
+                  'DD/MM/YYYY HH:MM:SS'
+                )}
+              />
+              <SummaryContainer
+                iconName="fa fa-map-marker fa-2x"
+                content={event[0].description}
+              />
+              <SummaryContainer
+                iconName="fa fa-users fa-2x"
+                content="Organization"
               />
             </Row>
-            <Row className="block">
-              <Col className="text-header">
-                <h4>Event Description</h4>
-              </Col>
-            </Row>
-            <Row className="block-content text-justify">
-              <Col md="9">
-                This HTML file is a template. If you open it directly in the
-                browser, you will see an empty page. You can add webfonts, meta
-                tags, or analytics to this file. The build step will place the
-                bundled scripts into the tag. To begin the development, run `npm
-                start` or `yarn start`. To create a production bundle, use `npm
-                run build` or `yarn build`.
-              </Col>
-              <Col md="3">
-                <center>
-                  <h6>Organiser Contact</h6>
-                  <Button className="bg-success">Register here</Button>
-                </center>
-              </Col>
-            </Row>
+            <EventDescription />
           </Container>
         ) : (
           <Container />
