@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
-from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from .models import Event, EventLocation, EventSponser
 from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventUserAddSerializer
@@ -62,7 +62,7 @@ class EventSponserView(viewsets.ModelViewSet):
     queryset = EventSponser.objects.all()
     serializer_class = EventSponserSerializer
 
-class EventUserAddAPIView(RetrieveUpdateAPIView):
+class EventUserAddAPIView(UpdateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = EventUserAddSerializer
 
