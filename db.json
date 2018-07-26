@@ -83,78 +83,50 @@
     "model": "event.eventlocation",
     "pk": 1,
     "fields": {
-      "name": "Karachi",
-      "address": "DHA",
-      "logo": ""
+      "name": "location 2",
+      "address": "Defence Housing Authority",
+      "logo": "location/12063840_10206463344328062_9197026344854135455_n_kBJgP60.jpg"
     }
   },
   {
     "model": "event.eventlocation",
     "pk": 2,
     "fields": {
-      "name": "Lahore",
-      "address": "Gulberg",
+      "name": "location 1",
+      "address": "clifton",
       "logo": ""
-    }
-  },
-  {
-    "model": "event.eventlocation",
-    "pk": 3,
-    "fields": {
-      "name": "Islamabad",
-      "address": "Downtown Islamabad",
-      "logo": ""
-    }
-  },
-  {
-    "model": "event.eventlocation",
-    "pk": 4,
-    "fields": {
-      "name": "Islamabad",
-      "address": "Downtown Islamabad",
-      "logo": "location/action-adrenaline-adventure-1047051.jpg"
     }
   },
   {
     "model": "event.eventsponser",
     "pk": 1,
-    "fields": {
-      "name": "10 pearls",
-      "logo": "sponser/action-adrenaline-adventure-1047051.jpg"
-    }
-  },
-  {
-    "model": "event.eventsponser",
-    "pk": 2,
     "fields": {
       "name": "Folio3",
-      "logo": "sponser/action-adrenaline-adventure-1047051_rIFWub2.jpg"
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_fVaCaXk.jpg"
+    }
+  },
+  {
+    "model": "event.eventsponser",
+    "pk": 2,
+    "fields": {
+      "name": "10pearls",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_UqNF0QO.jpg"
     }
   },
   {
     "model": "event.eventsponser",
     "pk": 3,
     "fields": {
-      "name": "TPS",
-      "logo": "sponser/action-adrenaline-adventure-1047051_VboTIrT.jpg"
+      "name": "Tps",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_C41OjrG.jpg"
     }
   },
   {
-    "model": "event.event",
-    "pk": 1,
+    "model": "event.eventsponser",
+    "pk": 4,
     "fields": {
-      "title": "JS Training",
-      "description": "practical example",
-      "registration_url": null,
-      "start_datetime": "2081-02-08T20:39:00Z",
-      "end_datetime": "3938-02-08T15:08:00Z",
-      "organisation": 1,
-      "location": 1,
-      "cover": "",
-      "sponser": [
-        1,
-        3
-      ]
+      "name": "Mazedar Haleem",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_u2eysbZ.jpg"
     }
   },
   {
@@ -429,13 +401,32 @@
   },
   {
     "model": "user.user",
-    "pk": "4f3b9f10-6cd5-440d-bcb7-9f48c1a36942",
+    "pk": "a81dbec7-248d-4de4-8c65-18b6fb48754e",
     "fields": {
-      "password": "pbkdf2_sha256$100000$TU7YpD39UDt3$Z6i2pPdAtFBH4wm5NDHAL2BPgdhfwO7Ia67HRdpZ7wg=",
+      "password": "pbkdf2_sha256$100000$bNS3b33OD0Ez$EplyZV6c6uBmkvs4uYblgqFaBWxW04FERQPffnxabVQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "usmandap",
+      "email": "test@test.com",
+      "enable_notifications": true,
+      "first_name": null,
+      "last_name": null,
+      "token": null,
+      "is_active": true,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.user",
+    "pk": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+    "fields": {
+      "password": "pbkdf2_sha256$100000$k4fKxJu3f4I8$ahZ5tdHTUcnJeOzB2r9Hq7fbul0Xelb5f9R9xknHTPI=",
       "last_login": null,
       "is_superuser": true,
       "username": "admin",
-      "email": "admin@test.com",
+      "email": "usmandap@gmail.com",
       "enable_notifications": true,
       "first_name": null,
       "last_name": null,
@@ -450,10 +441,10 @@
     "model": "organisation.organisation",
     "pk": 1,
     "fields": {
-      "name": "Folio3",
-      "description": "practical example",
+      "name": "Organisation",
+      "description": null,
       "is_active": false,
-      "owner": "4f3b9f10-6cd5-440d-bcb7-9f48c1a36942",
+      "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
       "logo": ""
     }
   },
@@ -461,11 +452,100 @@
     "model": "organisation.organisation",
     "pk": 2,
     "fields": {
-      "name": "HP",
-      "description": "practical example",
+      "name": "Organisation 2",
+      "description": null,
       "is_active": false,
-      "owner": "4f3b9f10-6cd5-440d-bcb7-9f48c1a36942",
-      "logo": ""
+      "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+      "logo": "organisation/12063840_10206463344328062_9197026344854135455_n_2EKeQdD.jpg"
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 1,
+    "fields": {
+      "title": "Ng Girls",
+      "description": "Angular Event For Girls",
+      "registration_url": "https://google.com",
+      "start_datetime": "2081-02-08T20:39:00Z",
+      "end_datetime": "3938-02-08T15:08:00Z",
+      "organisation": 1,
+      "location": 1,
+      "cover": "events/12063840_10206463344328062_9197026344854135455_n_DV6uubr.jpg",
+      "sponser": [
+        1,
+        3
+      ],
+      "attendees": [
+        "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 2,
+    "fields": {
+      "title": "GDG Kolachi",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "events/12063840_10206463344328062_9197026344854135455_n_BE8PUU6.jpg",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 3,
+    "fields": {
+      "title": "Test Event",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 4,
+    "fields": {
+      "title": "GDG Kolachi",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
     }
   }
 ]
