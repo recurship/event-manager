@@ -3,13 +3,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import userStateType from '../types/multi-types';
 import type {
   BaseReducerPropsTypes,
   BaseReduxPropTypes,
 } from '../types/base-props-types';
 import { Route, Redirect } from 'react-router-dom';
 type Props = BaseReduxPropTypes & {
-  userState: Object,
+  userState: userStateType,
   appState: Object,
   events: Object,
 };

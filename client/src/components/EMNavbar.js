@@ -12,9 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 import { userLogout } from '../actions';
 import type { BaseReduxPropTypes } from '../types/base-props-types';
+import userDataType from '../types/multi-types';
 
 type Props = {
-  userData: Object,
+  userData: userDataType,
 };
 
 type State = {

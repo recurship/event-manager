@@ -13,15 +13,8 @@ class AuthContainer extends Component<Props> {
   render() {
     return (
       <Fragment>
-        <Route
-          exact
-          render={() => (
-            <div>
-              <EMNavbar userData={this.props} /> <Events />
-            </div>
-          )}
-          path="/"
-        />
+        <EMNavbar userData={this.props} />
+        <Route exact component={Events} path="/" />
       </Fragment>
     );
   }
@@ -29,7 +22,7 @@ class AuthContainer extends Component<Props> {
 
 const mapStateToProps = state => {
   const { userState } = state;
-  return state;
+  return { userState };
 };
 
 export default connect(mapStateToProps)(AuthContainer);

@@ -10,27 +10,27 @@ import EventDetails from '../EventDetails/EventDetails';
 import Organisation from '../Organisation/Organisation';
 import { connect } from 'react-redux';
 
-type Props = {};
+type Props = {
+  location: Object,
+};
 
 class PublicContainer extends Component<Props> {
   render() {
+    const { pathname } = this.props.location;
     return (
       <Router>
         <Fragment>
-          <Route
-            exact
-            render={() => (
-              <div>
-                <EMNavbar userData={this.props} /> <Events />
-              </div>
-            )}
-            path="/events"
-          />
+          {pathname == '/login' ||
+          pathname == '/signup' ||
+          pathname == '/forgot-password' ? null : (
+            <Route render={() => <EMNavbar userData={this.props} />} />
+          )}
+          <Route exact component={Events} path="/events" />
           <Route
             exact
             render={props => (
               <div>
-                <EMNavbar userData={this.props} /> <EventDetails {...props} />
+                <EventDetails {...props} />
               </div>
             )}
             path="/events/:event_id"
@@ -39,7 +39,7 @@ class PublicContainer extends Component<Props> {
             exact
             render={props => (
               <div>
-                <EMNavbar userData={this.props} /> <Organisation {...props} />
+                <Organisation {...props} />
               </div>
             )}
             path="/organisations/:organisation_id"
@@ -52,7 +52,7 @@ class PublicContainer extends Component<Props> {
 
 const mapStateToProps = state => {
   const { userState } = state;
-  return state;
+  return { userState };
 };
 
 export default connect(mapStateToProps)(PublicContainer);
