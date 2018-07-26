@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
 import SubHeader from '../../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
+import { makeQueryStringTransformable } from '../../utils/utils'
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
@@ -36,25 +37,10 @@ class Events extends Component<Props> {
     }]
   }
 
-  makeQueryStringTransformable = (params: Object) => {
-    let transformedParams = {};
-    for (let key in params) {
-      if (params.hasOwnProperty(key)) {
-        if (typeof params[key] == "object" && Array.isArray(params[key])) {
-          transformedParams[key] = (params[key].map(x => `${x.value}`)).join(',')
-        } else if (typeof params[key] == "object" && !Array.isArray(params[key])) {
-          transformedParams[key] = `${params[key].value}`;
-        } else {
-          transformedParams[key] = params[key];
-        }
-      }
-    }
-    return transformedParams;
-  }
 
   handleSearchChange = searchParams => {
     if (searchParams)
-    searchParams = this.makeQueryStringTransformable(searchParams);
+      searchParams = makeQueryStringTransformable(searchParams);
     this.getData(searchParams);
   };
 
@@ -114,7 +100,7 @@ class Events extends Component<Props> {
           <EventList events={events.events} />
         ) : (
             <Container>
-              <h4 className="text-center">Not Any Event Yet</h4>
+              <h4 className="text-center">No events found.</h4>
             </Container>
           )}
       </div>

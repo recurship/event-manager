@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, FormGroup, Label, Button } from 'reactstrap';
+import { BasePropsTypes } from '../../types/base-props-types';
 import Select from 'react-select';
 import { isEmpty } from 'lodash';
 import AsyncSelect from 'react-select/lib/Async';
@@ -12,17 +13,33 @@ import {
 import 'react-select/dist/react-select.min.css';
 import './DropSearch.css';
 
-class DropSearch extends Component {
+type Props = BaseReduxPropTypes & {
+	organisations: Array<Object>,
+	events: Array<Object>,
+	locations: Array<Object>,
+	sponsors: Array<Object>,
+	handleSearchChange: Function
+}
+
+type State = {
+  filterOrganisation: Array<Object>,
+  filterDateFrom: string,
+  filterDateTo: string,
+  filterLocation: Object,
+  filterSponser: Array<Object>,
+  filterKeywords: string,
+};
+class DropSearch extends Component<Props, State> {
   constructor(props) {
     super(props);
 
     this.state = {
-      filterOrganisation: '',
+      filterOrganisation: [],
       filterDateFrom: '',
       filterDateTo: '',
-      filterLocation: '',
-      filterSponser: '',
-      filterKeywords: '',
+      filterLocation: {},
+      filterSponser: [],
+      filterKeywords: ''
     };
     this.fetchDependencies();
   }
