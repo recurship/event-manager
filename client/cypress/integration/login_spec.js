@@ -30,7 +30,7 @@ describe('Logging In', function() {
 		it("click on Sign Up", function() {
 			cy.contains('Sign Up').click()
 			cy.url().should('include', '/signup')
-			cy.contains('Login').click()
+			cy.contains('Login').click({force: true})
 		})
 	})
 	context('Should redirect on forgot-password page', function() {
