@@ -166,7 +166,7 @@ class EventViewTest(TestCase):
         event_location_json_resp = json.loads(event_location_resp.content)
         # Now the event location is updated so its name will not match with the previously created event name
         self.assertNotEqual(event_location_instance.name, event_location_json_resp['name'])
-        
+
     def test_event_sponser_update_view_with_token(self):
         self.create_user()
         event_sponser_instance = self.create_event_sponser()
