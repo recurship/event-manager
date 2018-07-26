@@ -1,5 +1,6 @@
 from django.db import models
 from organisation.models import Organisation
+from user.models import User
 from django.core.validators import FileExtensionValidator
 
 
@@ -34,6 +35,7 @@ class Event(models.Model):
     sponser = models.ManyToManyField(EventSponser, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+    attendees = models.ManyToManyField(User, blank=True)
 
     def __str__(self):
         return self.title
