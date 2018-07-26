@@ -73,16 +73,19 @@ export const userLogout = () => (dispatch, getState) => {
   dispatch(userLogoutSuccess());
 };
 
-export const userLogin = credentials => (dispatch, getState) => {
+export const userLogin = credentials => async (dispatch, getState) => {
   dispatch(triggerRequest(USER_LOGIN));
-  return AuthService.login(credentials.username, credentials.password)
-    .then(token => {
-      dispatch(userLoginSuccess(token));
-      dispatch(endRequest(USER_LOGIN));
-    })
-    .catch(err => {
-      //dispatch(triggerFailure(USER_LOGIN, err));
-    });
+  try {
+    const token = await AuthService.login(
+      credentials.username,
+      credentials.password
+    );
+    if (token.access) dispatch(userLoginSuccess(token));
+    dispatch(endRequest(USER_LOGIN));
+    return token;
+  } catch (e) {
+    dispatch(triggerFailure(USER_LOGIN, e));
+  }
 };
 
 // event actions

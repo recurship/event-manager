@@ -9,3 +9,7 @@ div.login-container > .forgot {
   text-align: right;
   display: block;
 }
+div.login-container > .error-message {
+  margin: 1rem 0rem;
+  color: #dc3545;
+}
