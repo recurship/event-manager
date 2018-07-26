@@ -9,7 +9,6 @@ import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
-
 type Props = BaseReduxPropTypes & {
   userState: Object,
   events: Object,
