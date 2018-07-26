@@ -120,12 +120,12 @@ export const fetchEvents = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   return EventService.getAll(query)
     .then(response => {
-      let camelCaseKeys = humps.camelizeKeys(response.results);
+      let camelCaseKeys = humps.camelizeKeys(response);
       dispatch(getEvents(normalize(camelCaseKeys, eventListSchema)));
       dispatch(endRequest(FETCH_EVENTS));
     })
     .catch(err => {
-      //dispatch(triggerFailure(FETCH_EVENTS, err));
+      dispatch(triggerFailure(FETCH_EVENTS, err.message));
     });
 };
 

@@ -54,7 +54,7 @@ class Events extends Component<Props> {
 
   handleSearchChange = searchParams => {
     if (searchParams)
-      searchParams = this.makeQueryStringTransformable(searchParams);
+    searchParams = this.makeQueryStringTransformable(searchParams);
     this.getData(searchParams);
   };
 
