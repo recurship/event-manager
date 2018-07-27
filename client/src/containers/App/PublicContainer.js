@@ -9,20 +9,23 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import EventDetails from '../EventDetails/EventDetails';
 import Organisation from '../Organisation/Organisation';
 import { connect } from 'react-redux';
+import Location from '../../types/multi-types';
 
 type Props = {
-  location: Object,
+  location: Location,
 };
 
 class PublicContainer extends Component<Props> {
   render() {
+    console.log(this.props);
     const { pathname } = this.props.location;
     return (
       <Router>
         <Fragment>
           {pathname == '/login' ||
           pathname == '/signup' ||
-          pathname == '/forgot-password' ? null : (
+          pathname == '/forgot-password' ||
+          pathname == '/' ? null : (
             <Route render={() => <EMNavbar userData={this.props} />} />
           )}
           <Route exact component={Events} path="/events" />

@@ -1,11 +1,20 @@
 import { Action } from 'redux';
 
-export type userStateType = {
-  token: String,
-  currentUser: Object,
+export type UserState = {
+  token: string,
 };
 
-export type userDataType = {
-  userState: userStateType,
+export type User = {
+  userState: UserState,
   dispatch: Action,
+};
+
+export type Location = {
+  hash: string,
+  key: string,
+  pathname: string,
+  search: string,
+  state: {
+    from: Location,
+  },
 };
