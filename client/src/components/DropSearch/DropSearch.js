@@ -71,9 +71,18 @@ class DropSearch extends Component<Props, State> {
       target = this.props[key];
     target = target ? target[key] : [];
     return target.map(opt => ({ label: opt.name, value: opt.id }));
-  };
-
-  handleSearchChange = e => {
+	};
+	
+	/**
+	 * @author Saad Abbasi
+	 * @name handleSearchChange
+	 * @argument e: HTMLButtonClick event
+	 * @description 
+	 * - filters out empty/null values from state 
+	 * - and pass either undefined or extracted object to prop (handleSearchChange method)
+	 * @returns undefined.
+	 */
+  handleSearchChange = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let { handleSearchChange } = this.props,
       state = { ...this.state },
@@ -85,12 +94,14 @@ class DropSearch extends Component<Props, State> {
         .map(key => ({ [key]: state[key] }))
         .reduce((prev, next) => ({ ...prev, ...next }));
     handleSearchChange(requiredElements);
-  };
+	};
+	
   stateHasValues = () => {
     const state = { ...this.state },
       requiredProps = Object.keys(state).filter(key => !isEmpty(state[key]));
     return requiredProps.length > 0;
-  };
+	};
+	
   render() {
     let { options, events, sortBy } = this.props;
 

@@ -10,7 +10,7 @@ import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
-import DropSearch from '../../components/DropSearch/DropSearch';
+import DropSearch, {State as DropSearchState} from '../../components/DropSearch/DropSearch';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
@@ -38,7 +38,7 @@ class Events extends Component<Props> {
   }
 
 
-  handleSearchChange = searchParams => {
+  handleSearchChange = (searchParams: DropSearchState) => {
     if (searchParams)
       searchParams = makeQueryStringTransformable(searchParams);
     this.getData(searchParams);

@@ -1,5 +1,13 @@
 // @flow
-export function makeQueryStringTransformable (params: Object): Object {
+
+/**
+ * @author Saad Abbasi
+ * @description: Arrays or objects are not transformable to querystring, we need to transform according
+ * @argument: {params} may have any type and lengths of keys values
+ * @returns: {Object} with same keys as that of prarams, but transforamable to querystring
+ */
+
+export function makeQueryStringTransformable (params = {}): Object {
 	let transformedParams = {};
 	for (let key in params) {
 		if (params.hasOwnProperty(key)) {
