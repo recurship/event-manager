@@ -14,7 +14,7 @@ import PrivateRoute from '../../components/PrivateRoute';
 import PublicRoute from '../../components/PublicRoute';
 import EventDetails from '../EventDetails/EventDetails';
 import Organisation from '../Organisation/Organisation';
-
+import UserProfile from '../UserProfile/UserProfile';
 type Props = {};
 
 class App extends Component<Props> {
