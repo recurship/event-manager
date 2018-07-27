@@ -5,23 +5,27 @@ import { BasePropsTypes } from '../../types/base-props-types';
 import Select from 'react-select';
 import { isEmpty } from 'lodash';
 import AsyncSelect from 'react-select/lib/Async';
-import {
-  fetchOrganisation,
-  fetchSponsors,
-  fetchLocations,
-} from '../../actions';
+import { fetchOrganisation, fetchSponsors, fetchLocations } from '../../actions';
+import { OrganisationType } from '../../types/organisation-types';
+import { EventType } from '../../types/event-types';
+import { SponsorType } from '../../types/sponsor-types';
 import 'react-select/dist/react-select.min.css';
 import './DropSearch.css';
 
+type ReactSearchOptions = {
+	label: string,
+	value: string
+}
+
 type Props = BaseReduxPropTypes & {
-	organisations: Array<Object>,
-	events: Array<Object>,
-	locations: Array<Object>,
-	sponsors: Array<Object>,
+	organisations: Array<OrganisationType>,
+	events: Array<EventType>,
+	locations: Array<LocationType>,
+	sponsors: Array<SponsorType>,
 	handleSearchChange: Function
 }
 
-type State = {
+export type State = {
   filterOrganisation: Array<Object>,
   filterDateFrom: string,
   filterDateTo: string,
@@ -41,19 +45,19 @@ class DropSearch extends Component<Props, State> {
       filterSponser: [],
       filterKeywords: ''
     };
-    this.fetchDependencies();
+		this.fetchDependencies();
   }
 
   fetchDependencies() {
     const dispatch = this.props.dispatch;
     dispatch(fetchOrganisation());
     dispatch(fetchSponsors());
-    dispatch(fetchLocations());
+		dispatch(fetchLocations());
   }
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+		this.setState({ [name]: value });
   };
 
   handleSelect = e => {
@@ -61,7 +65,8 @@ class DropSearch extends Component<Props, State> {
     this.setState({ [name]: value });
   };
 
-  mapStateToOptions = key => {
+
+  mapStateToOptions:(key: string) => Array<ReactSearchOptions> = key => {
     let options = [],
       target = this.props[key];
     target = target ? target[key] : [];
