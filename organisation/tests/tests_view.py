@@ -36,6 +36,8 @@ class OrganisationViewTest(TestCase):
         self.assertEqual(resp.status_code, 200)
         json_resp = json.loads(resp.content)
         self.assertDictContainsSubset(model_to_dict(organisation_instance, MODEL_FIELDS), json_resp, 'it should provide detail of organisation with id')
+        # check events array should be added organisations/<id> response to get all respective events for organisation
+        self.assertTrue('events' in json_resp)
 
     def test_organisation_create_view_with_token(self):
         organisation_instance =  self.create_organisation()
