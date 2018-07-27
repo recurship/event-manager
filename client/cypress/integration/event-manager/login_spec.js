@@ -13,12 +13,6 @@ describe('Logging In', function() {
 		})
 	})
 
-	context('Password field should have password type', function(){
-		it("password field type is password", function() {
-    	cy.get('input[name=password]').should('have.attr', 'type', 'password')
- 	 })
-	})
-
 	context('Sould show an error on wrong credentials', function(){
 		it('show an error on wrong credentials', function() {
 			cy.get('input[name=username]').type('hello')
