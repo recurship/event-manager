@@ -17,7 +17,6 @@ type Props = {
 
 class PublicContainer extends Component<Props> {
   render() {
-    console.log(this.props);
     const { pathname } = this.props.location;
     return (
       <Router>

@@ -3,16 +3,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import UserState from '../types/multi-types';
+import { UserState, AppState, Events } from '../types/multi-types';
 import type {
   BaseReducerPropsTypes,
   BaseReduxPropTypes,
 } from '../types/base-props-types';
 import { Route, Redirect } from 'react-router-dom';
+
 type Props = BaseReduxPropTypes & {
   userState: UserState,
-  appState: Object,
-  events: Object,
+  appState: AppState,
+  events: Events,
 };
 class PublicRoute extends Component<Props> {
   render() {
