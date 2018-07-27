@@ -1,6 +1,7 @@
 
 from rest_framework import serializers
 from organisation.serializer import OrganisationSerializer
+from user.serializer import UserSerializer
 from .models import Event, EventLocation, EventSponser
 
 # Event location Serializers
@@ -31,8 +32,24 @@ class EventSerializer(serializers.ModelSerializer):
     organisation = OrganisationSerializer()
     location = EventLocationSerializer()
     sponser = EventSponserSerializer(many=True)
+    attendees = UserSerializer(many=True)
 
     class Meta:
         model = Event
         fields = ('id', 'title', 'description', 'start_datetime',
-                  'end_datetime', 'organisation', 'cover', 'location', 'sponser')
+                  'end_datetime', 'organisation', 'cover', 'location', 'sponser', 'attendees')
+
+class EventUserAddSerializer(serializers.Serializer):
+    userid = serializers.UUIDField()
+    eventid = serializers.IntegerField()
+
+    class Meta:
+        model = Event
+        fields = ['__all__']
+
+    @classmethod
+    def update(self, instance, validated_data):
+        event = Event.objects.get(id=validated_data['eventid'])
+        event.attendees.add(validated_data['userid'])
+        event.save()
+        return event

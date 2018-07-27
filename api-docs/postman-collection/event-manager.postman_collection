@@ -197,8 +197,9 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
-						"description": ""
+						"value": "Bearer.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OU1OTk2ZjUyMTg4OGIxZGZiNi",
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "application/json",
@@ -206,10 +207,9 @@
 						"description": ""
 					},
 					{
-						"key": "payload",
-						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
-						"disabled": true
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+						"description": ""
 					}
 				],
 				"body": {
@@ -217,13 +217,13 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Test Organisation",
+							"value": "Organisation 2",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "owner",
-							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+							"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
 							"description": "",
 							"type": "text"
 						},
@@ -253,6 +253,12 @@
 							"description": "",
 							"type": "text",
 							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "test dexcriptuon",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -355,7 +361,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
 						"description": ""
 					},
 					{
@@ -370,13 +376,13 @@
 					"formdata": [
 						{
 							"key": "title",
-							"value": "test event",
+							"value": "GDG Kolachi",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "testing",
+							"value": "Google Developer Expert",
 							"description": "",
 							"type": "text"
 						},
@@ -388,19 +394,49 @@
 						},
 						{
 							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
+							"value": "2018-08-23T20:39:00+0000",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
+							"value": "2018-08-30T15:08:00+0000",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "organisation",
 							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "registration_url",
+							"value": "https://google.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "4",
 							"description": "",
 							"type": "text"
 						}
@@ -696,6 +732,254 @@
 							"value": "true",
 							"description": "",
 							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/events/add/1/",
+			"request": {
+				"url": "http://localhost:8000/api/events/add/1/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "GDG Kolachi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Google Developer Expert",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "cover",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "start_datetime",
+							"value": "2018-08-23T20:39:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "end_datetime",
+							"value": "2018-08-30T15:08:00+0000",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "registration_url",
+							"value": "https://google.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sponser",
+							"value": "4",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/sponsers/",
+			"request": {
+				"url": "http://localhost:8000/api/sponsers/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mazedar Haleem",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Food sponser",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/locations/",
+			"request": {
+				"url": "http://localhost:8000/api/locations/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "location 1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "clifton",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file"
 						}
 					]
 				},
