@@ -45,12 +45,15 @@ class EventDetails extends Component {
         {attendees &&
           attendees.map(att => (
             <Col key={att.id}>
-              <Link to={`/event/${this.eventId}/attendee/${att.}`}>
+              <Link to={`/event/${this.eventId}/attendee/${att.id}`}>
                 <Card id="attendee-card">
                   <CardImg
                     top
                     width="100%"
-                    src={att.avatar || "https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"}
+                    src={
+                      att.avatar ||
+                      'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
+                    }
                     alt="Card image cap"
                   />
                   <CardBody>

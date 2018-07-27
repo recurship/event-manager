@@ -1,18 +1,28 @@
 // @flow
 
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import Events from '../Events/Events';
 import { EMNavbar } from '../../components/EMNavbar';
 import { Container } from 'reactstrap';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const AuthContainer = () => (
-  <Fragment>
-    <EMNavbar />
-    <Container>
-      <Route exact path="/" component={Events} />
-    </Container>
-  </Fragment>
-);
+type Props = {};
 
-export default AuthContainer;
+class AuthContainer extends Component<Props> {
+  render() {
+    return (
+      <Fragment>
+        <EMNavbar userData={this.props} />
+        <Route exact component={Events} path="/" />
+      </Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  const { userState } = state;
+  return { userState };
+};
+
+export default connect(mapStateToProps)(AuthContainer);

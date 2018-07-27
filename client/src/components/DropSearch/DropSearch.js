@@ -5,7 +5,11 @@ import { BasePropsTypes } from '../../types/base-props-types';
 import Select from 'react-select';
 import { isEmpty } from 'lodash';
 import AsyncSelect from 'react-select/lib/Async';
-import { fetchOrganisation, fetchSponsors, fetchLocations } from '../../actions';
+import {
+  fetchOrganisation,
+  fetchSponsors,
+  fetchLocations,
+} from '../../actions';
 import { OrganisationType } from '../../types/organisation-types';
 import { EventType } from '../../types/event-types';
 import { SponsorType } from '../../types/sponsor-types';
@@ -13,17 +17,17 @@ import 'react-select/dist/react-select.min.css';
 import './DropSearch.css';
 
 type ReactSearchOptions = {
-	label: string,
-	value: string
-}
+  label: string,
+  value: string,
+};
 
 type Props = BaseReduxPropTypes & {
-	organisations: Array<OrganisationType>,
-	events: Array<EventType>,
-	locations: Array<LocationType>,
-	sponsors: Array<SponsorType>,
-	handleSearchChange: Function
-}
+  organisations: Array<OrganisationType>,
+  events: Array<EventType>,
+  locations: Array<LocationType>,
+  sponsors: Array<SponsorType>,
+  handleSearchChange: Function,
+};
 
 export type State = {
   filterOrganisation: Array<Object>,
@@ -43,21 +47,21 @@ class DropSearch extends Component<Props, State> {
       filterDateTo: '',
       filterLocation: {},
       filterSponser: [],
-      filterKeywords: ''
+      filterKeywords: '',
     };
-		this.fetchDependencies();
+    this.fetchDependencies();
   }
 
   fetchDependencies() {
     const dispatch = this.props.dispatch;
     dispatch(fetchOrganisation());
     dispatch(fetchSponsors());
-		dispatch(fetchLocations());
+    dispatch(fetchLocations());
   }
 
   handleInputChange = e => {
     const { name, value } = e.target;
-		this.setState({ [name]: value });
+    this.setState({ [name]: value });
   };
 
   handleSelect = e => {
@@ -65,23 +69,22 @@ class DropSearch extends Component<Props, State> {
     this.setState({ [name]: value });
   };
 
-
-  mapStateToOptions:(key: string) => Array<ReactSearchOptions> = key => {
+  mapStateToOptions: (key: string) => Array<ReactSearchOptions> = key => {
     let options = [],
       target = this.props[key];
     target = target ? target[key] : [];
     return target.map(opt => ({ label: opt.name, value: opt.id }));
-	};
-	
-	/**
-	 * @author Saad Abbasi
-	 * @name handleSearchChange
-	 * @argument e: HTMLButtonClick event
-	 * @description 
-	 * - filters out empty/null values from state 
-	 * - and pass either undefined or extracted object to prop (handleSearchChange method)
-	 * @returns undefined.
-	 */
+  };
+
+  /**
+   * @author Saad Abbasi
+   * @name handleSearchChange
+   * @argument e: HTMLButtonClick event
+   * @description
+   * - filters out empty/null values from state
+   * - and pass either undefined or extracted object to prop (handleSearchChange method)
+   * @returns undefined.
+   */
   handleSearchChange = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let { handleSearchChange } = this.props,
@@ -94,14 +97,14 @@ class DropSearch extends Component<Props, State> {
         .map(key => ({ [key]: state[key] }))
         .reduce((prev, next) => ({ ...prev, ...next }));
     handleSearchChange(requiredElements);
-	};
-	
+  };
+
   stateHasValues = () => {
     const state = { ...this.state },
       requiredProps = Object.keys(state).filter(key => !isEmpty(state[key]));
     return requiredProps.length > 0;
-	};
-	
+  };
+
   render() {
     let { options, events, sortBy } = this.props;
 

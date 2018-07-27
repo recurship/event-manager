@@ -4,13 +4,15 @@ import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
 import SubHeader from '../../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
-import { makeQueryStringTransformable } from '../../utils/utils'
+import { makeQueryStringTransformable } from '../../utils/utils';
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
-import DropSearch, {State as DropSearchState} from '../../components/DropSearch/DropSearch';
+import DropSearch, {
+  State as DropSearchState,
+} from '../../components/DropSearch/DropSearch';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
@@ -22,37 +24,34 @@ class Events extends Component<Props> {
     this.getData();
   }
   getSortyByOptions = () => {
-    return [{
-      label: 'Start Date',
-      value: 'startDate'
-    }, {
-      label: 'Organisation',
-      value: 'organisation'
-    }, {
-      label: 'Sponsor',
-      value: 'sponser'
-    }, {
-      label: 'Location',
-      value: 'location'
-    }]
-  }
-
+    return [
+      {
+        label: 'Start Date',
+        value: 'startDate',
+      },
+      {
+        label: 'Organisation',
+        value: 'organisation',
+      },
+      {
+        label: 'Sponsor',
+        value: 'sponser',
+      },
+      {
+        label: 'Location',
+        value: 'location',
+      },
+    ];
+  };
 
   handleSearchChange = (searchParams: DropSearchState) => {
-    if (searchParams)
-      searchParams = makeQueryStringTransformable(searchParams);
+    if (searchParams) searchParams = makeQueryStringTransformable(searchParams);
     this.getData(searchParams);
   };
 
-
-  getData = (e) => {
+  getData = e => {
     const { dispatch } = this.props;
     dispatch(fetchEvents(e));
-  };
-
-  logout = () => {
-    const { dispatch } = this.props;
-    dispatch(userLogout());
   };
 
   handleSubmit = (event: any) => {
@@ -99,10 +98,10 @@ class Events extends Component<Props> {
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-            <Container>
-              <h4 className="text-center">No events found.</h4>
-            </Container>
-          )}
+          <Container>
+            <h4 className="text-center">No events found.</h4>
+          </Container>
+        )}
       </div>
     );
   }

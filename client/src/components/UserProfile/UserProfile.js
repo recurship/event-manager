@@ -15,9 +15,9 @@ type Props = {
   user: AttendeeType,
 };
 type InfoGroupProps = {
-	name: string,
-	value: string
-}
+  name: string,
+  value: string,
+};
 
 const InfoGroup = (e: InfoGroupProps) => {
   return (

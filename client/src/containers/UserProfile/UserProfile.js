@@ -28,7 +28,7 @@ class UserProfile extends Component {
     return attendee ? attendee : null;
   }
   render() {
-		const user = this.getUserDetails();
+    const user = this.getUserDetails();
     return user ? (
       <div style={{ marginTop: '20px' }}>
         <Profile user={user} />
