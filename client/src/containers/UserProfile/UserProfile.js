@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
+import { AttendeeType } from '../../types/attendee-types';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class UserProfile extends Component {
     const { dispatch } = this.props;
     dispatch(fetchEvents());
   }
-  getUserDetails() {
+  getUserDetails(): AttendeeType {
     const {
         event_id: eventId = null,
         attendee_id: attendeeId = null,
@@ -27,7 +28,7 @@ class UserProfile extends Component {
     return attendee ? attendee : null;
   }
   render() {
-    const user = this.getUserDetails();
+		const user = this.getUserDetails();
     return user ? (
       <div style={{ marginTop: '20px' }}>
         <Profile user={user} />
