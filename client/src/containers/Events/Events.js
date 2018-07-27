@@ -4,11 +4,13 @@ import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
 import SubHeader from '../../components/EventList/SubHeader/SubHeader';
 import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
+import { makeQueryStringTransformable } from '../../utils/utils'
 import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import { EMNavbar } from '../../components/EMNavbar';
+import DropSearch, {State as DropSearchState} from '../../components/DropSearch/DropSearch';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
@@ -19,10 +21,33 @@ class Events extends Component<Props> {
   componentDidMount() {
     this.getData();
   }
+  getSortyByOptions = () => {
+    return [{
+      label: 'Start Date',
+      value: 'startDate'
+    }, {
+      label: 'Organisation',
+      value: 'organisation'
+    }, {
+      label: 'Sponsor',
+      value: 'sponser'
+    }, {
+      label: 'Location',
+      value: 'location'
+    }]
+  }
 
-  getData = () => {
+
+  handleSearchChange = (searchParams: DropSearchState) => {
+    if (searchParams)
+      searchParams = makeQueryStringTransformable(searchParams);
+    this.getData(searchParams);
+  };
+
+
+  getData = (e) => {
     const { dispatch } = this.props;
-    dispatch(fetchEvents());
+    dispatch(fetchEvents(e));
   };
 
   logout = () => {
@@ -61,15 +86,23 @@ class Events extends Component<Props> {
           <h6 className="text-center">Portal for Open Source Communities</h6>
         </Jumbotron>
         <Container>
-          <SubHeader />
+          <Row>
+            <Col md="12">
+              <DropSearch
+                sortBy={this.getSortyByOptions()}
+                handleSearchChange={this.handleSearchChange}
+                events={events}
+              />
+            </Col>
+          </Row>
         </Container>
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <Container>
-            <h4 className="text-center">Not Any Event Yet</h4>
-          </Container>
-        )}
+            <Container>
+              <h4 className="text-center">No events found.</h4>
+            </Container>
+          )}
       </div>
     );
   }

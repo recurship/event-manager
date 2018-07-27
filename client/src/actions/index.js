@@ -4,6 +4,10 @@ import OrganisationService from '../services/organisation';
 import { normalize } from 'normalizr';
 import { eventSchema, eventListSchema } from '../schemas/eventSchema';
 import { organisationSchema } from '../schemas/organisationSchema';
+import OrganisationsService from '../services/organisation';
+import SponsorsService from '../services/sponsors';
+import LocationService from '../services/locations';
+import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
 // app
 
@@ -26,6 +30,11 @@ export const FETCH_EVENT_DETAIL = 'FETCH_EVENT_DETAIL';
 
 // organisation
 export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
+
+//misc
+export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
+export const FETCH_ORGANISATIONS = 'FETCH_ORGANISATIONS';
+export const FETCH_SPONSORS = 'FETCH_SPONSORS';
 
 // app actions
 
@@ -107,16 +116,16 @@ export const addEvent = event => ({
   event,
 });
 
-export const fetchEvents = () => async (dispatch, getState) => {
+export const fetchEvents = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
-  return EventService.getAll()
+  return EventService.getAll(query)
     .then(response => {
-      let camelCaseKeys = humps.camelizeKeys(response.results);
+      let camelCaseKeys = humps.camelizeKeys(response);
       dispatch(getEvents(normalize(camelCaseKeys, eventListSchema)));
       dispatch(endRequest(FETCH_EVENTS));
     })
     .catch(err => {
-      //dispatch(triggerFailure(FETCH_EVENTS, err));
+      dispatch(triggerFailure(FETCH_EVENTS, err.message));
     });
 };
 
@@ -186,4 +195,59 @@ export const postEvent = event => (dispatch, getState) => {
     .catch(err => {
       dispatch(triggerFailure(ADD_EVENT, err));
     });
+};
+
+// misc actions
+export const getOrganisations = organisations => ({
+  type: FETCH_ORGANISATIONS,
+  organisations,
+});
+
+export const getSponsors = sponsors => ({
+  type: FETCH_SPONSORS,
+  sponsors,
+});
+
+export const getLocations = locations => ({
+  type: FETCH_LOCATIONS,
+  locations,
+});
+
+export const fetchOrganisation = query => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_ORGANISATIONS));
+  try {
+    const response = await OrganisationsService.getAll();
+    let normalized = humps.camelizeKeys(response.results);
+    dispatch(getOrganisations(normalized));
+    dispatch(endRequest(FETCH_ORGANISATIONS));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_ORGANISATIONS, e.message));
+    return e;
+  }
+};
+
+export const fetchSponsors = query => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_SPONSORS));
+  try {
+    const response = await SponsorsService.getAll();
+    let normalized = humps.camelizeKeys(response.results);
+    dispatch(getSponsors(normalized));
+    dispatch(endRequest(FETCH_SPONSORS));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_SPONSORS, e.message));
+    return e;
+  }
+};
+
+export const fetchLocations = query => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_LOCATIONS));
+  try {
+    const response = await LocationService.getAll();
+    let normalized = humps.camelizeKeys(response.results);
+    dispatch(getLocations(normalized));
+    dispatch(endRequest(FETCH_LOCATIONS));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_LOCATIONS, e.message));
+    return e;
+  }
 };
