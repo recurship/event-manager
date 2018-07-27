@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
+import { destroy } from 'redux-form';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
@@ -35,8 +36,10 @@ class Login extends Component<Props, State> {
       };
     // admin / 1299459ML
     const response = await dispatch(userLogin(payload));
-    if (response && response.non_field_errors)
+    if (response && response.non_field_errors) {
+      dispatch(destroy('login'));
       this.setState({ error: response.non_field_errors[0] });
+    }
   };
 
   render() {
