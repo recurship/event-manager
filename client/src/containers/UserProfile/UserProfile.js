@@ -23,7 +23,7 @@ class UserProfile extends Component {
     let event, attendee;
     event = events.find(event => event.id == eventId);
     if (event && event.attendees)
-      attendee = event.attendees.find(att => (att.id = attendeeId));
+      attendee = event.attendees.find(att => (att.id === attendeeId));
 
     return attendee ? attendee : null;
   }
