@@ -1,56 +1,99 @@
-describe('Signing up', function() {
-  context('Should be on Signup page', function() {
-    it('successfully load sign up page', function() {
+describe('Sign up', function() {
+  context('Testing Signup Page', function() {
+    it('Load signup page', function() {
       cy.visit('/signup');
     });
-    it('Visible Sign Up heading', function() {
-      cy.get('.login-container').contains('Sign Up');
-    });
   });
-  describe('Form Validation', function() {
-    it('Having Sign up form', function() {
-      cy.get('form');
-    });
+  context('Form Validation testing', function() {
     it('disable on empty fields', function() {
-      cy.get('form')
+      cy.get('form .btn')
         .contains('Sign Up')
         .should('be.disabled');
     });
-    context('check placeholders on the fields and type', function() {
-      it('First Name', function() {
-        cy.get('input[name=firstname]').should(
-          'have.attr',
-          'placeholder',
-          'First Name'
-        )
+    context('Type Checking on the fields', function() {
+      it('Email -> email type', function() {
+        cy.get('form input[name=email]').should('have.attr', 'type', 'email');
       });
-      it('Last Name', function() {
-        cy.get('input[name=lastname]').should(
-          'have.attr',
-          'placeholder',
-          'Last Name'
-        );
+      it('Password -> password', function() {
+        cy.get('input[name=password]').should('have.attr', 'type', 'password');
       });
-      it('User Name', function() {
-        cy.get('input[name=username]').should(
-          'have.attr',
-          'placeholder',
-          'User Name'
-        );
+    });
+
+    context('Type Validation on Email and Password', function() {
+      it('Invalid Email -> Validation Error', function() {
+        cy.get('input[name=email]')
+          .clear()
+          .type('123')
+          .blur()
+          .next()
+          .contains('*Invalid email address');
       });
-      it('Email', function() {
-        cy.get('input[name=email]').should(
-          'have.attr',
-          'placeholder',
-          'Email'
-        );
+      it('Invalid Password -> Validation Error', function() {
+        cy.get('input[name=password]')
+          .clear()
+          .type('123')
+          .blur()
+          .next()
+          .contains('*Password must be atleast 8 characters');
       });
-      it('Password', function() {
-        cy.get('input[name=password]').should(
-          'have.attr',
-          'placeholder',
-          'Password'
-        );
+    });
+    context('Submit should be enabled after', function() {
+      it('Fill-out all fields', function() {
+        cy.get('form input[name=firstname]')
+          .clear()
+          .type('first');
+        cy.get('form input[name=lastname]')
+          .clear()
+          .type('last');
+        cy.get('form input[name=username]')
+          .clear()
+          .type('usernamse00s0');
+        cy.get('form input[name=email]')
+          .clear()
+          .type('email00s00s@something.com');
+        cy.get('form input[name=password]')
+          .clear()
+          .type('12345678');
+      });
+      it('Submit Button Enabled', function() {
+        cy.get('form .btn')
+          .contains('Sign Up')
+          .should('be.enabled')
+          .click();
+      });
+      it('Redirected to Login', function() {
+        cy.url().should('include', '/login');
+      });
+    });
+    context('Should not submit on existed username or email', function() {
+      it('Load signup page', function() {
+        cy.visit('/signup');
+      });
+      it('Fill-out existing fields for username/email', function() {
+        cy.get('form input[name=firstname]')
+          .clear()
+          .type('first');
+        cy.get('form input[name=lastname]')
+          .clear()
+          .type('last');
+        cy.get('form input[name=username]')
+          .clear()
+          .type('username000');
+        cy.get('form input[name=email]')
+          .clear()
+          .type('email0000@something.com');
+        cy.get('form input[name=password]')
+          .clear()
+          .type('12345678');
+      });
+      it('Submit Button clicked', function() {
+        cy.get('form .btn')
+          .contains('Sign Up')
+          .should('be.enabled')
+          .click();
+      });
+      it('show error on existed email/username', function() {
+        cy.get('.error-message').should('be.visible');
       });
     });
   });
