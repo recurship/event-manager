@@ -20,6 +20,7 @@ import moment from 'moment';
 import EventDescription from '../../components/EventDescription/EventDescription';
 import { Link } from 'react-router-dom';
 import './EventDetails.css';
+import { AttendeeType } from '../../types/attendee-types';
 class EventDetails extends Component {
   eventId: string;
 
@@ -38,18 +39,18 @@ class EventDetails extends Component {
     dispatch(fetchEventDetail(eventId));
   };
 
-  getAttendeesProfiles = attendees => {
+  getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
     return (
       <Row>
         {attendees &&
           attendees.map(att => (
             <Col key={att.id}>
-              <Link to={`/event/${this.eventId}/attendee/${att.id}`}>
+              <Link to={`/event/${this.eventId}/attendee/${att.}`}>
                 <Card id="attendee-card">
                   <CardImg
                     top
                     width="100%"
-                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                    src={att.avatar || "https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"}
                     alt="Card image cap"
                   />
                   <CardBody>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AttendeeType } from '../../types/attendee-types';
 import {
   Card,
   CardImg,
@@ -10,7 +11,15 @@ import {
 } from 'reactstrap';
 import './UserProfile.css';
 
-const InfoGroup = e => {
+type Props = {
+  user: AttendeeType,
+};
+type InfoGroupProps = {
+	name: string,
+	value: string
+}
+
+const InfoGroup = (e: InfoGroupProps) => {
   return (
     <tr className="info-group">
       <td colSpan="2" className="label capitalize">
@@ -20,15 +29,16 @@ const InfoGroup = e => {
     </tr>
   );
 };
-const getFullname = user => {
+
+const getFullname = (user: AttendeeType) => {
   let name = '';
   if (user.firstName) name += `${user.firstName} `;
   if (user.lastName) name += `${user.lastName} `;
 
   return name ? name : '-';
 };
-const UserProfile = ({ user }) => {
-  console.log('user recieved as props:', user);
+const UserProfile = (props: Props) => {
+  let user = props.user;
   return user ? (
     <div id="user-profile">
       <h4>{user.username || user.email || getFullname(user)}</h4>
