@@ -47,10 +47,10 @@ describe('Sign up', function() {
           .type('last');
         cy.get('form input[name=username]')
           .clear()
-          .type('usernamse00s0');
+          .type('username0000');
         cy.get('form input[name=email]')
           .clear()
-          .type('email00s00s@something.com');
+          .type('email0000@something.com');
         cy.get('form input[name=password]')
           .clear()
           .type('12345678');
