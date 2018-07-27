@@ -1,0 +1,17 @@
+#user-profile {
+  width: 960px;
+  margin: 0 auto;
+}
+#user-profile table {
+  /* background: black; */
+}
+#user-profile table td  {
+  padding: 5px 20px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+.bold {
+  font-weight: bold;
+}

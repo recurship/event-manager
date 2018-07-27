@@ -19,11 +19,11 @@ const defaultAppState = {
 
 const appState = (state = defaultAppState, action) => {
   switch (action.type) {
-  case TRIGGER_REQUEST:
-    return {
-      ...state,
-      loading: [...state.loading, action.name],
-    };
+    case TRIGGER_REQUEST:
+      return {
+        ...state,
+        loading: [...state.loading, action.name],
+      };
 
     case TRIGGER_FAILURE:
       return {
@@ -31,14 +31,14 @@ const appState = (state = defaultAppState, action) => {
         loading: state.loading.filter(name => name !== action.name),
       };
 
-    case END_REQUEST:
-      return {
-      ...state,
-      loading: state.loading.filter(name => name !== action.name),
-      };
+  case END_REQUEST:
+    return {
+        ...state,
+        loading: state.loading.filter(name => name !== action.name),
+    };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
@@ -48,25 +48,25 @@ const defaultUserState = {
 };
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
-  case USER_LOGIN:
-      return {
-      ...state,
-        token: action.token.access,
-        refresh: action.token.refresh,
-      };
+    case USER_LOGIN:
+    return {
+        ...state,
+      token: action.token.access,
+      refresh: action.token.refresh,
+    };
 
-  case USER_LOGOUT:
-      return {
-      ...state,
-      token: null,
-    };
-    case REFRESH_TOKEN:
-      return {
-      ...state,
-        token: action.payload.access,
-    };
-  default:
-    return state;
+    case USER_LOGOUT:
+    return {
+        ...state,
+        token: null,
+      };
+  case REFRESH_TOKEN:
+    return {
+        ...state,
+      token: action.payload.access,
+      };
+    default:
+      return state;
   }
 };
 
@@ -75,14 +75,14 @@ const defaultResetPasswordState = {
 };
 const resetPasswordState = (state = defaultResetPasswordState, action) => {
   switch (action.type) {
-    case RESET_PASSWORD:
-    return {
-        ...state,
-        message: action.message,
-      };
+  case RESET_PASSWORD:
+      return {
+      ...state,
+      message: action.message,
+    };
 
-    default:
-    return state;
+  default:
+      return state;
   }
 };
 
@@ -102,7 +102,7 @@ const events = (state = defaultEventState, action) => {
 const eventDetail = (state = defaultEventState, action) => {
   if (action.event) {
     return {
-      event: Object.values(action.event.entities.events),
+      event: { ...Object.values(action.event.entities.events)[0] },
     };
   }
   return state;
@@ -126,11 +126,11 @@ const defaultOrganisationsState = {
 };
 const organisationsState = (state = defaultOrganisationsState, action) => {
   switch (action.type) {
-  case FETCH_ORGANISATIONS:
-      return {
-        ...state,
-        organisations: action.organisations,
-      };
+    case FETCH_ORGANISATIONS:
+    return {
+      ...state,
+      organisations: action.organisations,
+    };
   }
   return state;
 };
@@ -140,11 +140,11 @@ const defaultSponsorsState = {
 };
 const sponsorsState = (state = defaultSponsorsState, action) => {
   switch (action.type) {
-    case FETCH_SPONSORS:
-    return {
-        ...state,
-      sponsors: action.sponsors,
-      };
+  case FETCH_SPONSORS:
+      return {
+      ...state,
+        sponsors: action.sponsors,
+    };
   }
   return state;
 };
@@ -154,11 +154,11 @@ const defaultLocationState = {
 };
 const locationState = (state = defaultLocationState, action) => {
   switch (action.type) {
-    case FETCH_LOCATIONS:
-    return {
-        ...state,
-      locations: action.locations,
-      };
+  case FETCH_LOCATIONS:
+      return {
+      ...state,
+        locations: action.locations,
+    };
   }
   return state;
 };
