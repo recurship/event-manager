@@ -16,6 +16,15 @@ export const invalidUser = {
   password: '123',
 };
 
+export const wrongCredentials = {
+  username: 'nothappyperson',
+  password: '123457783',
+};
+export const ValidCredentials = {
+  username: 'admin',
+  password: '1299459ML',
+};
+
 export const userWithExistedUsername = {
   firstname: 'Happy',
   lastname: 'Person',

@@ -15,3 +15,12 @@ Cypress.Commands.add('fillForm', userType => {
     .clear()
     .type(userType.password);
 });
+
+Cypress.Commands.add('login', userType => {
+    cy.get('form input[name=username]')
+      .clear()
+      .type(userType.username);
+    cy.get('form input[name=password]')
+      .clear()
+      .type(userType.password);
+  });

@@ -1,56 +1,56 @@
-describe('Logging In', function() {
+import { ValidCredentials, wrongCredentials } from './dataSet';
 
-	context('Should be on login page', function() {
-		it('login page view', function() {
-      cy.visit('/login')
-			cy.get('h4').should('contain', 'Login')
-    })
-	})
+describe('Login Testing', () => {
+  context('Test for Login Route', () => {
+    it('Should be on Sign up page', () => {
+      cy.visit('/login');
+      cy.get('h4').should('contain', 'Login');
+    });
+  });
 
-	context('Submit button should be disabled on empty fields', function(){
-		it('disabled submit button when both fields are empty', function() {
-			cy.contains('Submit').should('be.disabled')
-		})
-	})
+  context('Test for Empty Fields', () => {
+    it('Submit button should be disabled on empty fields', () => {
+      cy.contains('Submit').should('be.disabled');
+    });
+  });
 
-	context('Sould show an error on wrong credentials', function(){
-		it('show an error on wrong credentials', function() {
-			cy.get('input[name=username]').type('hello')
-			cy.get('input[name=password]').type('123')
-			cy.contains('Submit').click()
-			 cy.get('p.error-message')
-        .should('contain', 'No active account found with the given credentials')
-		})
-	})
+  context('Test for Wrong Credentials', () => {
+    it('submit button should be enabled for filled fields', () => {
+      cy.login(wrongCredentials);
+      cy.get('form .btn')
+        .contains('Submit')
+        .click();
+    });
+    it('Should show error on wrong credentials', () => {
+      cy.get('p.error-message').should(
+        'contain',
+        'No active account found with the given credentials'
+      );
+    });
+  });
 
-	context('Submit button should be enabled on filled fields', function(){
-		it('enable submit button when both fields are filled', function() {
-			cy.get('input[name=username]').type('admin')
-			cy.get('input[name=password]').type('1299459ML')
-			cy.contains('Submit').should('be.enabled')
-		})
-	})
+  context('Test for Correct Credentials', () => {
+    it('Should redirect to home page', () => {
+      cy.login(ValidCredentials);
+      cy.contains('Submit').click();
+      cy.url().should('include', '/');
+      cy.get('h3').should('contain', 'Welcome to Event Management');
+      localStorage.clear();
+    });
+  });
+  context('Sign up label should redirect to signup page', () => {
+    it('click on Sign Up', () => {
+      cy.visit('/login');
+      cy.contains('Sign Up').click();
+      cy.url().should('include', '/signup');
+    });
+  });
 
-	// context('Should redirect to home page on successful login', function(){
-	// 	it('show home page on successful login', function() {
-	// 		cy.contains('Submit').click()
-	// 		cy.url().should('include', '/')
-	// 		cy.get('h3').should('contain', 'Welcome to Event Management')
-	// 	})
-	// })
-	
-	context('Should redirect on signup page', function() {
-		it("click on Sign Up", function() {
-			cy.contains('Sign Up').click()
-			cy.url().should('include', '/signup')
-			cy.contains('Login').click({force: true})
-		})
-	})
-	
-	context('Should redirect on forgot-password page', function() {
-		it("click on Forgot Password?", function() {
-			cy.contains('Forgot Password?').click()
-			cy.url().should('include', '/forgot-password')
-		})
-	})
-})
+  context('Should redirect on forgot-password page', () => {
+    it('click on Forgot Password?', () => {
+      cy.visit('/login');
+      cy.contains('Forgot Password?').click();
+      cy.url().should('include', '/forgot-password');
+    });
+  });
+});
