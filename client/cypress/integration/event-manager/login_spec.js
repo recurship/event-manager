@@ -46,11 +46,14 @@ describe('Login Testing', () => {
     });
   });
 
-  context('Should redirect on forgot-password page', () => {
-    it('click on Forgot Password?', () => {
-      cy.visit('/login');
-      cy.contains('Forgot Password?').click();
-      cy.url().should('include', '/forgot-password');
-    });
-  });
+  context(
+    'Forgot Password label should redirect to forgot-password page',
+    () => {
+      it('click on Forgot Password?', () => {
+        cy.visit('/login');
+        cy.contains('Forgot Password?').click();
+        cy.url().should('include', '/forgot-password');
+      });
+    }
+  );
 });
