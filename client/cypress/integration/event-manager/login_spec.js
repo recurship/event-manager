@@ -35,6 +35,7 @@ describe('Login Testing', () => {
       cy.contains('Submit').click();
       cy.url().should('include', '/');
       cy.get('h3').should('contain', 'Welcome to Event Management');
+      //logout functionality should be added here 
       localStorage.clear();
     });
   });
