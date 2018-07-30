@@ -1,8 +1,7 @@
 import React from 'react';
-import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { Row, Col, Button } from 'reactstrap';
-import FacebookIcon from 'react-share/lib/FacebookIcon';
-import TwitterIcon from 'react-share/lib/TwitterIcon';
+import SocialShare from '../SocialShare/SocialShare';
+
 const EventDescription = () => {
   return (
     <Row className="block-content text-justify">
@@ -17,14 +16,7 @@ const EventDescription = () => {
         <center>
           <h6>Organiser Contact</h6>
           <Button className="bg-success">Register here</Button>
-          <Row className="col-md-6 col-md-offset-3 my-2">
-            <FacebookShareButton className="mx-1" url={window.location.href}>
-              <FacebookIcon size={32} round={true} />
-            </FacebookShareButton>
-            <TwitterShareButton className="mx-1" url={window.location.href}>
-              <TwitterIcon size={32} round={true} />
-            </TwitterShareButton>
-          </Row>
+          <SocialShare />
         </center>
       </Col>
     </Row>

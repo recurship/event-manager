@@ -5,6 +5,7 @@ import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchOrganisationDetail } from '../../actions';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
+import SocialShare from '../../components/SocialShare/SocialShare';
 
 type Props = BaseReduxPropTypes & {
   organisation: Object,
@@ -45,6 +46,7 @@ class Organisation extends Component<Props> {
                 <center>
                   <Button className="btn btn-success my-3">Subscribe</Button>
                 </center>
+                <SocialShare />
               </Col>
             </Row>
             <ContentHeader heading="Our Events" />
