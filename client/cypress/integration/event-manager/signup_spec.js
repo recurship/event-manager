@@ -36,7 +36,7 @@ describe('Sign up Testing', () => {
           .contains('*Password must be atleast 8 characters');
       });
     });
-    context('Test Valid User', () => {
+    context('Test for Valid User', () => {
       it('Submit Button should be Enabled', () => {
         cy.fillForm(validUser);
         cy.get('form .btn')
@@ -63,7 +63,7 @@ describe('Sign up Testing', () => {
           .contains('user with this username already exists.');
       });
     });
-    context('Test for on existed email', () => {
+    context('Test for existed email', () => {
       it('Submit button should be enabled', () => {
         cy.visit('/signup');
         cy.fillForm(existedUser_email);
