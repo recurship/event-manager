@@ -14,14 +14,14 @@ import {
 } from 'reactstrap';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
-import { fetchEventDetail } from '../../actions';
+import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import EventDescription from '../../components/EventDescription/EventDescription';
 import { Link } from 'react-router-dom';
-import './EventDetails.css';
+import './CurrentEvent.css';
 import { AttendeeType } from '../../types/attendee-types';
-class EventDetails extends Component {
+class CurrentEvent extends Component {
   eventId: string;
 
   constructor(props) {
@@ -29,14 +29,14 @@ class EventDetails extends Component {
   }
 
   componentDidMount() {
-    this.getEventDetail();
+    this.getCurrentEvent();
   }
 
-  getEventDetail = () => {
+  getCurrentEvent = () => {
     const eventId = this.props.match.params.event_id;
     this.eventId = eventId;
     const { dispatch } = this.props;
-    dispatch(fetchEventDetail(eventId));
+    dispatch(fetchCurrentEvent(eventId));
   };
 
   getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
@@ -45,7 +45,7 @@ class EventDetails extends Component {
         {attendees &&
           attendees.map(att => (
             <Col key={att.id}>
-              <Link to={`/event/${this.eventId}/attendee/${att.id}`}>
+              <Link to={`/events/${this.eventId}/attendee/${att.id}`}>
                 <Card id="attendee-card">
                   <CardImg
                     top
@@ -69,7 +69,7 @@ class EventDetails extends Component {
   };
 
   render() {
-    let { event } = this.props.eventDetail;
+    let { event } = this.props.currentEvent;
 
     return (
       <div className="main-container">
@@ -115,11 +115,11 @@ class EventDetails extends Component {
 }
 
 const mapStateToProps = state => {
-  const { eventDetail } = state;
-  return { eventDetail };
+  const { currentEvent } = state;
+  return { currentEvent };
 };
 
 export default connect(
   mapStateToProps,
   null
-)(EventDetails);
+)(CurrentEvent);

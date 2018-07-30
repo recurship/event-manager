@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col, CardImg, Button } from 'reactstrap';
 import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
-import { fetchOrganisationDetail } from '../../actions';
+import { fetchCurrentOrganisation } from '../../actions';
+import { isEmpty } from 'lodash';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 
@@ -16,26 +17,26 @@ class Organisation extends Component<Props> {
     this.state = { organisation: {} };
   }
   componentDidMount() {
-    this.getOrganisationDetail();
+    this.getCurrentOrganisation();
   }
 
-  getOrganisationDetail = () => {
+  getCurrentOrganisation = () => {
     const organisationId = this.props.match.params.organisation_id;
     const { dispatch } = this.props;
-    dispatch(fetchOrganisationDetail(organisationId));
+    dispatch(fetchCurrentOrganisation(organisationId));
   };
 
   render() {
-    const { organisation } = this.props.organisationDetail;
+    const { organisation } = this.props.currentOrganisation;
     return (
       <div>
-        {organisation && !organisation[0].detail ? (
+        {!isEmpty(organisation) ? (
           <Container>
-            <CardImg top width="100%" src={organisation[0].logo} />
-            <ContentHeader heading={organisation[0].name} />
+            <CardImg top width="100%" src={organisation.logo} />
+            <ContentHeader heading={organisation.name} />
             <Row className="block-content text-justify">
               <Col>
-                <strong>{organisation[0].description}</strong>
+                <strong>{organisation.description}</strong>
                 This HTML file is a template. If you open it directly in the
                 browser, you will see an empty page. You can add webfonts, meta
                 tags, or analytics to this file. The build step will place the
@@ -49,9 +50,9 @@ class Organisation extends Component<Props> {
             </Row>
             <ContentHeader heading="Our Events" />
             <Row className="block-content text-justify">
-              {organisation[0].events ? (
+              {organisation.events ? (
                 <Col>
-                  <EventList events={organisation[0].events} />
+                  <EventList events={organisation.events} />
                 </Col>
               ) : (
                 <Col className="text-center">No Events</Col>
@@ -67,7 +68,7 @@ class Organisation extends Component<Props> {
 }
 
 const mapStateToProps = state => ({
-  organisationDetail: { ...state.organisationDetail },
+  currentOrganisation: { ...state.currentOrganisation },
 });
 
 export default connect(mapStateToProps)(Organisation);

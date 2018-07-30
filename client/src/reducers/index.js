@@ -99,7 +99,7 @@ const events = (state = defaultEventState, action) => {
   return state;
 };
 
-const eventDetail = (state = defaultEventState, action) => {
+const currentEvent = (state = defaultEventState, action) => {
   if (action.event) {
     return {
       event: { ...Object.values(action.event.entities.events)[0] },
@@ -109,13 +109,15 @@ const eventDetail = (state = defaultEventState, action) => {
 };
 
 const defaultOrganisationState = {
-  organisations: [],
+  organisation: {},
 };
 
-const organisationDetail = (state = defaultOrganisationState, action) => {
+const currentOrganisation = (state = defaultOrganisationState, action) => {
   if (action.organisation) {
     return {
-      organisation: Object.values(action.organisation.entities.organisation),
+      organisation: {
+        ...Object.values(action.organisation.entities.organisation)[0],
+      },
     };
   }
   return state;
@@ -167,8 +169,8 @@ let reducer = combineReducers({
   userState,
   resetPasswordState,
   events,
-  eventDetail,
-  organisationDetail,
+  currentEvent,
+  currentOrganisation,
   organisations: organisationsState,
   sponsors: sponsorsState,
   locations: locationState,

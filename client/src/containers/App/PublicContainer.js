@@ -6,7 +6,7 @@ import { EMNavbar } from '../../components/EMNavbar';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { Container } from 'reactstrap';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import EventDetails from '../EventDetails/EventDetails';
+import CurrentEvent from '../CurrentEvent/CurrentEvent';
 import Organisation from '../Organisation/Organisation';
 import { connect } from 'react-redux';
 import Location from '../../types/multi-types';
@@ -32,7 +32,7 @@ class PublicContainer extends Component<Props> {
             exact
             render={props => (
               <div>
-                <EventDetails {...props} />
+                <CurrentEvent {...props} />
               </div>
             )}
             path="/events/:event_id"
