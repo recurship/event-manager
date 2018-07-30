@@ -1,8 +1,8 @@
 import {
   validUser,
   invalidUser,
-  existedUser_email,
-  existedUser_username,
+  userWithExistedEmail,
+  userWithExistedUsername,
 } from './dataSet';
 describe('Sign up Testing', () => {
   context('Test for Signup Route', () => {
@@ -51,7 +51,7 @@ describe('Sign up Testing', () => {
     context('Test for existed username', () => {
       it('Submit button should be enabled', () => {
         cy.visit('/signup');
-        cy.fillForm(existedUser_username);
+        cy.fillForm(userWithExistedUsername);
         cy.get('form .btn')
           .contains('Sign Up')
           .should('be.enabled')
@@ -66,7 +66,7 @@ describe('Sign up Testing', () => {
     context('Test for existed email', () => {
       it('Submit button should be enabled', () => {
         cy.visit('/signup');
-        cy.fillForm(existedUser_email);
+        cy.fillForm(userWithExistedEmail);
         cy.get('form .btn')
           .contains('Sign Up')
           .should('be.enabled')

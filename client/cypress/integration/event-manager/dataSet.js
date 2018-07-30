@@ -2,6 +2,7 @@ var ID = () =>
   `_${Math.random()
     .toString(36)
     .substr(2, 9)}`;
+
 export const validUser = {
   firstname: 'Happy',
   lastname: 'Person',
@@ -14,7 +15,8 @@ export const invalidUser = {
   email: 'happy@person',
   password: '123',
 };
-export const existedUser_username = {
+
+export const userWithExistedUsername = {
   firstname: 'Happy',
   lastname: 'Person',
   username: 'happyperson',
@@ -22,7 +24,7 @@ export const existedUser_username = {
   email: `happy${ID()}@person.com`,
 };
 
-export const existedUser_email = {
+export const userWithExistedEmail = {
   firstname: 'Happy',
   lastname: 'Person',
   password: '12345678',
