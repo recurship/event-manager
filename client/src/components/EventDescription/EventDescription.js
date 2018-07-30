@@ -1,4 +1,5 @@
 import React from 'react';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { Row, Col, Button } from 'reactstrap';
 import SocialShare from '../SocialShare/SocialShare';
 
