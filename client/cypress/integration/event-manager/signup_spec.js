@@ -1,3 +1,7 @@
+/* global describe  */
+/* global context */
+/* global it */
+/* global cy */
 import {
   validUser,
   invalidUser,

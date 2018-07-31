@@ -1,3 +1,8 @@
+/* global describe  */
+/* global context */
+/* global it */
+/* global cy */
+
 import { ValidCredentials, wrongCredentials } from './dataSet';
 
 describe('Login Testing', () => {
