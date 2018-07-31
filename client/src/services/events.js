@@ -1,5 +1,5 @@
 import { makeRequest } from './helper';
-import queryString from 'query-string';
+import { stringify } from 'query-string';
 import { decamelizeKeys, HumpsOptions } from 'humps';
 import { store } from '../../src';
 
@@ -10,7 +10,7 @@ export default {
     let eventsBaseUri = baseUri;
     if (query && typeof query == 'object') {
       const paramsNormalized = decamelizeKeys(query);
-      const eventsQuery = queryString.stringify(paramsNormalized);
+      const eventsQuery = stringify(paramsNormalized);
       eventsBaseUri += `?${eventsQuery}`;
     }
     return makeRequest(eventsBaseUri);

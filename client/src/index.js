@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Root from './containers/Root/Root';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -17,4 +18,5 @@ render(
   document.getElementById('root')
 );
 
-registerServiceWorker();
+// registerServiceWorker();
+unregister();

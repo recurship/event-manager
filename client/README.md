@@ -1812,6 +1812,18 @@ After the user visits a page that has `unregister()`,
 the service worker will be uninstalled. Note that depending on how `/service-worker.js` is served,
 it may take up to 24 hours for the cache to be invalidated.
 
+### Register Back Service Worker
+
+If you had disabled service workers in your production deployment and
+have decided that you would like to enable them for all your existing users,
+you can swap out the call to `unregister()` in
+[`src/index.js`](src/index.js) first by modifying the service worker import:
+```javascript
+import registerServiceWorker from './registerServiceWorker';
+```
+and then call `registerServiceWorker()`.
+
+
 ### Offline-First Considerations
 
 1. Service workers [require HTTPS](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#you_need_https),
