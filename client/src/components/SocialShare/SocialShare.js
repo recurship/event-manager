@@ -1,6 +1,5 @@
 import React from 'react';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
-import { Row } from 'reactstrap';
 import FacebookIcon from 'react-share/lib/FacebookIcon';
 import TwitterIcon from 'react-share/lib/TwitterIcon';
 const SocialShare = () => {

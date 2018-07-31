@@ -12,6 +12,7 @@ import {
   Row,
   Button,
 } from 'reactstrap';
+import MetaTags from 'react-meta-tags';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
 import { fetchCurrentEvent } from '../../actions';
@@ -75,6 +76,20 @@ class CurrentEvent extends Component {
       <div className="main-container">
         {event ? (
           <Container>
+            <MetaTags>
+              <title>{event.title}</title>
+              <meta name="description" content={event.description} />
+              <meta property="og:title" content={event.title} />
+              <meta
+                property="og:image"
+                content={
+                  event.cover
+                    ? event.cover
+                    : 'http://via.placeholder.com/350x150'
+                }
+              />
+              <meta property="og:url" content={window.location.href} />
+            </MetaTags>
             <CardImg top width="100%" src={event.cover} />
             <ContentHeader heading="Event Summary" />
             <Row className="block-content">
