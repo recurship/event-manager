@@ -25,7 +25,7 @@ export default {
       body: JSON.stringify(event),
     });
   },
-  getEventDetail: eventId => {
+  getCurrentEvent: eventId => {
     return makeRequest(`${baseUri}${eventId}/`);
   },
 };

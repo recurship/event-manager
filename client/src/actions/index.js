@@ -101,12 +101,12 @@ export const getEvents = events => ({
   events,
 });
 
-export const getEventDetail = event => ({
+export const getCurrentEvent = event => ({
   type: FETCH_EVENT_DETAIL,
   event,
 });
 
-export const getOrganisationDetail = organisation => ({
+export const getCurrentOrganisation = organisation => ({
   type: FETCH_ORGANISATION_DETAIL,
   organisation,
 });
@@ -129,30 +129,30 @@ export const fetchEvents = query => async (dispatch, getState) => {
     });
 };
 
-export const fetchEventDetail = eventId => async (dispatch, getState) => {
+export const fetchCurrentEvent = eventId => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENT_DETAIL));
   try {
-    const event = await EventService.getEventDetail(eventId);
+    const event = await EventService.getCurrentEvent(eventId);
     let camelCaseKeys = humps.camelizeKeys(event);
-    dispatch(getEventDetail(normalize(camelCaseKeys, eventSchema)));
+    dispatch(getCurrentEvent(normalize(camelCaseKeys, eventSchema)));
     dispatch(endRequest(FETCH_EVENT_DETAIL));
   } catch (e) {
     dispatch(triggerFailure(FETCH_EVENT_DETAIL, e));
   }
 };
 
-export const fetchOrganisationDetail = organisationId => async (
+export const fetchCurrentOrganisation = organisationId => async (
   dispatch,
   getState
 ) => {
   dispatch(triggerRequest(FETCH_ORGANISATION_DETAIL));
   try {
-    const organisation = await OrganisationService.getOrganisationDetail(
+    const organisation = await OrganisationService.getCurrentOrganisation(
       organisationId
     );
     let camelCaseKeys = humps.camelizeKeys(organisation);
     dispatch(
-      getOrganisationDetail(normalize(camelCaseKeys, organisationSchema))
+      getCurrentOrganisation(normalize(camelCaseKeys, organisationSchema))
     );
     dispatch(endRequest(FETCH_ORGANISATION_DETAIL));
   } catch (e) {

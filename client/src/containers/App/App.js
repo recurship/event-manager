@@ -12,7 +12,7 @@ import Signup from '../Signup/Signup';
 import Events from '../Events/Events';
 import PrivateRoute from '../../components/PrivateRoute';
 import PublicRoute from '../../components/PublicRoute';
-import EventDetails from '../EventDetails/EventDetails';
+import CurrentEvent from '../CurrentEvent/CurrentEvent';
 import Organisation from '../Organisation/Organisation';
 import UserProfile from '../UserProfile/UserProfile';
 type Props = {};
