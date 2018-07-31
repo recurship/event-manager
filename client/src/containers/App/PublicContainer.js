@@ -8,6 +8,7 @@ import { Container } from 'reactstrap';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import CurrentEvent from '../CurrentEvent/CurrentEvent';
 import Organisation from '../Organisation/Organisation';
+import UserProfile from '../UserProfile/UserProfile';
 import { connect } from 'react-redux';
 import Location from '../../types/multi-types';
 
@@ -45,6 +46,15 @@ class PublicContainer extends Component<Props> {
               </div>
             )}
             path="/organisations/:organisation_id"
+          />
+					<Route
+            exact
+						path="/events/:event_id/attendee/:attendee_id"
+            render={props => (
+              <div>
+                <UserProfile {...props} />
+              </div>
+            )}
           />
         </Fragment>
       </Router>
