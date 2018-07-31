@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AttendeeType } from '../../types/attendee-types';
 import {
-  Card,
+	Card,
   CardImg,
   CardText,
   CardBody,
@@ -9,6 +9,7 @@ import {
   Col,
   Row,
 } from 'reactstrap';
+import { getFullname } from '../../utils/utils'
 import './UserProfile.css';
 
 type Props = {
@@ -30,13 +31,6 @@ const InfoGroup = (e: InfoGroupProps) => {
   );
 };
 
-const getFullname = (user: AttendeeType) => {
-  let name = '';
-  if (user.firstName) name += `${user.firstName} `;
-  if (user.lastName) name += `${user.lastName} `;
-
-  return name ? name : '-';
-};
 const UserProfile = (props: Props) => {
   let user = props.user;
   return user ? (
