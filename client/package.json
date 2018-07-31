@@ -35,7 +35,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "commit": "git-cz",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "e2e": "cypress open"
   },
   "lint-staged": {
     "src/**/*.{js,json,css,jsx}": [
@@ -62,6 +63,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "commitizen": "^2.10.1",
+    "cypress": "^3.0.2",
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

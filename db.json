@@ -1,1 +1,551 @@
-[{"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "event", "model": "event"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "event", "model": "eventlocation"}}, {"model": "contenttypes.contenttype", "pk": 8, "fields": {"app_label": "event", "model": "eventsponser"}}, {"model": "contenttypes.contenttype", "pk": 9, "fields": {"app_label": "organisation", "model": "organisation"}}, {"model": "contenttypes.contenttype", "pk": 10, "fields": {"app_label": "user", "model": "user"}}, {"model": "event.eventlocation", "pk": 1, "fields": {"name": "location 2", "address": "Defence Housing Authority", "logo": "location/12063840_10206463344328062_9197026344854135455_n_kBJgP60.jpg"}}, {"model": "event.eventlocation", "pk": 2, "fields": {"name": "location 1", "address": "clifton", "logo": ""}}, {"model": "event.eventsponser", "pk": 1, "fields": {"name": "Folio3", "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_fVaCaXk.jpg"}}, {"model": "event.eventsponser", "pk": 2, "fields": {"name": "10pearls", "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_UqNF0QO.jpg"}}, {"model": "event.eventsponser", "pk": 3, "fields": {"name": "Tps", "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_C41OjrG.jpg"}}, {"model": "event.eventsponser", "pk": 4, "fields": {"name": "Mazedar Haleem", "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_u2eysbZ.jpg"}}, {"model": "auth.permission", "pk": 1, "fields": {"name": "Can add log entry", "content_type": 1, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change log entry", "content_type": 1, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete log entry", "content_type": 1, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can add permission", "content_type": 2, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can change permission", "content_type": 2, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can delete permission", "content_type": 2, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can add group", "content_type": 3, "codename": "add_group"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can change group", "content_type": 3, "codename": "change_group"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can delete group", "content_type": 3, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can add content type", "content_type": 4, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can change content type", "content_type": 4, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can delete content type", "content_type": 4, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add session", "content_type": 5, "codename": "add_session"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change session", "content_type": 5, "codename": "change_session"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete session", "content_type": 5, "codename": "delete_session"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can add event", "content_type": 6, "codename": "add_event"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can change event", "content_type": 6, "codename": "change_event"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can delete event", "content_type": 6, "codename": "delete_event"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can add event location", "content_type": 7, "codename": "add_eventlocation"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can change event location", "content_type": 7, "codename": "change_eventlocation"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can delete event location", "content_type": 7, "codename": "delete_eventlocation"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can add event sponser", "content_type": 8, "codename": "add_eventsponser"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can change event sponser", "content_type": 8, "codename": "change_eventsponser"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can delete event sponser", "content_type": 8, "codename": "delete_eventsponser"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add organisation", "content_type": 9, "codename": "add_organisation"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change organisation", "content_type": 9, "codename": "change_organisation"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete organisation", "content_type": 9, "codename": "delete_organisation"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can add user", "content_type": 10, "codename": "add_user"}}, {"model": "auth.permission", "pk": 29, "fields": {"name": "Can change user", "content_type": 10, "codename": "change_user"}}, {"model": "auth.permission", "pk": 30, "fields": {"name": "Can delete user", "content_type": 10, "codename": "delete_user"}}, {"model": "user.user", "pk": "a81dbec7-248d-4de4-8c65-18b6fb48754e", "fields": {"password": "pbkdf2_sha256$100000$bNS3b33OD0Ez$EplyZV6c6uBmkvs4uYblgqFaBWxW04FERQPffnxabVQ=", "last_login": null, "is_superuser": false, "username": "usmandap", "email": "test@test.com", "enable_notifications": true, "first_name": null, "last_name": null, "token": null, "is_active": true, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "user.user", "pk": "b6e21be3-ae59-42b0-acd2-ca48690cff9b", "fields": {"password": "pbkdf2_sha256$100000$k4fKxJu3f4I8$ahZ5tdHTUcnJeOzB2r9Hq7fbul0Xelb5f9R9xknHTPI=", "last_login": null, "is_superuser": true, "username": "admin", "email": "usmandap@gmail.com", "enable_notifications": true, "first_name": null, "last_name": null, "token": null, "is_active": true, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "organisation.organisation", "pk": 1, "fields": {"name": "Organisation", "description": null, "is_active": false, "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b", "logo": ""}}, {"model": "organisation.organisation", "pk": 2, "fields": {"name": "Organisation 2", "description": null, "is_active": false, "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b", "logo": "organisation/12063840_10206463344328062_9197026344854135455_n_2EKeQdD.jpg"}}, {"model": "event.event", "pk": 1, "fields": {"title": "Ng Girls", "description": "Angular Event For Girls", "registration_url": "https://google.com", "start_datetime": "2081-02-08T20:39:00Z", "end_datetime": "3938-02-08T15:08:00Z", "organisation": 1, "location": 1, "cover": "events/12063840_10206463344328062_9197026344854135455_n_DV6uubr.jpg", "sponser": [1, 3], "attendees": ["b6e21be3-ae59-42b0-acd2-ca48690cff9b", "a81dbec7-248d-4de4-8c65-18b6fb48754e"]}}, {"model": "event.event", "pk": 2, "fields": {"title": "GDG Kolachi", "description": "Google Developer Expert", "registration_url": "https://google.com", "start_datetime": "2018-08-23T20:39:00Z", "end_datetime": "2018-08-30T15:08:00Z", "organisation": 1, "location": 2, "cover": "events/12063840_10206463344328062_9197026344854135455_n_BE8PUU6.jpg", "sponser": [2, 3, 4], "attendees": ["b6e21be3-ae59-42b0-acd2-ca48690cff9b", "a81dbec7-248d-4de4-8c65-18b6fb48754e"]}}, {"model": "event.event", "pk": 3, "fields": {"title": "Test Event", "description": "Google Developer Expert", "registration_url": "https://google.com", "start_datetime": "2018-08-23T20:39:00Z", "end_datetime": "2018-08-30T15:08:00Z", "organisation": 1, "location": 2, "cover": "", "sponser": [2, 3, 4], "attendees": ["a81dbec7-248d-4de4-8c65-18b6fb48754e"]}}, {"model": "event.event", "pk": 4, "fields": {"title": "GDG Kolachi", "description": "Google Developer Expert", "registration_url": "https://google.com", "start_datetime": "2018-08-23T20:39:00Z", "end_datetime": "2018-08-30T15:08:00Z", "organisation": 1, "location": 2, "cover": "", "sponser": [2, 3, 4], "attendees": ["a81dbec7-248d-4de4-8c65-18b6fb48754e"]}}]
+[
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "event",
+      "model": "event"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "event",
+      "model": "eventlocation"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "event",
+      "model": "eventsponser"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "organisation",
+      "model": "organisation"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "user",
+      "model": "user"
+    }
+  },
+  {
+    "model": "event.eventlocation",
+    "pk": 1,
+    "fields": {
+      "name": "location 2",
+      "address": "Defence Housing Authority",
+      "logo": "location/12063840_10206463344328062_9197026344854135455_n_kBJgP60.jpg"
+    }
+  },
+  {
+    "model": "event.eventlocation",
+    "pk": 2,
+    "fields": {
+      "name": "location 1",
+      "address": "clifton",
+      "logo": ""
+    }
+  },
+  {
+    "model": "event.eventsponser",
+    "pk": 1,
+    "fields": {
+      "name": "Folio3",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_fVaCaXk.jpg"
+    }
+  },
+  {
+    "model": "event.eventsponser",
+    "pk": 2,
+    "fields": {
+      "name": "10pearls",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_UqNF0QO.jpg"
+    }
+  },
+  {
+    "model": "event.eventsponser",
+    "pk": 3,
+    "fields": {
+      "name": "Tps",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_C41OjrG.jpg"
+    }
+  },
+  {
+    "model": "event.eventsponser",
+    "pk": 4,
+    "fields": {
+      "name": "Mazedar Haleem",
+      "logo": "sponser/12063840_10206463344328062_9197026344854135455_n_u2eysbZ.jpg"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can add event",
+      "content_type": 6,
+      "codename": "add_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can change event",
+      "content_type": 6,
+      "codename": "change_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can delete event",
+      "content_type": 6,
+      "codename": "delete_event"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can add event location",
+      "content_type": 7,
+      "codename": "add_eventlocation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can change event location",
+      "content_type": 7,
+      "codename": "change_eventlocation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can delete event location",
+      "content_type": 7,
+      "codename": "delete_eventlocation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can add event sponser",
+      "content_type": 8,
+      "codename": "add_eventsponser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can change event sponser",
+      "content_type": 8,
+      "codename": "change_eventsponser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can delete event sponser",
+      "content_type": 8,
+      "codename": "delete_eventsponser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add organisation",
+      "content_type": 9,
+      "codename": "add_organisation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change organisation",
+      "content_type": 9,
+      "codename": "change_organisation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete organisation",
+      "content_type": 9,
+      "codename": "delete_organisation"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 10,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 10,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 10,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "user.user",
+    "pk": "a81dbec7-248d-4de4-8c65-18b6fb48754e",
+    "fields": {
+      "password": "pbkdf2_sha256$100000$bNS3b33OD0Ez$EplyZV6c6uBmkvs4uYblgqFaBWxW04FERQPffnxabVQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "usmandap",
+      "email": "test@test.com",
+      "enable_notifications": true,
+      "first_name": null,
+      "last_name": null,
+      "token": null,
+      "is_active": true,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.user",
+    "pk": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+    "fields": {
+      "password": "pbkdf2_sha256$100000$k4fKxJu3f4I8$ahZ5tdHTUcnJeOzB2r9Hq7fbul0Xelb5f9R9xknHTPI=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "email": "usmandap@gmail.com",
+      "enable_notifications": true,
+      "first_name": null,
+      "last_name": null,
+      "token": null,
+      "is_active": true,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "organisation.organisation",
+    "pk": 1,
+    "fields": {
+      "name": "Organisation",
+      "description": null,
+      "is_active": false,
+      "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+      "logo": ""
+    }
+  },
+  {
+    "model": "organisation.organisation",
+    "pk": 2,
+    "fields": {
+      "name": "Organisation 2",
+      "description": null,
+      "is_active": false,
+      "owner": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+      "logo": "organisation/12063840_10206463344328062_9197026344854135455_n_2EKeQdD.jpg"
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 1,
+    "fields": {
+      "title": "Ng Girls",
+      "description": "Angular Event For Girls",
+      "registration_url": "https://google.com",
+      "start_datetime": "2081-02-08T20:39:00Z",
+      "end_datetime": "3938-02-08T15:08:00Z",
+      "organisation": 1,
+      "location": 1,
+      "cover": "events/12063840_10206463344328062_9197026344854135455_n_DV6uubr.jpg",
+      "sponser": [
+        1,
+        3
+      ],
+      "attendees": [
+        "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 2,
+    "fields": {
+      "title": "GDG Kolachi",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "events/12063840_10206463344328062_9197026344854135455_n_BE8PUU6.jpg",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 3,
+    "fields": {
+      "title": "Test Event",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 4,
+    "fields": {
+      "title": "GDG Kolachi",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "",
+      "sponser": [
+        2,
+        3,
+        4
+      ],
+      "attendees": [
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  }
+]

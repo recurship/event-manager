@@ -12,6 +12,10 @@ type Props = BaseReduxPropTypes & {
 };
 
 class Signup extends Component<Props> {
+  constructor() {
+    super();
+    this.state = { errors: [] };
+  }
   signup = async e => {
     e.preventDefault();
     const {
@@ -31,7 +35,15 @@ class Signup extends Component<Props> {
       };
 
     const response = await dispatch(userSignup(payload));
-    if (response && response.id) history.push('/login');
+    if (response && response.id) {
+      history.push('/login');
+    } else {
+      let errorResponse = this.state.errors;
+      Object.keys(response).map(item => {
+        errorResponse = [...errorResponse, ...response[item]];
+      });
+      this.setState({ errors: errorResponse });
+    }
   };
 
   render() {
@@ -40,6 +52,11 @@ class Signup extends Component<Props> {
         <h4>Sign Up</h4>
         <hr />
         <SignupForm onSubmit={this.signup} />
+        {this.state.errors.map((error, i) => (
+          <p className="error-message text-danger" key={i}>
+            {error}
+          </p>
+        ))}
         <hr />
         <p className="centralized">
           Already have an account? <Link to="/login">Login</Link>
