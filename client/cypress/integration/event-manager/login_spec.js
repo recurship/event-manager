@@ -1,7 +1,9 @@
 /* global describe  */
 /* global context */
 /* global it */
+/* global expect  */
 /* global cy */
+/* eslint no-undef: "error" */
 
 import { ValidCredentials, wrongCredentials } from './dataSet';
 
