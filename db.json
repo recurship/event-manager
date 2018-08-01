@@ -413,6 +413,7 @@
       "last_name": null,
       "token": null,
       "is_active": true,
+      "is_staff": false,
       "avatar": "",
       "groups": [],
       "user_permissions": []
@@ -432,6 +433,7 @@
       "last_name": null,
       "token": null,
       "is_active": true,
+      "is_staff": true,
       "avatar": "",
       "groups": [],
       "user_permissions": []
@@ -542,6 +544,28 @@
         2,
         3,
         4
+      ],
+      "attendees": [
+        "a81dbec7-248d-4de4-8c65-18b6fb48754e"
+      ]
+    }
+  },
+  {
+    "model": "event.event",
+    "pk": 5,
+    "fields": {
+      "title": "Vogue Expo",
+      "description": "Google Developer Expert",
+      "registration_url": "https://google.com",
+      "start_datetime": "2018-08-23T20:39:00Z",
+      "end_datetime": "2018-08-30T15:08:00Z",
+      "organisation": 1,
+      "location": 2,
+      "cover": "",
+      "sponser": [
+        1,
+        2,
+        3
       ],
       "attendees": [
         "a81dbec7-248d-4de4-8c65-18b6fb48754e"

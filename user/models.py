@@ -16,6 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255, null=True)
     token = models.CharField(max_length=255, null=True, default=None)
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     avatar = ResizedImageField(
         size=[300, 300], upload_to='user', blank=False, null=True)
 
