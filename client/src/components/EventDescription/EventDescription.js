@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'reactstrap';
+import SocialShare from '../SocialShare/SocialShare';
+
 const EventDescription = () => {
   return (
     <Row className="block-content text-justify">
@@ -14,6 +16,7 @@ const EventDescription = () => {
         <center>
           <h6>Organiser Contact</h6>
           <Button className="bg-success">Register here</Button>
+          <SocialShare />
         </center>
       </Col>
     </Row>
