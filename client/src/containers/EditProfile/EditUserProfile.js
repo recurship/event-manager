@@ -1,56 +1,65 @@
 import React from 'react';
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Input,
   Label,
   CardImg,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
 } from 'reactstrap';
 import { getFullname } from '../../utils/utils';
+import { Link } from 'react-router-dom';
 import './EditProfileModal.css';
+import { fetchCurrentEvent } from '../../actions';
+import { connect } from 'react-redux';
 
-class ModalExample extends React.Component {
+class EditUserProfile extends React.Component {
+  eventId: string;
+  attendeeId: string;
+
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
-      backdrop: true,
       user: {},
     };
-
     this.submit = this.submit.bind(this);
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
+  componentDidMount() {
+    this.getCurrentEvent();
   }
+
+  getCurrentEvent = () => {
+    const eventId = this.props.match.params.event_id;
+    this.eventId = eventId;
+    this.attendeeId = this.props.match.params.attendee_id;
+    const { dispatch } = this.props;
+    dispatch(fetchCurrentEvent(eventId));
+  };
 
   submit(e) {
     //TODO, update user via id;
-    this.toggle();
+    // route back to user profile
   }
 
   receiveUserDetails(user) {
     this.setState({ user });
   }
   render() {
+    let { event } = this.props.currentEvent;
     const { user } = this.state;
     return (
       <div>
-        <Modal
+        <Card
           isOpen={this.state.modal}
           toggle={this.toggle}
-          className={this.props.className}
+          // className={this.props.className}
           backdrop={this.state.backdrop}
         >
-          <ModalHeader toggle={this.toggle}>Edit Profile</ModalHeader>
-          <ModalBody>
+          <CardHeader toggle={this.toggle}>Edit Profile</CardHeader>
+          <CardBody>
             <form id="edit-profile">
               <CardImg
                 top
@@ -89,19 +98,27 @@ class ModalExample extends React.Component {
                 />
               </div>
             </form>
-          </ModalBody>
-          <ModalFooter>
+          </CardBody>
+          <CardFooter>
             <Button color="primary" onClick={this.submit}>
               Submit
             </Button>{' '}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
-          </ModalFooter>
-        </Modal>
+          </CardFooter>
+        </Card>
+        {/* </Link> */}
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  const { currentEvent } = state;
+  return { currentEvent };
+};
 
-export default ModalExample;
+export default connect(
+  mapStateToProps,
+  null
+)(EditUserProfile);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 import { fetchEvents } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
@@ -14,6 +15,7 @@ class UserProfile extends Component {
     const { dispatch } = this.props;
     dispatch(fetchEvents());
   }
+
   getUserDetails(): AttendeeType {
     const {
         event_id: eventId = null,
@@ -23,10 +25,11 @@ class UserProfile extends Component {
     let event, attendee;
     event = events.find(event => event.id == eventId);
     if (event && event.attendees)
-      attendee = event.attendees.find(att => (att.id === attendeeId));
+      attendee = event.attendees.find(att => att.id === attendeeId);
 
     return attendee ? attendee : null;
   }
+
   render() {
     const user = this.getUserDetails();
     return user ? (

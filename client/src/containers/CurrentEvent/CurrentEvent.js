@@ -19,7 +19,7 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import EventDescription from '../../components/EventDescription/EventDescription';
-import EditProfileModal from '../EditProfile/EditProfileModal';
+import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
@@ -39,13 +39,7 @@ class CurrentEvent extends Component {
     this.eventId = eventId;
     const { dispatch } = this.props;
     dispatch(fetchCurrentEvent(eventId));
-	};
-	
-	editUser = (e, user) => {
-		e.preventDefault();
-		this.editModal.toggle();
-		this.editModal.receiveUserDetails(user)
-	}
+  };
 
   getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
     return (
@@ -54,10 +48,11 @@ class CurrentEvent extends Component {
           attendees.map(att => (
             <Col key={att.id}>
               <Link to={`/events/${this.eventId}/attendee/${att.id}`}>
-								<Button id="edit-user" className="btn btn-default"
-									onClick={e => this.editUser(e, att)}>
-									<span className="fa fa-edit"></span>
-								</Button>
+                <Link to={`/events/${this.eventId}/attendee/${att.id}/edit`}>
+                  <Button id="edit-user" className="btn btn-default">
+                    <span className="fa fa-edit" />
+                  </Button>
+                </Link>
                 <Card id="attendee-card">
                   <CardImg
                     top
