@@ -23,6 +23,9 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
 
+// edit user
+export const USER_EDIT = 'USER_EDIT';
+
 // events
 export const ADD_EVENT = 'ADD_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
@@ -54,6 +57,10 @@ export const triggerFailure = (name, error) => ({
   error,
 });
 
+export const userEdit = user => ({
+  type: USER_EDIT,
+  user,
+});
 // user actions
 
 export const userLoginSuccess = token => ({

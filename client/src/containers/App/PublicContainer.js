@@ -11,6 +11,7 @@ import Organisation from '../Organisation/Organisation';
 import UserProfile from '../UserProfile/UserProfile';
 import { connect } from 'react-redux';
 import Location from '../../types/multi-types';
+import EditUserProfile from '../EditProfile/EditUserProfile';
 
 type Props = {
   location: Location,
@@ -47,12 +48,21 @@ class PublicContainer extends Component<Props> {
             )}
             path="/organisations/:organisation_id"
           />
-					<Route
+          <Route
             exact
-						path="/events/:event_id/attendee/:attendee_id"
+            path="/events/:event_id/attendee/:attendee_id"
             render={props => (
               <div>
                 <UserProfile {...props} />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/events/:event_id/attendee/:attendee_id/edit"
+            render={props => (
+              <div>
+                <EditUserProfile {...props} />
               </div>
             )}
           />
