@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import './EditProfileModal.css';
 import { fetchCurrentEvent } from '../../actions';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 class EditUserProfile extends React.Component {
   eventId: string;
@@ -49,65 +50,84 @@ class EditUserProfile extends React.Component {
   }
   render() {
     let { event } = this.props.currentEvent;
+
+    let attendee =
+      event &&
+      event.attendees &&
+      event.attendees.find(attendee => attendee.id === this.attendeeId);
+
     const { user } = this.state;
     return (
       <div>
-        <Card
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          // className={this.props.className}
-          backdrop={this.state.backdrop}
-        >
-          <CardHeader toggle={this.toggle}>Edit Profile</CardHeader>
-          <CardBody>
-            <form id="edit-profile">
-              <CardImg
-                top
-                width="40%"
-                src={
-                  'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
-                }
-                alt="User Profile Pic"
-                className="user-avatar"
-              />
-              <div className="form-group">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  value={getFullname(user)}
+        {!isEmpty(attendee) ? (
+          <Card
+            isOpen={this.state.modal}
+            toggle={this.toggle}
+            // className={this.props.className}
+            backdrop={this.state.backdrop}
+          >
+            <CardHeader toggle={this.toggle}>Edit Profile</CardHeader>
+            <CardBody>
+              <form id="edit-profile">
+                <CardImg
+                  top
+                  width="40%"
+                  src={
+                    'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
+                  }
+                  alt="User Profile Pic"
+                  className="user-avatar"
                 />
-              </div>
-              <div className="form-group">
-                <Label htmlFor="userName">User Name</Label>
-                <Input
-                  type="text"
-                  name="userName"
-                  className="form-control"
-                  value={user.username}
-                />
-              </div>
-              <div className="form-group">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  type="text"
-                  name="email"
-                  className="form-control"
-                  value={user.email}
-                />
-              </div>
-            </form>
-          </CardBody>
-          <CardFooter>
-            <Button color="primary" onClick={this.submit}>
-              Submit
-            </Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
-            </Button>
-          </CardFooter>
-        </Card>
+                <div className="form-group">
+                  <Label htmlFor="name">First Name</Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    value={attendee.firstName}
+                  />
+                </div>
+                <div className="form-group">
+                  <Label htmlFor="name">Last Name</Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    value={attendee.lastName}
+                  />
+                </div>
+                <div className="form-group">
+                  <Label htmlFor="userName">User Name</Label>
+                  <Input
+                    type="text"
+                    name="userName"
+                    className="form-control"
+                    value={attendee.username}
+                  />
+                </div>
+                <div className="form-group">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    type="text"
+                    name="email"
+                    className="form-control"
+                    value={attendee.email}
+                  />
+                </div>
+              </form>
+            </CardBody>
+            <CardFooter>
+              <Button color="primary" onClick={this.submit}>
+                Submit
+              </Button>{' '}
+              <Button color="secondary" onClick={this.toggle}>
+                Cancel
+              </Button>
+            </CardFooter>
+          </Card>
+        ) : (
+          <div />
+        )}
         {/* </Link> */}
       </div>
     );
@@ -118,7 +138,4 @@ const mapStateToProps = state => {
   return { currentEvent };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(EditUserProfile);
+export default connect(mapStateToProps)(EditUserProfile);
