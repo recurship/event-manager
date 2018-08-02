@@ -1,15 +1,20 @@
 import { makeRequest } from './helper';
 
-const baseUri = '/api/user/';
+const baseUriUsers = '/api/users/';
+const baseUriUser = '/api/user/';
 
 export default {
-  edit: user => {
-    return makeRequest(baseUri, {
+  editUser: user => {
+    return makeRequest(baseUriUser, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
-      body: JSON.stringify(user),
+      body: user,
     });
+  },
+
+  getUserProfile: userId => {
+    return makeRequest(`${baseUriUsers}${userId}/`);
   },
 };

@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { fetchEvents } from '../../actions';
+import { fetchUserProfile } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
-    this.fetchEvents();
+    this.fetchUserProfile();
   }
 
-  fetchEvents() {
+  fetchUserProfile() {
+    let userId = this.props.match.params.user_id;
     const { dispatch } = this.props;
-    dispatch(fetchEvents());
+    dispatch(fetchUserProfile(userId));
   }
 
   getUserDetails(): AttendeeType {
-    const {
-        event_id: eventId = null,
-        attendee_id: attendeeId = null,
-      } = this.props.match.params,
-      { events = [] } = this.props;
-    let event, attendee;
-    event = events.find(event => event.id == eventId);
-    if (event && event.attendees)
-      attendee = event.attendees.find(att => att.id === attendeeId);
-
-    return attendee ? attendee : null;
+    let user = this.props.userProfile;
+    return user ? user : null;
   }
 
   render() {
-    const user = this.getUserDetails();
+    const { user } = this.getUserDetails();
     return user ? (
       <div style={{ marginTop: '20px' }}>
         <Profile user={user} />
@@ -39,6 +31,9 @@ class UserProfile extends Component {
     ) : null;
   }
 }
+const mapStateToProps = state => {
+  const { userProfile } = state;
+  return { userProfile };
+};
 
-const mapStateToProps = state => ({ ...state.events });
 export default connect(mapStateToProps)(UserProfile);
