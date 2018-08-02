@@ -46,8 +46,8 @@ class CurrentEvent extends Component {
         {attendees &&
           attendees.map(att => (
             <Col key={att.id}>
-              <Link to={`/events/${this.eventId}/attendee/${att.id}`}>
-                <Link to={`/events/${this.eventId}/attendee/${att.id}/edit`}>
+              <Link to={`/users/${att.id}`}>
+                <Link to={`/users/${att.id}/edit`}>
                   <Button id="edit-user" className="btn btn-default">
                     <span className="fa fa-edit" />
                   </Button>

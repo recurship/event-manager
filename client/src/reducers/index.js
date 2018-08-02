@@ -10,6 +10,8 @@ import {
   FETCH_ORGANISATIONS,
   FETCH_SPONSORS,
   FETCH_LOCATIONS,
+  FETCH_USER,
+  USER_EDIT,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -44,8 +46,9 @@ const appState = (state = defaultAppState, action) => {
 
 const defaultUserState = {
   token: null,
-  currentUser: null,
+  currentUser: {},
 };
+
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
     case USER_LOGIN:
@@ -60,11 +63,13 @@ const userState = (state = defaultUserState, action) => {
         ...state,
         token: null,
       };
+
     case REFRESH_TOKEN:
       return {
         ...state,
         token: action.payload.access,
       };
+
     default:
       return state;
   }
@@ -106,6 +111,25 @@ const currentEvent = (state = defaultEventState, action) => {
     };
   }
   return state;
+};
+
+const defaultUserProfileState = {
+  user: null,
+};
+
+const userProfile = (state = defaultUserProfileState, action) => {
+  switch (action.type) {
+    case FETCH_USER:
+      return {
+        user: { ...Object.values(action.user.entities.user)[0] },
+      };
+    case USER_EDIT:
+      return {
+        user: { ...Object.values(action.user.entities.user)[0] },
+      };
+    default:
+      return state;
+  }
 };
 
 const defaultOrganisationState = {
@@ -171,6 +195,7 @@ let reducer = combineReducers({
   events,
   currentEvent,
   currentOrganisation,
+  userProfile,
   organisations: organisationsState,
   sponsors: sponsorsState,
   locations: locationState,

@@ -50,7 +50,7 @@ class PublicContainer extends Component<Props> {
           />
           <Route
             exact
-            path="/events/:event_id/attendee/:attendee_id"
+            path="/users/:user_id"
             render={props => (
               <div>
                 <UserProfile {...props} />
@@ -59,7 +59,7 @@ class PublicContainer extends Component<Props> {
           />
           <Route
             exact
-            path="/events/:event_id/attendee/:attendee_id/edit"
+            path="/users/:user_id/edit"
             render={props => (
               <div>
                 <EditUserProfile {...props} />
