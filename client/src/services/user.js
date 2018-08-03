@@ -7,9 +7,6 @@ export default {
   editUser: user => {
     return makeRequest(baseUriUser, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
       body: user,
     });
   },

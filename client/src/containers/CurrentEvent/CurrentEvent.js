@@ -48,11 +48,6 @@ class CurrentEvent extends Component {
           attendees.map(att => (
             <Col key={att.id}>
               <Link to={`/users/${att.id}`}>
-                <Link to={`/users/${att.id}/edit`}>
-                  <Button id="edit-user" className="btn btn-default">
-                    <span className="fa fa-edit" />
-                  </Button>
-                </Link>
                 <Card id="attendee-card">
                   <CardImg
                     top
