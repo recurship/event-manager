@@ -125,7 +125,7 @@ const userProfile = (state = defaultUserProfileState, action) => {
       };
     case USER_EDIT:
       return {
-        user: { ...Object.values(action.user.entities.user)[0] },
+        user: { ...Object.values(action.user) },
       };
     default:
       return state;
