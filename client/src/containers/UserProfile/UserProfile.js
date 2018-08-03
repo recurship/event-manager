@@ -28,7 +28,7 @@ class UserProfile extends Component {
   showEditButton = user => {
     const { token } = store.getState().userState;
     const payloadUserId = jwtDecode(token).user_id;
-    return token && payloadUserId == user.id ? (
+    return token && payloadUserId === user.id ? (
       <Link to={`/users/${user.id}/edit`}>
         <Button id="edit-user" className="btn btn-default">
           <span className="fa fa-edit" />
