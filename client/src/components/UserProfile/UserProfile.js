@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { AttendeeType } from '../../types/attendee-types';
-import {
-	Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  Col,
-  Row,
-} from 'reactstrap';
-import { getFullname } from '../../utils/utils'
+import { Card, CardImg, Col, Row } from 'reactstrap';
+import { getFullname } from '../../utils/utils';
 import './UserProfile.css';
 
 type Props = {
