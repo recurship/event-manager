@@ -7,7 +7,7 @@ import { isEmpty } from 'lodash';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import SocialShare from '../../components/SocialShare/SocialShare';
-import MetaTags from 'react-meta-tags';
+import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 
 type Props = BaseReduxPropTypes & {
   organisation: Object,
@@ -34,20 +34,12 @@ class Organisation extends Component<Props> {
       <div>
         {!isEmpty(organisation) ? (
           <Container>
-            <MetaTags>
-              <title>{organisation.name}</title>
-              <meta name="description" content={organisation.description} />
-              <meta property="og:title" content={organisation.name} />
-              <meta
-                property="og:image"
-                content={
-                  organisation.logo
-                    ? organisation.logo
-                    : 'http://via.placeholder.com/350x150'
-                }
-              />
-              <meta property="og:url" content={window.location.href} />
-            </MetaTags>
+            <MetaTagsComponent
+              title={organisation.name}
+              description={organisation.description}
+              image={organisation.logo}
+              url={window.location.href}
+            />
             <CardImg top width="100%" src={organisation.logo} />
             <ContentHeader heading={organisation.name} />
             <Row className="block-content text-justify">
