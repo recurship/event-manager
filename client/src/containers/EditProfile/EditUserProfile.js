@@ -13,11 +13,20 @@ import './EditProfileModal.css';
 import { fetchUserProfile, userProfileEdit } from '../../actions';
 import { connect } from 'react-redux';
 import { AttendeeType } from '../../types/attendee-types';
+import { isEmpty, isEmail, isLowercase } from 'validator';
 
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.getCurrentUser();
+    this.state = {
+      isValidated: true,
+      hasError: false,
+      errorFirstName: '',
+      errorLastName: '',
+      errorUserName: '',
+      errorEmail: '',
+    };
   }
 
   getCurrentUser = () => {
@@ -36,6 +45,7 @@ class EditUserProfile extends React.Component {
     formData.append('email', formValues.email.value);
     const { dispatch } = this.props;
     dispatch(userProfileEdit(formData));
+    dispatch(fetchUserProfile(this.props.match.params.user_id));
     this.props.history.push(`/users/${this.props.match.params.user_id}`);
   };
 
@@ -43,6 +53,53 @@ class EditUserProfile extends React.Component {
     let user = this.props.userProfile;
     return user ? user : null;
   }
+
+  handleInputChange = e => {
+    const { name, value } = e.target;
+    console.log('handle input change', name);
+    switch (name) {
+      case 'firstname':
+        isEmpty(value)
+          ? this.setState({
+              errorFirstName: '*First name is required',
+              isValidated: false,
+            })
+          : this.setState({ errorFirstName: '', isValidated: true });
+        break;
+      case 'lastname':
+        isEmpty(value)
+          ? this.setState({
+              errorLastName: '*Last name is required',
+              isValidated: false,
+            })
+          : this.setState({ errorLastName: '', isValidated: true });
+        break;
+      case 'username':
+        let errorUserName = '';
+        if (isEmpty(value)) {
+          errorUserName = '*Username is required';
+        } else if (!isLowercase(value))
+          errorUserName = '*Username must be in lowercase';
+
+        this.setState({
+          errorUserName: errorUserName,
+          isValidated: errorUserName === '',
+        });
+        break;
+      case 'email':
+        let errorEmail = '';
+        if (isEmpty(value)) {
+          errorEmail = '*Email is required';
+        } else if (!isEmail(value)) errorEmail = '*Invalid Email';
+        this.setState({
+          errorEmail: errorEmail,
+          isValidated: errorEmail === '',
+        });
+        break;
+      default:
+        this.setState({ isValidated: true });
+    }
+  };
 
   render() {
     const { user } = this.getUserDetails();
@@ -65,10 +122,13 @@ class EditUserProfile extends React.Component {
                 <Label htmlFor="name">First Name</Label>
                 <Input
                   type="text"
+                  id="first_name"
                   name="firstname"
                   className="form-control"
+                  onChange={this.handleInputChange}
                   defaultValue={user.firstName}
                 />
+                <span className="text-danger">{this.state.errorFirstName}</span>
               </div>
               <div className="form-group">
                 <Label htmlFor="name">Last Name</Label>
@@ -76,8 +136,10 @@ class EditUserProfile extends React.Component {
                   type="text"
                   name="lastname"
                   className="form-control"
+                  onChange={this.handleInputChange}
                   defaultValue={user.lastName}
                 />
+                <span className="text-danger">{this.state.errorLastName}</span>
               </div>
               <div className="form-group">
                 <Label htmlFor="userName">User Name</Label>
@@ -85,8 +147,10 @@ class EditUserProfile extends React.Component {
                   type="text"
                   name="username"
                   className="form-control"
+                  onChange={this.handleInputChange}
                   defaultValue={user.username}
                 />
+                <span className="text-danger">{this.state.errorUserName}</span>
               </div>
               <div className="form-group">
                 <Label htmlFor="email">Email</Label>
@@ -94,10 +158,17 @@ class EditUserProfile extends React.Component {
                   type="text"
                   name="email"
                   className="form-control"
+                  onChange={this.handleInputChange}
                   defaultValue={user.email}
                 />
+                <span className="text-danger">{this.state.errorEmail}</span>
               </div>
-              <Button color="primary" type="submit">
+              <Button
+                id="submit_button"
+                color="primary"
+                type="submit"
+                disabled={!this.state.isValidated}
+              >
                 Submit
               </Button>
             </form>

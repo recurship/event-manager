@@ -13,6 +13,7 @@ type Props = {
 };
 
 let LoginForm = (props: Props) => {
+  localStorage.setItem('zxc', '{"name":"value"}');
   const { valid, onSubmit } = props;
   return (
     <form id="login-form" onSubmit={onSubmit}>
