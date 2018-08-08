@@ -24,3 +24,14 @@ Cypress.Commands.add('login', userType => {
       .clear()
       .type(userType.password);
   });
+
+Cypress.Commands.add('visitEditPage', (ValidCredentials, username) => {
+  cy.visit('/login');
+  cy.login(ValidCredentials);
+  cy.contains('Submit').click();
+  cy.get('.card-img-top').first().click();
+  cy.reload();
+  cy.get('.card-title')
+    .contains(username)
+    .click();
+});

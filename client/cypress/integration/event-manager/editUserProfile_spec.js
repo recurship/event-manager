@@ -1,8 +1,9 @@
-// import {store}  from '../../../src';
-// import jwtDecode from 'jwt-decode';
-import { ValidCredentials, validUser, invalidUser } from './dataSet';
-import values from '../../../node_modules/redux-form/lib/values';
-
+import {
+  ValidCredentials,
+  validUser,
+  invalidUser,
+  anotherUser,
+} from './dataSet';
 /* global describe  */
 /* global context */
 /* global it */
@@ -10,167 +11,138 @@ import values from '../../../node_modules/redux-form/lib/values';
 /* global cy */
 /* eslint no-undef: "error" */
 
-describe('User profile edit Testing', () => {
-  context('Test for contents in the edit profile for an invalid user', () => {
-    it('Visits the edit profile page of an invalid user ', () => {
-      cy.visit('/users/b/edit');
+describe('Edit Profile Testing', () => {
+  context('Tests for different users on user profile', () => {
+    it('Edit button should not be visible for other users', () => {
+      cy.visitEditPage(ValidCredentials, anotherUser.username);
+      cy.get('#edit-user').should('not.exist');
     });
-
-    it('First name should be empty', () => {
-      cy.get('input[name=firstname]').should('have.value', '');
+    it('Edit button should not be visible for current user', () => {
+      cy.visitEditPage(ValidCredentials, ValidCredentials.username);
+      cy.get('#edit-user')
+        .children()
+        .first()
+        .should('have.class', 'fa-edit');
     });
-
-    it('Last name should be empty', () => {
-      cy.get('input[name=lastname]').should('have.value', '');
-    });
-
-    it('User name should be empty', () => {
-      cy.get('input[name=username]').should('have.value', '');
-    });
-
-    it('Email should be empty', () => {
-      cy.get('input[name=email]').should('have.value', '');
+    it('Should direct to Edit Profile page on current user', () => {
+      cy.get('#edit-user').click({ force: true });
     });
   });
+  context('Tests for Edit Profile Page', () => {
+    it('Should show edit profile header', () => {
+      cy.get('.card-header').should('contain', 'Edit Profile');
+    });
+    it('Fields should not be empty in form', () => {
+      expect(cy.get('input[name=firstname]')).to.not.equal('');
+      expect(cy.get('input[name=lastname]')).to.not.equal('');
+      expect(cy.get('input[name=username]')).to.not.equal('');
+      expect(cy.get('input[name=email]')).to.not.equal('');
+    });
+    context('Validation testing on form', () => {
+      context('First name validation', () => {
+        it('Should show error on invalid input', () => {
+          cy.get('input[name=firstname]')
+            .focus()
+            .clear()
+            .next()
+            .contains('*First name is required');
+        });
 
-  context(
-    'Test for contents in the edit profile page for logged in user',
-    () => {
-      it('Visits the logged in user edit profile page ', () => {
-        cy.visit('/login');
-        cy.login(ValidCredentials);
-        cy.contains('Submit').click();
-        cy.get('.card-img-top').first().click();
-        // cy.visit('/users/b6e21be3-ae59-42b0-acd2-ca48690cff9b/edit');
+        it('Should disable submit button', () => {
+          cy.get('#submit_button').should('be.disabled');
+        });
+
+        it('Should enable submit button on valid firstname', () => {
+          cy.get('input[name=firstname]').type(validUser.firstname);
+          cy.get('#submit_button').should('be.enabled');
+        });
       });
 
-//       it('Should contain Edit Profile text', () => {
-//         cy.get('.card-header').should('contain', 'Edit Profile');
-//       });
+      context('Last name validation', () => {
+        it('Should show error on invalid input', () => {
+          cy.get('input[name=lastname]')
+            .focus()
+            .clear()
+            .next()
+            .contains('*Last name is required');
+        });
 
-//       it('First name should not be empty', () => {
-//         expect(cy.get('input[name=firstname]')).to.not.equal('');
-//       });
+        it('Should disable submit button', () => {
+          cy.get('#submit_button').should('be.disabled');
+        });
 
-//       it('Last name should not be empty', () => {
-//         expect(cy.get('input[name=lastname]')).to.not.equal('');
-//       });
+        it('Should enable submit button on valid lastname', () => {
+          cy.get('input[name=lastname]').type(validUser.lastname);
+          cy.get('#submit_button').should('be.enabled');
+        });
+      });
 
-//       it('User name should not be empty', () => {
-//         expect(cy.get('input[name=username]')).to.not.equal('');
-//       });
+      context('Username validation', () => {
+        it('Should show error on empty input', () => {
+          cy.get('input[name=username]')
+            .focus()
+            .clear()
+            .next()
+            .contains('*Username is required');
+        });
 
-//       it('Email should not be empty', () => {
-//         expect(cy.get('input[name=email]')).to.not.equal('');
-//       });
-//     }
-//   );
+        it('Should show error on invalid username', () => {
+          cy.get('input[name=username]')
+            .focus()
+            .type(invalidUser.username)
+            .next()
+            .contains('*Username must be in lowercase');
+        });
 
-//   context('Test for validating input fields', () => {
-//     it('Visits the edit profile page', () => {
-//       cy.visit('/users/b6e21be3-ae59-42b0-acd2-ca48690cff9b/edit');
-//     });
+        it('Should disable submit button', () => {
+          cy.get('#submit_button').should('be.disabled');
+        });
 
-//     context('First name validation', () => {
-//       it('Should show error on invalid input', () => {
-//         cy.get('input[name=firstname]')
-//           .focus()
-//           .clear()
-//           .next()
-//           .contains('*First name is required');
-//       });
+        it('Should enable submit button on valid username', () => {
+          cy.get('input[name=username]')
+            .clear()
+            .type(ValidCredentials.username);
+          cy.get('#submit_button').should('be.enabled');
+        });
+      });
 
-//       it('Should disable submit button', () => {
-//         cy.get('#submit_button').should('be.disabled');
-//       });
+      context('Email validation', () => {
+        it('Should show error on empty input', () => {
+          cy.get('input[name=email]')
+            .focus()
+            .clear()
+            .next()
+            .contains('*Email is required');
+        });
 
-//       it('Should enable submit button on valid firstname', () => {
-//         cy.get('input[name=firstname]').type(validUser.firstname);
-//         cy.get('#submit_button').should('be.enabled');
-//       });
-//     });
+        it('Should show error on invalid email', () => {
+          cy.get('input[name=email]')
+            .focus()
+            .type('DDD')
+            .next()
+            .contains('*Invalid Email');
+        });
 
-//     context('Last name validation', () => {
-//       it('Should show error on invalid input', () => {
-//         cy.get('input[name=lastname]')
-//           .focus()
-//           .clear()
-//           .next()
-//           .contains('*Last name is required');
-//       });
+        it('Should disable submit button', () => {
+          cy.get('#submit_button').should('be.disabled');
+        });
 
-//       it('Should disable submit button', () => {
-//         cy.get('#submit_button').should('be.disabled');
-//       });
+        it('Should enable submit button on valid email', () => {
+          cy.get('input[name=email]')
+            .clear()
+            .type(validUser.email);
+          cy.get('#submit_button').should('be.enabled');
+        });
+      });
+    });
 
-//       it('Should enable submit button on valid lastname', () => {
-//         cy.get('input[name=lastname]').type(validUser.lastname);
-//         cy.get('#submit_button').should('be.enabled');
-//       });
-//     });
-
-//     context('Username validation', () => {
-//       it('Should show error on empty input', () => {
-//         cy.get('input[name=username]')
-//           .focus()
-//           .clear()
-//           .next()
-//           .contains('*Username is required');
-//       });
-
-//       it('Should show error on invalid username', () => {
-//         cy.get('input[name=username]')
-//           .focus()
-//           .type(invalidUser.username)
-//           .next()
-//           .contains('*Username must be in lowercase');
-//       });
-
-//       it('Should disable submit button', () => {
-//         cy.get('#submit_button').should('be.disabled');
-//       });
-
-//       it('Should enable submit button on valid username', () => {
-//         cy.get('input[name=username]')
-//           .clear()
-//           .type(ValidCredentials.username);
-//         cy.get('#submit_button').should('be.enabled');
-//       });
-//     });
-
-//     context('Email validation', () => {
-//       it('Should show error on empty input', () => {
-//         cy.get('input[name=email]')
-//           .focus()
-//           .clear()
-//           .next()
-//           .contains('*Email is required');
-//       });
-
-//       it('Should show error on invalid email', () => {
-//         cy.get('input[name=email]')
-//           .focus()
-//           .type('DDD')
-//           .next()
-//           .contains('*Invalid Email');
-//       });
-
-//       it('Should disable submit button', () => {
-//         cy.get('#submit_button').should('be.disabled');
-//       });
-
-//       it('Should enable submit button on valid email', () => {
-//         cy.get('input[name=email]')
-//           .clear()
-//           .type(validUser.email);
-//         cy.get('#submit_button').should('be.enabled');
-//       });
-//     });
-//   });
-//   context('Routing on Submit', () => {
-//     it('Should redirect to user profile page', () => {
-//         // cy.get('#submit_button').click();
-//       //  cy.url().should('eq', '/users/b6e21be3-ae59-42b0-acd2-ca48690cff9b')
-//     });
+    context('Routing on Submit', () => {
+      it('Should redirect to user profile page', () => {
+        cy.get('#submit_button').click({ force: true });
+        cy.get('#user-profile h4')
+          .first()
+          .should('contain', ValidCredentials.username);
+      });
+    });
   });
 });

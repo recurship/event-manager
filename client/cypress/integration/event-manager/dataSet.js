@@ -26,6 +26,11 @@ export const ValidCredentials = {
   password: '1299459ML',
 };
 
+export const anotherUser = {
+  username: 'usmandap',
+  email: 'test@test.com',
+};
+
 export const userWithExistedUsername = {
   firstname: 'Happy',
   lastname: 'Person',
