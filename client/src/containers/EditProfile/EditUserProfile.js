@@ -20,7 +20,7 @@ class EditUserProfile extends React.Component {
     super(props);
     this.getCurrentUser();
     this.state = {
-      isValidated: false,
+      isValidated: true,
       errorFirstName: '',
       errorLastName: '',
       errorUserName: '',
@@ -76,9 +76,9 @@ class EditUserProfile extends React.Component {
         let errorUserName = '';
         if (isEmpty(value)) {
           errorUserName = '*Username is required';
-        } else if (!isLowercase(value))
+        } else if (!isLowercase(value)) {
           errorUserName = '*Username must be in lowercase';
-
+        }
         this.setState({
           errorUserName: errorUserName,
           isValidated: errorUserName === '',
@@ -88,14 +88,14 @@ class EditUserProfile extends React.Component {
         let errorEmail = '';
         if (isEmpty(value)) {
           errorEmail = '*Email is required';
-        } else if (!isEmail(value)) errorEmail = '*Invalid Email';
+        } else if (!isEmail(value)) {
+          errorEmail = '*Invalid Email';
+        }
         this.setState({
           errorEmail: errorEmail,
           isValidated: errorEmail === '',
         });
         break;
-      default:
-        this.setState({ isValidated: true });
     }
   };
 
