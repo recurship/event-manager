@@ -23,10 +23,10 @@ class PublicContainer extends Component<Props> {
     return (
       <Router>
         <Fragment>
-          {pathname == '/login' ||
-          pathname == '/signup' ||
-          pathname == '/forgot-password' ||
-          pathname == '/' ? null : (
+          {pathname === '/login' ||
+          pathname === '/signup' ||
+          pathname === '/forgot-password' ||
+          pathname === '/' ? null : (
             <Route render={() => <EMNavbar userData={this.props} />} />
           )}
           <Route exact component={Events} path="/events" />

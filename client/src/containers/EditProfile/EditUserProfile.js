@@ -20,7 +20,7 @@ class EditUserProfile extends React.Component {
     super(props);
     this.getCurrentUser();
     this.state = {
-      isValidated: true,
+      isValidated: false,
       errorFirstName: '',
       errorLastName: '',
       errorUserName: '',
@@ -53,6 +53,26 @@ class EditUserProfile extends React.Component {
     return user ? user : null;
   }
 
+  checkEmail = value => {
+    if (isEmpty(value)) {
+      return '*Email is required';
+    } else if (!isEmail(value)) {
+      return '*Invalid Email';
+    } else {
+      return '';
+    }
+  };
+
+  checkUsername = value => {
+    if (isEmpty(value)) {
+      return '*Username is required';
+    } else if (!isLowercase(value)) {
+      return '*Username must be in lowercase';
+    } else {
+      return '';
+    }
+  };
+
   handleInputChange = e => {
     const { name, value } = e.target;
     switch (name) {
@@ -74,28 +94,19 @@ class EditUserProfile extends React.Component {
         break;
       case 'username':
         let errorUserName = '';
-        if (isEmpty(value)) {
-          errorUserName = '*Username is required';
-        } else if (!isLowercase(value)) {
-          errorUserName = '*Username must be in lowercase';
-        }
         this.setState({
-          errorUserName: errorUserName,
-          isValidated: errorUserName === '',
+          errorUserName: this.checkUsername(value),
+          isValidated: this.checkUsername(value) === '',
         });
         break;
       case 'email':
-        let errorEmail = '';
-        if (isEmpty(value)) {
-          errorEmail = '*Email is required';
-        } else if (!isEmail(value)) {
-          errorEmail = '*Invalid Email';
-        }
         this.setState({
-          errorEmail: errorEmail,
-          isValidated: errorEmail === '',
+          errorEmail: this.checkEmail(value),
+          isValidated: this.checkEmail(value) === '',
         });
         break;
+      default:
+        this.setState({ isValidated: true });
     }
   };
 

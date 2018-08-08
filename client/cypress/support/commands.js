@@ -1,7 +1,4 @@
-/* global describe  */
-/* global context */
-/* global it */
-/* global expect  */
+/* global Cypress  */
 /* global cy */
 /* eslint no-undef: "error" */
 Cypress.Commands.add('fillForm', userType => {

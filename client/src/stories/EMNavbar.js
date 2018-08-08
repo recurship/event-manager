@@ -6,8 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { withInfo } from '@storybook/addon-info';
 
 storiesOf('EMNavbar', module).add(
-	'nav bar',
-	withInfo(`
+  'nav bar',
+  withInfo(`
       Main Nav Bar component 
     
       ~~~js
@@ -15,9 +15,8 @@ storiesOf('EMNavbar', module).add(
       ~~~
     
     `)(() => (
-		<Router>
-			<EMNavbar />
-		</Router>
-	))
+    <Router>
+      <EMNavbar />
+    </Router>
+  ))
 );
-

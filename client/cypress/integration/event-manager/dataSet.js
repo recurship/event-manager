@@ -1,4 +1,4 @@
-var ID = () =>
+var getId = () =>
   `_${Math.random()
     .toString(36)
     .substr(2, 9)}`;
@@ -6,8 +6,8 @@ var ID = () =>
 export const validUser = {
   firstname: 'Happy',
   lastname: 'Person',
-  username: `happyperson${ID()}`,
-  email: `happy${ID()}@person.com`,
+  username: `happyperson${getId()}`,
+  email: `happy${getId()}@person.com`,
   password: '12345678',
 };
 
@@ -36,7 +36,7 @@ export const userWithExistedUsername = {
   lastname: 'Person',
   username: 'happyperson',
   password: '12345678',
-  email: `happy${ID()}@person.com`,
+  email: `happy${getId()}@person.com`,
 };
 
 export const userWithExistedEmail = {
@@ -44,5 +44,5 @@ export const userWithExistedEmail = {
   lastname: 'Person',
   password: '12345678',
   email: 'happy@person.com',
-  username: `happyperson${ID()}`,
+  username: `happyperson${getId()}`,
 };
