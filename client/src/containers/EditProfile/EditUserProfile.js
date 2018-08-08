@@ -53,6 +53,45 @@ class EditUserProfile extends React.Component {
     return user ? user : null;
   }
 
+  validationCases = {
+    firstname: value => {
+      let errFirstName = this.checkFirstName(value);
+      this.setState({
+        errorFirstName: errFirstName,
+        isValidated: errFirstName === '',
+      });
+    },
+    lastname: value => {
+      let errLastName = this.checkLastName(value);
+      this.setState({
+        errorLastName: errLastName,
+        isValidated: errLastName === '',
+      });
+    },
+    username: value => {
+      let errUserName = this.checkUserName(value);
+      this.setState({
+        errorUserName: errUserName,
+        isValidated: errUserName === '',
+      });
+    },
+    email: value => {
+      let errEmail = this.checkEmail(value);
+      this.setState({
+        errorEmail: errEmail,
+        isValidated: errEmail === '',
+      });
+    },
+  };
+
+  checkFirstName = value => {
+    return isEmpty(value) ? '*First name is required' : '';
+  };
+
+  checkLastName = value => {
+    return isEmpty(value) ? '*Last name is required' : '';
+  };
+
   checkEmail = value => {
     if (isEmpty(value)) {
       return '*Email is required';
@@ -63,7 +102,7 @@ class EditUserProfile extends React.Component {
     }
   };
 
-  checkUsername = value => {
+  checkUserName = value => {
     if (isEmpty(value)) {
       return '*Username is required';
     } else if (!isLowercase(value)) {
@@ -75,39 +114,7 @@ class EditUserProfile extends React.Component {
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    switch (name) {
-      case 'firstname':
-        isEmpty(value)
-          ? this.setState({
-              errorFirstName: '*First name is required',
-              isValidated: false,
-            })
-          : this.setState({ errorFirstName: '', isValidated: true });
-        break;
-      case 'lastname':
-        isEmpty(value)
-          ? this.setState({
-              errorLastName: '*Last name is required',
-              isValidated: false,
-            })
-          : this.setState({ errorLastName: '', isValidated: true });
-        break;
-      case 'username':
-        let errorUserName = '';
-        this.setState({
-          errorUserName: this.checkUsername(value),
-          isValidated: this.checkUsername(value) === '',
-        });
-        break;
-      case 'email':
-        this.setState({
-          errorEmail: this.checkEmail(value),
-          isValidated: this.checkEmail(value) === '',
-        });
-        break;
-      default:
-        this.setState({ isValidated: true });
-    }
+    this.validationCases[name](value);
   };
 
   render() {
