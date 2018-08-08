@@ -20,8 +20,7 @@ class EditUserProfile extends React.Component {
     super(props);
     this.getCurrentUser();
     this.state = {
-      isValidated: true,
-      hasError: false,
+      isValidated: false,
       errorFirstName: '',
       errorLastName: '',
       errorUserName: '',
@@ -56,7 +55,6 @@ class EditUserProfile extends React.Component {
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    console.log('handle input change', name);
     switch (name) {
       case 'firstname':
         isEmpty(value)
@@ -122,7 +120,6 @@ class EditUserProfile extends React.Component {
                 <Label htmlFor="name">First Name</Label>
                 <Input
                   type="text"
-                  id="first_name"
                   name="firstname"
                   className="form-control"
                   onChange={this.handleInputChange}
