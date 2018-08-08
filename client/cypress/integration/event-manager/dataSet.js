@@ -13,6 +13,7 @@ export const validUser = {
 
 export const invalidUser = {
   email: 'happy@person',
+  username: 'Dadmin',
   password: '123',
 };
 
