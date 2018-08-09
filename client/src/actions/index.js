@@ -28,6 +28,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 // edit user
 export const USER_EDIT = 'USER_EDIT';
 export const FETCH_USER = 'FETCH_USER';
+export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
 // events
 export const ADD_EVENT = 'ADD_EVENT';
@@ -77,6 +78,11 @@ export const userLoginSuccess = token => ({
   token,
 });
 
+export const setCurrentUser = currentUser => ({
+  type: FETCH_CURRENT_USER,
+  currentUser,
+});
+
 export const userLogoutSuccess = () => ({
   type: USER_LOGOUT,
 });
@@ -105,7 +111,13 @@ export const userLogin = credentials => async (dispatch, getState) => {
       credentials.username,
       credentials.password
     );
-    if (token.access) dispatch(userLoginSuccess(token));
+
+    if (token.access) {
+      dispatch(userLoginSuccess(token));
+      const currentUser = await UserService.getCurrentUser();
+      dispatch(setCurrentUser(currentUser));
+    }
+
     dispatch(endRequest(USER_LOGIN));
     return token;
   } catch (e) {

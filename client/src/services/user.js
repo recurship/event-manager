@@ -14,4 +14,8 @@ export default {
   getUserProfile: userId => {
     return makeRequest(`${baseUriUsers}${userId}/`);
   },
+
+  getCurrentUser: () => {
+    return makeRequest(baseUriUser);
+  },
 };

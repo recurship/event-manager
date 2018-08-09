@@ -12,6 +12,7 @@ import {
   FETCH_LOCATIONS,
   FETCH_USER,
   USER_EDIT,
+  FETCH_CURRENT_USER,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -57,11 +58,17 @@ const userState = (state = defaultUserState, action) => {
         token: action.token.access,
         refresh: action.token.refresh,
       };
+    case FETCH_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.currentUser,
+      };
 
     case USER_LOGOUT:
       return {
         ...state,
         token: null,
+        currentUser: null,
       };
 
     case REFRESH_TOKEN:
