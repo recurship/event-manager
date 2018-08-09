@@ -5,7 +5,6 @@ import { fetchUserProfile } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
 import { Link } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import { store } from '../../../src';
 
 class UserProfile extends Component {
@@ -26,9 +25,8 @@ class UserProfile extends Component {
   }
 
   showEditButton = user => {
-    const { token } = store.getState().userState;
-    const payloadUserId = jwtDecode(token).user_id;
-    return token && payloadUserId === user.id ? (
+    const { token, currentUser } = store.getState().userState;
+    return token && currentUser.id === user.id ? (
       <Link to={`/users/${user.id}/edit`}>
         <Button id="edit-user" className="btn btn-default">
           <span className="fa fa-edit" />
