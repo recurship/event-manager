@@ -30,7 +30,6 @@ export const makeRequest = async (path, options) => {
     const { refresh } = store.getState().userState,
       formData = new FormData();
     formData.append('refresh', refresh);
-
     const body = { method: 'POST', body: formData },
       refreshedReponse = await makeFetchRequest('/api/token/refresh', body),
       refreshedToken = await refreshedReponse.body,

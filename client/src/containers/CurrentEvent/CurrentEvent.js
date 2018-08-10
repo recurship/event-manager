@@ -19,9 +19,10 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import EventDescription from '../../components/EventDescription/EventDescription';
+import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
-import './CurrentEvent.css';
 import { AttendeeType } from '../../types/attendee-types';
+import './CurrentEvent.css';
 class CurrentEvent extends Component {
   eventId: string;
 
@@ -46,7 +47,7 @@ class CurrentEvent extends Component {
         {attendees &&
           attendees.map(att => (
             <Col key={att.id}>
-              <Link to={`/events/${this.eventId}/attendee/${att.id}`}>
+              <Link to={`/users/${att.id}`}>
                 <Card id="attendee-card">
                   <CardImg
                     top

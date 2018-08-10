@@ -4,9 +4,11 @@ import OrganisationService from '../services/organisation';
 import { normalize } from 'normalizr';
 import { eventSchema, eventListSchema } from '../schemas/eventSchema';
 import { organisationSchema } from '../schemas/organisationSchema';
+import { userSchema, userListSchema } from '../schemas/userSchema';
 import OrganisationsService from '../services/organisation';
 import SponsorsService from '../services/sponsors';
 import LocationService from '../services/locations';
+import UserService from '../services/user';
 import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
 // app
@@ -22,6 +24,11 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
+
+// edit user
+export const USER_EDIT = 'USER_EDIT';
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
 // events
 export const ADD_EVENT = 'ADD_EVENT';
@@ -56,9 +63,24 @@ export const triggerFailure = (name, error) => ({
 
 // user actions
 
+export const userEdit = user => ({
+  type: USER_EDIT,
+  user,
+});
+
+export const getUserProfile = user => ({
+  type: FETCH_USER,
+  user,
+});
+
 export const userLoginSuccess = token => ({
   type: USER_LOGIN,
   token,
+});
+
+export const setCurrentUser = currentUser => ({
+  type: FETCH_CURRENT_USER,
+  currentUser,
 });
 
 export const userLogoutSuccess = () => ({
@@ -89,7 +111,13 @@ export const userLogin = credentials => async (dispatch, getState) => {
       credentials.username,
       credentials.password
     );
-    if (token.access) dispatch(userLoginSuccess(token));
+
+    if (token.access) {
+      dispatch(userLoginSuccess(token));
+      const currentUser = await UserService.getCurrentUser();
+      dispatch(setCurrentUser(currentUser));
+    }
+
     dispatch(endRequest(USER_LOGIN));
     return token;
   } catch (e) {
@@ -131,7 +159,17 @@ export const fetchEvents = query => async (dispatch, getState) => {
       dispatch(triggerFailure(FETCH_EVENTS, err.message));
     });
 };
-
+export const fetchUserProfile = userId => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_USER));
+  try {
+    const user = await UserService.getUserProfile(userId);
+    let camelCaseKeys = humps.camelizeKeys(user);
+    dispatch(getUserProfile(normalize(camelCaseKeys, userSchema)));
+    dispatch(endRequest(FETCH_USER));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_USER, e.message));
+  }
+};
 export const fetchCurrentEvent = eventId => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENT_DETAIL));
   try {
@@ -198,6 +236,17 @@ export const postEvent = event => (dispatch, getState) => {
     .catch(err => {
       dispatch(triggerFailure(ADD_EVENT, err));
     });
+};
+
+export const userProfileEdit = user => async (dispatch, getState) => {
+  dispatch(triggerRequest(USER_EDIT));
+  try {
+    const editedUser = await UserService.editUser(user);
+    dispatch(userEdit(editedUser));
+    dispatch(endRequest(USER_EDIT));
+  } catch (e) {
+    dispatch(triggerFailure(USER_EDIT, e));
+  }
 };
 
 // misc actions
