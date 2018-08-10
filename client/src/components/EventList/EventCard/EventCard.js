@@ -15,7 +15,7 @@ const EventCard = props => {
   return (
     <Col md="4" className="col-padding">
       <Card>
-        <Link to={`/events/${props.event.id}`}>
+        <Link to={`/events/${props.event.id}/`}>
           <CardImg
             top
             width="100%"
@@ -30,9 +30,6 @@ const EventCard = props => {
           </CardSubtitle>
           <CardTitle>{card.title}</CardTitle>
           <CardText>{card.description}</CardText>
-          {/* <CardSubtitle>
-              <small className="text-muted">{card.organisation.name}</small>
-            </CardSubtitle> */}
         </CardBody>
       </Card>
     </Col>

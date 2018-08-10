@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
-import EventDescription from '../../components/EventDescription/EventDescription';
+import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
@@ -88,26 +88,26 @@ class CurrentEvent extends Component {
             <Row className="block-content">
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={moment(event.startDatetime).format(
-                  'DD/MM/YYYY HH:MM:SS'
-                )}
+                url={null}
+                content={moment(event.startDatetime).format('LLLL')}
               />
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={moment(event.endDatetime).format(
-                  'DD/MM/YYYY HH:MM:SS'
-                )}
+                url={null}
+                content={moment(event.endDatetime).format('LLLL')}
               />
               <SummaryContainer
                 iconName="fa fa-map-marker fa-2x"
-                content={event.description}
+                url={null}
+                content={event.location.address}
               />
               <SummaryContainer
+                url={`/organisations/${event.organisation.id}/`}
                 iconName="fa fa-users fa-2x"
-                content="Organization"
+                content={event.organisation.name}
               />
             </Row>
-            <EventDescription />
+            <DescriptionContainer description={event.description} />
             <div>
               {event.attendees && event.attendees.length
                 ? this.getAttendeesProfiles(event.attendees)
