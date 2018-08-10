@@ -9,7 +9,7 @@ class EventLocation(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     logo = models.FileField(upload_to='location/', blank=False, null=True,
-                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class EventSponser(models.Model):
 
     name = models.CharField(max_length=255)
     logo = models.FileField(upload_to='sponser/', blank=False, null=True,
-                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
 
     def __str__(self):
         return self.name
@@ -34,7 +34,7 @@ class Event(models.Model):
     location = models.ForeignKey(EventLocation, on_delete=models.SET_NULL, null=True)
     sponser = models.ManyToManyField(EventSponser, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
-                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
     attendees = models.ManyToManyField(User, blank=True)
 
     def __str__(self):
