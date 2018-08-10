@@ -60,12 +60,10 @@ export class EMNavbar extends Component<Props, State> {
             {userState && userState.token ? (
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle>
+                  {`${username} `}
                   <span className="fa fa-user-circle fa-lg" />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <strong>{username}</strong>
-                  </DropdownItem>
                   <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem onClick={this.logout}>Logout</DropdownItem>
