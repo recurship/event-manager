@@ -7,9 +7,13 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink,
   NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { userLogout } from '../actions';
 import type { BaseReduxPropTypes } from '../types/base-props-types';
 import User from '../types/multi-types';
@@ -40,27 +44,34 @@ export class EMNavbar extends Component<Props, State> {
 
   render() {
     const { userState } = this.props.userData;
+    const { username, id } = userState.currentUser;
     return (
-      <Navbar color="dark" dark exapand="true">
-        <NavbarToggler right="true" onClick={this.toggle} />
+      <Navbar color="dark" dark expand="md">
+        <NavbarToggler onClick={this.toggle} className="mr-2" />
         <NavbarBrand href="/">community-manager</NavbarBrand>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/">Home</Link>
+              <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/about">About</Link>
+              <NavLink href="/about">About</NavLink>
             </NavItem>
             {userState && userState.token ? (
-              <NavItem>
-                <Link onClick={this.logout} to="/login">
-                  Logout
-                </Link>
-              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle>
+                  <span className="fa fa-user-circle fa-lg" />
+                  {` ${username}`}
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={this.logout}>Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             ) : (
               <NavItem>
-                <Link to="/login">Login</Link>
+                <NavLink href="/login">Login</NavLink>
               </NavItem>
             )}
           </Nav>
