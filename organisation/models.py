@@ -10,7 +10,7 @@ class Organisation(models.Model):
     is_active = models.BooleanField(default=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     logo = models.FileField(upload_to='organisation/', blank=False, null=True,
-                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])])
 
     def __str__(self):
         return self.name
