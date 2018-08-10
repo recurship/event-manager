@@ -1,41 +1,54 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../../actions';
+import { Button } from 'reactstrap';
+import { fetchUserProfile } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
+import { Link } from 'react-router-dom';
+import { store } from '../../../src';
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
-    this.fetchEvents();
+    this.fetchUserProfile();
   }
 
-  fetchEvents() {
+  fetchUserProfile() {
+    let userId = this.props.match.params.user_id;
     const { dispatch } = this.props;
-    dispatch(fetchEvents());
+    dispatch(fetchUserProfile(userId));
   }
-  getUserDetails(): AttendeeType {
-    const {
-        event_id: eventId = null,
-        attendee_id: attendeeId = null,
-      } = this.props.match.params,
-      { events = [] } = this.props;
-    let event, attendee;
-    event = events.find(event => event.id == eventId);
-    if (event && event.attendees)
-      attendee = event.attendees.find(att => (att.id === attendeeId));
 
-    return attendee ? attendee : null;
+  getUserDetails(): AttendeeType {
+    let user = this.props.userProfile;
+    return user ? user : null;
   }
+
+  showEditButton = user => {
+    const { token, currentUser } = store.getState().userState;
+    return token && currentUser.id === user.id ? (
+      <Link to={`/users/${user.id}/edit`}>
+        <Button id="edit-user" className="btn btn-default">
+          <span className="fa fa-edit" />
+        </Button>
+      </Link>
+    ) : null;
+  };
+
   render() {
-    const user = this.getUserDetails();
+    const { user } = this.getUserDetails();
+
     return user ? (
       <div style={{ marginTop: '20px' }}>
+        <div className="float-right mx-5">{this.showEditButton(user)}</div>
         <Profile user={user} />
       </div>
     ) : null;
   }
 }
+const mapStateToProps = state => {
+  const { userProfile } = state;
+  return { userProfile };
+};
 
-const mapStateToProps = state => ({ ...state.events });
 export default connect(mapStateToProps)(UserProfile);

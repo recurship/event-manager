@@ -8,8 +8,10 @@ import { Container } from 'reactstrap';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import CurrentEvent from '../CurrentEvent/CurrentEvent';
 import Organisation from '../Organisation/Organisation';
+import UserProfile from '../UserProfile/UserProfile';
 import { connect } from 'react-redux';
 import Location from '../../types/multi-types';
+import EditUserProfile from '../EditProfile/EditUserProfile';
 
 type Props = {
   location: Location,
@@ -21,10 +23,10 @@ class PublicContainer extends Component<Props> {
     return (
       <Router>
         <Fragment>
-          {pathname == '/login' ||
-          pathname == '/signup' ||
-          pathname == '/forgot-password' ||
-          pathname == '/' ? null : (
+          {pathname === '/login' ||
+          pathname === '/signup' ||
+          pathname === '/forgot-password' ||
+          pathname === '/' ? null : (
             <Route render={() => <EMNavbar userData={this.props} />} />
           )}
           <Route exact component={Events} path="/events" />
@@ -45,6 +47,24 @@ class PublicContainer extends Component<Props> {
               </div>
             )}
             path="/organisations/:organisation_id"
+          />
+          <Route
+            exact
+            path="/users/:user_id"
+            render={props => (
+              <div>
+                <UserProfile {...props} />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/users/:user_id/edit"
+            render={props => (
+              <div>
+                <EditUserProfile {...props} />
+              </div>
+            )}
           />
         </Fragment>
       </Router>

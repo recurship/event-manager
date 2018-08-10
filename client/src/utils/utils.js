@@ -1,5 +1,5 @@
 // @flow
-
+import { AttendeeType } from '../types/attendee-types';
 /**
  * @author Saad Abbasi
  * @description: Arrays or objects are not transformable to querystring, we need to transform according
@@ -24,4 +24,16 @@ export function makeQueryStringTransformable(params = {}): Object {
     }
   }
   return transformedParams;
+}
+
+export function getFullname(user: AttendeeType): string {
+  let name = '';
+  if (user.firstName) {
+    name += `${user.firstName} `;
+  }
+  if (user.lastName) {
+    name += `${user.lastName} `;
+  }
+
+  return name ? name : '-';
 }
