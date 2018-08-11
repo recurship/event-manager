@@ -2,7 +2,7 @@
 from rest_framework import serializers
 from organisation.serializer import OrganisationSerializer
 from user.serializer import UserSerializer
-from .models import Event, EventLocation, EventSponser
+from .models import Event, EventLocation, EventSponser, EventTag
 
 # Event location Serializers
 class EventLocationSerializer(serializers.ModelSerializer):
@@ -18,6 +18,12 @@ class EventSponserSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventSponser
         fields = ('id', 'name', 'logo')
+
+class EventTagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = EventTag
+        fields = ('id', 'name')
 
 class EventCreateSerializer(serializers.ModelSerializer):
 
