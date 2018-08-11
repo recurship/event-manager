@@ -23,6 +23,7 @@ import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
+import GoogleMap from '../../components/GoogleMap/GoogleMap';
 
 const DATE_FORMAT = 'LLLL';
 
@@ -116,6 +117,7 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
+            <GoogleMap />
           </Container>
         ) : (
           <Container />
