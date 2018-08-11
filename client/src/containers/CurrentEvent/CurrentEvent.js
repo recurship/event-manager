@@ -19,6 +19,7 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import EventDescription from '../../components/EventDescription/EventDescription';
+import CommentBox from '../../components/CommentBox/CommentBox';
 import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
@@ -113,6 +114,7 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
+            <CommentBox />
           </Container>
         ) : (
           <Container />
