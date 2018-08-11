@@ -3,7 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from .models import Event, EventLocation, EventSponser
-from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventUserAddSerializer
+from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, \
+    EventUserAddSerializer, EventCommentSerializer
 from rest_framework.response import Response
 from django.db.models import Q
 from datetime import datetime
@@ -68,6 +69,22 @@ class EventUserAddAPIView(UpdateAPIView):
 
     def post(self, request, eventid, *args, **kwargs):
         serializer_data = { 'userid': request.user.id, 'eventid': eventid}
+        serializer = self.serializer_class(
+            request.user, data=serializer_data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        data = serializer.save()
+        serialized_data = EventSerializer(data)
+
+        return Response(serialized_data.data, status=status.HTTP_200_OK)
+
+
+class EventCommentAPIView(UpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = EventCommentSerializer
+
+    def post(self, request, eventid, *args, **kwargs):
+        serializer_data = { 'commented_by': request.user.id, 'event': eventid}
         serializer = self.serializer_class(
             request.user, data=serializer_data, partial=True
         )

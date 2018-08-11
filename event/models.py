@@ -23,6 +23,17 @@ class EventSponser(models.Model):
     def __str__(self):
         return self.name
 
+
+class EventComment(models.Model):
+
+    comment = models.TextField()
+    comment_datetime = models.DateTimeField()
+    commented_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment
+
+
 class Event(models.Model):
 
     title = models.CharField(max_length=255)
@@ -33,6 +44,7 @@ class Event(models.Model):
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
     location = models.ForeignKey(EventLocation, on_delete=models.SET_NULL, null=True)
     sponser = models.ManyToManyField(EventSponser, blank=True)
+    comment = models.ManyToManyField(EventComment, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
     attendees = models.ManyToManyField(User, blank=True)
