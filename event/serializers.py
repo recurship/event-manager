@@ -52,7 +52,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'title', 'description', 'start_datetime',
-                  'end_datetime', 'organisation', 'cover', 'location', 'sponser', 'attendees')
+                  'end_datetime', 'organisation', 'cover', 'location', 'sponser', 'attendees', 'tag')
 
 class EventUserAddSerializer(serializers.Serializer):
     userid = serializers.UUIDField()
