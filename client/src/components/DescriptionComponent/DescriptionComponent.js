@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import SocialShare from '../SocialShare/SocialShare';
 
-const DescriptionContainer = props => {
+const DescriptionComponent = props => {
   return (
     <Row className="block-content text-justify">
       <Col md="9">{props.description ? props.description : null}</Col>
@@ -16,4 +16,4 @@ const DescriptionContainer = props => {
     </Row>
   );
 };
-export default DescriptionContainer;
+export default DescriptionComponent;

@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
-import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
+import DescriptionComponent from '../../components/DescriptionComponent/DescriptionComponent';
 import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
@@ -110,7 +110,7 @@ class CurrentEvent extends Component {
                 content={event.organisation.name}
               />
             </Row>
-            <DescriptionContainer description={event.description} />
+            <DescriptionComponent description={event.description} />
             <div>
               {event.attendees && event.attendees.length
                 ? this.getAttendeesProfiles(event.attendees)

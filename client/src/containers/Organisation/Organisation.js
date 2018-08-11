@@ -4,7 +4,7 @@ import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchCurrentOrganisation } from '../../actions';
 import { isEmpty } from 'lodash';
-import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
+import DescriptionComponent from '../../components/DescriptionComponent/DescriptionComponent';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import SocialShare from '../../components/SocialShare/SocialShare';
@@ -43,7 +43,7 @@ class Organisation extends Component<Props> {
             />
             <CardImg top width="100%" src={organisation.logo} />
             <ContentHeader heading={organisation.name} />
-            <DescriptionContainer description={organisation.description} />
+            <DescriptionComponent description={organisation.description} />
             <ContentHeader heading="Our Events" />
             <Row className="block-content text-justify">
               {organisation.events ? (
