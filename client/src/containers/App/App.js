@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Login from '../Login/Login';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
@@ -21,11 +21,13 @@ class App extends Component<Props> {
   render() {
     return (
       <div>
-        <PrivateRoute exact path="/" component={AuthContainer} />
-        <PublicRoute path="/" component={PublicContainer} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/forgot-password" component={ForgotPassword} />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <PrivateRoute exact path="/" component={AuthContainer} />
+          <PublicRoute path="/" component={PublicContainer} />
+        </Switch>
       </div>
     );
   }

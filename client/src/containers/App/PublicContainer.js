@@ -5,7 +5,7 @@ import Events from '../Events/Events';
 import { EMNavbar } from '../../components/EMNavbar';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { Container } from 'reactstrap';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import CurrentEvent from '../CurrentEvent/CurrentEvent';
 import Organisation from '../Organisation/Organisation';
 import UserProfile from '../UserProfile/UserProfile';
@@ -66,6 +66,7 @@ class PublicContainer extends Component<Props> {
               </div>
             )}
           />
+          <Redirect to="/events" />
         </Fragment>
       </Router>
     );
