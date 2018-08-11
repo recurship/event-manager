@@ -38,6 +38,7 @@ class EventSerializer(serializers.ModelSerializer):
     organisation = OrganisationSerializer()
     location = EventLocationSerializer()
     sponser = EventSponserSerializer(many=True)
+    tag = EventTagSerializer(many=True)
     attendees = UserSerializer(many=True)
 
     class Meta:
