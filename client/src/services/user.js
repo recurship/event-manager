@@ -18,4 +18,10 @@ export default {
   getCurrentUser: () => {
     return makeRequest(baseUriUser);
   },
+
+  avatarUpload: avatar => {
+    let formData = new FormData();
+    formData.append('avatar', avatar);
+    return makeRequest(baseUriUser, { method: 'PUT', body: formData });
+  },
 };

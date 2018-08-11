@@ -20,6 +20,7 @@ export class EditUserForm extends React.Component {
       errorLastName: '',
       errorUserName: '',
       errorEmail: '',
+      picture: '',
     };
   }
 
@@ -88,18 +89,30 @@ export class EditUserForm extends React.Component {
   };
 
   render() {
-    const { user, handleSubmit } = this.props;
+    const { user, handleSubmit, handleImageUpload } = this.props;
+    console.log('rednder triggered: ', user);
     return (
       <form id="edit-profile" onSubmit={handleSubmit}>
-        <CardImg
-          top
-          width="40%"
-          src={
-            'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
-          }
-          alt="User Profile Pic"
-          className="user-avatar"
-        />
+        <div className="user-avatar">
+          <CardImg
+            top
+            width="40%"
+            src={
+              user.avatar ||
+              'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
+            }
+            alt="User Profile Pic"
+          />
+          <div
+            className="overlay"
+            onClick={() => {
+              document.getElementById('user-thumb').click();
+            }}
+          >
+            <Input type="file" id="user-thumb" onChange={handleImageUpload} />
+            Update Picture <span className="fa fa-upload" />
+          </div>
+        </div>
         <div className="form-group">
           <Label htmlFor="name">First Name</Label>
           <Input
