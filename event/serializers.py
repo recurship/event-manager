@@ -2,7 +2,7 @@
 from rest_framework import serializers
 from organisation.serializer import OrganisationSerializer
 from user.serializer import UserSerializer
-from .models import Event, EventLocation, EventSponser, EventComment
+from .models import Event, EventLocation, EventSponser, EventComment, EventTag
 
 # Event location Serializers
 class EventLocationSerializer(serializers.ModelSerializer):
@@ -19,7 +19,6 @@ class EventSponserSerializer(serializers.ModelSerializer):
         model = EventSponser
         fields = ('id', 'name', 'logo')
 
-
 class EventCommentSerializer(serializers.ModelSerializer):
 
     commented_by = UserSerializer()
@@ -27,6 +26,11 @@ class EventCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventComment
         fields = ('id', 'comment', 'commented_by', 'commented_datetime')
+class EventTagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = EventTag
+        fields = ('id', 'name')
 
 class EventCreateSerializer(serializers.ModelSerializer):
 

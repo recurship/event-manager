@@ -33,6 +33,11 @@ class EventComment(models.Model):
     def __str__(self):
         return self.comment
 
+class EventTag(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class Event(models.Model):
 
@@ -45,6 +50,7 @@ class Event(models.Model):
     location = models.ForeignKey(EventLocation, on_delete=models.SET_NULL, null=True)
     sponser = models.ManyToManyField(EventSponser, blank=True)
     comment = models.ManyToManyField(EventComment, blank=True)
+    tag = models.ManyToManyField(EventTag, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
     attendees = models.ManyToManyField(User, blank=True)
