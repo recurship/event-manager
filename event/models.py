@@ -23,7 +23,6 @@ class EventSponser(models.Model):
     def __str__(self):
         return self.name
 
-
 class EventComment(models.Model):
 
     comment = models.TextField()
