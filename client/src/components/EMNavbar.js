@@ -42,9 +42,25 @@ export class EMNavbar extends Component<Props, State> {
     });
   };
 
+  getMyProfile = currentUser => {
+    const { username, id } = currentUser;
+    return (
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle>
+          <span className="fa fa-user-circle fa-lg" />
+          {` ${username}`}
+        </DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem onClick={this.logout}>Logout</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    );
+  };
+
   render() {
     const { userState } = this.props.userData;
-    const { username, id } = userState.currentUser;
     return (
       <Navbar color="dark" dark expand="md">
         <NavbarToggler onClick={this.toggle} className="mr-2" />
@@ -57,18 +73,8 @@ export class EMNavbar extends Component<Props, State> {
             <NavItem>
               <NavLink href="/about">About</NavLink>
             </NavItem>
-            {userState && userState.token ? (
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle>
-                  <span className="fa fa-user-circle fa-lg" />
-                  {` ${username}`}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={this.logout}>Logout</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+            {userState && userState.currentUser ? (
+              this.getMyProfile(userState.currentUser)
             ) : (
               <NavItem>
                 <NavLink href="/login">Login</NavLink>

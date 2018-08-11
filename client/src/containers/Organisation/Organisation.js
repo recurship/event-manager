@@ -4,6 +4,7 @@ import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchCurrentOrganisation } from '../../actions';
 import { isEmpty } from 'lodash';
+import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import SocialShare from '../../components/SocialShare/SocialShare';
@@ -42,21 +43,7 @@ class Organisation extends Component<Props> {
             />
             <CardImg top width="100%" src={organisation.logo} />
             <ContentHeader heading={organisation.name} />
-            <Row className="block-content text-justify">
-              <Col>
-                <strong>{organisation.description}</strong>
-                This HTML file is a template. If you open it directly in the
-                browser, you will see an empty page. You can add webfonts, meta
-                tags, or analytics to this file. The build step will place the
-                bundled scripts into the tag. To begin the development, run `npm
-                start` or `yarn start`. To create a production bundle, use `npm
-                run build` or `yarn build`.<br />
-                <center>
-                  <Button className="btn btn-success my-3">Subscribe</Button>
-                </center>
-                <SocialShare />
-              </Col>
-            </Row>
+            <DescriptionContainer description={organisation.description} />
             <ContentHeader heading="Our Events" />
             <Row className="block-content text-justify">
               {organisation.events ? (

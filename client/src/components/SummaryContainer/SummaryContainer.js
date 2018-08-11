@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class SummaryContainer extends Component {
   constructor(props) {
@@ -12,7 +13,15 @@ class SummaryContainer extends Component {
           <Col md="2">
             <i className={this.props.iconName} />
           </Col>
-          <Col md="10">{this.props.content}</Col>
+          <Col md="10">
+            {this.props.url === null ? (
+              this.props.content
+            ) : (
+              <Link to={this.props.url}>
+                <p className="text-dark">{this.props.content}</p>
+              </Link>
+            )}
+          </Col>
         </Row>
       </Col>
     );
