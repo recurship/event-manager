@@ -23,6 +23,9 @@ import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
+
+const DATE_FORMAT = 'LLLL';
+
 class CurrentEvent extends Component {
   eventId: string;
 
@@ -89,12 +92,12 @@ class CurrentEvent extends Component {
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
                 url={null}
-                content={moment(event.startDatetime).format('LLLL')}
+                content={moment(event.startDatetime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
                 url={null}
-                content={moment(event.endDatetime).format('LLLL')}
+                content={moment(event.endDatetime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-map-marker fa-2x"
