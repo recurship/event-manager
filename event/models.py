@@ -47,9 +47,9 @@ class Event(models.Model):
     end_datetime = models.DateTimeField()
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
     location = models.ForeignKey(EventLocation, on_delete=models.SET_NULL, null=True)
-    sponser = models.ManyToManyField(EventSponser, blank=True)
-    comment = models.ManyToManyField(EventComment, blank=True)
-    tag = models.ManyToManyField(EventTag, blank=True)
+    sponsers = models.ManyToManyField(EventSponser, blank=True)
+    comments = models.ManyToManyField(EventComment, blank=True)
+    tags = models.ManyToManyField(EventTag, blank=True)
     cover = models.FileField(upload_to='events/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
     attendees = models.ManyToManyField(User, blank=True)
