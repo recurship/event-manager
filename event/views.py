@@ -2,9 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
-from .models import Event, EventLocation, EventSponser
-from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, \
-    EventUserAddSerializer, EventCommentSerializer
+from .models import Event, EventLocation, EventSponser, EventTag
+from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventTagSerializer, EventUserAddSerializer, EventCommentSerializer
 from rest_framework.response import Response
 from django.db.models import Q
 from datetime import datetime
@@ -62,6 +61,11 @@ class EventSponserView(viewsets.ModelViewSet):
 
     queryset = EventSponser.objects.all()
     serializer_class = EventSponserSerializer
+
+class EventTagView(viewsets.ModelViewSet):
+
+    queryset = EventTag.objects.all()
+    serializer_class = EventTagSerializer
 
 class EventUserAddAPIView(UpdateAPIView):
     permission_classes = (IsAuthenticated,)
