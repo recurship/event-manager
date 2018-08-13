@@ -30,13 +30,8 @@ class EditUserProfile extends React.Component {
 
   submit = e => {
     e.preventDefault();
-    const formValues = e.target;
-    let formData = new FormData();
-    formData.append('username', formValues.username.value);
-    formData.append('first_name', formValues.firstname.value);
-    formData.append('last_name', formValues.lastname.value);
     const { dispatch } = this.props;
-    dispatch(userProfileEdit(formData));
+    dispatch(userProfileEdit(e.target));
     dispatch(fetchUserProfile(this.props.match.params.user_id));
     this.props.history.push(`/users/${this.props.match.params.user_id}`);
   };
