@@ -1,1071 +1,1041 @@
 {
-	"variables": [],
-	"info": {
-		"name": "event-manager",
-		"_postman_id": "c554cf60-733e-8dad-8f09-22cf12499577",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+	"name": "event-manager",
+	"description": "",
+	"order": [
+		"8b75878f-63ab-f168-7599-afa51e9a6735",
+		"40d41f59-813e-c540-bd39-2a81dce47bc9",
+		"fe93931b-4aac-6deb-8468-04448d5aa5cf",
+		"dc6d0e79-7cff-51d9-4249-a56fb46a8245",
+		"45d51478-e75b-2847-f322-3f5b67d02ff4",
+		"593e4451-1286-4b0a-96ff-a77b6c0c67f4",
+		"2fd80832-e021-cc36-3854-8c87583f0893",
+		"9c05cac3-54d5-a051-73db-5063a66823ae",
+		"fb8a2289-2a19-685d-1c09-a37256a3e4c0",
+		"143b22cd-c89b-a886-e755-dae05c5023b8",
+		"b6d2814a-2bb6-7a54-be00-81a171d313ea",
+		"3e962c8e-f680-27c0-2e7b-d8722042f578"
+	],
+	"folders_order": [],
+	"folders": [],
+	"owner": 0,
+	"hasRequests": true,
+	"requests": [
 		{
-			"name": "{{URI}}/api/organisations/",
-			"request": {
-				"url": "{{URI}}/api/organisations/3/",
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "application/json",
-						"value": "",
-						"description": ""
-					},
-					{
-						"key": "payload",
-						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Update Organisation name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "owner",
-							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+			"id": "143b22cd-c89b-a886-e755-dae05c5023b8",
+			"name": "http://localhost:8000/api/events/add/1/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "title",
+					"value": "GDG Kolachi",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "description",
+					"value": "Google Developer Expert",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "cover",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "start_datetime",
+					"value": "2018-08-23T20:39:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "end_datetime",
+					"value": "2018-08-30T15:08:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "location",
+					"value": "2",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "2",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "registration_url",
+					"value": "https://google.com",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "3",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "4",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/events/add/1/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
+					"description": ""
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/organisations/",
-			"request": {
-				"url": "{{URI}}/api/organisations/",
-				"method": "GET",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "application/json",
-						"value": "",
-						"description": ""
-					},
-					{
-						"key": "payload",
-						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Update Organisation name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "owner",
-							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+			"id": "2fd80832-e021-cc36-3854-8c87583f0893",
+			"name": "http://localhost:8000/api/token",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\nContent-Type: application/json\n// Authorization: Basic YWRtaW46MTI5OTQ1OU1M\n// Accept: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\t\"username\":\"admin\",\n\t\"password\":\"1299459ML\"\n}",
+			"url": "http://localhost:8000/api/token",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/organisations/",
-			"request": {
-				"url": "{{URI}}/api/organisations/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "application/json",
-						"value": "",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Organisation 2u",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "owner",
-							"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "logo",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "description",
-							"value": "test dexcriptuon",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "3e962c8e-f680-27c0-2e7b-d8722042f578",
+			"name": "http://localhost:8000/api/locations/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "location 1",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "address",
+					"value": "clifton",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/locations/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+					"description": ""
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/events/",
-			"request": {
-				"url": "{{URI}}/api/events/",
-				"method": "GET",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "test event abcd",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "test",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "organisation",
-							"value": "GDG Kolachi",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "40d41f59-813e-c540-bd39-2a81dce47bc9",
+			"name": "http://localhost:8000/api/organisations/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "GET",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: multipart/form-data\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644\napplication/json: \n// payload: {\"title\":\"nvkanoenva\"}",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Update Organisation name",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "owner",
+					"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/organisations/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+					"description": ""
+				},
+				{
+					"key": "application/json",
+					"value": "",
+					"description": ""
+				},
+				{
+					"key": "payload",
+					"value": "{\"title\":\"nvkanoenva\"}",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/events/",
-			"request": {
-				"url": "{{URI}}/api/events/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "GDG Kolachi",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Google Developer Expert",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "cover",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "start_datetime",
-							"value": "2018-08-23T20:39:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "end_datetime",
-							"value": "2018-08-30T15:08:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "location",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "registration_url",
-							"value": "https://google.com",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "3",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "4",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "45d51478-e75b-2847-f322-3f5b67d02ff4",
+			"name": "http://localhost:8000/api/events/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "title",
+					"value": "GDG Kolachi",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "description",
+					"value": "Google Developer Expert",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "cover",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "start_datetime",
+					"value": "2018-08-23T20:39:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "end_datetime",
+					"value": "2018-08-30T15:08:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "location",
+					"value": "2",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "2",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "registration_url",
+					"value": "https://google.com",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "3",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "sponser",
+					"value": "4",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/events/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
+					"description": ""
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/events/13/",
-			"request": {
-				"url": "{{URI}}/api/events/13/",
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "application/json",
-						"value": "",
-						"description": ""
-					},
-					{
-						"key": "payload",
-						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": " update title",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "update description",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "cover",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+			"id": "593e4451-1286-4b0a-96ff-a77b6c0c67f4",
+			"name": "http://localhost:8000/api/events/13/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "PATCH",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: multipart/form-data\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644\napplication/json: \n// payload: {\"title\":\"nvkanoenva\"}",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "title",
+					"value": " update title",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "description",
+					"value": "update description",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "cover",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/events/13/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+					"description": ""
+				},
+				{
+					"key": "application/json",
+					"value": "",
+					"description": ""
+				},
+				{
+					"key": "payload",
+					"value": "{\"title\":\"nvkanoenva\"}",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/token",
-			"request": {
-				"url": "{{URI}}/api/token",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"1299459ML\"\n}"
+			"id": "8b75878f-63ab-f168-7599-afa51e9a6735",
+			"name": "http://localhost:8000/api/organisations/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "PATCH",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: multipart/form-data\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644\napplication/json: \n// payload: {\"title\":\"nvkanoenva\"}",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Update Organisation name",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "owner",
+					"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/organisations/3/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+					"description": ""
+				},
+				{
+					"key": "application/json",
+					"value": "",
+					"description": ""
+				},
+				{
+					"key": "payload",
+					"value": "{\"title\":\"nvkanoenva\"}",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/users/",
-			"request": {
-				"url": "{{URI}}/api/users/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "abdulmoizeng+cool2",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "supercool!!",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "is_active",
-							"value": "true",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "first_name",
-							"value": "test name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "last_name",
-							"value": "test",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "enable_notifications",
-							"value": "true",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "is_staff",
-							"value": "true",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "abdulmoizeng+cool2@gmail.com",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "9c05cac3-54d5-a051-73db-5063a66823ae",
+			"name": "http://localhost:8000/api/users/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/x-www-form-urlencoded\n// Authorization: Basic YWRtaW46MTI5OTQ1OU1M\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "username",
+					"value": "usmanabc",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "password",
+					"value": "1299459ML",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "avatar",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "is_active",
+					"value": "true",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "first_name",
+					"value": "test name",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "last_name",
+					"value": "test",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "enable_notifications",
+					"value": "true",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "is_staff",
+					"value": "true",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/users/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}api/users/",
-			"request": {
-				"url": "{{URI}}/api/users/",
-				"method": "GET",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "usmandap",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1299459ML",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "is_active",
-							"value": "False",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "first_name",
-							"value": "test name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "last_name",
-							"value": "test",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "enable_notifications",
-							"value": "true",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "b6d2814a-2bb6-7a54-be00-81a171d313ea",
+			"name": "http://localhost:8000/api/sponsers/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/json\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Mazedar Haleem",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "description",
+					"value": "Food sponser",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "location",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/sponsers/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+					"description": ""
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/events/add/1/",
-			"request": {
-				"url": "{{URI}}/api/events/add/1/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "GDG Kolachi",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Google Developer Expert",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "cover",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "start_datetime",
-							"value": "2018-08-23T20:39:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "end_datetime",
-							"value": "2018-08-30T15:08:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "location",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "2",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "registration_url",
-							"value": "https://google.com",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "3",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "sponser",
-							"value": "4",
-							"description": "",
-							"type": "text"
-						}
-					]
+			"id": "dc6d0e79-7cff-51d9-4249-a56fb46a8245",
+			"name": "http://localhost:8000/api/events/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "GET",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/json\nAuthorization: Basic YWRtaW46MTI5OTQ1OU1M\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "title",
+					"value": "test event abcd",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "description",
+					"value": "test",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "organisation",
+					"value": "GDG Kolachi",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/events/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+					"description": ""
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/sponsers/",
-			"request": {
-				"url": "{{URI}}/api/tags/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "open source",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Food sponser",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "location",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+			"id": "fb8a2289-2a19-685d-1c09-a37256a3e4c0",
+			"name": "http://localhost:8000/api/users/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "GET",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: application/x-www-form-urlencoded\n// Authorization: Basic YWRtaW46MTI5OTQ1OU1M\n// Accept: application/json",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "username",
+					"value": "usmandap",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "password",
+					"value": "1299459ML",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "avatar",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "is_active",
+					"value": "False",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "first_name",
+					"value": "test name",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "last_name",
+					"value": "test",
+					"description": "",
+					"type": "text"
+				},
+				{
+					"key": "enable_notifications",
+					"value": "true",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/users/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		},
 		{
-			"name": "{{URI}}/api/locations/",
-			"request": {
-				"url": "{{URI}}/api/locations/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "location 1",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "address",
-							"value": "clifton",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file"
-						}
-					]
+			"id": "fe93931b-4aac-6deb-8468-04448d5aa5cf",
+			"name": "http://localhost:8000/api/organisations/",
+			"description": "",
+			"collectionId": "d73986cb-86d7-0c45-7a74-94e20e161e76",
+			"method": "POST",
+			"headers": "// X-CSRFToken: VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK\n// Content-Type: multipart/form-data\n// Authorization: Bearer.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OU1OTk2ZjUyMTg4OGIxZGZiNi\napplication/json: \nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "name",
+					"value": "Organisation 2",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "{{URI}}/api/tags/",
-			"request": {
-				"url": "{{URI}}/api/tags/",
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-CSRFToken",
-						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "open source",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Food sponser",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "location",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+				{
+					"key": "owner",
+					"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+					"description": "",
+					"type": "text"
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"key": "logo",
+					"value": "",
+					"description": "",
+					"type": "file"
+				},
+				{
+					"key": "start_datetime",
+					"value": "2081-02-08T20:39:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "end_datetime",
+					"value": "3938-02-08T15:08:00+0000",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "organisation",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "description",
+					"value": "test dexcriptuon",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"rawModeData": "",
+			"url": "http://localhost:8000/api/organisations/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "X-CSRFToken",
+					"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OU1OTk2ZjUyMTg4OGIxZGZiNi",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "application/json",
+					"value": "",
+					"description": ""
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+					"description": ""
+				}
+			],
+			"collection_id": "d73986cb-86d7-0c45-7a74-94e20e161e76"
 		}
 	]
 }
