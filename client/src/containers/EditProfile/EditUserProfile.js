@@ -35,7 +35,6 @@ class EditUserProfile extends React.Component {
     formData.append('username', formValues.username.value);
     formData.append('first_name', formValues.firstname.value);
     formData.append('last_name', formValues.lastname.value);
-    formData.append('email', formValues.email.value);
     const { dispatch } = this.props;
     dispatch(userProfileEdit(formData));
     dispatch(fetchUserProfile(this.props.match.params.user_id));
