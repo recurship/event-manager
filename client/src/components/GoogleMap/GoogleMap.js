@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
-class GoogleMap extends React.Component {
+class GoogleMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,9 +8,6 @@ class GoogleMap extends React.Component {
       activeMarker: {},
       selectedPlace: {},
     };
-    // binding this to event-handler functions
-    this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClick = this.onMapClick.bind(this);
   }
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -40,24 +37,20 @@ class GoogleMap extends React.Component {
         google={this.props.google}
         onClick={this.onMapClick}
         zoom={14}
-        initialCenter={{ lat: 24.89612, lng: 66.99931 }}
+        initialCenter={this.props.location.coordinates}
       >
         <Marker
           onClick={this.onMarkerClick}
-          title={'Karachi'}
-          position={{ lat: 24.89612, lng: 66.99931 }}
-          name={'Karachi'}
+          title={this.props.location.name}
+          position={this.props.location.coordinates}
+          name={this.props.location.name}
         />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
         >
-          <h2>Our Event</h2>
-
-          <p>
-            98G xyz, Block 2 <br />
-            Karachi
-          </p>
+          <h2>{this.props.location.name}</h2>
+          <p>{this.props.location.address}</p>
         </InfoWindow>
       </Map>
     );

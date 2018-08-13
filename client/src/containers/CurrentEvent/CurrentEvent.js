@@ -4,13 +4,11 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
   Col,
   Row,
-  Button,
 } from 'reactstrap';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
@@ -117,7 +115,9 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
-            <GoogleMap />
+            {event.location.coordinates ? (
+              <GoogleMap location={event.location} />
+            ) : null}
           </Container>
         ) : (
           <Container />
