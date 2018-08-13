@@ -45,14 +45,14 @@ class EventSerializer(serializers.ModelSerializer):
     organisation = OrganisationSerializer()
     location = EventLocationSerializer()
     sponser = EventSponserSerializer(many=True)
-    comments = EventCommentSerializer(many=True)
+    comment = EventCommentSerializer(many=True)
     tag = EventTagSerializer(many=True)
     attendees = UserSerializer(many=True)
 
     class Meta:
         model = Event
         fields = ('id', 'title', 'description', 'start_datetime',
-                  'end_datetime', 'organisation', 'cover', 'location', 'sponser', 'attendees', 'tag')
+                  'end_datetime', 'organisation', 'cover', 'location', 'sponser', 'attendees', 'tag', 'comment')
 
 class EventUserAddSerializer(serializers.Serializer):
     userid = serializers.UUIDField()
