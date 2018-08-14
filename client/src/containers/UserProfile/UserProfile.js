@@ -25,7 +25,7 @@ class UserProfile extends Component {
   }
 
   showEditButton = user => {
-    const { token, currentUser } = store.getState().userState;
+    const { token, currentUser } = this.props.userState;
     return token && currentUser.id === user.id ? (
       <Link to={`/users/${user.id}/edit`}>
         <Button id="edit-user" className="btn btn-default">
@@ -47,8 +47,8 @@ class UserProfile extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { userProfile } = state;
-  return { userProfile };
+  const { userProfile, userState } = state;
+  return { userProfile, userState };
 };
 
 export default connect(mapStateToProps)(UserProfile);

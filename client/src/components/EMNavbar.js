@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -19,20 +20,20 @@ import type { BaseReduxPropTypes } from '../types/base-props-types';
 import User from '../types/multi-types';
 
 type Props = {
-  userData: User,
+  userState: User,
 };
 
 type State = {
   isOpen: boolean,
 };
 
-export class EMNavbar extends Component<Props, State> {
+class EMNavbar extends Component<Props, State> {
   state = {
     isOpen: false,
   };
 
   logout = () => {
-    const { dispatch } = this.props.userData;
+    const { dispatch } = this.props.userState;
     dispatch(userLogout());
   };
 
@@ -60,7 +61,7 @@ export class EMNavbar extends Component<Props, State> {
   };
 
   render() {
-    const { userState } = this.props.userData;
+    const { userState } = this.props;
     return (
       <Navbar color="dark" dark expand="md">
         <NavbarToggler onClick={this.toggle} className="mr-2" />
@@ -86,3 +87,10 @@ export class EMNavbar extends Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { userState } = state;
+  return { userState };
+};
+
+export default connect(mapStateToProps)(EMNavbar);
