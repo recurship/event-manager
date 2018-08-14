@@ -19,7 +19,6 @@ export class EditUserForm extends React.Component {
       errorFirstName: '',
       errorLastName: '',
       errorUserName: '',
-      errorEmail: '',
       picture: '',
     };
   }
@@ -46,13 +45,6 @@ export class EditUserForm extends React.Component {
         isValidated: errUserName === '',
       });
     },
-    email: value => {
-      let errEmail = this.checkEmail(value);
-      this.setState({
-        errorEmail: errEmail,
-        isValidated: errEmail === '',
-      });
-    },
   };
 
   checkFirstName = value => {
@@ -61,16 +53,6 @@ export class EditUserForm extends React.Component {
 
   checkLastName = value => {
     return isEmpty(value) ? '*Last name is required' : '';
-  };
-
-  checkEmail = value => {
-    if (isEmpty(value)) {
-      return '*Email is required';
-    } else if (!isEmail(value)) {
-      return '*Invalid Email';
-    } else {
-      return '';
-    }
   };
 
   checkUserName = value => {
@@ -114,7 +96,9 @@ export class EditUserForm extends React.Component {
           </div>
         </div>
         <div className="form-group">
-          <Label htmlFor="name">First Name</Label>
+          <Label htmlFor="name" className="font-weight-bold">
+            First Name
+          </Label>
           <Input
             type="text"
             name="firstname"
@@ -125,7 +109,9 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorFirstName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="name">Last Name</Label>
+          <Label htmlFor="name" className="font-weight-bold">
+            Last Name
+          </Label>
           <Input
             type="text"
             name="lastname"
@@ -136,7 +122,9 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorLastName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="userName">User Name</Label>
+          <Label htmlFor="userName" className="font-weight-bold">
+            User Name
+          </Label>
           <Input
             type="text"
             name="username"
@@ -147,15 +135,12 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorUserName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="text"
-            name="email"
-            className="form-control"
-            onChange={this.handleInputChange}
-            defaultValue={user.email}
-          />
-          <span className="text-danger">{this.state.errorEmail}</span>
+          <Label htmlFor="email" className="font-weight-bold">
+            Email
+          </Label>
+          <p>
+            <Label>{user.email}</Label>
+          </p>
         </div>
         <Button
           id="submit_button"
