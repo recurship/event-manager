@@ -33,8 +33,7 @@ class EMNavbar extends Component<Props, State> {
   };
 
   logout = () => {
-    const { dispatch } = this.props.userState;
-    dispatch(userLogout());
+    this.props.dispatch(userLogout());
   };
 
   toggle = () => {
