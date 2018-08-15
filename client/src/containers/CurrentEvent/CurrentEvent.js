@@ -116,6 +116,36 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
+            <Row className="block-content">
+              {event.tags.map(tag => (
+                <label className="tag text-dark font-weight-light" key={tag.id}>
+                  <small>{tag.name}</small>
+                </label>
+              ))}
+            </Row>
+            <ContentHeader heading="Organizer Details" />
+            <Row className="block-content">
+              <SummaryContainer
+                iconName="fa fa-envelope fa-2x"
+                url={null}
+                content={event.organisation.email}
+              />
+              <SummaryContainer
+                iconName="fa fa-phone-square fa-2x"
+                url={null}
+                content={event.organisation.contact}
+              />
+              <SummaryContainer
+                iconName="fa fa-facebook-square fa-2x"
+                url={null}
+                content={event.organisation.facebook}
+              />
+              <SummaryContainer
+                iconName="fa fa-twitter-square fa-2x"
+                url={null}
+                content={event.organisation.twitter}
+              />
+            </Row>
           </Container>
         ) : (
           <Container />

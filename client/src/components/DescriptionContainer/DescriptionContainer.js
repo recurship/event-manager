@@ -5,11 +5,23 @@ import SocialShare from '../SocialShare/SocialShare';
 const DescriptionContainer = props => {
   return (
     <Row className="block-content text-justify">
-      <Col md="9">{props.description ? props.description : null}</Col>
-      <Col md="3">
+      <Col md="9">
+        {props.description ? (
+          <p className="text-dark font-weight-light">{props.description}</p>
+        ) : null}
+      </Col>
+      <Col md="3" className="bg-light p-3 rounded">
+        <Row>
+          <Col md="2">
+            <span className="fa fa-share-alt fa-2x my-2" />
+          </Col>
+          <Col md="10">
+            <p className="text-left">
+              <small>Share it with your Friends & Family</small>
+            </p>
+          </Col>
+        </Row>
         <center>
-          <h6>Organiser Contact</h6>
-          <Button className="bg-success">Subscribe</Button>
           <SocialShare />
         </center>
       </Col>
