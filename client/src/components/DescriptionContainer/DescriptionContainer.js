@@ -10,7 +10,7 @@ const DescriptionContainer = props => {
           <p className="text-dark font-weight-light">{props.description}</p>
         ) : null}
       </Col>
-      <Col md="3" className="bg-light p-3 rounded">
+      <Col md="3" className="p-3 rounded">
         <Row>
           <Col md="2">
             <span className="fa fa-share-alt fa-2x my-2" />
