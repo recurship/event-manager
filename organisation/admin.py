@@ -12,6 +12,7 @@ class OrganisationAdmin(admin.ModelAdmin):
             return Organisation.objects.all()
         return Organisation.objects.filter(owner=request.user)
 
+    # pylint: disable=W0222
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         # when we are creating or editing new event and the logged in user is not superuser
         # so we need to fetch only those organisations which owner is request.user
