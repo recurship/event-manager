@@ -112,4 +112,7 @@ const mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps)(Events);
+export default connect(
+  mapStateToProps,
+  null
+)(Events);
