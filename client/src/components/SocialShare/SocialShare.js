@@ -4,7 +4,7 @@ import FacebookIcon from 'react-share/lib/FacebookIcon';
 import TwitterIcon from 'react-share/lib/TwitterIcon';
 const SocialShare = () => {
   return (
-    <div className="d-flex justify-content-center my-1">
+    <div className="d-flex justify-content-center">
       <FacebookShareButton className="mx-1" url={window.location.href}>
         <FacebookIcon size={32} round={true} />
       </FacebookShareButton>
