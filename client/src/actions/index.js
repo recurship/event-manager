@@ -29,6 +29,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const USER_EDIT = 'USER_EDIT';
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+export const USER_PICTURE_UPLOAD = 'IMAGE_UPDATE';
 
 // events
 export const ADD_EVENT = 'ADD_EVENT';
@@ -66,6 +67,11 @@ export const triggerFailure = (name, error) => ({
 export const userEdit = user => ({
   type: USER_EDIT,
   user,
+});
+
+export const uploadUserPicture = avatar => ({
+  type: USER_PICTURE_UPLOAD,
+  avatar,
 });
 
 export const getUserProfile = user => ({
@@ -249,6 +255,19 @@ export const userProfileEdit = user => async (dispatch, getState) => {
   }
 };
 
+export const userProfilePictureUpload = avatar => async (
+  dispatch,
+  getState
+) => {
+  dispatch(triggerRequest(USER_PICTURE_UPLOAD));
+  try {
+    const userWithUpdatedAvatar = await UserService.avatarUpload(avatar);
+    dispatch(userEdit(userWithUpdatedAvatar));
+    dispatch(endRequest(USER_PICTURE_UPLOAD));
+  } catch (e) {
+    dispatch(triggerFailure(USER_PICTURE_UPLOAD, e));
+  }
+};
 // misc actions
 export const getOrganisations = organisations => ({
   type: FETCH_ORGANISATIONS,

@@ -19,7 +19,7 @@ export class EditUserForm extends React.Component {
       errorFirstName: '',
       errorLastName: '',
       errorUserName: '',
-      errorEmail: '',
+      picture: '',
     };
   }
 
@@ -45,13 +45,6 @@ export class EditUserForm extends React.Component {
         isValidated: errUserName === '',
       });
     },
-    email: value => {
-      let errEmail = this.checkEmail(value);
-      this.setState({
-        errorEmail: errEmail,
-        isValidated: errEmail === '',
-      });
-    },
   };
 
   checkFirstName = value => {
@@ -60,16 +53,6 @@ export class EditUserForm extends React.Component {
 
   checkLastName = value => {
     return isEmpty(value) ? '*Last name is required' : '';
-  };
-
-  checkEmail = value => {
-    if (isEmpty(value)) {
-      return '*Email is required';
-    } else if (!isEmail(value)) {
-      return '*Invalid Email';
-    } else {
-      return '';
-    }
   };
 
   checkUserName = value => {
@@ -88,20 +71,34 @@ export class EditUserForm extends React.Component {
   };
 
   render() {
-    const { user, handleSubmit } = this.props;
+    const { user, handleSubmit, handleImageUpload } = this.props;
+    console.log('rednder triggered: ', user);
     return (
       <form id="edit-profile" onSubmit={handleSubmit}>
-        <CardImg
-          top
-          width="40%"
-          src={
-            'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
-          }
-          alt="User Profile Pic"
-          className="user-avatar"
-        />
+        <div className="user-avatar">
+          <CardImg
+            top
+            width="40%"
+            src={
+              user.avatar ||
+              'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180'
+            }
+            alt="User Profile Pic"
+          />
+          <div
+            className="overlay"
+            onClick={() => {
+              document.getElementById('user-thumb').click();
+            }}
+          >
+            <Input type="file" id="user-thumb" onChange={handleImageUpload} />
+            Update Picture <span className="fa fa-upload" />
+          </div>
+        </div>
         <div className="form-group">
-          <Label htmlFor="name">First Name</Label>
+          <Label htmlFor="name" className="font-weight-bold">
+            First Name
+          </Label>
           <Input
             type="text"
             name="firstname"
@@ -112,7 +109,9 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorFirstName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="name">Last Name</Label>
+          <Label htmlFor="name" className="font-weight-bold">
+            Last Name
+          </Label>
           <Input
             type="text"
             name="lastname"
@@ -123,7 +122,9 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorLastName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="userName">User Name</Label>
+          <Label htmlFor="userName" className="font-weight-bold">
+            User Name
+          </Label>
           <Input
             type="text"
             name="username"
@@ -134,15 +135,12 @@ export class EditUserForm extends React.Component {
           <span className="text-danger">{this.state.errorUserName}</span>
         </div>
         <div className="form-group">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="text"
-            name="email"
-            className="form-control"
-            onChange={this.handleInputChange}
-            defaultValue={user.email}
-          />
-          <span className="text-danger">{this.state.errorEmail}</span>
+          <Label htmlFor="email" className="font-weight-bold">
+            Email
+          </Label>
+          <p>
+            <Label>{user.email}</Label>
+          </p>
         </div>
         <Button
           id="submit_button"
