@@ -5,7 +5,7 @@ import {
   Map,
   Marker,
 } from 'google-maps-react';
-import { GOOGLE_API_KEY } from '../../envConfig';
+import { GOOGLE_API_KEY } from '../../config.env';
 class GoogleMap extends Component {
   constructor(props) {
     super(props);
