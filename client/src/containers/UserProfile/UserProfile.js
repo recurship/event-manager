@@ -5,8 +5,6 @@ import { fetchUserProfile } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
 import { Link } from 'react-router-dom';
-import { store } from '../../../src';
-
 class UserProfile extends Component {
   constructor(props) {
     super(props);

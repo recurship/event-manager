@@ -2,7 +2,7 @@ import { isEmail } from 'validator';
 
 const validate = values => {
   const errors = {},
-    { firstname, lastname, username, email, password } = values;
+    { email } = values;
 
   if (!email) errors.email = '*Email Required';
   if (email && !isEmail(email)) errors.email = '*Invalid email address';
