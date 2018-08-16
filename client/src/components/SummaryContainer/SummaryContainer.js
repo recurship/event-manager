@@ -15,10 +15,20 @@ class SummaryContainer extends Component {
           </Col>
           <Col md="10">
             {this.props.url === null ? (
-              this.props.content
+              <p className="text-dark font-weight-light">
+                {this.props.content}
+              </p>
+            ) : this.props.externalLink ? (
+              <a href={this.props.url} target="blank">
+                <p className="text-dark font-weight-light">
+                  {this.props.content}
+                </p>
+              </a>
             ) : (
               <Link to={this.props.url}>
-                <p className="text-dark">{this.props.content}</p>
+                <p className="text-dark font-weight-light">
+                  {this.props.content}
+                </p>
               </Link>
             )}
           </Col>

@@ -118,6 +118,38 @@ class CurrentEvent extends Component {
             {event.location.coordinates ? (
               <GoogleMap location={event.location} />
             ) : null}
+            <Row className="block-content">
+              {event.tags.map(tag => (
+                <label className="tag text-dark font-weight-light" key={tag.id}>
+                  <small>{tag.name}</small>
+                </label>
+              ))}
+            </Row>
+            <ContentHeader heading="Organizer Details" />
+            <Row className="block-content">
+              <SummaryContainer
+                iconName="fa fa-envelope fa-2x"
+                url={null}
+                content={event.organisation.email}
+              />
+              <SummaryContainer
+                iconName="fa fa-phone-square fa-2x"
+                url={null}
+                content={event.organisation.contact}
+              />
+              <SummaryContainer
+                iconName="fa fa-facebook-square fa-2x"
+                url={`https://www.facebook.com/${event.organisation.facebook}`}
+                content={event.organisation.facebook}
+                externalLink={true}
+              />
+              <SummaryContainer
+                iconName="fa fa-twitter-square fa-2x"
+                url={`https://www.twitter.com/${event.organisation.twitter}`}
+                content={event.organisation.twitter}
+                externalLink={true}
+              />
+            </Row>
           </Container>
         ) : (
           <Container />
