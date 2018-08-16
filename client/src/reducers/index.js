@@ -11,6 +11,7 @@ import {
   FETCH_SPONSORS,
   FETCH_LOCATIONS,
   FETCH_USER,
+  FETCH_TAGS,
   USER_EDIT,
   FETCH_CURRENT_USER,
 } from '../actions';
@@ -195,6 +196,21 @@ const locationState = (state = defaultLocationState, action) => {
   }
   return state;
 };
+
+const defaultTagsState = {
+  tags: [],
+};
+const tagsState = (state = defaultTagsState, action) => {
+  switch (action.type) {
+    case FETCH_TAGS:
+      return {
+        ...state,
+        tags: action.tags,
+      };
+  }
+  return state;
+};
+
 let reducer = combineReducers({
   appState,
   userState,
@@ -206,6 +222,7 @@ let reducer = combineReducers({
   organisations: organisationsState,
   sponsors: sponsorsState,
   locations: locationState,
+  tags: tagsState,
   form: formReducer,
 });
 
