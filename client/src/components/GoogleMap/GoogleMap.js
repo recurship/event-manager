@@ -6,6 +6,13 @@ import {
   Marker,
 } from 'google-maps-react';
 import { GOOGLE_API_KEY } from '../../config.env';
+
+type Props = BaseReduxPropTypes & {
+  location: Object,
+  google: Object,
+  coordinates: Object,
+};
+
 class GoogleMap extends Component {
   constructor(props) {
     super(props);
@@ -15,14 +22,14 @@ class GoogleMap extends Component {
       selectedPlace: {},
     };
   }
-  onMarkerClick = (props, marker, e) => {
+  onMarkerClick = (props, marker) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
     });
   };
-  onMapClick = props => {
+  onMapClick = () => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
