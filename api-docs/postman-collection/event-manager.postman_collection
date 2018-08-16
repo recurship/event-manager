@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "event-manager",
-		"_postman_id": "c554cf60-733e-8dad-8f09-22cf12499577",
+		"_postman_id": "7291bf3a-efa6-2c92-b711-a418aa6ca041",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -85,6 +85,30 @@
 							"description": "",
 							"type": "text",
 							"disabled": true
+						},
+						{
+							"key": "contact_number",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "facebook",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "twitter",
+							"value": "",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -224,7 +248,8 @@
 						{
 							"key": "logo",
 							"description": "",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						},
 						{
 							"key": "start_datetime",
@@ -250,6 +275,30 @@
 						{
 							"key": "description",
 							"value": "test dexcriptuon",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "contact_number",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "facebook",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "twitter",
+							"value": "",
 							"description": "",
 							"type": "text"
 						}
@@ -604,7 +653,8 @@
 						{
 							"key": "avatar",
 							"description": "",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						},
 						{
 							"key": "is_active",
