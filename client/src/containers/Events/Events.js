@@ -34,8 +34,8 @@ class Events extends Component<Props> {
         value: 'organisation',
       },
       {
-        label: 'Sponsor',
-        value: 'sponser',
+        label: 'Sponsors',
+        value: 'sponsers',
       },
       {
         label: 'Location',
