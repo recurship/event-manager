@@ -38,6 +38,7 @@ export type State = {
   filterSponsers: Array<Object>,
   filterKeywords: string,
   filterTags: Array<Object>,
+  filterTime: Array<Object>,
 };
 class DropSearch extends Component<Props, State> {
   constructor(props) {
@@ -51,6 +52,7 @@ class DropSearch extends Component<Props, State> {
       filterSponsers: [],
       filterKeywords: '',
       filterTags: [],
+      filterTime: [],
     };
     this.fetchDependencies();
   }
@@ -107,6 +109,23 @@ class DropSearch extends Component<Props, State> {
     const state = { ...this.state },
       requiredProps = Object.keys(state).filter(key => !isEmpty(state[key]));
     return requiredProps.length > 0;
+  };
+
+  getTimeOptions = () => {
+    return [
+      {
+        label: 'Morning',
+        value: 'morning',
+      },
+      {
+        label: 'Noon',
+        value: 'noon',
+      },
+      {
+        label: 'Evening',
+        value: 'evening',
+      },
+    ];
   };
 
   render() {
@@ -179,6 +198,18 @@ class DropSearch extends Component<Props, State> {
                 this.handleSelect({ name: 'filterTags', value: event })
               }
               options={this.mapStateToOptions('tags')}
+              multi={true}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="filterTime">Time</Label>
+            <Select
+              value={this.state.filterTime}
+              onChange={event =>
+                this.handleSelect({ name: 'filterTime', value: event })
+              }
+              options={this.getTimeOptions()}
               multi={true}
             />
           </FormGroup>

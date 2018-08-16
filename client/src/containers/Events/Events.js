@@ -45,6 +45,10 @@ class Events extends Component<Props> {
         label: 'Tags',
         value: 'tags',
       },
+      {
+        label: 'Time',
+        value: 'time',
+      },
     ];
   };
 
