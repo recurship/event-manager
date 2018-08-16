@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Input, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import './LoginForm.css';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '../RenderField';

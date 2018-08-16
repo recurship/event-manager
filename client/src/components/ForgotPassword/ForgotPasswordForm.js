@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Input } from 'reactstrap';
+import React from 'react';
+import { Button } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import validate from './ForgotPasswordValidator';
 import renderField from '../RenderField';

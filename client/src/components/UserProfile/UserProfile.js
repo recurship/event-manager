@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { AttendeeType } from '../../types/attendee-types';
 import { Card, CardImg, Col, Row } from 'reactstrap';
 import { getFullname } from '../../utils/utils';

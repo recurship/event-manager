@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
-import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
 import { destroy } from 'redux-form';

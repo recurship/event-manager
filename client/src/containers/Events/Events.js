@@ -1,15 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Row, Col, Jumbotron, Button, Container } from 'reactstrap';
-import SubHeader from '../../components/EventList/SubHeader/SubHeader';
-import { userLogin, fetchEvents, postEvent, userLogout } from '../../actions';
+import { Row, Col, Jumbotron, Container } from 'reactstrap';
+import { fetchEvents, postEvent } from '../../actions';
 import { makeQueryStringTransformable } from '../../utils/utils';
-import { Action } from 'redux';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
-import { EMNavbar } from '../../components/EMNavbar';
 import DropSearch, {
   State as DropSearchState,
 } from '../../components/DropSearch/DropSearch';
@@ -85,7 +82,7 @@ class Events extends Component<Props> {
   };
 
   render() {
-    const { userState, events } = this.props;
+    const { events } = this.props;
     return (
       <div>
         <Jumbotron>
@@ -116,7 +113,6 @@ class Events extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  const { userState, events } = state;
   return state;
 };
 
