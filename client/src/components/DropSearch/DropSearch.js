@@ -9,6 +9,7 @@ import {
   fetchOrganisation,
   fetchSponsors,
   fetchLocations,
+  fetchTags,
 } from '../../actions';
 import { OrganisationType } from '../../types/organisation-types';
 import { EventType } from '../../types/event-types';
@@ -36,6 +37,7 @@ export type State = {
   filterLocation: Object,
   filterSponsers: Array<Object>,
   filterKeywords: string,
+  filterTags: Array<Object>,
 };
 class DropSearch extends Component<Props, State> {
   constructor(props) {
@@ -48,6 +50,7 @@ class DropSearch extends Component<Props, State> {
       filterLocation: {},
       filterSponsers: [],
       filterKeywords: '',
+      filterTags: [],
     };
     this.fetchDependencies();
   }
@@ -57,6 +60,7 @@ class DropSearch extends Component<Props, State> {
     dispatch(fetchOrganisation());
     dispatch(fetchSponsors());
     dispatch(fetchLocations());
+    dispatch(fetchTags());
   }
 
   handleInputChange = e => {
@@ -163,6 +167,18 @@ class DropSearch extends Component<Props, State> {
                 this.handleSelect({ name: 'filterSponsers', value: event })
               }
               options={this.mapStateToOptions('sponsors')}
+              multi={true}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="filterTags">Tags</Label>
+            <Select
+              value={this.state.filterTags}
+              onChange={event =>
+                this.handleSelect({ name: 'filterTags', value: event })
+              }
+              options={this.mapStateToOptions('tags')}
               multi={true}
             />
           </FormGroup>

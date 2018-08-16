@@ -41,6 +41,10 @@ class Events extends Component<Props> {
         label: 'Location',
         value: 'location',
       },
+      {
+        label: 'Tags',
+        value: 'tags',
+      },
     ];
   };
 

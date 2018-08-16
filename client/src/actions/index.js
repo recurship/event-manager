@@ -8,6 +8,8 @@ import { userSchema, userListSchema } from '../schemas/userSchema';
 import OrganisationsService from '../services/organisation';
 import SponsorsService from '../services/sponsors';
 import LocationService from '../services/locations';
+import TagsService from '../services/tags';
+
 import UserService from '../services/user';
 import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
@@ -43,6 +45,7 @@ export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
 export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
 export const FETCH_ORGANISATIONS = 'FETCH_ORGANISATIONS';
 export const FETCH_SPONSORS = 'FETCH_SPONSORS';
+export const FETCH_TAGS = 'FETCH_TAGS';
 
 // app actions
 
@@ -284,6 +287,11 @@ export const getLocations = locations => ({
   locations,
 });
 
+export const getTags = tags => ({
+  type: FETCH_TAGS,
+  tags,
+});
+
 export const fetchOrganisation = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_ORGANISATIONS));
   try {
@@ -319,6 +327,19 @@ export const fetchLocations = query => async (dispatch, getState) => {
     dispatch(endRequest(FETCH_LOCATIONS));
   } catch (e) {
     dispatch(triggerFailure(FETCH_LOCATIONS, e.message));
+    return e;
+  }
+};
+
+export const fetchTags = query => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_TAGS));
+  try {
+    const response = await TagsService.getAll();
+    let normalized = humps.camelizeKeys(response.results);
+    dispatch(getTags(normalized));
+    dispatch(endRequest(FETCH_TAGS));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_TAGS, e.message));
     return e;
   }
 };
