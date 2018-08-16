@@ -5,6 +5,7 @@ import {
   Map,
   Marker,
 } from 'google-maps-react';
+import type { BaseReduxPropTypes } from '../types/base-props-types';
 import { GOOGLE_API_KEY } from '../../config.env';
 
 type Props = BaseReduxPropTypes & {
