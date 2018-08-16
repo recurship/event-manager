@@ -34,7 +34,7 @@ export type State = {
   filterDateFrom: string,
   filterDateTo: string,
   filterLocation: Object,
-  filterSponser: Array<Object>,
+  filterSponsers: Array<Object>,
   filterKeywords: string,
 };
 class DropSearch extends Component<Props, State> {
@@ -46,7 +46,7 @@ class DropSearch extends Component<Props, State> {
       filterDateFrom: '',
       filterDateTo: '',
       filterLocation: {},
-      filterSponser: [],
+      filterSponsers: [],
       filterKeywords: '',
     };
     this.fetchDependencies();
@@ -156,11 +156,11 @@ class DropSearch extends Component<Props, State> {
           </FormGroup>
 
           <FormGroup>
-            <Label for="filterSponser">Sponsors</Label>
+            <Label for="filterSponsers">Sponsors</Label>
             <Select
-              value={this.state.filterSponser}
+              value={this.state.filterSponsers}
               onChange={event =>
-                this.handleSelect({ name: 'filterSponser', value: event })
+                this.handleSelect({ name: 'filterSponsers', value: event })
               }
               options={this.mapStateToOptions('sponsors')}
               multi={true}

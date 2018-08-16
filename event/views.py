@@ -28,7 +28,8 @@ class EventView(viewsets.ModelViewSet):
         filter_organisation = request.GET.get('filter_organisation', '')
         filter_location = request.GET.get('filter_location', '')
         filter_keywords = request.GET.get('filter_keywords', '')
-        filter_sponser = request.GET.get('filter_sponser', '')
+        filter_sponsers = request.GET.get('filter_sponsers', '')
+        filter_tags = request.GET.get('filter_tags', '')
         # if no value provided for sort then it will be set to startdate as default
         sort_by = request.GET.get('sort_by', 'start_datetime')
         filter_data = {}
@@ -42,8 +43,10 @@ class EventView(viewsets.ModelViewSet):
             filter_data['organisation__in'] = filter_organisation.split(',')
         if filter_location:
             filter_data['location__in'] = filter_location.split(',')
-        if filter_sponser:
-            filter_data['sponser__in'] = filter_sponser.split(',')
+        if filter_sponsers:
+            filter_data['sponsers__in'] = filter_sponsers.split(',')
+        if filter_tags:
+            filter_data['tags__in'] = filter_tags.split(',')
         queryset = Event.objects.filter(
             Q(title__contains=filter_keywords) |
             Q(description__contains=filter_keywords)).filter(**filter_data).order_by(sort_by)
