@@ -164,8 +164,9 @@ const organisationsState = (state = defaultOrganisationsState, action) => {
         ...state,
         organisations: action.organisations,
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 const defaultSponsorsState = {
@@ -178,8 +179,9 @@ const sponsorsState = (state = defaultSponsorsState, action) => {
         ...state,
         sponsors: action.sponsors,
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 const defaultLocationState = {
@@ -192,8 +194,9 @@ const locationState = (state = defaultLocationState, action) => {
         ...state,
         locations: action.locations,
       };
+    default:
+      return state;
   }
-  return state;
 };
 let reducer = combineReducers({
   appState,

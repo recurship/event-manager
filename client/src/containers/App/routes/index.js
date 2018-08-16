@@ -6,7 +6,6 @@ import Signup from '../../Signup/Signup';
 import Login from '../../Login/Login';
 import Events from '../../Events/Events';
 import ForgotPassword from '../../ForgotPassword/ForgotPassword';
-import PublicRoutes from './public.routes';
 import PrivateRoutes from './private.routes';
 import EMNavbar from '../../../components/EMNavbar';
 

@@ -4,13 +4,11 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
   Col,
   Row,
-  Button,
 } from 'reactstrap';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
@@ -19,20 +17,14 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
-import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component {
+class CurrentEvent extends Component<Props> {
   eventId: string;
-
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.getCurrentEvent();
   }

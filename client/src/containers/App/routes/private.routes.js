@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 

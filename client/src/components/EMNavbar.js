@@ -16,7 +16,6 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import { userLogout } from '../actions';
-import type { BaseReduxPropTypes } from '../types/base-props-types';
 import User from '../types/multi-types';
 
 type Props = {
