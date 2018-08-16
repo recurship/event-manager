@@ -4,13 +4,11 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
   Col,
   Row,
-  Button,
 } from 'reactstrap';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
@@ -18,12 +16,16 @@ import { connect } from 'react-redux';
 import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
-import EventDescription from '../../components/EventDescription/EventDescription';
 import CommentBox from '../../components/CommentBox/CommentBox';
+import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
+import GoogleMap from '../../components/GoogleMap/GoogleMap';
+
+const DATE_FORMAT = 'LLLL';
+
 class CurrentEvent extends Component {
   eventId: string;
 
@@ -89,32 +91,67 @@ class CurrentEvent extends Component {
             <Row className="block-content">
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={moment(event.startDatetime).format(
-                  'DD/MM/YYYY HH:MM:SS'
-                )}
+                url={null}
+                content={moment(event.startDatetime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
-                content={moment(event.endDatetime).format(
-                  'DD/MM/YYYY HH:MM:SS'
-                )}
+                url={null}
+                content={moment(event.endDatetime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-map-marker fa-2x"
-                content={event.description}
+                url={null}
+                content={event.location.address}
               />
               <SummaryContainer
+                url={`/organisations/${event.organisation.id}/`}
                 iconName="fa fa-users fa-2x"
-                content="Organization"
+                content={event.organisation.name}
               />
             </Row>
-            <EventDescription />
+            <DescriptionContainer description={event.description} />
             <div>
               {event.attendees && event.attendees.length
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
             <CommentBox />
+            {event.location.coordinates ? (
+              <GoogleMap location={event.location} />
+            ) : null}
+            <Row className="block-content">
+              {event.tags.map(tag => (
+                <label className="tag text-dark font-weight-light" key={tag.id}>
+                  <small>{tag.name}</small>
+                </label>
+              ))}
+            </Row>
+            <ContentHeader heading="Organizer Details" />
+            <Row className="block-content">
+              <SummaryContainer
+                iconName="fa fa-envelope fa-2x"
+                url={null}
+                content={event.organisation.email}
+              />
+              <SummaryContainer
+                iconName="fa fa-phone-square fa-2x"
+                url={null}
+                content={event.organisation.contact}
+              />
+              <SummaryContainer
+                iconName="fa fa-facebook-square fa-2x"
+                url={`https://www.facebook.com/${event.organisation.facebook}`}
+                content={event.organisation.facebook}
+                externalLink={true}
+              />
+              <SummaryContainer
+                iconName="fa fa-twitter-square fa-2x"
+                url={`https://www.twitter.com/${event.organisation.twitter}`}
+                content={event.organisation.twitter}
+                externalLink={true}
+              />
+            </Row>
           </Container>
         ) : (
           <Container />

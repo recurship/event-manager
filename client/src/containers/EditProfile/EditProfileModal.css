@@ -2,4 +2,28 @@
   width: 50%;
   display: flex;
   margin: 0 auto;
+  position: relative;
+}
+
+#edit-profile > .user-avatar .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: #ffffff80;
+  height: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+  box-shadow: 0px -5px 2px -2px #909090;
+  color: #3f4246a6;
+  transition: height 200ms, line-height 200ms;
+}
+
+#edit-profile > .user-avatar .overlay #user-thumb {
+  display: none;
+}
+
+#edit-profile > .user-avatar .overlay:hover {
+  height: 60px;
+  line-height: 60px;
 }

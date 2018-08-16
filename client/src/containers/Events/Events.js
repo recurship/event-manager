@@ -34,12 +34,20 @@ class Events extends Component<Props> {
         value: 'organisation',
       },
       {
-        label: 'Sponsor',
-        value: 'sponser',
+        label: 'Sponsors',
+        value: 'sponsers',
       },
       {
         label: 'Location',
         value: 'location',
+      },
+      {
+        label: 'Tags',
+        value: 'tags',
+      },
+      {
+        label: 'Time',
+        value: 'time',
       },
     ];
   };
@@ -112,4 +120,7 @@ const mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps)(Events);
+export default connect(
+  mapStateToProps,
+  null
+)(Events);

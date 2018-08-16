@@ -8,6 +8,8 @@ import { userSchema, userListSchema } from '../schemas/userSchema';
 import OrganisationsService from '../services/organisation';
 import SponsorsService from '../services/sponsors';
 import LocationService from '../services/locations';
+import TagsService from '../services/tags';
+
 import UserService from '../services/user';
 import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
@@ -29,6 +31,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const USER_EDIT = 'USER_EDIT';
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+export const USER_PICTURE_UPLOAD = 'IMAGE_UPDATE';
 
 // events
 export const ADD_EVENT = 'ADD_EVENT';
@@ -42,6 +45,7 @@ export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
 export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
 export const FETCH_ORGANISATIONS = 'FETCH_ORGANISATIONS';
 export const FETCH_SPONSORS = 'FETCH_SPONSORS';
+export const FETCH_TAGS = 'FETCH_TAGS';
 
 // app actions
 
@@ -66,6 +70,11 @@ export const triggerFailure = (name, error) => ({
 export const userEdit = user => ({
   type: USER_EDIT,
   user,
+});
+
+export const uploadUserPicture = avatar => ({
+  type: USER_PICTURE_UPLOAD,
+  avatar,
 });
 
 export const getUserProfile = user => ({
@@ -249,6 +258,19 @@ export const userProfileEdit = user => async (dispatch, getState) => {
   }
 };
 
+export const userProfilePictureUpload = avatar => async (
+  dispatch,
+  getState
+) => {
+  dispatch(triggerRequest(USER_PICTURE_UPLOAD));
+  try {
+    const userWithUpdatedAvatar = await UserService.avatarUpload(avatar);
+    dispatch(userEdit(userWithUpdatedAvatar));
+    dispatch(endRequest(USER_PICTURE_UPLOAD));
+  } catch (e) {
+    dispatch(triggerFailure(USER_PICTURE_UPLOAD, e));
+  }
+};
 // misc actions
 export const getOrganisations = organisations => ({
   type: FETCH_ORGANISATIONS,
@@ -263,6 +285,11 @@ export const getSponsors = sponsors => ({
 export const getLocations = locations => ({
   type: FETCH_LOCATIONS,
   locations,
+});
+
+export const getTags = tags => ({
+  type: FETCH_TAGS,
+  tags,
 });
 
 export const fetchOrganisation = query => async (dispatch, getState) => {
@@ -300,6 +327,19 @@ export const fetchLocations = query => async (dispatch, getState) => {
     dispatch(endRequest(FETCH_LOCATIONS));
   } catch (e) {
     dispatch(triggerFailure(FETCH_LOCATIONS, e.message));
+    return e;
+  }
+};
+
+export const fetchTags = query => async (dispatch, getState) => {
+  dispatch(triggerRequest(FETCH_TAGS));
+  try {
+    const response = await TagsService.getAll();
+    let normalized = humps.camelizeKeys(response.results);
+    dispatch(getTags(normalized));
+    dispatch(endRequest(FETCH_TAGS));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_TAGS, e.message));
     return e;
   }
 };

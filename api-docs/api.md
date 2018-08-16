@@ -21,7 +21,9 @@ This api is used for creating user
 {
     "username": string,
     "password": string,
-    "email": string
+    "email": string,
+    "first_name": string,
+    "last_name": string
 }
 #### `/api/reset-password/`
 

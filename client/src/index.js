@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Root from './containers/Root/Root';
 import configureStore from './store/configureStore';
@@ -12,9 +13,11 @@ import 'font-awesome/css/font-awesome.min.css';
 export const store = configureStore();
 
 render(
-  <Router>
-    <Root store={store} />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Root />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

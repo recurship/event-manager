@@ -5,9 +5,13 @@ const baseUriUser = '/api/user/';
 
 export default {
   editUser: user => {
+    let formData = new FormData();
+    formData.append('username', user.username.value);
+    formData.append('first_name', user.firstname.value);
+    formData.append('last_name', user.lastname.value);
     return makeRequest(baseUriUser, {
       method: 'PATCH',
-      body: user,
+      body: formData,
     });
   },
 
@@ -17,5 +21,11 @@ export default {
 
   getCurrentUser: () => {
     return makeRequest(baseUriUser);
+  },
+
+  avatarUpload: avatar => {
+    let formData = new FormData();
+    formData.append('avatar', avatar);
+    return makeRequest(baseUriUser, { method: 'PUT', body: formData });
   },
 };

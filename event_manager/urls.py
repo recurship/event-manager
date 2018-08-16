@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from organisation.views import OrganisationView
-from event.views import EventView, EventLocationView, EventSponserView, EventUserAddAPIView
+from event.views import EventView, EventLocationView, EventSponserView, EventUserAddAPIView, EventCommentAPIView, EventTagView
 from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView, ResetPasswordAPIView, ResetPasswordConfirmAPIView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,12 +32,14 @@ router.register('organisations', OrganisationView)
 router.register('events', EventView)
 router.register('locations', EventLocationView)
 router.register('sponsers', EventSponserView)
+router.register('tags', EventTagView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/register/', RegistrationAPIView.as_view()),
     path('api/events/<int:eventid>/attendee/', EventUserAddAPIView.as_view()),
+    path('api/events/<int:eventid>/comment/', EventCommentAPIView.as_view()),
     path('api/user/', UserRetrieveUpdateAPIView.as_view()),
     path('api/reset-password/', ResetPasswordAPIView.as_view()),
     path('api/reset-password-confirm/', ResetPasswordConfirmAPIView.as_view()),

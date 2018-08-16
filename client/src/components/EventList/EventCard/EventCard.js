@@ -8,8 +8,10 @@ import {
   CardSubtitle,
   Col,
 } from 'reactstrap';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 
+const DATE_FORMAT = 'LLLL';
 const EventCard = props => {
   const card = props.event;
   return (
@@ -25,14 +27,13 @@ const EventCard = props => {
           />
         </Link>
         <CardBody>
-          <CardSubtitle>
-            <small className="text-muted">{card.startDateTime}</small>
-          </CardSubtitle>
           <CardTitle>{card.title}</CardTitle>
           <CardText>{card.description}</CardText>
-          {/* <CardSubtitle>
-              <small className="text-muted">{card.organisation.name}</small>
-            </CardSubtitle> */}
+          <CardSubtitle>
+            <small className="text-muted">
+              {moment(card.startDatetime).format(DATE_FORMAT)}
+            </small>
+          </CardSubtitle>
         </CardBody>
       </Card>
     </Col>
