@@ -4,13 +4,11 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
   Col,
   Row,
-  Button,
 } from 'reactstrap';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
@@ -23,6 +21,7 @@ import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
+import GoogleMap from '../../components/GoogleMap/GoogleMap';
 
 const DATE_FORMAT = 'LLLL';
 
@@ -116,6 +115,9 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
+            {event.location.coordinates ? (
+              <GoogleMap location={event.location} />
+            ) : null}
           </Container>
         ) : (
           <Container />
