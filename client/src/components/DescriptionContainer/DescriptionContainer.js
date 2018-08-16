@@ -17,7 +17,7 @@ const DescriptionContainer = props => {
           </Col>
           <Col md="10">
             <p className="text-left">
-              <small>Share it with your Friends & Family</small>
+              <small>Share with your Friends &amp; Colleagues</small>
             </p>
           </Col>
         </Row>

@@ -18,6 +18,12 @@ class SummaryContainer extends Component {
               <p className="text-dark font-weight-light">
                 {this.props.content}
               </p>
+            ) : this.props.externalLink ? (
+              <a href={this.props.url} target="blank">
+                <p className="text-dark font-weight-light">
+                  {this.props.content}
+                </p>
+              </a>
             ) : (
               <Link to={this.props.url}>
                 <p className="text-dark font-weight-light">
