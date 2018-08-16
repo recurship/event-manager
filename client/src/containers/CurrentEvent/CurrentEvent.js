@@ -139,13 +139,15 @@ class CurrentEvent extends Component {
               />
               <SummaryContainer
                 iconName="fa fa-facebook-square fa-2x"
-                url={null}
+                url={`https://www.facebook.com/${event.organisation.facebook}`}
                 content={event.organisation.facebook}
+                externalLink={true}
               />
               <SummaryContainer
                 iconName="fa fa-twitter-square fa-2x"
-                url={null}
+                url={`https://www.twitter.com/${event.organisation.twitter}`}
                 content={event.organisation.twitter}
+                externalLink={true}
               />
             </Row>
           </Container>
