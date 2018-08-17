@@ -73,7 +73,7 @@ class EMNavbar extends Component<Props, State> {
             <NavItem>
               <NavLink href="/about">About</NavLink>
             </NavItem>
-            {userState && userState.currentUser ? (
+            {userState && userState.currentUser && userState.token ? (
               this.getMyProfile(userState.currentUser)
             ) : (
               <NavItem>
