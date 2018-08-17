@@ -38,7 +38,7 @@ class EventView(viewsets.ModelViewSet):
                 filter_date_from, "%Y-%m-%d")
         if filter_date_to:
             filter_data['end_datetime__lte'] = datetime.strptime(
-                filter_date_to, "%Y-%m-%d")
+                filter_date_to + 'T23:59:59Z', "%Y-%m-%dT%H:%M:%SZ")
         if filter_organisation:
             filter_data['organisation__in'] = filter_organisation.split(',')
         if filter_location:
