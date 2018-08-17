@@ -72,7 +72,6 @@ export class EditUserForm extends React.Component {
 
   render() {
     const { user, handleSubmit, handleImageUpload } = this.props;
-    console.log('rednder triggered: ', user);
     return (
       <form id="edit-profile" onSubmit={handleSubmit}>
         <div className="user-avatar">

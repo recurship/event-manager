@@ -85,7 +85,9 @@ class CurrentEvent extends Component {
               image={event.cover}
               url={window.location.href}
             />
-            <CardImg top width="100%" src={event.cover} />
+            <Row className="block-content">
+              <CardImg top width="100%" src={event.cover} />
+            </Row>
             <ContentHeader heading="Event Summary" />
             <Row className="block-content">
               <SummaryContainer
@@ -110,21 +112,32 @@ class CurrentEvent extends Component {
               />
             </Row>
             <DescriptionContainer description={event.description} />
-            <div>
-              {event.attendees && event.attendees.length
-                ? this.getAttendeesProfiles(event.attendees)
-                : null}
-            </div>
+
+            {event.attendees && event.attendees.length ? (
+              <div>
+                <ContentHeader heading="Attendees" />
+                <Row className="block-content">
+                  {this.getAttendeesProfiles(event.attendees)}
+                </Row>
+              </div>
+            ) : null}
+
             {event.location.coordinates ? (
               <GoogleMap location={event.location} />
             ) : null}
-            <Row className="block-content">
-              {event.tags.map(tag => (
-                <label className="tag text-dark font-weight-light" key={tag.id}>
-                  <small>{tag.name}</small>
-                </label>
-              ))}
-            </Row>
+            {event.tags ? (
+              <Row className="block-content">
+                {event.tags.map(tag => (
+                  <label
+                    className="tag text-dark font-weight-light"
+                    key={tag.id}
+                  >
+                    <small>{tag.name}</small>
+                  </label>
+                ))}
+              </Row>
+            ) : null}
+
             <ContentHeader heading="Organizer Details" />
             <Row className="block-content">
               <SummaryContainer

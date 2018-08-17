@@ -1,7 +1,6 @@
 import { isEmail, isLowercase, isLength, isString } from 'validator';
 
 const validate = values => {
-  console.log(values);
   const errors = {},
     { firstname, lastname, username, email, password } = values;
 

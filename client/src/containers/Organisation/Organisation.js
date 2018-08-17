@@ -41,17 +41,17 @@ class Organisation extends Component<Props> {
               image={organisation.logo}
               url={window.location.href}
             />
-            <CardImg top width="100%" src={organisation.logo} />
+            <Row className="block-content text-justify">
+              <CardImg top width="100%" src={organisation.logo} />
+            </Row>
             <ContentHeader heading={organisation.name} />
             <DescriptionContainer description={organisation.description} />
             <ContentHeader heading="Our Events" />
             <Row className="block-content text-justify">
               {organisation.events ? (
-                <Col>
-                  <EventList events={organisation.events} />
-                </Col>
+                <EventList events={organisation.events} />
               ) : (
-                <Col className="text-center">No Events</Col>
+                <p className="text-center">No Events</p>
               )}
             </Row>
           </Container>
@@ -63,8 +63,10 @@ class Organisation extends Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({
-  currentOrganisation: { ...state.currentOrganisation },
-});
+const mapStateToProps = state => {
+  return {
+    currentOrganisation: state.currentOrganisation,
+  };
+};
 
 export default connect(mapStateToProps)(Organisation);
