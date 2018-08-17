@@ -179,7 +179,7 @@ class DropSearch extends Component<Props, State> {
           </FormGroup>
 
           <FormGroup>
-            <Label for="filterSponser">Sponsors</Label>
+            <Label for="filterSponsers">Sponsors</Label>
             <Select
               value={this.state.filterSponsers}
               onChange={event =>
