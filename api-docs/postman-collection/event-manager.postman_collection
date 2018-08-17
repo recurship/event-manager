@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "event-manager",
-		"_postman_id": "7291bf3a-efa6-2c92-b711-a418aa6ca041",
+		"_postman_id": "6e3e89b6-5093-b57a-5929-a2b1c1f7b0f8",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -1114,6 +1114,88 @@
 					]
 				},
 				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/user/",
+			"request": {
+				"url": "{{URI}}/api/user/",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "avatar",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "test admin new",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "admin last",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "enable_notifications",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_staff",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "For editing user data"
 			},
 			"response": []
 		}
