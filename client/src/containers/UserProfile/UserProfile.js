@@ -24,9 +24,13 @@ class UserProfile extends Component {
     return user ? user : null;
   }
 
-  showEditButton = user => {
+  isUserLoggedIn = user => {
     const { token, currentUser } = this.props.userState;
-    return token && currentUser.id === user.id ? (
+    return token && currentUser.id === user.id;
+  };
+
+  showEditButton = user => {
+    return this.isUserLoggedIn(user) ? (
       <Link to={`/users/${user.id}/edit`}>
         <Button id="edit-user" className="btn btn-default">
           <span className="fa fa-edit" />
@@ -37,11 +41,10 @@ class UserProfile extends Component {
 
   render() {
     const { user } = this.getUserDetails();
-
     return user ? (
       <div style={{ marginTop: '20px' }}>
         <div className="float-right mx-5">{this.showEditButton(user)}</div>
-        <Profile user={user} />
+        <Profile user={user} isUserLoggedIn={this.isUserLoggedIn(user)} />
       </div>
     ) : null;
   }
