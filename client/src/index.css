@@ -35,3 +35,59 @@ body {
   background-color: #f5f5f5;
   border-radius: 10%;
 }
+
+.detailBox {
+  width: 100%;
+  border: 1px solid #f5f5f5;
+}
+.titleBox {
+  background-color: #fdfdfd;
+  padding: 10px;
+}
+.titleBox label {
+  color: #212529;
+  margin: 10px 15px;
+  font-weight: bold;
+}
+.actionBox .form-group:first-child,
+.actionBox .form-group:first-child {
+  width: 80%;
+}
+.actionBox .form-group:nth-child(2),
+.actionBox .form-group:nth-child(2) {
+  width: 19%;
+  margin-left: 1%;
+}
+.actionBox .form-group * {
+  width: 100%;
+}
+.commentList {
+  padding: 0;
+  list-style: none;
+}
+.commentList li {
+  margin: 0;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 8px;
+}
+
+.commenterImage {
+  border-radius: 50%;
+  max-width: 70px;
+  padding: 5px;
+}
+.commentText {
+  padding-left: 20px;
+}
+.commentText p {
+  margin: 0;
+}
+.sub-text {
+  color: #aaa;
+  font-family: verdana;
+  font-size: 11px;
+}
+.actionBox {
+  border-top: 1px solid #f5f5f5;
+  padding: 10px;
+}

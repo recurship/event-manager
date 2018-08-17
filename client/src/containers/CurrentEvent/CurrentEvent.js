@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
+import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
@@ -162,6 +163,9 @@ class CurrentEvent extends Component {
                 content={event.organisation.twitter}
                 externalLink={true}
               />
+            </Row>
+            <Row className="block-content">
+              <CommentsBlock />
             </Row>
           </Container>
         ) : (
