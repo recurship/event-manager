@@ -70,6 +70,7 @@ const userState = (state = defaultUserState, action) => {
         ...state,
         token: null,
         currentUser: null,
+        refresh: null,
       };
 
     case REFRESH_TOKEN:

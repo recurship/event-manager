@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "event-manager",
-		"_postman_id": "6e3e89b6-5093-b57a-5929-a2b1c1f7b0f8",
+		"_postman_id": "b0df9fec-b869-38c2-d5d7-d920940c81c1",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -1196,6 +1196,66 @@
 					]
 				},
 				"description": "For editing user data"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/events/?filter_tags=2",
+			"request": {
+				"url": {
+					"raw": "{{URI}}/api/events/?filter_tags=2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					],
+					"query": [
+						{
+							"key": "filter_tags",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "tag filter example"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/events/?filter_sponsers=2",
+			"request": {
+				"url": {
+					"raw": "{{URI}}/api/events/?filter_sponsers=2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					],
+					"query": [
+						{
+							"key": "filter_sponsers",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "sponsor filter example"
 			},
 			"response": []
 		}
