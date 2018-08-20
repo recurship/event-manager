@@ -164,9 +164,11 @@ class CurrentEvent extends Component {
                 externalLink={true}
               />
             </Row>
-            <Row className="block-content">
-              <CommentsBlock />
-            </Row>
+            {event.comments ? (
+              <Row className="block-content">
+                <CommentsBlock comments={event.comments} />
+              </Row>
+            ) : null}
           </Container>
         ) : (
           <Container />
