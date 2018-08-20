@@ -85,7 +85,7 @@ class HtmlTags(models.Model):
     name_of_html_Tag = models.CharField(max_length=255) # e.g: input, textfield, h3, etc...
     id_of_html_tag = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
-    type = models.CharField(max_length=255)
+    inputtype = models.CharField(max_length=255)
     placeholder = models.CharField(max_length=255)
     value = models.CharField(max_length=255)
     required = models.BooleanField()
