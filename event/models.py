@@ -16,6 +16,7 @@ class EventLocation(models.Model):
     def __str__(self):
         return self.name
 
+
 class EventSponser(models.Model):
 
     name = models.CharField(max_length=255)
@@ -24,6 +25,7 @@ class EventSponser(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class EventComment(models.Model):
 
@@ -34,11 +36,13 @@ class EventComment(models.Model):
     def __str__(self):
         return self.comment
 
+
 class EventTag(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
 
 class Event(models.Model):
 
@@ -58,6 +62,7 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class EventForm(models.Model):
     """
@@ -121,8 +126,7 @@ class FormFilled(models.Model):
     querying it only against the attendee.
 
     attendee_id comes from User Model as ForeignKey
-    form_data is data that attendee filled when subscribing to event and is in JSON
-    
+    form_data is data that attendee filled when subscribing to event and is in JSON    
     """
     attendee_id = models.ForeignKey(User, on_delete=models.CASCADE)
     form_data = models.TextField()
