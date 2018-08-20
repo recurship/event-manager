@@ -166,7 +166,7 @@ class CurrentEvent extends Component {
             </Row>
             {event.comments ? (
               <Row className="block-content">
-                <CommentsBlock comments={event.comments} />
+                <CommentsBlock comments={event.comments} eventID={event.id} />
               </Row>
             ) : null}
           </Container>

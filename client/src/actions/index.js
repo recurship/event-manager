@@ -37,6 +37,7 @@ export const USER_PICTURE_UPLOAD = 'IMAGE_UPDATE';
 export const ADD_EVENT = 'ADD_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const FETCH_EVENT_DETAIL = 'FETCH_EVENT_DETAIL';
+export const POST_COMMENT = 'POST_COMMENT';
 
 // organisation
 export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
@@ -156,6 +157,11 @@ export const addEvent = event => ({
   event,
 });
 
+export const postComment = comment => ({
+  type: POST_COMMENT,
+  comment,
+});
+
 export const fetchEvents = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   return EventService.getAll(query)
@@ -244,6 +250,19 @@ export const postEvent = event => (dispatch, getState) => {
     })
     .catch(err => {
       dispatch(triggerFailure(ADD_EVENT, err));
+    });
+};
+
+export const addComment = (comment, eventID) => (dispatch, getState) => {
+  dispatch(triggerRequest(POST_COMMENT));
+  comment = humps.decamelizeKeys(comment);
+  return EventService.addComment(comment, eventID)
+    .then(comment => {
+      dispatch(postComment(comment));
+      dispatch(endRequest(POST_COMMENT));
+    })
+    .catch(err => {
+      dispatch(triggerFailure(POST_COMMENT, err));
     });
 };
 

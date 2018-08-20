@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import CommentBox from './CommentBox';
 import CommentList from './CommentList';
+import { connect } from 'react-redux';
+import { addComment } from '../../actions';
 
 class CommentsBlock extends Component {
+  postComment = e => {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(
+      addComment(
+        {
+          comment: e.target.comment.value,
+        },
+        this.props.eventID
+      )
+    );
+  };
+
   render() {
     return (
       <div className="detailBox">
@@ -11,11 +26,14 @@ class CommentsBlock extends Component {
         </div>
         <div className="actionBox">
           <CommentList comments={this.props.comments} />
-          <CommentBox />
+          <CommentBox onSubmit={this.postComment} />
         </div>
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return state;
+};
 
-export default CommentsBlock;
+export default connect(mapStateToProps)(CommentsBlock);
