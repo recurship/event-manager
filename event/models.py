@@ -112,7 +112,7 @@ class FormUsers(models.Model):
     This table relates the attendee to the form thus making it easier to find the
     attendee and its data that it provided.
 
-    form_id comes from EventForm Model as ForeignKey.
+    form_id comes from EventForm Model as ForeignKey
     attendee_id comes from User Model as ForeignKey
     """
     form_id = models.ForeignKey(EventForm, on_delete=models.CASCADE)
@@ -126,8 +126,7 @@ class FormFilled(models.Model):
     querying it only against the attendee.
 
     attendee_id comes from User Model as ForeignKey
-    form_data is data that attendee filled when subscribing to event and is in JSON    
+    form_data is data that attendee filled when subscribing to event and is in JSON
     """
     attendee_id = models.ForeignKey(User, on_delete=models.CASCADE)
     form_data = models.TextField()
-
