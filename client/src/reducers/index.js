@@ -211,6 +211,8 @@ const tagsState = (state = defaultTagsState, action) => {
         ...state,
         tags: action.tags,
       };
+    default:
+      return state;
   }
 };
 
