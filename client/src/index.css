@@ -73,8 +73,12 @@ body {
 
 .commenterImage {
   border-radius: 50%;
+  height: 100%;
+  width: 100%;
   max-width: 70px;
-  padding: 5px;
+  max-height: 70px;
+  margin: auto;
+  display: block;
 }
 .commentText {
   padding-left: 20px;
