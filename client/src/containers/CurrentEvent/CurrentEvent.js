@@ -25,7 +25,7 @@ import GoogleMap from '../../components/GoogleMap/GoogleMap';
 const DATE_FORMAT = 'LLLL';
 
 class CurrentEvent extends Component<Props> {
-  eventId: string;
+  eventId;
   componentDidMount() {
     this.getCurrentEvent();
   }
