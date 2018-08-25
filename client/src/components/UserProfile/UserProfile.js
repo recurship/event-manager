@@ -49,7 +49,9 @@ const UserProfile = (props: Props) => {
             <tbody>
               <InfoGroup name="name" value={getFullname(user)} />
               <InfoGroup name="user Name" value={user.username} />
-              <InfoGroup name="email" value={user.email} />
+              {props.isUserLoggedIn ? (
+                <InfoGroup name="email" value={user.email} />
+              ) : null}
             </tbody>
           </table>
           <div />
