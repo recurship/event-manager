@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
+import CommentBox from '../../components/CommentBox/CommentBox';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
@@ -115,6 +116,7 @@ class CurrentEvent extends Component {
                 ? this.getAttendeesProfiles(event.attendees)
                 : null}
             </div>
+            <CommentBox />
             {event.location.coordinates ? (
               <GoogleMap location={event.location} />
             ) : null}

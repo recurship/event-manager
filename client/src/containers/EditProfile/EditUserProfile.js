@@ -10,7 +10,11 @@ import {
   CardFooter,
 } from 'reactstrap';
 import './EditProfileModal.css';
-import { fetchUserProfile, userProfileEdit, userProfilePictureUpload } from '../../actions';
+import {
+  fetchUserProfile,
+  userProfileEdit,
+  userProfilePictureUpload,
+} from '../../actions';
 import { EditUserForm } from '../../components/EditUserForm/EditUserForm';
 
 import { connect } from 'react-redux';
@@ -39,8 +43,8 @@ class EditUserProfile extends React.Component {
   handleImageUpload = e => {
     const { dispatch } = this.props;
     const file = e.target.files[0];
-    if(!file) return;
-    
+    if (!file) return;
+
     dispatch(userProfilePictureUpload(file));
   };
 
@@ -56,7 +60,11 @@ class EditUserProfile extends React.Component {
         <Card>
           <CardHeader>Edit Profile</CardHeader>
           <CardBody>
-            <EditUserForm handleSubmit={this.submit} handleImageUpload={this.handleImageUpload} user={user} />
+            <EditUserForm
+              handleSubmit={this.submit}
+              handleImageUpload={this.handleImageUpload}
+              user={user}
+            />
           </CardBody>
         </Card>
       </div>
