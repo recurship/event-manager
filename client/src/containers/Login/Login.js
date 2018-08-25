@@ -43,7 +43,6 @@ class Login extends Component<Props, State> {
   };
 
   render() {
-    console.log(this.props);
     return this.props.userState.token === null ? (
       <Container className="login-container">
         <h4>Login</h4>
