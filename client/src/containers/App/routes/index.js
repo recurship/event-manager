@@ -7,10 +7,12 @@ import Login from '../../Login/Login';
 import Events from '../../Events/Events';
 import ForgotPassword from '../../ForgotPassword/ForgotPassword';
 import Organisation from '../../Organisation/Organisation';
-import PrivateRoutes from './private.routes';
 import EMNavbar from '../../../components/EMNavbar';
 import CurrentEvent from '../../CurrentEvent/CurrentEvent';
 import UserProfile from '../../UserProfile/UserProfile';
+
+// private routes
+import PrivateRoutes from './private.routes';
 
 const BaseRedirection = () => <Redirect to="/events" />;
 
@@ -22,7 +24,7 @@ const Routes = () => (
       <Route exact path="/events" component={Events} />
       <Route path="/events/:event_id" component={CurrentEvent} />
       <Route path="/organisations/:organisation_id" component={Organisation} />
-      <Route path="/users/:user_id" component={UserProfile} />
+      <Route exact path="/users/:user_id" component={UserProfile} />
       <Route path="/login" component={Login} />
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route path="/signup" component={Signup} />
