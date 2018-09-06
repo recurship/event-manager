@@ -2,13 +2,15 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
-from .models import Event, EventLocation, EventSponser, EventTag, EventComment
-from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventTagSerializer, EventUserAddSerializer, EventCommentSerializer, EventCommentAddSerializer
+from .models import Event, EventLocation, EventSponser, EventTag, EventComment, Submission, Form
+from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, \
+    EventTagSerializer, EventUserAddSerializer, EventCommentSerializer, EventCommentAddSerializer, SubmissionSerializer,\
+    FormSerializer
 from rest_framework.response import Response
 from django.db.models import Q
 from datetime import datetime
 from django.utils import timezone
-
+from rest_framework_extensions.mixins import NestedViewSetMixin
 
 class EventView(viewsets.ModelViewSet):
 
@@ -106,3 +108,28 @@ class EventCommentAddAPIView(UpdateAPIView):
         serialized_data = EventSerializer(data)
 
         return Response(serialized_data.data, status=status.HTTP_200_OK)
+
+
+class SubmissionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = SubmissionSerializer
+
+    def get_queryset(self):
+        queryset = Submission.objects.filter(user=self.request.user)
+        return self.filter_queryset_by_parents_lookups(queryset)
+
+    def create(self, request, *args, **kwargs):
+        data = request.data
+        data['form'] = self.kwargs.get('parent_lookup_form')
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=self.request.user)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class FormViewSet(NestedViewSetMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = FormSerializer
+
+    def get_queryset(self):
+        return Form.objects.all()

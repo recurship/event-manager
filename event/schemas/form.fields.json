@@ -1,0 +1,23 @@
+{
+  "title" : "Form fields",
+  "type" : "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "title": "Label",
+        "type": "string"
+      },
+      "position": {
+        "title": "Position",
+        "type": "number"
+      },
+      "required": {
+        "title": "Required",
+        "type": "boolean"
+      }
+    },
+    "uniqueItems": true,
+    "additionalProperties": false
+  }
+}

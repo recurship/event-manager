@@ -7,5 +7,6 @@ ERORRS = {
         'EMAIL': 'Email is required',
         'TOKEN': 'Token is required'
     },
-    'ERROR_USER_NOT_FOUND': 'No user found with the email'
+    'ERROR_USER_NOT_FOUND': 'No user found with the email',
+    'ERROR_INCOMPLETE_FORM': 'Incomplete Form'
 }

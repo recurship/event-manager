@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'organisation',
     'user',
     'storages',
-    'django_nose'
+    'django_nose',
+    'django_json_widget'
 ]
 
 
