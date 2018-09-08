@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import SocialShare from '../SocialShare/SocialShare';
 
 const DescriptionContainer = props => {

@@ -14,7 +14,7 @@ type Props = BaseReduxPropTypes & {
   coordinates: Object,
 };
 
-class GoogleMap extends Component {
+class GoogleMap extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
