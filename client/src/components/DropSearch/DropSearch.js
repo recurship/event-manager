@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, FormGroup, Label, Button } from 'reactstrap';
-import { BasePropsTypes } from '../../types/base-props-types';
 import Select from 'react-select';
 import { isEmpty } from 'lodash';
-import AsyncSelect from 'react-select/lib/Async';
 import {
   fetchOrganisation,
   fetchSponsors,
@@ -76,8 +74,7 @@ class DropSearch extends Component<Props, State> {
   };
 
   mapStateToOptions: (key: string) => Array<ReactSearchOptions> = key => {
-    let options = [],
-      target = this.props[key];
+    let target = this.props[key];
     target = target ? target[key] : [];
     return target.map(opt => ({ label: opt.name, value: opt.id }));
   };
@@ -129,7 +126,7 @@ class DropSearch extends Component<Props, State> {
   };
 
   render() {
-    let { options, events, sortBy } = this.props;
+    let { sortBy } = this.props;
 
     return (
       <div id="drop-search">

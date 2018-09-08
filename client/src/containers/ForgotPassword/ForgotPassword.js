@@ -14,10 +14,6 @@ type Props = BaseReduxPropTypes & {
 };
 
 class ForgotPassword extends Component<Props> {
-  constructor(props) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(props) {
     const message = props.resetPasswordState.message;
     if (message)

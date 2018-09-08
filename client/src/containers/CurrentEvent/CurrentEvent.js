@@ -17,7 +17,6 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
-import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
@@ -25,13 +24,8 @@ import GoogleMap from '../../components/GoogleMap/GoogleMap';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component {
-  eventId: string;
-
-  constructor(props) {
-    super(props);
-  }
-
+class CurrentEvent extends Component<Props> {
+  eventId;
   componentDidMount() {
     this.getCurrentEvent();
   }

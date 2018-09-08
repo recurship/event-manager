@@ -5,7 +5,6 @@ import SignupForm from '../../components/SignupForm/SignupForm';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup } from '../../actions/index';
-import PropTypes from 'prop-types';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
@@ -41,6 +40,7 @@ class Signup extends Component<Props> {
       let errorResponse = this.state.errors;
       Object.keys(response).map(item => {
         errorResponse = [...errorResponse, ...response[item]];
+        return errorResponse;
       });
       this.setState({ errors: errorResponse });
     }

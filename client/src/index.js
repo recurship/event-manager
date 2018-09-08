@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Root from './containers/Root/Root';
 import configureStore from './store/configureStore';
-import registerServiceWorker from './registerServiceWorker';
 import { unregister } from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
