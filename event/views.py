@@ -2,11 +2,12 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
-from .models import Event, EventLocation, EventSponser, EventTag
-from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventTagSerializer, EventUserAddSerializer, EventCommentSerializer
+from .models import Event, EventLocation, EventSponser, EventTag, EventComment
+from .serializers import EventSerializer, EventCreateSerializer, EventLocationSerializer, EventSponserSerializer, EventTagSerializer, EventUserAddSerializer, EventCommentSerializer, EventCommentAddSerializer
 from rest_framework.response import Response
 from django.db.models import Q
 from datetime import datetime
+from django.utils import timezone
 
 
 class EventView(viewsets.ModelViewSet):
@@ -86,12 +87,17 @@ class EventUserAddAPIView(UpdateAPIView):
         return Response(serialized_data.data, status=status.HTTP_200_OK)
 
 
-class EventCommentAPIView(UpdateAPIView):
-    permission_classes = (IsAuthenticated,)
+class EventCommentView(viewsets.ModelViewSet):
+    queryset = EventComment.objects.all()
     serializer_class = EventCommentSerializer
 
+class EventCommentAddAPIView(UpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = EventCommentAddSerializer
+
     def post(self, request, eventid, *args, **kwargs):
-        serializer_data = { 'commented_by': request.user.id, 'event': eventid}
+        data = EventComment.objects.create(comment=request.data['comment'], commented_by=request.user, comment_datetime=timezone.now())
+        serializer_data = { 'commentid': data.id, 'eventid': eventid}
         serializer = self.serializer_class(
             request.user, data=serializer_data, partial=True
         )

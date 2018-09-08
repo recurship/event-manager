@@ -21,8 +21,6 @@ class EventSponserSerializer(serializers.ModelSerializer):
 
 class EventCommentSerializer(serializers.ModelSerializer):
 
-    commented_by = UserSerializer()
-
     class Meta:
         model = EventComment
         fields = ('id', 'comment', 'commented_by', 'comment_datetime')
@@ -65,5 +63,20 @@ class EventUserAddSerializer(serializers.Serializer):
     def update(self, instance, validated_data):
         event = Event.objects.get(id=validated_data['eventid'])
         event.attendees.add(validated_data['userid'])
+        event.save()
+        return event
+
+class EventCommentAddSerializer(serializers.Serializer):
+    commentid = serializers.UUIDField()
+    eventid = serializers.IntegerField()
+
+    class Meta:
+        model = Event
+        fields = ['__all__']
+
+    @classmethod
+    def update(self, instance, validated_data):
+        event = Event.objects.get(id=validated_data['eventid'])
+        event.comments.add(validated_data['commentid'])
         event.save()
         return event
