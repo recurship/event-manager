@@ -214,7 +214,6 @@ const tagsState = (state = defaultTagsState, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 let reducer = combineReducers({
