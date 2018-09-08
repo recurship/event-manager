@@ -39,12 +39,12 @@ class EventCreateSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
 
-    organisation = OrganisationSerializer()
-    location = EventLocationSerializer()
-    sponsers = EventSponserSerializer(many=True)
-    comments = EventCommentSerializer(many=True)
-    tags = EventTagSerializer(many=True)
-    attendees = UserSerializer(many=True)
+    organisation = OrganisationSerializer(read_only=True)
+    location = EventLocationSerializer(read_only=True)
+    sponsers = EventSponserSerializer(many=True, read_only=True)
+    comments = EventCommentSerializer(many=True, read_only=True)
+    tags = EventTagSerializer(many=True, read_only=True)
+    attendees = UserSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
