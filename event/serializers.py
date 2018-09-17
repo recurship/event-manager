@@ -2,7 +2,6 @@ from rest_framework import serializers
 from organisation.serializer import OrganisationSerializer
 from user.serializer import UserSerializer
 from .models import Event, EventLocation, EventSponser, EventComment, EventTag, Submission, Form
-from jsonschema import validate, exceptions as jsonschema_exceptions
 from event_manager.errors import ERORRS
 
 
@@ -13,13 +12,14 @@ class EventLocationSerializer(serializers.ModelSerializer):
         model = EventLocation
         fields = ('id', 'name', 'address', 'logo')
 
+
 # Event sponsers serializers
 class EventSponserSerializer(serializers.ModelSerializer):
-
 
     class Meta:
         model = EventSponser
         fields = ('id', 'name', 'logo')
+
 
 class EventCommentSerializer(serializers.ModelSerializer):
 
@@ -27,17 +27,19 @@ class EventCommentSerializer(serializers.ModelSerializer):
         model = EventComment
         fields = ('id', 'comment', 'commented_by', 'comment_datetime')
 
+
 class EventTagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EventTag
         fields = ('id', 'name')
 
+
 class EventCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('__all__')
+        fields = '__all__'
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -54,6 +56,7 @@ class EventSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'start_datetime',
                   'end_datetime', 'organisation', 'cover', 'location', 'sponsers', 'attendees', 'tags', 'comments')
 
+
 class EventUserAddSerializer(serializers.Serializer):
     userid = serializers.UUIDField()
     eventid = serializers.IntegerField()
@@ -68,6 +71,7 @@ class EventUserAddSerializer(serializers.Serializer):
         event.attendees.add(validated_data['userid'])
         event.save()
         return event
+
 
 class EventCommentAddSerializer(serializers.Serializer):
     commentid = serializers.UUIDField()
@@ -89,7 +93,8 @@ class SubmissionSerializer(serializers.ModelSerializer):
     submission = serializers.JSONField()
     form = serializers.PrimaryKeyRelatedField(queryset=Form.objects.all(), required=False)
 
-    def validate(self, attrs):
+    @classmethod
+    def validate(cls, attrs):
         questions = attrs.get('form').fields
         replies = attrs.get('submission')
 

@@ -12,6 +12,7 @@ from datetime import datetime
 from django.utils import timezone
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
+
 class EventView(viewsets.ModelViewSet):
 
     queryset = Event.objects.all()
@@ -68,10 +69,12 @@ class EventSponserView(viewsets.ModelViewSet):
     queryset = EventSponser.objects.all()
     serializer_class = EventSponserSerializer
 
+
 class EventTagView(viewsets.ModelViewSet):
 
     queryset = EventTag.objects.all()
     serializer_class = EventTagSerializer
+
 
 class EventUserAddAPIView(UpdateAPIView):
     permission_classes = (IsAuthenticated,)
@@ -92,6 +95,7 @@ class EventUserAddAPIView(UpdateAPIView):
 class EventCommentView(viewsets.ModelViewSet):
     queryset = EventComment.objects.all()
     serializer_class = EventCommentSerializer
+
 
 class EventCommentAddAPIView(UpdateAPIView):
     permission_classes = (IsAuthenticated,)
@@ -130,6 +134,4 @@ class SubmissionViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
 class FormViewSet(NestedViewSetMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = FormSerializer
-
-    def get_queryset(self):
-        return Form.objects.all()
+    queryset = Form.objects.all()
