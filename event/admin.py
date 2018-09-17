@@ -3,7 +3,7 @@ from django.contrib.postgres import fields
 from django_json_widget.widgets import JSONEditorWidget
 
 from event.forms.FormAdminForm import FormAdminForm
-from event.models import Event, EventLocation, EventSponser, EventComment, EventTag, FormType, Form
+from event.models import Event, EventLocation, EventSponser, EventComment, EventTag, FormType, Form, Submission
 
 from organisation.models import Organisation
 
@@ -39,3 +39,4 @@ admin.site.register(EventSponser)
 admin.site.register(EventComment)
 admin.site.register(EventTag)
 admin.site.register(FormType)
+admin.site.register(Submission)

@@ -94,8 +94,8 @@ class SubmissionSerializer(serializers.ModelSerializer):
         replies = attrs.get('submission')
 
         required_questions = set([x.get('position') for x in questions if x.get('required')])
-        valid_replies = [x.get('position') for x in replies if (x.get('reply') and x.get('position'))]
 
+        valid_replies = set([x.get('position') for x in replies if (x.get('reply') and x.get('position'))])
         submitted_questions = required_questions.intersection(valid_replies)
 
         if len(required_questions) != len(submitted_questions):
