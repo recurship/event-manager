@@ -2,6 +2,8 @@ from django.db import models
 from organisation.models import Organisation
 from user.models import User
 from django.core.validators import FileExtensionValidator
+from django.contrib.postgres.fields import JSONField
+from event_manager.fields import JSONSchemaField
 
 
 class EventLocation(models.Model):
@@ -56,3 +58,25 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# todo: Figure out if schema is final, run migrations (make upnew) and continue work
+class FormType(models.Model):
+    code = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
+
+
+class Form(models.Model):
+    title = models.CharField(max_length=128)
+    type = models.ForeignKey(FormType, on_delete=models.CASCADE)
+    fields = JSONSchemaField(schema='schemas/form.fields.json', default=list, blank=True)
+    event = models.ForeignKey(Event, null=True, blank=True, related_name='forms', on_delete=models.CASCADE)
+
+
+class Submission(models.Model):
+    user = models.ForeignKey(User, null=True, blank=True, related_name='forms', on_delete=models.CASCADE)
+    form = models.ForeignKey(Form, related_name='user_submissions', on_delete=models.CASCADE)
+    submission = JSONField()

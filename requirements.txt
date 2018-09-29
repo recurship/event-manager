@@ -11,3 +11,6 @@ django-heroku
 coverage
 nose
 django-nose
+jsonschema
+django-json-widget==0.1.1
+https://github.com/chibisov/drf-extensions/archive/master.zip
