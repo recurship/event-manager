@@ -12,6 +12,7 @@ RUN npm run build
 # Build the backend + plug in the dist
 FROM python:3.6-slim
 ENV PYTHONUNBUFFERED 1
+ENV DEBUG False
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
