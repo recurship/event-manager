@@ -1,10 +1,18 @@
 import { makeRequest } from './helper';
+import { stringify } from 'query-string';
+import { decamelizeKeys } from 'humps';
 
 const baseUri = '/api/events/';
 
 export default {
-  getAll: () => {
-    return makeRequest(baseUri);
+  getAll: query => {
+    let eventsBaseUri = baseUri;
+    if (query && typeof query === 'object') {
+      const paramsNormalized = decamelizeKeys(query);
+      const eventsQuery = stringify(paramsNormalized);
+      eventsBaseUri += `?${eventsQuery}`;
+    }
+    return makeRequest(eventsBaseUri);
   },
 
   add: event => {
@@ -16,7 +24,7 @@ export default {
       body: JSON.stringify(event),
     });
   },
-  getEventDetail: eventId => {
+  getCurrentEvent: eventId => {
     return makeRequest(`${baseUri}${eventId}/`);
   },
 };

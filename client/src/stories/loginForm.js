@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import '../containers/Login/Login.css';
 import { withInfo } from '@storybook/addon-info';

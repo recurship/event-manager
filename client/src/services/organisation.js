@@ -7,7 +7,7 @@ export default {
     return makeRequest(baseUri);
   },
 
-  getOrganisationDetail: organisationId => {
+  getCurrentOrganisation: organisationId => {
     return makeRequest(`${baseUri}${organisationId}/`);
   },
 };

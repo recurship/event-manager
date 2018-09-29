@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
-import { Action } from 'redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
+import { destroy } from 'redux-form';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
@@ -16,8 +16,16 @@ type Props = BaseReduxPropTypes & {
   events: Object,
 };
 
-class Login extends Component<Props> {
-  login = e => {
+type State = {
+  error: string,
+};
+
+class Login extends Component<Props, State> {
+  constructor() {
+    super();
+    this.state = { error: '' };
+  }
+  login = async e => {
     e.preventDefault();
     const { username, password } = e.target.elements,
       { dispatch } = this.props,
@@ -26,7 +34,11 @@ class Login extends Component<Props> {
         password: password.value,
       };
     // admin / 1299459ML
-    dispatch(userLogin(payload));
+    const response = await dispatch(userLogin(payload));
+    if (response && response.non_field_errors) {
+      dispatch(destroy('login'));
+      this.setState({ error: response.non_field_errors[0] });
+    }
   };
 
   render() {
@@ -34,6 +46,7 @@ class Login extends Component<Props> {
       <Container className="login-container">
         <h4>Login</h4>
         <LoginForm onSubmit={this.login} />
+        <p className="error-message">{this.state.error}</p>
         <Link className="forgot" to="/forgot-password">
           Forgot Password?
         </Link>

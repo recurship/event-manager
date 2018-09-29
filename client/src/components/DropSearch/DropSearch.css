@@ -1,0 +1,42 @@
+#drop-search {
+  border: 1px solid #ccc;
+  padding: 15px;
+  position: relative;
+  margin: 20px auto;
+}
+#drop-search form {
+  margin: 20px auto;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#drop-search .legend {
+  position: absolute;
+  top: -10px;
+  left: 25px;
+  background: whitesmoke;
+  padding: 0 15px;
+  margin: 0;
+  text-transform: uppercase;
+}
+#drop-search > select {
+  flex: 3 3 auto;
+}
+#drop-search > input {
+  flex: 2 2 auto;
+}
+#drop-search .form-group {
+  flex: 1;
+  flex-basis: 220px;
+  margin: auto 5px;
+}
+#drop-search .form-group label {
+  font-size: 12px;
+  color: #767676;
+  font-weight: bold;
+}
+#drop-search button[type='submit'] {
+  align-self: flex-end;
+}

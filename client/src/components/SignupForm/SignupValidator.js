@@ -1,4 +1,4 @@
-import { isEmail, isLowercase, isLength, isString } from 'validator';
+import { isEmail, isLowercase, isLength } from 'validator';
 
 const validate = values => {
   console.log(values);
@@ -18,7 +18,7 @@ const validate = values => {
 
   if (!password) errors.password = '*Password Required';
   if (password && isLength(password, { max: 7 }))
-    errors.password = '*Firstname must be atleast 8 characters';
+    errors.password = '*Password must be atleast 8 characters';
   return errors;
 };
 

@@ -1,21 +1,27 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "proxy": "http://localhost:8000/",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.2",
     "humps": "^2.0.1",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "normalizr": "^3.2.4",
     "prop-types": "^15.6.1",
+    "query-string": "^5.1.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-meta-tags": "^0.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-select": "^1.2.1",
+    "react-share": "^2.2.0",
     "react-toastify": "^4.1.0",
     "reactstrap": "^6.1.0",
     "redux": "^4.0.0",
@@ -33,7 +39,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "commit": "git-cz",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "e2e": "cypress open"
   },
   "lint-staged": {
     "src/**/*.{js,json,css,jsx}": [
@@ -60,6 +67,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "commitizen": "^2.10.1",
+    "cypress": "^3.0.2",
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

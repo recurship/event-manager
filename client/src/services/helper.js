@@ -26,11 +26,10 @@ const makeFetchRequest = (path, options) => {
 
 export const makeRequest = async (path, options) => {
   const response = await makeFetchRequest(path, options);
-  if (response.status && response.status == 401) {
+  if (response.status && response.status === 401) {
     const { refresh } = store.getState().userState,
       formData = new FormData();
     formData.append('refresh', refresh);
-
     const body = { method: 'POST', body: formData },
       refreshedReponse = await makeFetchRequest('/api/token/refresh', body),
       refreshedToken = await refreshedReponse.body,

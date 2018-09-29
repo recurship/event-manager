@@ -1,27 +1,38 @@
 // @flow
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink,
   NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { userLogout } from '../actions';
+import User from '../types/multi-types';
 
 type Props = {
-  /* props */
+  userState: User,
 };
 
 type State = {
   isOpen: boolean,
 };
 
-export class EMNavbar extends Component<Props, State> {
+class EMNavbar extends Component<Props, State> {
   state = {
     isOpen: false,
+  };
+
+  logout = () => {
+    this.props.dispatch(userLogout());
   };
 
   toggle = () => {
@@ -30,22 +41,54 @@ export class EMNavbar extends Component<Props, State> {
     });
   };
 
-  render() {
+  getMyProfile = currentUser => {
+    const { username, id } = currentUser;
     return (
-      <Navbar color="dark" dark exapand="true">
-        <NavbarToggler right="true" onClick={this.toggle} />
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle>
+          <span className="fa fa-user-circle fa-lg" />
+          {` ${username}`}
+        </DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem onClick={this.logout}>Logout</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    );
+  };
+
+  render() {
+    const { userState } = this.props;
+    return (
+      <Navbar color="dark" dark expand="md">
+        <NavbarToggler onClick={this.toggle} className="mr-2" />
         <NavbarBrand href="/">community-manager</NavbarBrand>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/">Home</Link>
+              <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/about">About</Link>
+              <NavLink href="/about">About</NavLink>
             </NavItem>
+            {userState && userState.currentUser && userState.token ? (
+              this.getMyProfile(userState.currentUser)
+            ) : (
+              <NavItem>
+                <NavLink href="/login">Login</NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Navbar>
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { userState } = state;
+  return { userState };
+};
+
+export default connect(mapStateToProps)(EMNavbar);

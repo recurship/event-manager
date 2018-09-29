@@ -5,13 +5,16 @@ import SignupForm from '../../components/SignupForm/SignupForm';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup } from '../../actions/index';
-import PropTypes from 'prop-types';
 
 type Props = BaseReduxPropTypes & {
   userState: Object,
 };
 
 class Signup extends Component<Props> {
+  constructor() {
+    super();
+    this.state = { errors: [] };
+  }
   signup = async e => {
     e.preventDefault();
     const {
@@ -31,7 +34,16 @@ class Signup extends Component<Props> {
       };
 
     const response = await dispatch(userSignup(payload));
-    if (response && response.id) history.push('/login');
+    if (response && response.id) {
+      history.push('/login');
+    } else {
+      let errorResponse = this.state.errors;
+      Object.keys(response).map(item => {
+        errorResponse = [...errorResponse, ...response[item]];
+        return errorResponse;
+      });
+      this.setState({ errors: errorResponse });
+    }
   };
 
   render() {
@@ -40,6 +52,11 @@ class Signup extends Component<Props> {
         <h4>Sign Up</h4>
         <hr />
         <SignupForm onSubmit={this.signup} />
+        {this.state.errors.map((error, i) => (
+          <p className="error-message text-danger" key={i}>
+            {error}
+          </p>
+        ))}
         <hr />
         <p className="centralized">
           Already have an account? <Link to="/login">Login</Link>

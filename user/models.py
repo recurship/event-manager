@@ -5,6 +5,7 @@ from django_resized import ResizedImageField
 from user.user_manager import UserManager
 from datetime import datetime, timedelta
 import jwt
+from django.core.validators import FileExtensionValidator
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -16,8 +17,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255, null=True)
     token = models.CharField(max_length=255, null=True, default=None)
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     avatar = ResizedImageField(
-        size=[300, 300], upload_to='user', blank=False, null=True)
+        size=[300, 300], upload_to='user', blank=False, null=True,
+                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'jpeg'])])
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

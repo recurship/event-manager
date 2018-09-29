@@ -2,15 +2,15 @@
 	"variables": [],
 	"info": {
 		"name": "event-manager",
-		"_postman_id": "aff1d14e-94f1-e3dc-2880-e0a2de8871a5",
+		"_postman_id": "b0df9fec-b869-38c2-d5d7-d920940c81c1",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8000/api/organisations/",
+			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "http://localhost:8000/api/organisations/3/",
+				"url": "{{URI}}/api/organisations/3/",
 				"method": "PATCH",
 				"header": [
 					{
@@ -27,7 +27,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -85,6 +85,30 @@
 							"description": "",
 							"type": "text",
 							"disabled": true
+						},
+						{
+							"key": "contact_number",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "facebook",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "twitter",
+							"value": "",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -93,9 +117,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/organisations/",
+			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "http://localhost:8000/api/organisations/",
+				"url": "{{URI}}/api/organisations/",
 				"method": "GET",
 				"header": [
 					{
@@ -112,7 +136,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -178,9 +202,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/organisations/",
+			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "http://localhost:8000/api/organisations/",
+				"url": "{{URI}}/api/organisations/",
 				"method": "POST",
 				"header": [
 					{
@@ -197,18 +221,12 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OU1OTk2ZjUyMTg4OGIxZGZiNi",
-						"description": "",
-						"disabled": true
+						"value": "{{token}}",
+						"description": ""
 					},
 					{
 						"key": "application/json",
 						"value": "",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
 						"description": ""
 					}
 				],
@@ -217,7 +235,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Organisation 2",
+							"value": "Organisation 2u",
 							"description": "",
 							"type": "text"
 						},
@@ -229,9 +247,9 @@
 						},
 						{
 							"key": "logo",
-							"value": "",
 							"description": "",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						},
 						{
 							"key": "start_datetime",
@@ -259,6 +277,30 @@
 							"value": "test dexcriptuon",
 							"description": "",
 							"type": "text"
+						},
+						{
+							"key": "contact_number",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "facebook",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "twitter",
+							"value": "",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -267,9 +309,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/events/",
+			"name": "{{URI}}/api/events/",
 			"request": {
-				"url": "http://localhost:8000/api/events/",
+				"url": "{{URI}}/api/events/",
 				"method": "GET",
 				"header": [
 					{
@@ -286,7 +328,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -342,9 +384,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/events/",
+			"name": "{{URI}}/api/events/",
 			"request": {
-				"url": "http://localhost:8000/api/events/",
+				"url": "{{URI}}/api/events/",
 				"method": "POST",
 				"header": [
 					{
@@ -361,7 +403,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -447,9 +489,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/events/13/",
+			"name": "{{URI}}/api/events/13/",
 			"request": {
-				"url": "http://localhost:8000/api/events/13/",
+				"url": "{{URI}}/api/events/13/",
 				"method": "PATCH",
 				"header": [
 					{
@@ -466,7 +508,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMxMjAwOTUyLCJqdGkiOiIwNzM0MDQ0NWQ3MWE0OWU1OTk2ZjUyMTg4OGIxZGZiNiIsInVzZXJfaWQiOiJmY2RkNjkzZi1mM2NjLTRlNTMtOWM5Yi05NzgwZTc0YjQxNTYifQ.13J2dq9E-1z4VuH-btbA3kj5DWZS6ozZqbtov1oc644",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -531,9 +573,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/token",
+			"name": "{{URI}}/api/token",
 			"request": {
-				"url": "http://localhost:8000/api/token",
+				"url": "{{URI}}/api/token",
 				"method": "POST",
 				"header": [
 					{
@@ -546,12 +588,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
-						"description": "",
-						"disabled": true
 					},
 					{
 						"key": "Accept",
@@ -569,9 +605,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/users/",
+			"name": "{{URI}}/api/users/",
 			"request": {
-				"url": "http://localhost:8000/api/users/",
+				"url": "{{URI}}/api/users/",
 				"method": "POST",
 				"header": [
 					{
@@ -588,7 +624,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"value": "{{token}}",
 						"description": "",
 						"disabled": true
 					},
@@ -604,21 +640,21 @@
 					"formdata": [
 						{
 							"key": "username",
-							"value": "usmanabc",
+							"value": "abdulmoizeng+cool2",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "1299459ML",
+							"value": "supercool!!",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "avatar",
-							"value": "",
 							"description": "",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						},
 						{
 							"key": "is_active",
@@ -649,6 +685,12 @@
 							"value": "true",
 							"description": "",
 							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "abdulmoizeng+cool2@gmail.com",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
@@ -657,9 +699,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/users/",
+			"name": "{{URI}}api/users/",
 			"request": {
-				"url": "http://localhost:8000/api/users/",
+				"url": "{{URI}}/api/users/",
 				"method": "GET",
 				"header": [
 					{
@@ -676,7 +718,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46MTI5OTQ1OU1M",
+						"value": "{{token}}",
 						"description": "",
 						"disabled": true
 					},
@@ -740,9 +782,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/events/add/1/",
+			"name": "{{URI}}/api/events/add/1/",
 			"request": {
-				"url": "http://localhost:8000/api/events/add/1/",
+				"url": "{{URI}}/api/events/add/1/",
 				"method": "POST",
 				"header": [
 					{
@@ -759,7 +801,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTEzNzk1LCJqdGkiOiI4OTQ2MmRhYTA5OTg0NTNmYmQ0ZGY0MDNjNjg1ZjBlZSIsInVzZXJfaWQiOiJhODFkYmVjNy0yNDhkLTRkZTQtOGM2NS0xOGI2ZmI0ODc1NGUifQ.Gq7cV3f_T6OG1geahBbO_-om_cahn35lH2gXqO-qWic",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -845,9 +887,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/sponsers/",
+			"name": "{{URI}}/api/sponsers/",
 			"request": {
-				"url": "http://localhost:8000/api/sponsers/",
+				"url": "{{URI}}/api/tags/",
 				"method": "POST",
 				"header": [
 					{
@@ -864,7 +906,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -879,7 +921,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Mazedar Haleem",
+							"value": "open source",
 							"description": "",
 							"type": "text"
 						},
@@ -894,7 +936,8 @@
 							"key": "logo",
 							"value": "",
 							"description": "",
-							"type": "file"
+							"type": "file",
+							"disabled": true
 						},
 						{
 							"key": "start_datetime",
@@ -931,9 +974,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/locations/",
+			"name": "{{URI}}/api/locations/",
 			"request": {
-				"url": "http://localhost:8000/api/locations/",
+				"url": "{{URI}}/api/locations/",
 				"method": "POST",
 				"header": [
 					{
@@ -950,7 +993,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTMyNTAwMDA2LCJqdGkiOiIxZjI3Njc3ZjMzYTE0ZjIwYmEyZTY0ODBmNDNmYTNmZiIsInVzZXJfaWQiOiJiNmUyMWJlMy1hZTU5LTQyYjAtYWNkMi1jYTQ4NjkwY2ZmOWIifQ.d3-rOHnDls7g6p6oUd-7CvxQ_zPtS6mkVgY-9fU40Ew",
+						"value": "{{token}}",
 						"description": ""
 					},
 					{
@@ -984,6 +1027,260 @@
 					]
 				},
 				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/tags/",
+			"request": {
+				"url": "{{URI}}/api/tags/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "open source",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Food sponser",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "logo",
+							"value": "",
+							"description": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "start_datetime",
+							"value": "2081-02-08T20:39:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_datetime",
+							"value": "3938-02-08T15:08:00+0000",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "organisation",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/user/",
+			"request": {
+				"url": "{{URI}}/api/user/",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "avatar",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "test admin new",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "admin last",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "enable_notifications",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_staff",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "For editing user data"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/events/?filter_tags=2",
+			"request": {
+				"url": {
+					"raw": "{{URI}}/api/events/?filter_tags=2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					],
+					"query": [
+						{
+							"key": "filter_tags",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "tag filter example"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/events/?filter_sponsers=2",
+			"request": {
+				"url": {
+					"raw": "{{URI}}/api/events/?filter_sponsers=2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					],
+					"query": [
+						{
+							"key": "filter_sponsers",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "sponsor filter example"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URI}}/api/events/1/comment/",
+			"request": {
+				"url": "{{URI}}/api/events/2/comment/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"comment\": \"Meow!\"}"
+				},
+				"description": "adding comments"
 			},
 			"response": []
 		}
