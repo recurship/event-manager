@@ -178,9 +178,9 @@ print('**** Debug value :   ', DEBUG)
 print('**** Debug value type :   ', type(DEBUG))
 if DEBUG == 'False':
     print('**** Images will be saving on AWS ****')
-    STATICFILES_DIRS += [
-        os.path.join(BASE_DIR, 'media'),
-    ]
+    # STATICFILES_DIRS += [
+    #     os.path.join(BASE_DIR, 'media'),
+    # ]
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
