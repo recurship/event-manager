@@ -43,7 +43,8 @@ class Login extends Component<Props, State> {
   };
 
   render() {
-    return this.props.userState.token === null ? (
+    return this.props.userState.token === undefined ||
+      this.props.userState.token === null ? (
       <Container className="login-container">
         <h4>Login</h4>
         <LoginForm onSubmit={this.login} />

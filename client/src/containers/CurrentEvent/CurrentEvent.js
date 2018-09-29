@@ -17,7 +17,6 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
-import EditUserProfile from '../EditProfile/EditUserProfile';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
@@ -164,11 +163,9 @@ class CurrentEvent extends Component {
                 externalLink={true}
               />
             </Row>
-            {event.comments ? (
-              <Row className="block-content">
-                <CommentsBlock comments={event.comments} eventID={event.id} />
-              </Row>
-            ) : null}
+            <Row className="block-content">
+              <CommentsBlock event={event} eventID={event.id} />
+            </Row>
           </Container>
         ) : (
           <Container />

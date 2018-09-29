@@ -19,14 +19,21 @@ class CommentsBlock extends Component {
   };
 
   render() {
+    let { comments } = this.props.event;
     return (
       <div className="detailBox">
         <div className="titleBox">
           <label>Write something about this event</label>
         </div>
         <div className="actionBox">
-          <CommentList comments={this.props.comments} />
-          <CommentBox onSubmit={this.postComment} />
+          {comments && comments.length ? (
+            <CommentList comments={comments} />
+          ) : null}
+          {this.props.userState.token ? (
+            <CommentBox onSubmit={this.postComment} />
+          ) : (
+            <div>Sign in to comment here...</div>
+          )}
         </div>
       </div>
     );

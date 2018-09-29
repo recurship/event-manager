@@ -259,6 +259,7 @@ export const addComment = (comment, eventID) => (dispatch, getState) => {
   return EventService.addComment(comment, eventID)
     .then(comment => {
       dispatch(postComment(comment));
+      dispatch(fetchCurrentEvent(eventID));
       dispatch(endRequest(POST_COMMENT));
     })
     .catch(err => {

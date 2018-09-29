@@ -13,7 +13,7 @@ class CommentBox extends Component {
           />
         </div>
         <div className="form-group">
-          <button className="btn btn-success" type="submit" disabled>
+          <button className="btn btn-success" type="submit">
             Post
           </button>
         </div>
