@@ -15,7 +15,6 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBUG False
 RUN mkdir /code
 WORKDIR /code
-RUN mkdir /media
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
