@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3x9=%n6b-s$ewkz%m=09q%=&43#qh!11t*n4_u95!3x1zd%gk9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True) 
 
 ALLOWED_HOSTS = []
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'organisation',
     'user',
     'storages',
-    'django_nose'
+    'django_nose',
+    'django_json_widget'
 ]
 
 
@@ -173,11 +174,13 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-if not DEBUG:
-    STATICFILES_DIRS += [
-        os.path.join(BASE_DIR, 'media'),
-    ]
+print('**** Debug value :   ', DEBUG)
+print('**** Debug value type :   ', type(DEBUG))
+if DEBUG == 'False':
+    print('**** Images will be saving on AWS ****')
+    # STATICFILES_DIRS += [
+    #     os.path.join(BASE_DIR, 'media'),
+    # ]
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

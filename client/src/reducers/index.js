@@ -23,26 +23,26 @@ const defaultAppState = {
 
 const appState = (state = defaultAppState, action) => {
   switch (action.type) {
-    case TRIGGER_REQUEST:
-      return {
-        ...state,
-        loading: [...state.loading, action.name],
-      };
+  case TRIGGER_REQUEST:
+    return {
+      ...state,
+      loading: [...state.loading, action.name],
+    };
 
-    case TRIGGER_FAILURE:
-      return {
-        errors: state.errors.push(action.error),
-        loading: state.loading.filter(name => name !== action.name),
-      };
+  case TRIGGER_FAILURE:
+    return {
+      errors: state.errors.push(action.error),
+      loading: state.loading.filter(name => name !== action.name),
+    };
 
-    case END_REQUEST:
-      return {
-        ...state,
-        loading: state.loading.filter(name => name !== action.name),
-      };
+  case END_REQUEST:
+    return {
+      ...state,
+      loading: state.loading.filter(name => name !== action.name),
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
@@ -53,34 +53,33 @@ const defaultUserState = {
 
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
-    case USER_LOGIN:
-      return {
-        ...state,
-        token: action.token.access,
-        refresh: action.token.refresh,
-      };
-    case FETCH_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.currentUser,
-      };
+  case USER_LOGIN:
+    return {
+      ...state,
+      token: action.token.access,
+      refresh: action.token.refresh,
+    };
+  case FETCH_CURRENT_USER:
+    return {
+      ...state,
+      currentUser: action.currentUser,
+    };
 
-    case USER_LOGOUT:
-      return {
-        ...state,
-        token: null,
-        currentUser: null,
-        refresh: null,
-      };
+  case USER_LOGOUT:
+    return {
+      ...state,
+      token: null,
+      currentUser: null,
+      refresh: null,
+    };
 
-    case REFRESH_TOKEN:
-      return {
-        ...state,
-        token: action.payload.access,
-      };
+  case REFRESH_TOKEN:
+    return {
+      token: action.payload.access,
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
@@ -89,14 +88,14 @@ const defaultResetPasswordState = {
 };
 const resetPasswordState = (state = defaultResetPasswordState, action) => {
   switch (action.type) {
-    case RESET_PASSWORD:
-      return {
-        ...state,
-        message: action.message,
-      };
+  case RESET_PASSWORD:
+    return {
+      ...state,
+      message: action.message,
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
@@ -128,16 +127,16 @@ const defaultUserProfileState = {
 
 const userProfile = (state = defaultUserProfileState, action) => {
   switch (action.type) {
-    case FETCH_USER:
-      return {
-        user: { ...Object.values(action.user.entities.user)[0] },
-      };
-    case USER_EDIT:
-      return {
-        user: { ...Object.values(action.user) },
-      };
-    default:
-      return state;
+  case FETCH_USER:
+    return {
+      user: { ...Object.values(action.user.entities.user)[0] },
+    };
+  case USER_EDIT:
+    return {
+      user: { ...Object.values(action.user) },
+    };
+  default:
+    return state;
   }
 };
 
@@ -161,13 +160,14 @@ const defaultOrganisationsState = {
 };
 const organisationsState = (state = defaultOrganisationsState, action) => {
   switch (action.type) {
-    case FETCH_ORGANISATIONS:
-      return {
-        ...state,
-        organisations: action.organisations,
-      };
+  case FETCH_ORGANISATIONS:
+    return {
+      ...state,
+      organisations: action.organisations,
+    };
+  default:
+    return state;
   }
-  return state;
 };
 
 const defaultSponsorsState = {
@@ -175,13 +175,14 @@ const defaultSponsorsState = {
 };
 const sponsorsState = (state = defaultSponsorsState, action) => {
   switch (action.type) {
-    case FETCH_SPONSORS:
-      return {
-        ...state,
-        sponsors: action.sponsors,
-      };
+  case FETCH_SPONSORS:
+    return {
+      ...state,
+      sponsors: action.sponsors,
+    };
+  default:
+    return state;
   }
-  return state;
 };
 
 const defaultLocationState = {
@@ -189,13 +190,14 @@ const defaultLocationState = {
 };
 const locationState = (state = defaultLocationState, action) => {
   switch (action.type) {
-    case FETCH_LOCATIONS:
-      return {
-        ...state,
-        locations: action.locations,
-      };
+  case FETCH_LOCATIONS:
+    return {
+      ...state,
+      locations: action.locations,
+    };
+  default:
+    return state;
   }
-  return state;
 };
 
 const defaultTagsState = {
@@ -203,13 +205,14 @@ const defaultTagsState = {
 };
 const tagsState = (state = defaultTagsState, action) => {
   switch (action.type) {
-    case FETCH_TAGS:
-      return {
-        ...state,
-        tags: action.tags,
-      };
+  case FETCH_TAGS:
+    return {
+      ...state,
+      tags: action.tags,
+    };
+  default:
+    return state;
   }
-  return state;
 };
 
 let reducer = combineReducers({

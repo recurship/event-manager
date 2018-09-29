@@ -4,14 +4,13 @@ import OrganisationService from '../services/organisation';
 import { normalize } from 'normalizr';
 import { eventSchema, eventListSchema } from '../schemas/eventSchema';
 import { organisationSchema } from '../schemas/organisationSchema';
-import { userSchema, userListSchema } from '../schemas/userSchema';
+import { userSchema } from '../schemas/userSchema';
 import OrganisationsService from '../services/organisation';
 import SponsorsService from '../services/sponsors';
 import LocationService from '../services/locations';
 import TagsService from '../services/tags';
 
 import UserService from '../services/user';
-import * as schema from '../schemas/eventSchema';
 import * as humps from 'humps';
 // app
 

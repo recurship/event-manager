@@ -20,11 +20,13 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from organisation.views import OrganisationView
-from event.views import EventView, EventLocationView, EventSponserView, EventUserAddAPIView, EventCommentAddAPIView, EventTagView
-from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView, ResetPasswordAPIView, ResetPasswordConfirmAPIView
+from event.views import EventView, EventLocationView, EventSponserView, EventUserAddAPIView, \
+    EventCommentAddAPIView, EventTagView, SubmissionViewSet, FormViewSet
+from user.views import UserView, RegistrationAPIView, UserRetrieveUpdateAPIView, ResetPasswordAPIView,\
+    ResetPasswordConfirmAPIView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework_extensions.routers import ExtendedSimpleRouter
 
 router = DefaultRouter()
 router.register('users', UserView)
@@ -33,10 +35,18 @@ router.register('events', EventView)
 router.register('locations', EventLocationView)
 router.register('sponsers', EventSponserView)
 router.register('tags', EventTagView)
+# router.register('forms/submissions/', SubmissionViewSet, base_name='user_forms')
+# router.register('forms', FormViewSet, base_name='forms')
+
+extended_router = ExtendedSimpleRouter()
+extended_router.register(r'forms', FormViewSet, base_name='forms')\
+    .register(r'submissions', SubmissionViewSet, base_name='submissions',
+              parents_query_lookups=['form'])
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/', include(extended_router.urls)),
     path('api/register/', RegistrationAPIView.as_view()),
     path('api/events/<int:eventid>/attendee/', EventUserAddAPIView.as_view()),
     path('api/events/<int:eventid>/comment/', EventCommentAddAPIView.as_view()),

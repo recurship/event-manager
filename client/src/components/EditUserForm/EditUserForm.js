@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-  Button,
-  Input,
-  Label,
-  CardImg,
-  Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
-} from 'reactstrap';
-import { isEmpty, isEmail, isLowercase } from 'validator';
+import { Button, Input, Label, CardImg } from 'reactstrap';
+import { isEmpty, isLowercase } from 'validator';
 
 export class EditUserForm extends React.Component {
   constructor(props) {

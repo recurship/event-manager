@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-class SummaryContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+class SummaryContainer extends Component<Props> {
   render() {
     return (
       <Col md="3">

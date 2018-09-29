@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, CardImg, Button } from 'reactstrap';
+import { Container, Row, Col, CardImg } from 'reactstrap';
 import { EventList } from '../../components/EventList/EventList';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchCurrentOrganisation } from '../../actions';
@@ -7,7 +7,6 @@ import { isEmpty } from 'lodash';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
-import SocialShare from '../../components/SocialShare/SocialShare';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 
 type Props = BaseReduxPropTypes & {

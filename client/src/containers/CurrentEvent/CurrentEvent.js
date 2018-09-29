@@ -25,13 +25,8 @@ import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component {
-  eventId: string;
-
-  constructor(props) {
-    super(props);
-  }
-
+class CurrentEvent extends Component<Props> {
+  eventId;
   componentDidMount() {
     this.getCurrentEvent();
   }
