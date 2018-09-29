@@ -174,8 +174,10 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-if not DEBUG:
+print('**** Debug value :   ', DEBUG)
+print('**** Debug value type :   ', type(DEBUG))
+if DEBUG == 'False':
+    print('**** Images will be saving on AWS ****')
     STATICFILES_DIRS += [
         os.path.join(BASE_DIR, 'media'),
     ]
