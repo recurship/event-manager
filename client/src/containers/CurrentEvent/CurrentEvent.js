@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
+import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
@@ -79,7 +80,9 @@ class CurrentEvent extends Component<Props> {
               image={event.cover}
               url={window.location.href}
             />
-            <CardImg top width="100%" src={event.cover} />
+            <Row className="block-content">
+              <CardImg top width="100%" src={event.cover} />
+            </Row>
             <ContentHeader heading="Event Summary" />
             <Row className="block-content">
               <SummaryContainer
@@ -104,21 +107,32 @@ class CurrentEvent extends Component<Props> {
               />
             </Row>
             <DescriptionContainer description={event.description} />
-            <div>
-              {event.attendees && event.attendees.length
-                ? this.getAttendeesProfiles(event.attendees)
-                : null}
-            </div>
+
+            {event.attendees && event.attendees.length ? (
+              <div>
+                <ContentHeader heading="Attendees" />
+                <Row className="block-content">
+                  {this.getAttendeesProfiles(event.attendees)}
+                </Row>
+              </div>
+            ) : null}
+
             {event.location.coordinates ? (
               <GoogleMap location={event.location} />
             ) : null}
-            <Row className="block-content">
-              {event.tags.map(tag => (
-                <label className="tag text-dark font-weight-light" key={tag.id}>
-                  <small>{tag.name}</small>
-                </label>
-              ))}
-            </Row>
+            {event.tags ? (
+              <Row className="block-content">
+                {event.tags.map(tag => (
+                  <label
+                    className="tag text-dark font-weight-light"
+                    key={tag.id}
+                  >
+                    <small>{tag.name}</small>
+                  </label>
+                ))}
+              </Row>
+            ) : null}
+
             <ContentHeader heading="Organizer Details" />
             <Row className="block-content">
               <SummaryContainer
@@ -143,6 +157,9 @@ class CurrentEvent extends Component<Props> {
                 content={event.organisation.twitter}
                 externalLink={true}
               />
+            </Row>
+            <Row className="block-content">
+              <CommentsBlock event={event} eventID={event.id} />
             </Row>
           </Container>
         ) : (

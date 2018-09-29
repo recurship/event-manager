@@ -10,8 +10,6 @@ describe('<LoginForm />', () => {
         username: event.target.elements.username.value,
         password: event.target.elements.password.value,
       };
-
-      console.log(inputs);
     };
 
     const component = mount(<LoginForm onSubmit={jest.fn()} />);
