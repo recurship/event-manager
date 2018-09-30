@@ -45,11 +45,34 @@ class EventCreateSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
 
     organisation = OrganisationSerializer(read_only=True)
-    location = EventLocationSerializer(read_only=True)
-    sponsers = EventSponserSerializer(many=True, read_only=True)
+    location = EventLocationSerializer()
+    sponsers = EventSponserSerializer(many=True)
     comments = EventCommentSerializer(many=True, read_only=True)
-    tags = EventTagSerializer(many=True, read_only=True)
+    tags = EventTagSerializer(many=True)
     attendees = UserSerializer(many=True, read_only=True)
+
+
+    def update(self, instance, validated_data):
+        validated_data.pop('sponsers', None)
+        validated_data.pop('tags', None)
+        for (key, value) in validated_data.items():
+            if key == 'location':
+                value = EventLocation.objects.get(id=value)
+            setattr(instance, key, value)
+
+        instance.save()
+        return instance
+
+    # This method is used to retrieve M2M fields value in request since in update() these fields are ignored
+    def to_internal_value(self, data):
+        sponsers = data.getlist('sponsers')
+        tags = data.getlist('tags')
+        if sponsers:
+            self.instance.sponsers.set(sponsers)
+        if tags:
+            self.instance.tags.set(tags)
+        return data
+
 
     class Meta:
         model = Event
