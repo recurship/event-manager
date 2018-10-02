@@ -40,7 +40,8 @@
     "build-storybook": "build-storybook -s public",
     "commit": "git-cz",
     "precommit": "lint-staged",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "cypress":  "cypress run"
   },
   "lint-staged": {
     "src/**/*.{js,json,css,jsx}": [
