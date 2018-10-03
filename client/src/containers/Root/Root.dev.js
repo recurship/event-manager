@@ -5,7 +5,7 @@ import App from '../App/App';
 const Root = () => (
   <div>
     <App />
-    <DevTools />
+    {/* <DevTools /> */}
   </div>
 );
 
