@@ -5,25 +5,23 @@
 /* global cy */
 /* eslint no-undef: "error" */
 
-const time =
-  ':nth-child(7) .Select  .Select-control  .Select-arrow-zone  .Select-arrow';
-const delay = 30000;
+import { constants } from '../dataSet';
 
 describe('Time Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
       cy.visit('/events');
-      cy.get('h3').should('contain', 'Welcome to Event Management');
+      cy.get('.btn').should('contain', 'Search');
     });
   });
 
   context('Test for Time filter', () => {
     it('should have one item', () => {
-      cy.get(time, { timeout: delay })
+      cy.get(constants.time, { timeout: constants.delay })
         .eq(0)
         .click();
       cy.get('div.Select-menu-outer').should('be.visible');
-      cy.contains('Noon').click();
+      cy.get(constants.VAL10).click();
       cy.get('.Select-value #react-select-6--value-0').should(
         'contain',
         'Noon'
@@ -35,19 +33,19 @@ describe('Time Filter Testing', () => {
     });
 
     it('should have multiple items', () => {
-      cy.get(time, { timeout: delay })
+      cy.get(constants.time, { timeout: constants.delay })
         .eq(0)
         .click();
-      cy.contains('Morning').click();
+      cy.get(constants.VAL9).click();
       cy.get('.Select-value #react-select-6--value-0').should(
         'contain',
         'Morning'
       );
 
-      cy.get(time, { timeout: delay })
+      cy.get(constants.time, { timeout: constants.delay })
         .eq(0)
         .click();
-      cy.contains('Evening').click();
+      cy.get(constants.VAL10).click();
       cy.get('.Select-value #react-select-6--value-1').should(
         'contain',
         'Evening'

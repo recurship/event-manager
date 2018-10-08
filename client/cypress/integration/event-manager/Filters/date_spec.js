@@ -5,25 +5,31 @@
 /* global cy */
 /* eslint no-undef: "error" */
 
-const URL = 'http://localhost:3000/events/';
+import { constants } from '../dataSet';
+const EVEND = Cypress.moment()
+  .subtract('5', 'days')
+  .format('YYYY-MM-DD');
+const EVSTRT = Cypress.moment()
+  .subtract('7', 'years')
+  .format('YYYY-MM-DD');
 
 describe('Date Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
       cy.visit('/events');
-      cy.get('h3').should('contain', 'Welcome to Event Management');
+      cy.get(':nth-child(2) > label').should('contain', 'Start Date');
     });
   });
 
   context('Test for Date Filter', () => {
     it('should only accept a correct date format', () => {
       cy.get("input[name='filterDateTo']")
-        .type('2018-10-03')
+        .type(EVEND)
         .should('have.value', '2018-10-03'); //Event END Date
       cy.get("input[name='filterDateFrom']")
-        .type('2011-10-06')
-        .should('have.value', '2011-10-06'); //Event START date
-        cy.visit(URL);
+        .type(EVSTRT)
+        .should('have.value', '2011-10-08'); //Event START date
+      cy.visit(constants.URL);
     });
 
     //BUGS-NOT WORKING
@@ -31,7 +37,7 @@ describe('Date Filter Testing', () => {
     //   cy.get("input[name='filterDateFrom']")
     //   .type('2018-10-03')
     //   .should('have.value', '2018-10-03'); //Start Event Date
-    
+
     //   cy.get('.btn').click();
     //   cy.get('#event-list a')
     //     .should('have.attr', 'href')
@@ -49,7 +55,7 @@ describe('Date Filter Testing', () => {
     //   cy.get("input[name='filterDateTo']")
     //     .type('2011-10-06')
     //     .should('have.value', '2011-10-06'); //End Event date
-    
+
     //   cy.get('.btn').click();
     //   cy.get('#event-list a')
     //     .should('have.attr', 'href')
@@ -67,8 +73,5 @@ describe('Date Filter Testing', () => {
     //       ).should('contain', 'Tuesday, October 2, 2018 11:00 AM');
     //     });
     // });
-    
   });
-
-  
 });

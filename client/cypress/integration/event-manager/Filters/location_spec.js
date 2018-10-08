@@ -5,34 +5,31 @@
 /* global cy */
 /* eslint no-undef: "error" */
 
-const loc =
-  ':nth-child(4) .Select  .Select-control  .Select-arrow-zone  .Select-arrow';
-const delay = 30000;
-const URL = 'http://localhost:3000/events/';
+import { constants } from '../dataSet';
 
-describe('Location Filter Testing', () => {
+describe('location Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
       cy.visit('/events');
-      cy.get('h3').should('contain', 'Welcome to Event Management');
+      cy.get('.btn').should('contain', 'Search');
     });
   });
 
-  context('Test for location filter ', () => {
+  context('Test for constants.location filter ', () => {
     it('should only have single item', () => {
-      cy.get(loc, { timeout: delay })
+      cy.get(constants.loc, { timeout: constants.delay })
         .eq(0)
         .click();
       cy.get('div.Select-menu-outer').should('be.visible');
-      cy.contains('NIC').click();
+      cy.get(constants.VAL5).click();
       cy.get('.Select-value #react-select-3--value-item').should(
         'contain',
         'NIC'
       );
-      cy.get(loc, { timeout: delay })
+      cy.get(constants.loc, { timeout: constants.delay })
         .eq(0)
         .click();
-      cy.contains('neduet').click();
+      cy.get(constants.VAL6).click();
       cy.get('.Select-value #react-select-3--value-item').should(
         'contain',
         'neduet'
@@ -48,7 +45,7 @@ describe('Location Filter Testing', () => {
             'neduet johar'
           );
         });
-      cy.visit(URL);
+      cy.visit(constants.URL);
     });
   });
 });

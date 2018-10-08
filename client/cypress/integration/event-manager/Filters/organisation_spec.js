@@ -5,31 +5,27 @@
 /* global cy */
 /* eslint no-undef: "error" */
 
-const delay = 30000;
-const org =
-  ':nth-child(1)  .Select  .Select-control  .Select-arrow-zone  .Select-arrow';
-const URL = 'http://localhost:3000/events/';
+import { constants } from '../dataSet';
 
-
-describe('Organisation Filter Testing', () => {
+describe('constants.organisation Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
       cy.visit('/events');
-      cy.get('h3').should('contain', 'Welcome to Event Management');
+      cy.get('.legend').should('contain', 'Filters');
     });
   });
 
-  context('Test for Organization Filter', () => {
+  context('Test for constants.organization Filter', () => {
     it('should have a clickable arrow button', () => {
-      cy.get(org, { timeout: delay })
+      cy.get(constants.org, { timeout: constants.delay })
         .eq(0)
         .click(); //Clicks the toggle button
       cy.get('div.Select-menu-outer').should('be.visible');
     });
 
     it('should display 1 result on single item selection', () => {
-      cy.get(org, { timeout: delay }).eq(0);
-      cy.contains('NES').click();
+      cy.get(constants.org, { timeout: constants.delay }).eq(0);
+      cy.get(constants.VAL4).click();
       cy.get('.Select-value #react-select-2--value-0').should('contain', 'NES');
       cy.get('.btn').click();
       cy.get('#event-list a')
@@ -41,20 +37,20 @@ describe('Organisation Filter Testing', () => {
             ':nth-child(3) > :nth-child(4) > .row > .col-md-10 > a > .text-dark'
           ).should('contain', 'NES');
         });
-      cy.visit(URL);
+      cy.visit(constants.URL);
     });
 
     it('should display 2 results on 2 items selection', () => {
-      cy.get(org, { timeout: delay })
+      cy.get(constants.org, { timeout: constants.delay })
         .eq(0)
         .click();
-      cy.contains('NES').click();
+      cy.get(constants.VAL4).click();
       cy.get('.Select-value #react-select-2--value-0').should('contain', 'NES');
 
-      cy.get(org, { timeout: delay })
+      cy.get(constants.org, { timeout: constants.delay })
         .eq(0)
         .click();
-      cy.contains('Recurship').click();
+      cy.get(constants.VAL3).click();
       cy.get('.Select-value #react-select-2--value-1').should(
         'contain',
         'Recurship'
@@ -72,20 +68,6 @@ describe('Organisation Filter Testing', () => {
     });
 
     it('should cancel all the items at once', () => {
-      cy.get(org, { timeout: delay })
-        .eq(0)
-        .click();
-      cy.contains('NES').click();
-      cy.get('.Select-value #react-select-2--value-0').should('contain', 'NES');
-
-      cy.get(org, { timeout: delay })
-        .eq(0)
-        .click();
-      cy.contains('Recurship').click();
-      cy.get('.Select-value #react-select-2--value-1').should(
-        'contain',
-        'Recurship'
-      );
       cy.get(
         ':nth-child(1)> .Select > .Select-control > .Select-clear-zone > .Select-clear'
       ).click();

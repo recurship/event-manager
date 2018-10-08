@@ -5,27 +5,26 @@
 /* global cy */
 /* eslint no-undef: "error" */
 
-const kw = ':nth-child(8) > .form-control';
-const URL = 'http://localhost:3000/events/';
+import { constants } from '../dataSet';
 
 describe('KeyWords Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
       cy.visit('/events');
-      cy.get('h3').should('contain', 'Welcome to Event Management');
+      cy.get('.btn').should('contain', 'Search');
     });
   });
   context('Test for Key Words filter', () => {
     it('should display 1 result', () => {
-      cy.get(kw).type('const');
-      cy.get(kw).should('have.value', 'const');
+      cy.get(constants.kw).type('const');
+      cy.get(constants.kw).should('have.value', 'const');
       cy.get('.btn').click();
       cy.get('.card-text').should('contain', 'const');
-      cy.visit(URL);
+      cy.visit(constants.URL);
     });
     it('should display 2 result', () => {
-      cy.get(kw).type('sasta');
-      cy.get(kw).should('have.value', 'sasta');
+      cy.get(constants.kw).type('sasta');
+      cy.get(constants.kw).should('have.value', 'sasta');
       cy.get('.btn').click();
       cy.get('.card div')
         .should('have.length', '2')
