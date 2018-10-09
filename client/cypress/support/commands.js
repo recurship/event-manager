@@ -40,3 +40,8 @@ Cypress.Commands.add('visitEditPage', (ValidCredentials, username) => {
     .contains(username)
     .click();
 });
+
+Cypress.Commands.add('homePage',() => {
+  cy.visit('/events');
+  cy.get('.btn').should('contain', 'Search');
+})

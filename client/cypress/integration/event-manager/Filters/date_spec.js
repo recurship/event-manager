@@ -6,30 +6,25 @@
 /* eslint no-undef: "error" */
 
 import { constants } from '../dataSet';
-const EVEND = Cypress.moment()
-  .subtract('5', 'days')
-  .format('YYYY-MM-DD');
-const EVSTRT = Cypress.moment()
-  .subtract('7', 'years')
-  .format('YYYY-MM-DD');
 
 describe('Date Filter Testing', () => {
   context('Test for Filters Route', () => {
     it('Should be on Filters page', () => {
-      cy.visit('/events');
-      cy.get(':nth-child(2) > label').should('contain', 'Start Date');
+      beforeEach(() => {
+        cy.homePage();
+      });
     });
   });
 
   context('Test for Date Filter', () => {
     it('should only accept a correct date format', () => {
       cy.get("input[name='filterDateTo']")
-        .type(EVEND)
+        .type(constants.EVENT_END_DATE)
         .should('have.value', '2018-10-03'); //Event END Date
       cy.get("input[name='filterDateFrom']")
-        .type(EVSTRT)
-        .should('have.value', '2011-10-08'); //Event START date
-      cy.visit(constants.URL);
+        .type(constants.EVENT_START_DATE)
+        .should('have.value', '2011-10-09'); //Event START date
+      cy.visit(constants.BASE_URL);
     });
 
     //BUGS-NOT WORKING

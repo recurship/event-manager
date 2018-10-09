@@ -48,28 +48,41 @@ export const userWithExistedEmail = {
 };
 
 export const constants = {
-  tag:
+  WAITING_TIME: 30000,
+  BASE_URL: '/events',
+  TAGS_INPUT_FIELD:
     ':nth-child(6) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
-  delay: 30000,
-  kw: ':nth-child(8) > .form-control',
-  URL: 'http://localhost:3000/events/',
-  org:
-    ':nth-child(1)  .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
-  VAL1: '#react-select-5--option-2',
-  VAL2: '#react-select-5--option-1',
-  VAL3: '#react-select-2--option-0',
-  VAL4: '#react-select-2--option-1',
-  loc:
-    ':nth-child(4) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
-  VAL5: '#react-select-3--option-0',
-  VAL6: '#react-select-3--option-1',
-  spons:
-    ':nth-child(5) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
-
-  VAL7: '#react-select-4--option-0',
-  VAL8: '#react-select-4--option-1',
-  time:
+  TIME_INPUT_FIELD:
     ':nth-child(7) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
-  VAL9: '#react-select-6--option-0',
-  VAL10: '#react-select-6--option-1',
+  KEYWORDS_INPUT_FIELD: ':nth-child(8) > .form-control',
+  ORGANISATION_INPUT_FIELD:
+    ':nth-child(1)  .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  LOCATION_INPUT_FIELD:
+    ':nth-child(4) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  SPONSORS_INPUT_FIELD:
+    ':nth-child(5) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  TAGS_FIELD_OPTION_1: '#react-select-5--option-2',
+  TAGS_FIELD_OPTION_2: '#react-select-5--option-1',
+  ORGANISATION_FIELD_OPTION_1: '#react-select-2--option-0',
+  ORGANISATION_FIELD_OPTION_2: '#react-select-2--option-1',
+  LOCATION_FIELD_OPTION_1: '#react-select-3--option-0',
+  LOCATION_FIELD_OPTION_2: '#react-select-3--option-1',
+  SPONSORS_FIELD_OPTION_1: '#react-select-4--option-0',
+  SPONSORS_FIELD_OPTION_2: '#react-select-4--option-1',
+  TIME_FIELD_OPTION_1: '#react-select-6--option-0',
+  TIME_FIELD_OPTION_2: '#react-select-6--option-1',
+  EVENT_END_DATE: Cypress.moment()
+    .subtract('6', 'days')
+    .format('YYYY-MM-DD'),
+  EVENT_START_DATE: Cypress.moment()
+    .subtract('7', 'years')
+    .format('YYYY-MM-DD'),
+  TIME_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-6--value > div',
+  TAG_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-5--value > div',
+  ORGANISATION_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-2--value > div',
+  SPONSORS_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-4--value > div',
 };

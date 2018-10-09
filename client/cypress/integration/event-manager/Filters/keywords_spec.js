@@ -9,30 +9,28 @@ import { constants } from '../dataSet';
 
 describe('KeyWords Filter Testing', () => {
   context('Test for Filters Route', () => {
-    it('Should be on Filters page', () => {
-      cy.visit('/events');
-      cy.get('.btn').should('contain', 'Search');
+    it('Should be on Home Page', () => {
+      beforeEach(() => {
+        cy.homePage();
+      });
     });
   });
   context('Test for Key Words filter', () => {
-    it('should display 1 result', () => {
-      cy.get(constants.kw).type('const');
-      cy.get(constants.kw).should('have.value', 'const');
+    it('should display less results', () => {
+      cy.get(constants.KEYWORDS_INPUT_FIELD).type('const');
+      cy.get(constants.KEYWORDS_INPUT_FIELD).should('have.value', 'const');
       cy.get('.btn').click();
       cy.get('.card-text').should('contain', 'const');
-      cy.visit(constants.URL);
     });
     it('should display 2 result', () => {
-      cy.get(constants.kw).type('sasta');
-      cy.get(constants.kw).should('have.value', 'sasta');
+      cy.get(constants.KEYWORDS_INPUT_FIELD).type('ReactKHI');
+      cy.get(constants.KEYWORDS_INPUT_FIELD).should('have.value', 'ReactKHI');
       cy.get('.btn').click();
-      cy.get('.card div')
-        .should('have.length', '2')
-        .each($div => {
-          cy.wrap($div)
-            .get('.card > .card-body > .card-text')
-            .should('contain', 'sasta');
-        });
+      // cy.get('.card div')
+      //   .each($div => {
+      //     cy.wrap($div)
+      //       .get('.card > .card-body').should('contain','ReactKHI');
+      //   });
     });
   });
 });

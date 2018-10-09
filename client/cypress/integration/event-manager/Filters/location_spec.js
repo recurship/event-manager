@@ -9,27 +9,32 @@ import { constants } from '../dataSet';
 
 describe('location Filter Testing', () => {
   context('Test for Filters Route', () => {
-    it('Should be on Filters page', () => {
-      cy.visit('/events');
-      cy.get('.btn').should('contain', 'Search');
+    it('Should be on Home page', () => {
+      beforeEach(() => {
+        cy.homePage();
+      });
     });
   });
 
   context('Test for constants.location filter ', () => {
-    it('should only have single item', () => {
-      cy.get(constants.loc, { timeout: constants.delay })
+    it('should only accept single item at a time', () => {
+      cy.get(constants.LOCATION_INPUT_FIELD, {
+        timeout: constants.WAITING_TIME,
+      })
         .eq(0)
         .click();
       cy.get('div.Select-menu-outer').should('be.visible');
-      cy.get(constants.VAL5).click();
+      cy.get(constants.LOCATION_FIELD_OPTION_1).click();
       cy.get('.Select-value #react-select-3--value-item').should(
         'contain',
         'NIC'
       );
-      cy.get(constants.loc, { timeout: constants.delay })
+      cy.get(constants.LOCATION_INPUT_FIELD, {
+        timeout: constants.WAITING_TIME,
+      })
         .eq(0)
         .click();
-      cy.get(constants.VAL6).click();
+      cy.get(constants.LOCATION_FIELD_OPTION_2).click();
       cy.get('.Select-value #react-select-3--value-item').should(
         'contain',
         'neduet'
@@ -45,7 +50,7 @@ describe('location Filter Testing', () => {
             'neduet johar'
           );
         });
-      cy.visit(constants.URL);
+      cy.visit(constants.BASE_URL);
     });
   });
 });
