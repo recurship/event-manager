@@ -51,7 +51,7 @@ class EventSerializer(serializers.ModelSerializer):
     tags = EventTagSerializer(many=True)
     attendees = UserSerializer(many=True, read_only=True)
 
-
+    @classmethod
     def update(self, instance, validated_data):
         validated_data.pop('sponsers', None)
         validated_data.pop('tags', None)
