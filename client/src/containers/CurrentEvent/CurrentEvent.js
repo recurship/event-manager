@@ -8,6 +8,7 @@ import {
   CardTitle,
   CardSubtitle,
   Col,
+  Button,
   Row,
 } from 'reactstrap';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
@@ -17,15 +18,22 @@ import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
+import FormsModal from '../FormsModal/FormsModal';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
+import { eventRegisteration } from '../../mocks/mockForms';
 
 const DATE_FORMAT = 'LLLL';
 
 class CurrentEvent extends Component<Props> {
   eventId;
+
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.getCurrentEvent();
   }
@@ -35,6 +43,12 @@ class CurrentEvent extends Component<Props> {
     this.eventId = eventId;
     const { dispatch } = this.props;
     dispatch(fetchCurrentEvent(eventId));
+  };
+
+  eventSubscribe = (e, user) => {
+    e.preventDefault();
+    this.registrationModal.toggle();
+    // this.editModal.receiveUserDetails(user)
   };
 
   getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
@@ -68,11 +82,14 @@ class CurrentEvent extends Component<Props> {
 
   render() {
     let { event } = this.props.currentEvent;
-
     return (
       <div className="main-container">
         {event ? (
           <Container>
+            <FormsModal
+              registrationForm={eventRegisteration}
+              ref={ref => (this.registrationModal = ref)}
+            />
             <MetaTagsComponent
               title={event.title}
               description={event.description}
@@ -81,7 +98,7 @@ class CurrentEvent extends Component<Props> {
             />
             <CardImg top width="100%" src={event.cover} />
             <ContentHeader heading="Event Summary" />
-            <Row className="block-content">
+            <Row id="summary-container" className="block-content">
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
                 url={null}
@@ -102,6 +119,15 @@ class CurrentEvent extends Component<Props> {
                 iconName="fa fa-users fa-2x"
                 content={event.organisation.name}
               />
+
+              <div className="subscribe">
+                <Button
+                  onClick={e => this.eventSubscribe(e)}
+                  className="btn btn-primary"
+                >
+                  Subscribe
+                </Button>
+              </div>
             </Row>
             <DescriptionContainer description={event.description} />
             <div>
