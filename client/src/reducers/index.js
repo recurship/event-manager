@@ -75,7 +75,6 @@ const userState = (state = defaultUserState, action) => {
 
     case REFRESH_TOKEN:
       return {
-        ...state,
         token: action.payload.access,
       };
 

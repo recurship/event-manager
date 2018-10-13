@@ -24,7 +24,18 @@ export default {
       body: JSON.stringify(event),
     });
   },
+
   getCurrentEvent: eventId => {
     return makeRequest(`${baseUri}${eventId}/`);
+  },
+
+  addComment: (comment, eventID) => {
+    return makeRequest(`${baseUri}${eventID}/comment/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(comment),
+    });
   },
 };
