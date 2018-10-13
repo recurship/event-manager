@@ -67,10 +67,11 @@ class EventSerializer(serializers.ModelSerializer):
     def to_internal_value(self, data):
         sponsers = data.getlist('sponsers')
         tags = data.getlist('tags')
+
         if sponsers:
             self.instance.sponsers.set(sponsers)
-        if tags:
-            self.instance.tags.set(tags)
+
+        self.instance.tags.set(tags or [])
         return data
 
 
