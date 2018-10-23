@@ -17,17 +17,3 @@ storiesOf('SocialShare', module).add('default', () => {
   );
   return story;
 });
-
-storiesOf('SocialShare', module).add('right vertical', () => {
-  const story = (
-    <div>
-      <FacebookShareButton className="mx-1" url={window.location.href}>
-        <FacebookIcon size={32} round={true} />
-      </FacebookShareButton>
-      <TwitterShareButton className="mx-1" url={window.location.href}>
-        <TwitterIcon size={32} round={true} />
-      </TwitterShareButton>
-    </div>
-  );
-  return story;
-});
