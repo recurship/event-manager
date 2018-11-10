@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { lazy, Suspence, Fragment } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //components
-import EditUserProfile from '../../EditProfile/EditUserProfile';
+// import EditUserProfile from '../../EditProfile/EditUserProfile';
+
+const EditUserProfile = lazy(import('../../EditProfile/EditUserProfile'));
 
 const LoginRedirection = () => <Redirect to="/login" />;
 
@@ -14,7 +16,9 @@ const PrivateRoutes = props => (
       render={routesProps => (
         <div>
           {props.userState.token ? (
-            <EditUserProfile {...routesProps} />
+            <Suspence fallback={<div>loading...</div>}>
+              <EditUserProfile {...routesProps} />
+            </Suspence>
           ) : (
             <LoginRedirection />
           )}
