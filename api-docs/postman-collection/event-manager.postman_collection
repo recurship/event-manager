@@ -1,44 +1,667 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "74939054-da51-4abb-bd01-96ffd913f854",
 		"name": "event-manager",
-		"_postman_id": "b0df9fec-b869-38c2-d5d7-d920940c81c1",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Create Form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Forms",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Form by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/{{form_id}}/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"{{form_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/{{form_id}}/submissions/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"{{form_id}}",
+								"submissions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List submissions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/{{form_id}}/submissions/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"{{form_id}}",
+								"submissions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View submission by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-CSRFToken",
+								"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "application/json",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Organisation 2u",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "start_datetime",
+									"value": "2081-02-08T20:39:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_datetime",
+									"value": "3938-02-08T15:08:00+0000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "organisation",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "test dexcriptuon",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URI}}/api/forms/{{form_id}}/submissions/{{submission_id}}/",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"{{form_id}}",
+								"submissions",
+								"{{submission_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "{{URI}}/api/organisations/3/",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "multipart/form-data",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "application/json",
-						"value": "",
-						"description": ""
+						"value": ""
 					},
 					{
 						"key": "payload",
 						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -48,186 +671,144 @@
 						{
 							"key": "name",
 							"value": "Update Organisation name",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "owner",
 							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "logo",
-							"value": "",
-							"description": "",
 							"type": "file",
+							"src": "",
 							"disabled": true
 						},
 						{
 							"key": "start_datetime",
 							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "end_datetime",
 							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "contact_number",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "facebook",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "twitter",
 							"value": "",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/organisations/3/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"organisations",
+						"3",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "{{URI}}/api/organisations/",
 				"method": "GET",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "multipart/form-data",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "application/json",
-						"value": "",
-						"description": ""
+						"value": ""
 					},
 					{
 						"key": "payload",
 						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
 						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Update Organisation name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "owner",
-							"value": "fcdd693f-f3cc-4e53-9c9b-9780e74b4156",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file",
-							"disabled": true
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "organisation",
-							"value": "1",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": ""
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/organisations/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"organisations",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/organisations/",
 			"request": {
-				"url": "{{URI}}/api/organisations/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "multipart/form-data",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "application/json",
-						"value": "",
-						"description": ""
+						"value": ""
 					}
 				],
 				"body": {
@@ -236,180 +817,142 @@
 						{
 							"key": "name",
 							"value": "Organisation 2u",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "owner",
 							"value": "b6e21be3-ae59-42b0-acd2-ca48690cff9b",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "logo",
-							"description": "",
 							"type": "file",
-							"value": ""
+							"src": ""
 						},
 						{
 							"key": "start_datetime",
 							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "end_datetime",
 							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "description",
 							"value": "test dexcriptuon",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "contact_number",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "facebook",
 							"value": "",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "twitter",
 							"value": "",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/organisations/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"organisations",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/events/",
 			"request": {
-				"url": "{{URI}}/api/events/",
 				"method": "GET",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "test event abcd",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "test",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "start_datetime",
-							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "end_datetime",
-							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "organisation",
-							"value": "GDG Kolachi",
-							"description": "",
-							"type": "text"
-						}
-					]
+					"mode": "raw",
+					"raw": ""
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/events/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/events/",
 			"request": {
-				"url": "{{URI}}/api/events/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -419,107 +962,100 @@
 						{
 							"key": "title",
 							"value": "GDG Kolachi",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
 							"value": "Google Developer Expert",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "cover",
-							"value": "",
-							"description": "",
-							"type": "file"
+							"type": "file",
+							"src": ""
 						},
 						{
 							"key": "start_datetime",
 							"value": "2018-08-23T20:39:00+0000",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "end_datetime",
 							"value": "2018-08-30T15:08:00+0000",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "location",
 							"value": "2",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "2",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "registration_url",
 							"value": "https://google.com",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "3",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "4",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/events/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/events/13/",
 			"request": {
-				"url": "{{URI}}/api/events/13/",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "multipart/form-data",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "application/json",
-						"value": "",
-						"description": ""
+						"value": ""
 					},
 					{
 						"key": "payload",
 						"value": "{\"title\":\"nvkanoenva\"}",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -529,70 +1065,71 @@
 						{
 							"key": "title",
 							"value": " update title",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
 							"value": "update description",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "cover",
-							"value": "",
-							"description": "",
 							"type": "file",
+							"src": "",
 							"disabled": true
 						},
 						{
 							"key": "start_datetime",
 							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "end_datetime",
 							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/events/13/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"13",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/token",
 			"request": {
-				"url": "{{URI}}/api/token",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -600,38 +1137,42 @@
 					"mode": "raw",
 					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"1299459ML\"\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/token",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/users/",
 			"request": {
-				"url": "{{URI}}/api/users/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
 						"value": "{{token}}",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -641,173 +1182,130 @@
 						{
 							"key": "username",
 							"value": "abdulmoizeng+cool2",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
 							"value": "supercool!!",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "avatar",
-							"description": "",
 							"type": "file",
-							"value": ""
+							"src": ""
 						},
 						{
 							"key": "is_active",
 							"value": "true",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "first_name",
 							"value": "test name",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "last_name",
 							"value": "test",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "enable_notifications",
 							"value": "true",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "is_staff",
 							"value": "true",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
 							"value": "abdulmoizeng+cool2@gmail.com",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/users/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}api/users/",
 			"request": {
-				"url": "{{URI}}/api/users/",
 				"method": "GET",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
 						"value": "{{token}}",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "usmandap",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1299459ML",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "avatar",
-							"value": "",
-							"description": "",
-							"type": "file"
-						},
-						{
-							"key": "is_active",
-							"value": "False",
-							"description": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "first_name",
-							"value": "test name",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "last_name",
-							"value": "test",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "enable_notifications",
-							"value": "true",
-							"description": "",
-							"type": "text"
-						}
-					]
+					"mode": "raw",
+					"raw": ""
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/users/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/events/add/1/",
 			"request": {
-				"url": "{{URI}}/api/events/add/1/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -817,102 +1315,98 @@
 						{
 							"key": "title",
 							"value": "GDG Kolachi",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
 							"value": "Google Developer Expert",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "cover",
-							"value": "",
-							"description": "",
-							"type": "file"
+							"type": "file",
+							"src": ""
 						},
 						{
 							"key": "start_datetime",
 							"value": "2018-08-23T20:39:00+0000",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "end_datetime",
 							"value": "2018-08-30T15:08:00+0000",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "location",
 							"value": "2",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "2",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "registration_url",
 							"value": "https://google.com",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "3",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "sponser",
 							"value": "4",
-							"description": "",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/events/add/1/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"add",
+						"1",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/sponsers/",
 			"request": {
-				"url": "{{URI}}/api/tags/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -922,84 +1416,82 @@
 						{
 							"key": "name",
 							"value": "open source",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
 							"value": "Food sponser",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "logo",
-							"value": "",
-							"description": "",
 							"type": "file",
+							"src": "",
 							"disabled": true
 						},
 						{
 							"key": "start_datetime",
 							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "end_datetime",
 							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "location",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/tags/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"tags",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/locations/",
 			"request": {
-				"url": "{{URI}}/api/locations/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -1009,54 +1501,56 @@
 						{
 							"key": "name",
 							"value": "location 1",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "address",
 							"value": "clifton",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "logo",
-							"value": "",
-							"description": "",
-							"type": "file"
+							"type": "file",
+							"src": ""
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/locations/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/tags/",
 			"request": {
-				"url": "{{URI}}/api/tags/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "X-CSRFToken",
 						"value": "VzOmeEVnwaYME3quXte5pLAgsi4wDTYIspLnIXuumgeQ2qhI1rFUoVDku99K3WfK",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					},
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": "",
 						"disabled": true
 					}
 				],
@@ -1066,67 +1560,68 @@
 						{
 							"key": "name",
 							"value": "open source",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "description",
 							"value": "Food sponser",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "logo",
-							"value": "",
-							"description": "",
 							"type": "file",
+							"src": "",
 							"disabled": true
 						},
 						{
 							"key": "start_datetime",
 							"value": "2081-02-08T20:39:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "end_datetime",
 							"value": "3938-02-08T15:08:00+0000",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "organisation",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "location",
 							"value": "1",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						}
 					]
 				},
-				"description": ""
+				"url": {
+					"raw": "{{URI}}/api/tags/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"tags",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "{{URI}}/api/user/",
 			"request": {
-				"url": "{{URI}}/api/user/",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					}
 				],
 				"body": {
@@ -1135,64 +1630,66 @@
 						{
 							"key": "username",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "password",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "avatar",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "is_active",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "first_name",
 							"value": "test admin new",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "last_name",
 							"value": "admin last",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "enable_notifications",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "is_staff",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
 							"key": "email",
 							"value": "",
-							"description": "",
 							"type": "text",
 							"disabled": true
 						}
+					]
+				},
+				"url": {
+					"raw": "{{URI}}/api/user/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"user",
+						""
 					]
 				},
 				"description": "For editing user data"
@@ -1202,6 +1699,12 @@
 		{
 			"name": "{{URI}}/api/events/?filter_tags=2",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{URI}}/api/events/?filter_tags=2",
 					"host": [
@@ -1215,16 +1718,10 @@
 					"query": [
 						{
 							"key": "filter_tags",
-							"value": "2",
-							"equals": true,
-							"description": ""
+							"value": "2"
 						}
-					],
-					"variable": []
+					]
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"description": "tag filter example"
 			},
 			"response": []
@@ -1232,6 +1729,12 @@
 		{
 			"name": "{{URI}}/api/events/?filter_sponsers=2",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{URI}}/api/events/?filter_sponsers=2",
 					"host": [
@@ -1245,16 +1748,10 @@
 					"query": [
 						{
 							"key": "filter_sponsers",
-							"value": "2",
-							"equals": true,
-							"description": ""
+							"value": "2"
 						}
-					],
-					"variable": []
+					]
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"description": "sponsor filter example"
 			},
 			"response": []
@@ -1262,23 +1759,33 @@
 		{
 			"name": "{{URI}}/api/events/1/comment/",
 			"request": {
-				"url": "{{URI}}/api/events/2/comment/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "{{token}}",
-						"description": ""
+						"value": "{{token}}"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\"comment\": \"Meow!\"}"
+				},
+				"url": {
+					"raw": "{{URI}}/api/events/2/comment/",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"2",
+						"comment",
+						""
+					]
 				},
 				"description": "adding comments"
 			},
