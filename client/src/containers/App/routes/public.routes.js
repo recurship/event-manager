@@ -5,6 +5,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Signup from '../../Signup/Signup';
 import Login from '../../Login/Login';
 import Events from '../../Events/Events';
+
 import ForgotPassword from '../../ForgotPassword/ForgotPassword';
 
 const BaseRedirection = () => <Redirect to="/events" />;

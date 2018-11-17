@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.1",
   "private": true,
-  "proxy": "http://localhost:8000/",
+  "proxy": "https://karachi-communities.herokuapp.com",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",

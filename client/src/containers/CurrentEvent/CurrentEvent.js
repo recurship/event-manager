@@ -22,11 +22,17 @@ import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
-
+import EventSignupView from '../../components/EventSignup/EventSignupView';
+import EventSignupModal from '../../components/EventSignup/EventSignupModal';
+import { fetchEventFormById, showModal } from '../../actions';
 const DATE_FORMAT = 'LLLL';
 
 class CurrentEvent extends Component<Props> {
   eventId;
+
+  state = {
+    showModal: false,
+  };
   componentDidMount() {
     this.getCurrentEvent();
   }
@@ -69,6 +75,7 @@ class CurrentEvent extends Component<Props> {
 
   render() {
     let { event } = this.props.currentEvent;
+    const { userState } = this.props;
 
     return (
       <div className="main-container">
@@ -80,6 +87,24 @@ class CurrentEvent extends Component<Props> {
               image={event.cover}
               url={window.location.href}
             />
+            <div style={{ padding: 10 }}>
+              <EventSignupView
+                onSignUpPress={modalState => {
+                  // this.setState({ showModal: true });
+                  console.log('userstate==>', userState);
+
+                  this.props.dispatch(showModal());
+                  this.props.dispatch(fetchEventFormById(1));
+                  /*  userState.token
+                    ? this.props.dispatch(showModal()) &&
+                      this.props.dispatch(fetchEventFormById(1))
+                    : this.props.history.push('/login');*/
+
+                  //this.props.dispatch(showModal());
+                  //this.props.dispatch(fetchEventFormById(1));
+                }}
+              />
+            </div>
             <Row className="block-content">
               <CardImg top width="100%" src={event.cover} />
             </Row>
@@ -161,6 +186,15 @@ class CurrentEvent extends Component<Props> {
             <Row className="block-content">
               <CommentsBlock event={event} eventID={event.id} />
             </Row>
+
+            <EventSignupModal
+              showModal={this.props.eventForm.showSignupModal}
+              eventForm={this.props.eventForm.form}
+              toggle={e => {
+                //console.log('toggle', this.state);
+                //this.setState({ showModal: !this.state.showModal });
+              }}
+            />
           </Container>
         ) : (
           <Container />
@@ -171,10 +205,17 @@ class CurrentEvent extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  const { currentEvent } = state;
-  return { currentEvent };
+  const { currentEvent, eventForm, userState } = state;
+  return { currentEvent, eventForm, userState };
 };
 
+/*const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchEventForm: id => {
+      dispatch(fetchEventFormById(id));
+    },
+  };
+};*/
 export default connect(
   mapStateToProps,
   null

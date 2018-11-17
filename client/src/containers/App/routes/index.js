@@ -22,7 +22,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={BaseRedirection} />
       <Route exact path="/events" component={Events} />
-      <Route path="/events/:event_id" component={CurrentEvent} />
+      {/* <Route path="/events/:event_id" component={CurrentEvent} /> */}
       <Route path="/organisations/:organisation_id" component={Organisation} />
       <Route exact path="/users/:user_id" component={UserProfile} />
       <Route path="/login" component={Login} />

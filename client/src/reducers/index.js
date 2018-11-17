@@ -14,6 +14,10 @@ import {
   FETCH_TAGS,
   USER_EDIT,
   FETCH_CURRENT_USER,
+  FETCH_EVENT_SIGNUP_FORM,
+  TOGGLE_EVENT_SIGNUP_MODAL,
+  EVENT_FORM_RESPONSE,
+  EVENT_SIGNUP_SUCCESS_RESPONSE,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
 const defaultAppState = {
@@ -23,26 +27,26 @@ const defaultAppState = {
 
 const appState = (state = defaultAppState, action) => {
   switch (action.type) {
-  case TRIGGER_REQUEST:
-    return {
-      ...state,
-      loading: [...state.loading, action.name],
-    };
+    case TRIGGER_REQUEST:
+      return {
+        ...state,
+        loading: [...state.loading, action.name],
+      };
 
-  case TRIGGER_FAILURE:
-    return {
-      errors: state.errors.push(action.error),
-      loading: state.loading.filter(name => name !== action.name),
-    };
+    case TRIGGER_FAILURE:
+      return {
+        errors: state.errors.push(action.error),
+        loading: state.loading.filter(name => name !== action.name),
+      };
 
-  case END_REQUEST:
-    return {
-      ...state,
-      loading: state.loading.filter(name => name !== action.name),
-    };
+    case END_REQUEST:
+      return {
+        ...state,
+        loading: state.loading.filter(name => name !== action.name),
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
@@ -53,33 +57,33 @@ const defaultUserState = {
 
 const userState = (state = defaultUserState, action) => {
   switch (action.type) {
-  case USER_LOGIN:
-    return {
-      ...state,
-      token: action.token.access,
-      refresh: action.token.refresh,
-    };
-  case FETCH_CURRENT_USER:
-    return {
-      ...state,
-      currentUser: action.currentUser,
-    };
+    case USER_LOGIN:
+      return {
+        ...state,
+        token: action.token.access,
+        refresh: action.token.refresh,
+      };
+    case FETCH_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.currentUser,
+      };
 
-  case USER_LOGOUT:
-    return {
-      ...state,
-      token: null,
-      currentUser: null,
-      refresh: null,
-    };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        token: null,
+        currentUser: null,
+        refresh: null,
+      };
 
-  case REFRESH_TOKEN:
-    return {
-      token: action.payload.access,
-    };
+    case REFRESH_TOKEN:
+      return {
+        token: action.payload.access,
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
@@ -88,14 +92,14 @@ const defaultResetPasswordState = {
 };
 const resetPasswordState = (state = defaultResetPasswordState, action) => {
   switch (action.type) {
-  case RESET_PASSWORD:
-    return {
-      ...state,
-      message: action.message,
-    };
+    case RESET_PASSWORD:
+      return {
+        ...state,
+        message: action.message,
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
@@ -127,16 +131,16 @@ const defaultUserProfileState = {
 
 const userProfile = (state = defaultUserProfileState, action) => {
   switch (action.type) {
-  case FETCH_USER:
-    return {
-      user: { ...Object.values(action.user.entities.user)[0] },
-    };
-  case USER_EDIT:
-    return {
-      user: { ...Object.values(action.user) },
-    };
-  default:
-    return state;
+    case FETCH_USER:
+      return {
+        user: { ...Object.values(action.user.entities.user)[0] },
+      };
+    case USER_EDIT:
+      return {
+        user: { ...Object.values(action.user) },
+      };
+    default:
+      return state;
   }
 };
 
@@ -160,13 +164,13 @@ const defaultOrganisationsState = {
 };
 const organisationsState = (state = defaultOrganisationsState, action) => {
   switch (action.type) {
-  case FETCH_ORGANISATIONS:
-    return {
-      ...state,
-      organisations: action.organisations,
-    };
-  default:
-    return state;
+    case FETCH_ORGANISATIONS:
+      return {
+        ...state,
+        organisations: action.organisations,
+      };
+    default:
+      return state;
   }
 };
 
@@ -175,13 +179,13 @@ const defaultSponsorsState = {
 };
 const sponsorsState = (state = defaultSponsorsState, action) => {
   switch (action.type) {
-  case FETCH_SPONSORS:
-    return {
-      ...state,
-      sponsors: action.sponsors,
-    };
-  default:
-    return state;
+    case FETCH_SPONSORS:
+      return {
+        ...state,
+        sponsors: action.sponsors,
+      };
+    default:
+      return state;
   }
 };
 
@@ -190,13 +194,13 @@ const defaultLocationState = {
 };
 const locationState = (state = defaultLocationState, action) => {
   switch (action.type) {
-  case FETCH_LOCATIONS:
-    return {
-      ...state,
-      locations: action.locations,
-    };
-  default:
-    return state;
+    case FETCH_LOCATIONS:
+      return {
+        ...state,
+        locations: action.locations,
+      };
+    default:
+      return state;
   }
 };
 
@@ -205,13 +209,43 @@ const defaultTagsState = {
 };
 const tagsState = (state = defaultTagsState, action) => {
   switch (action.type) {
-  case FETCH_TAGS:
-    return {
-      ...state,
-      tags: action.tags,
-    };
-  default:
-    return state;
+    case FETCH_TAGS:
+      return {
+        ...state,
+        tags: action.tags,
+      };
+    default:
+      return state;
+  }
+};
+
+const defaultEventForm = {
+  form: {},
+  showSignupModal: false,
+};
+
+const eventFormState = (state = defaultEventForm, action) => {
+  switch (action.type) {
+    case TOGGLE_EVENT_SIGNUP_MODAL:
+      return {
+        ...state,
+        showSignupModal: action.showSignupModal,
+      };
+
+    case EVENT_FORM_RESPONSE:
+      return {
+        ...state,
+        form: action.form,
+      };
+
+    case EVENT_SIGNUP_SUCCESS_RESPONSE:
+      return {
+        ...state,
+        showSignupModal: false,
+      };
+
+    default:
+      return state;
   }
 };
 
@@ -228,6 +262,7 @@ let reducer = combineReducers({
   locations: locationState,
   tags: tagsState,
   form: formReducer,
+  eventForm: eventFormState,
 });
 
 export default reducer;
