@@ -222,10 +222,18 @@ const tagsState = (state = defaultTagsState, action) => {
 const defaultEventForm = {
   form: {},
   showSignupModal: false,
+  isFetching: false,
+  registered: false,
 };
 
 const eventFormState = (state = defaultEventForm, action) => {
   switch (action.type) {
+    case FETCH_EVENT_SIGNUP_FORM:
+      return {
+        ...state,
+        isFetching: true,
+        registered: false,
+      };
     case TOGGLE_EVENT_SIGNUP_MODAL:
       return {
         ...state,
@@ -236,12 +244,13 @@ const eventFormState = (state = defaultEventForm, action) => {
       return {
         ...state,
         form: action.form,
+        isFetching: false,
       };
 
     case EVENT_SIGNUP_SUCCESS_RESPONSE:
       return {
         ...state,
-        showSignupModal: false,
+        registered: true,
       };
 
     default:

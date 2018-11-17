@@ -373,9 +373,10 @@ export const fetchTags = query => async (dispatch, getState) => {
 };
 
 //event form action
-export const showModal = () => ({
+
+export const toggleModal = state => ({
   type: TOGGLE_EVENT_SIGNUP_MODAL,
-  showSignupModal: true,
+  showSignupModal: state,
 });
 
 export const eventForm = form => ({
@@ -393,13 +394,17 @@ export const eventSignupSuccess = payload => ({
   payload,
 });
 
+export const fetchForm = () => ({
+  type: FETCH_EVENT_SIGNUP_FORM,
+});
+
 export const fetchEventFormById = id => async (dispatch, getState) => {
-  dispatch(showModal());
+  dispatch(toggleModal(true));
+  dispatch(fetchForm());
   dispatch(triggerRequest(FETCH_EVENT_SIGNUP_FORM));
   try {
-    console.log('id==>', id);
     const response = await EventFormService.getFormById(id);
-    console.log('form res===>', response);
+
     dispatch(eventForm(response));
   } catch (e) {
     dispatch(triggerFailure(FETCH_EVENT_SIGNUP_FORM, e.message));
@@ -418,26 +423,3 @@ export const postEventSignupDetails = (userDetails, formId) => async (
     dispatch(eventSignupSuccess(response));
   } catch (e) {}
 };
-
-/*export const userLogin = credentials => async (dispatch, getState) => {
-  dispatch(triggerRequest(USER_LOGIN));
-  try {
-    const token = await AuthService.login(
-      credentials.username,
-      credentials.password
-    );
-
-    if (token.access) {
-      dispatch(userLoginSuccess(token));
-      const currentUser = await UserService.getCurrentUser();
-      dispatch(setCurrentUser(currentUser));
-    }
-
-    dispatch(endRequest(USER_LOGIN));
-    return token;
-  } catch (e) {
-    dispatch(triggerFailure(USER_LOGIN, e));
-  }
-};
-
-*/

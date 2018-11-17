@@ -14,21 +14,38 @@ const placeHolder = {
 const EventSignupForm = props => {
   return (
     <form id="login-form" onSubmit={props.onSubmit}>
-      {props.fields &&
-        props.fields.map((field, i) => (
-          <Field
-            type="text"
-            key={i}
-            placeholder={placeHolder[field.label]}
-            className="form-control"
-            name={field.label}
-            component={renderField}
-          />
-        ))}
+      {props.fields.map((field, i) => (
+        <Field
+          type="text"
+          key={i}
+          placeholder={placeHolder[field.label]}
+          className="form-control"
+          name={field.label}
+          component={renderField}
+        />
+      ))}
 
-      <Button type="submit" className="btn btn-primary" value="Signup">
-        Submit
-      </Button>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {props.registered ? (
+          <Button
+            className="btn btn-primary"
+            value="Signup_success"
+            onClick={() => props.toggle(false)}
+          >
+            Signed up!
+          </Button>
+        ) : (
+          <Button type="submit" className="btn btn-primary" value="Signup">
+            Submit
+          </Button>
+        )}
+      </div>
     </form>
   );
 };

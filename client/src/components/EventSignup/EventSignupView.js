@@ -24,8 +24,11 @@ export default class EventSignupView extends Component {
           <h3>
             <Label>Sign Up For This Event</Label>
           </h3>
-
-          <Button onClick={props.onSignUpPress}>Sign Up</Button>
+          {props.isRegistered ? (
+            <span style={{ color: 'green' }}> Signed up! </span>
+          ) : (
+            <Button onClick={props.onSignUpPress}>Sign Up</Button>
+          )}
         </div>
       </div>
     );

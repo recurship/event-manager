@@ -24,15 +24,12 @@ import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
 import EventSignupView from '../../components/EventSignup/EventSignupView';
 import EventSignupModal from '../../components/EventSignup/EventSignupModal';
-import { fetchEventFormById, showModal } from '../../actions';
+import { fetchEventFormById, toggleModal } from '../../actions';
 const DATE_FORMAT = 'LLLL';
 
 class CurrentEvent extends Component<Props> {
   eventId;
 
-  state = {
-    showModal: false,
-  };
   componentDidMount() {
     this.getCurrentEvent();
   }
@@ -90,19 +87,10 @@ class CurrentEvent extends Component<Props> {
             <div style={{ padding: 10 }}>
               <EventSignupView
                 onSignUpPress={modalState => {
-                  // this.setState({ showModal: true });
-                  console.log('userstate==>', userState);
-
-                  this.props.dispatch(showModal());
+                  this.props.dispatch(toggleModal(true));
                   this.props.dispatch(fetchEventFormById(1));
-                  /*  userState.token
-                    ? this.props.dispatch(showModal()) &&
-                      this.props.dispatch(fetchEventFormById(1))
-                    : this.props.history.push('/login');*/
-
-                  //this.props.dispatch(showModal());
-                  //this.props.dispatch(fetchEventFormById(1));
                 }}
+                isRegistered={this.props.eventForm.registered}
               />
             </div>
             <Row className="block-content">
@@ -189,10 +177,11 @@ class CurrentEvent extends Component<Props> {
 
             <EventSignupModal
               showModal={this.props.eventForm.showSignupModal}
+              isFetching={this.props.eventForm.isFetching}
               eventForm={this.props.eventForm.form}
+              registered={this.props.eventForm.registered}
               toggle={e => {
-                //console.log('toggle', this.state);
-                //this.setState({ showModal: !this.state.showModal });
+                this.props.dispatch(toggleModal(false));
               }}
             />
           </Container>
@@ -209,13 +198,6 @@ const mapStateToProps = state => {
   return { currentEvent, eventForm, userState };
 };
 
-/*const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    fetchEventForm: id => {
-      dispatch(fetchEventFormById(id));
-    },
-  };
-};*/
 export default connect(
   mapStateToProps,
   null

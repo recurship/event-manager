@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import SignUpForm from '../EventSignupForm/EventSignupForm';
 import { postEventSignupDetails } from '../../actions';
 import { connect } from 'react-redux';
+import withLoader from '../Loader/withLoader';
 
+const ModalBody_ = props => (
+  <div>
+    <ModalHeader>{props.eventForm.title}</ModalHeader>
+    <ModalBody>
+      <SignUpForm
+        fields={props.eventForm.fields}
+        onSubmit={props.onSubmit}
+        registered={props.registered}
+        toggle={props.toggle}
+      />
+    </ModalBody>
+  </div>
+);
+const ModalContent = withLoader(ModalBody_);
 class EventSignupModal extends Component {
   constructor(props) {
     super(props);
@@ -13,8 +28,6 @@ class EventSignupModal extends Component {
     e.preventDefault();
     const { dispatch, eventForm } = this.props;
     const { name, email, phone } = e.target.elements;
-
-    console.log('this.props==>', name, email, phone);
 
     const payload = {
       name: name.value,
@@ -28,22 +41,21 @@ class EventSignupModal extends Component {
     const { props } = this;
     const { eventForm } = this.props;
     return (
-      <div>
-        <Modal
-          isOpen={props.showModal}
-          toggle={value => {
-            props.toggle(value);
-          }}
-        >
-          <ModalHeader>{eventForm.title}</ModalHeader>
-          <ModalBody>
-            <SignUpForm fields={eventForm.fields} onSubmit={this.onSubmit} />
-          </ModalBody>
-          {/* <ModalFooter style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button onClick={this.onSubmit}>Signup</Button>
-          </ModalFooter> */}
-        </Modal>
-      </div>
+      <Modal
+        isOpen={props.showModal}
+        toggle={value => {
+          props.toggle(value);
+        }}
+      >
+        <ModalContent
+          showModal={props.showModal}
+          eventForm={eventForm}
+          isFetching={props.isFetching}
+          onSubmit={this.onSubmit}
+          toggle={props.toggle}
+          registered={props.registered}
+        />
+      </Modal>
     );
   }
 }
