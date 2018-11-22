@@ -70,9 +70,24 @@ class CurrentEvent extends Component<Props> {
     );
   };
 
+  onEventSignup = () => {
+    if (this.props.userState.token) {
+      this.props.dispatch(toggleModal(true));
+      this.props.dispatch(fetchEventFormById(1));
+    } else {
+      this.props.history.push({
+        pathname: '/login',
+        state: { from: this.props.location },
+      });
+    }
+  };
+
+  toggleModal = () => {
+    this.props.dispatch(toggleModal(false));
+  };
+
   render() {
     let { event } = this.props.currentEvent;
-    const { userState } = this.props;
 
     return (
       <div className="main-container">
@@ -86,10 +101,7 @@ class CurrentEvent extends Component<Props> {
             />
             <div style={{ padding: 10 }}>
               <EventSignupView
-                onSignUpPress={modalState => {
-                  this.props.dispatch(toggleModal(true));
-                  this.props.dispatch(fetchEventFormById(1));
-                }}
+                onSignUpPress={this.onEventSignup}
                 isRegistered={this.props.eventForm.registered}
               />
             </div>
@@ -180,9 +192,7 @@ class CurrentEvent extends Component<Props> {
               isFetching={this.props.eventForm.isFetching}
               eventForm={this.props.eventForm.form}
               registered={this.props.eventForm.registered}
-              toggle={e => {
-                this.props.dispatch(toggleModal(false));
-              }}
+              toggle={this.toggleModal}
             />
           </Container>
         ) : (

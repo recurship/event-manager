@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 
 //components
 import EditUserProfile from '../../EditProfile/EditUserProfile';
-import CurrentEvent from '../../../containers/CurrentEvent/CurrentEvent';
 
 const LoginRedirection = props => (
   <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
 );
-//const EventRedirection = ()=> <Redirect to= /Events/
 
 const PrivateRoutes = props => (
   <Fragment>
@@ -21,18 +19,6 @@ const PrivateRoutes = props => (
             <EditUserProfile {...routesProps} />
           ) : (
             <LoginRedirection {...routesProps} />
-          )}
-        </div>
-      )}
-    />
-    <Route
-      path="/events/:event_id"
-      render={routeProps => (
-        <div>
-          {props.userState.token ? (
-            <CurrentEvent {...routeProps} />
-          ) : (
-            <LoginRedirection {...routeProps} />
           )}
         </div>
       )}
