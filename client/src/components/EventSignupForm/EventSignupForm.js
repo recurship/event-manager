@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import './EventSignupForm.css';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '../RenderField';
-//import validate from './LoginValidator';
+import validate from './EventSignUpFormValidator';
 
 const placeHolder = {
   name: 'Name',
@@ -12,6 +12,8 @@ const placeHolder = {
 };
 
 const EventSignupForm = props => {
+  const { valid } = props;
+
   return (
     <form id="login-form" onSubmit={props.onSubmit}>
       {props.fields.map((field, i) => (
@@ -41,7 +43,12 @@ const EventSignupForm = props => {
             Signed up!
           </Button>
         ) : (
-          <Button type="submit" className="btn btn-primary" value="Signup">
+          <Button
+            type="submit"
+            className="btn btn-primary"
+            value="Signup"
+            disabled={!valid}
+          >
             Submit
           </Button>
         )}
@@ -52,4 +59,5 @@ const EventSignupForm = props => {
 
 export default reduxForm({
   form: 'eventSignupform',
+  validate,
 })(EventSignupForm);
