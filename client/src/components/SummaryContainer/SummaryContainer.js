@@ -8,7 +8,11 @@ class SummaryContainer extends Component<Props> {
       <Col md="3">
         <Row>
           <Col md="2">
-            <i className={this.props.iconName} />
+            {this.props.logo ? (
+              <img id="organisation-logo" src={this.props.logo} />
+            ) : (
+              <i className={this.props.iconName} />
+            )}
           </Col>
           <Col md="10">
             {this.props.url === null ? (
