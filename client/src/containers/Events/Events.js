@@ -11,6 +11,9 @@ import DropSearch, {
   State as DropSearchState,
 } from '../../components/DropSearch/DropSearch';
 
+const mainTitle = 'Portal for Tech Communities';
+const eventNotFound = 'No events found.';
+
 type Props = BaseReduxPropTypes & {
   userState: Object,
   events: Object,
@@ -86,8 +89,7 @@ class Events extends Component<Props> {
     return (
       <div>
         <Jumbotron>
-          <h3 className="text-center">Welcome to Event Management</h3>
-          <h6 className="text-center">Portal for Open Source Communities</h6>
+          <h3 className="text-center">{mainTitle}</h3>
         </Jumbotron>
         <Container>
           <Row>
@@ -104,7 +106,7 @@ class Events extends Component<Props> {
           <EventList events={events.events} />
         ) : (
           <Container>
-            <h4 className="text-center">No events found.</h4>
+            <h4 className="text-center">{eventNotFound}</h4>
           </Container>
         )}
       </div>
