@@ -9,6 +9,7 @@ from organisation.models import Organisation
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
+    exclude = ['comments']
 
     def get_queryset(self, request):
         if request.user.is_superuser:
