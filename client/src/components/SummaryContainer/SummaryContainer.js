@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class SummaryContainer extends Component<Props> {
   render() {
-    return (
+    return this.props.content || this.props.url ? (
       <Col md="3">
         <Row>
           <Col md="2">
@@ -31,7 +31,7 @@ class SummaryContainer extends Component<Props> {
           </Col>
         </Row>
       </Col>
-    );
+    ) : null;
   }
 }
 export default SummaryContainer;
