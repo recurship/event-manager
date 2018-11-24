@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import moment from 'moment';
+import avatar from '../../../src/avatar.jpg';
 
 class CommentListItem extends Component {
   render() {
@@ -20,9 +21,7 @@ class CommentListItem extends Component {
             <img
               className="commenterImage"
               src={
-                comment.commentedBy.avatar
-                  ? comment.commentedBy.avatar
-                  : 'http://placekitten.com/50/50'
+                comment.commentedBy.avatar ? comment.commentedBy.avatar : avatar
               }
             />
           </Col>
