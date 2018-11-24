@@ -28,9 +28,9 @@ describe('Time Filter Testing', () => {
         'Noon'
       );
       cy.log('should deselect item');
-      cy.get(TIME_FIELD_VALUE).should('have.class', 'Select-value');
+      cy.get(constants.TIME_FIELD_VALUE).should('have.class', 'Select-value');
       cy.get('.Select-value-icon').click();
-      cy.get(TIME_FIELD_VALUE).should('not.have.class', 'Select-value');
+      cy.get(constants.TIME_FIELD_VALUE).should('not.have.class', 'Select-value');
     });
 
     it('should have multiple items', () => {
@@ -52,11 +52,11 @@ describe('Time Filter Testing', () => {
         'Evening'
       );
       cy.log('can cancel all the items at once');
-      cy.get(TIME_FIELD_VALUE).should('have.class', 'Select-value');
+      cy.get(constants.TIME_FIELD_VALUE).should('have.class', 'Select-value');
       cy.get(
         ':nth-child(7) > .Select > .Select-control > .Select-clear-zone > .Select-clear'
       ).click();
-      cy.get(TIME_FIELD_VALUE).should('not.have.class', 'Select-value');
+      cy.get(constants.TIME_FIELD_VALUE).should('not.have.class', 'Select-value');
     });
   });
 });
