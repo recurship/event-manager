@@ -15,6 +15,9 @@
   text-decoration: none;
   color: black;
 }
+.text-dark {
+  overflow-wrap: break-word;
+}
 .App-header {
   background-color: #222;
   height: 150px;
