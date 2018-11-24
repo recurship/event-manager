@@ -47,8 +47,11 @@ class OrganisationViewTest(TestCase):
         self.assertEqual(login_resp.status_code, 200)
         url = reverse('organisation-list')
         token = login_json_resp['access']
-        organisation_resp = self.client.post(url, {'name': 'new organisation', 'owner': organisation_instance.owner.id},
+        organisation_resp = self.client.post(url, {'name': 'new organisation',
+                                                   'owner': organisation_instance.owner.id,
+                                                   'email':'test@test.com'},
                                       HTTP_AUTHORIZATION='Bearer ' + token)
+        print(organisation_resp.json())
         self.assertEqual(organisation_resp.status_code, 201, 'it should create new organisation')
 
     def test_organisation_update_view_with_token(self):
