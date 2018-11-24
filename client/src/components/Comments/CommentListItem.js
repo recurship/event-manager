@@ -26,7 +26,11 @@ class CommentListItem extends Component {
             />
           </Col>
           <Col sm="8" md="10" xs="8" lg="10" className="commentText">
-            <strong>{comment.commentedBy.username}</strong>
+            <strong>
+              {comment.commentedBy.username
+                ? comment.commentedBy.username
+                : 'Anonymous'}
+            </strong>
             <p>{comment.comment}</p>
             <span className="date sub-text">
               {moment(comment.commentDatetime).fromNow()}
