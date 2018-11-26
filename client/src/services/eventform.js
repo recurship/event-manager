@@ -9,19 +9,33 @@ export default {
   },
 
   signupForEvent: (userDetails, formId) => {
-    const formData = new FormData();
-    formData.append('name', userDetails.name);
-    formData.append('email', userDetails.email);
-    formData.append('contact_number', userDetails.phone);
-    //console.log(userDetails);
-    /*const payload = {
-      name: userDetails.name,
-      email: userDetails.email,
-      contact_number: userDetails.phone,
-    };*/
+    let payload = null;
+    if (userDetails.phone) {
+      payload = {
+        submission: [
+          { position: 0, reply: userDetails.name },
+          { position: 1, reply: userDetails.email },
+          {
+            position: 2,
+            reply: userDetails.phone,
+          },
+        ],
+      };
+    } else {
+      payload = {
+        submission: [
+          { position: 0, reply: userDetails.name },
+          { position: 1, reply: userDetails.email },
+        ],
+      };
+    }
+
     return makeRequest(`${baseUri}/${formId}/submissions/`, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
     });
   },
 };

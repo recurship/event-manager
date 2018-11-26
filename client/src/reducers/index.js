@@ -232,7 +232,6 @@ const eventFormState = (state = defaultEventForm, action) => {
       return {
         ...state,
         isFetching: true,
-        registered: false,
       };
     case TOGGLE_EVENT_SIGNUP_MODAL:
       return {

@@ -412,14 +412,18 @@ export const fetchEventFormById = id => async (dispatch, getState) => {
   }
 };
 
-export const postEventSignupDetails = (userDetails, formId) => async (
-  dispatch,
-  getState
-) => {
+export const postEventSignupDetails = (
+  userDetails,
+  formId
+) => async dispatch => {
   dispatch(triggerRequest(POST_EVENT_SIGNUP_DETAILS));
   try {
     const response = await EventFormService.signupForEvent(userDetails, formId);
-    console.log('response e===>', response);
+
     dispatch(eventSignupSuccess(response));
-  } catch (e) {}
+    dispatch(toggleModal(false));
+  } catch (e) {
+    dispatch(triggerFailure(POST_EVENT_SIGNUP_DETAILS, e.message));
+    return e;
+  }
 };

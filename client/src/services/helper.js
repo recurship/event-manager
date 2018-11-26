@@ -26,7 +26,6 @@ const makeFetchRequest = (path, options) => {
 
 export const makeRequest = async (path, options) => {
   const response = await makeFetchRequest(path, options);
-  console.log('after request', response);
   if (response.status && response.status === 401) {
     const { refresh } = store.getState().userState,
       formData = new FormData();
