@@ -4,6 +4,10 @@ import SignUpForm from '../EventSignupForm/EventSignupForm';
 import { postEventSignupDetails } from '../../actions';
 import { connect } from 'react-redux';
 import withLoader from '../Loader/withLoader';
+import {
+  ModalBodyTypes,
+  EventSignupModalTypes,
+} from '../../types/event-form-types';
 
 const ModalBody_ = props => (
   <div>
@@ -18,6 +22,9 @@ const ModalBody_ = props => (
     </ModalBody>
   </div>
 );
+
+ModalBody_.propTypes = ModalBodyTypes;
+
 const ModalContent = withLoader(ModalBody_);
 class EventSignupModal extends Component {
   constructor(props) {
@@ -60,4 +67,5 @@ class EventSignupModal extends Component {
   }
 }
 
+EventSignupModal.propTypes = EventSignupModalTypes;
 export default connect(null)(EventSignupModal);

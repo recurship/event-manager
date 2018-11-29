@@ -4,6 +4,7 @@ import './EventSignupForm.css';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '../RenderField';
 import validate from './EventSignUpFormValidator';
+import { EventSignupFormTypes } from '../../types/event-form-types';
 
 const placeHolder = {
   name: 'Name',
@@ -57,6 +58,7 @@ const EventSignupForm = props => {
   );
 };
 
+EventSignupForm.propTypes = EventSignupFormTypes;
 export default reduxForm({
   form: 'eventSignupform',
   validate,

@@ -398,7 +398,7 @@ export const fetchForm = () => ({
   type: FETCH_EVENT_SIGNUP_FORM,
 });
 
-export const fetchEventFormById = id => async (dispatch, getState) => {
+export const fetchEventFormById = id => async dispatch => {
   dispatch(toggleModal(true));
   dispatch(fetchForm());
   dispatch(triggerRequest(FETCH_EVENT_SIGNUP_FORM));
