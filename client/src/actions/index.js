@@ -9,6 +9,7 @@ import OrganisationsService from '../services/organisation';
 import SponsorsService from '../services/sponsors';
 import LocationService from '../services/locations';
 import TagsService from '../services/tags';
+import EventFormService from '../services/eventform';
 
 import UserService from '../services/user';
 import * as humps from 'humps';
@@ -40,6 +41,14 @@ export const POST_COMMENT = 'POST_COMMENT';
 
 // organisation
 export const FETCH_ORGANISATION_DETAIL = 'FETCH_ORGANISATION_DETAIL';
+
+//EVENT SIGNUP FORM
+export const TOGGLE_EVENT_SIGNUP_MODAL = 'TOGGLE_EVENT_SIGNUP_MODAL';
+
+export const FETCH_EVENT_SIGNUP_FORM = 'FETCH_EVENT_SIGNUP_FORM';
+export const EVENT_FORM_RESPONSE = 'EVENT_FORM_RESPONSE';
+export const POST_EVENT_SIGNUP_DETAILS = 'POST_EVENT_SIGNUP_DETAILS';
+export const EVENT_SIGNUP_SUCCESS_RESPONSE = 'EVENT_SIGNUP_SUCCESS_RESPONSE';
 
 //misc
 export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
@@ -359,6 +368,62 @@ export const fetchTags = query => async (dispatch, getState) => {
     dispatch(endRequest(FETCH_TAGS));
   } catch (e) {
     dispatch(triggerFailure(FETCH_TAGS, e.message));
+    return e;
+  }
+};
+
+//event form action
+
+export const toggleModal = state => ({
+  type: TOGGLE_EVENT_SIGNUP_MODAL,
+  showSignupModal: state,
+});
+
+export const eventForm = form => ({
+  type: EVENT_FORM_RESPONSE,
+  form,
+});
+
+export const postEventSignup = userDetails => ({
+  type: POST_EVENT_SIGNUP_DETAILS,
+  userDetails,
+});
+
+export const eventSignupSuccess = payload => ({
+  type: EVENT_SIGNUP_SUCCESS_RESPONSE,
+  payload,
+});
+
+export const fetchForm = () => ({
+  type: FETCH_EVENT_SIGNUP_FORM,
+});
+
+export const fetchEventFormById = id => async dispatch => {
+  dispatch(toggleModal(true));
+  dispatch(fetchForm());
+  dispatch(triggerRequest(FETCH_EVENT_SIGNUP_FORM));
+  try {
+    const response = await EventFormService.getFormById(id);
+
+    dispatch(eventForm(response));
+  } catch (e) {
+    dispatch(triggerFailure(FETCH_EVENT_SIGNUP_FORM, e.message));
+    return e;
+  }
+};
+
+export const postEventSignupDetails = (
+  userDetails,
+  formId
+) => async dispatch => {
+  dispatch(triggerRequest(POST_EVENT_SIGNUP_DETAILS));
+  try {
+    const response = await EventFormService.signupForEvent(userDetails, formId);
+
+    dispatch(eventSignupSuccess(response));
+    dispatch(toggleModal(false));
+  } catch (e) {
+    dispatch(triggerFailure(POST_EVENT_SIGNUP_DETAILS, e.message));
     return e;
   }
 };

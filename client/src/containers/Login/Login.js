@@ -42,6 +42,7 @@ class Login extends Component<Props, State> {
   };
 
   render() {
+    let { from } = this.props.location.state || { from: { pathname: '/' } };
     return this.props.userState.token === undefined ||
       this.props.userState.token === null ? (
       <Container className="login-container">
@@ -57,7 +58,7 @@ class Login extends Component<Props, State> {
         </p>
       </Container>
     ) : (
-      <Redirect to={{ pathname: '/' }} />
+      <Redirect to={from} />
     );
   }
 }

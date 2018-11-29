@@ -1,11 +1,18 @@
 import React, { Fragment } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 //components
 import EditUserProfile from '../../EditProfile/EditUserProfile';
 
-const LoginRedirection = () => <Redirect to="/login" />;
+const LoginRedirection = props => (
+  <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+);
+
+LoginRedirection.propTypes = {
+  location: PropTypes.object,
+};
 
 const PrivateRoutes = props => (
   <Fragment>
@@ -16,7 +23,7 @@ const PrivateRoutes = props => (
           {props.userState.token ? (
             <EditUserProfile {...routesProps} />
           ) : (
-            <LoginRedirection />
+            <LoginRedirection {...routesProps} />
           )}
         </div>
       )}

@@ -22,11 +22,14 @@ import { AttendeeType } from '../../types/attendee-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
-
+import EventSignupView from '../../components/EventSignup/EventSignupView';
+import EventSignupModal from '../../components/EventSignup/EventSignupModal';
+import { fetchEventFormById, toggleModal } from '../../actions';
 const DATE_FORMAT = 'LLLL';
 
 class CurrentEvent extends Component<Props> {
   eventId;
+
   componentDidMount() {
     this.getCurrentEvent();
   }
@@ -67,6 +70,22 @@ class CurrentEvent extends Component<Props> {
     );
   };
 
+  onEventSignup = () => {
+    if (this.props.userState.token) {
+      this.props.dispatch(toggleModal(true));
+      this.props.dispatch(fetchEventFormById(1));
+    } else {
+      this.props.history.push({
+        pathname: '/login',
+        state: { from: this.props.location },
+      });
+    }
+  };
+
+  toggleModal = () => {
+    this.props.dispatch(toggleModal(false));
+  };
+
   render() {
     let { event } = this.props.currentEvent;
 
@@ -80,6 +99,12 @@ class CurrentEvent extends Component<Props> {
               image={event.cover}
               url={window.location.href}
             />
+            <div style={{ padding: 10 }}>
+              <EventSignupView
+                onSignUpPress={this.onEventSignup}
+                isRegistered={this.props.eventForm.registered}
+              />
+            </div>
             <Row className="block-content">
               <CardImg top width="100%" src={event.cover} />
             </Row>
@@ -161,6 +186,14 @@ class CurrentEvent extends Component<Props> {
             <Row className="block-content">
               <CommentsBlock event={event} eventID={event.id} />
             </Row>
+
+            <EventSignupModal
+              showModal={this.props.eventForm.showSignupModal}
+              isFetching={this.props.eventForm.isFetching}
+              eventForm={this.props.eventForm.form}
+              registered={this.props.eventForm.registered}
+              toggle={this.toggleModal}
+            />
           </Container>
         ) : (
           <Container />
@@ -171,8 +204,8 @@ class CurrentEvent extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  const { currentEvent } = state;
-  return { currentEvent };
+  const { currentEvent, eventForm, userState } = state;
+  return { currentEvent, eventForm, userState };
 };
 
 export default connect(

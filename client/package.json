@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.1",
   "private": true,
-  "proxy": "http://localhost:8000/",
+  "proxy": "https://karachi-communities.herokuapp.com",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
@@ -22,6 +22,7 @@
     "react-scripts": "1.1.4",
     "react-select": "^1.2.1",
     "react-share": "^2.2.0",
+    "react-spinners": "^0.4.7",
     "react-toastify": "^4.1.0",
     "reactstrap": "^6.1.0",
     "redux": "^4.0.0",
