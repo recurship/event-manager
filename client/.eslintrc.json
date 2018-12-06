@@ -23,7 +23,7 @@
     "react/display-name": 1,
     "no-unused-vars": "warn",
     "no-console": 1,
-    "prefer-const": "warn",
+    "prefer-const": "error",
     "no-param-reassign": "warn",
     "id-length": ["error", { "min": 2 }],
     "eqeqeq": ["error", "always", { "null": "ignore" }],

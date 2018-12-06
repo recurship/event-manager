@@ -24,7 +24,7 @@ const InfoGroup = (e: InfoGroupProps) => {
 };
 
 const UserProfile = (props: Props) => {
-  let user = props.user;
+  const user = props.user;
   return user ? (
     <div id="user-profile">
       <h4>{user.username || user.email || getFullname(user)}</h4>

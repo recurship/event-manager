@@ -19,7 +19,7 @@ class CommentsBlock extends Component {
   };
 
   render() {
-    let { comments } = this.props.event;
+    const { comments } = this.props.event;
     return (
       <div className="detailBox">
         <div className="titleBox">
