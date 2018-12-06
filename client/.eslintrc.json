@@ -5,10 +5,7 @@
     "es6": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -19,33 +16,23 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "plugins": [
-    "react",
-    "prettier"
-  ],
+  "plugins": ["react", "prettier"],
   "rules": {
     "comma-dangle": 0,
     "react/jsx-uses-vars": 1,
     "react/display-name": 1,
     "no-unused-vars": "warn",
     "no-console": 1,
+    "prefer-const": "warn",
+    "no-param-reassign": "warn",
+    "id-length": ["error", { "min": 2 }],
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "no-var": "warn",
     "no-unexpected-multiline": "warn",
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
     "prettier/prettier": [
       "error",
       {
