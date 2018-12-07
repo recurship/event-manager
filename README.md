@@ -1,6 +1,7 @@
 ## event-manager
+
 =====================
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f29bf9dc6dc4bb498b7ff21aca4a267)](https://www.codacy.com/app/mashhoodr/event-manager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=recurship/event-manager&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f29bf9dc6dc4bb498b7ff21aca4a267)](https://www.codacy.com/app/mashhoodr/event-manager?utm_source=github.com&utm_medium=referral&utm_content=recurship/event-manager&utm_campaign=Badge_Grade)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 This is a simple event manager app - built to learn Django REST and React.
@@ -12,12 +13,12 @@ To run the backend simply have Docker installed on your machine and run `make up
 If you are running the first time you will need to run `make migrate && make loaddata` to run the migrations and load sample data
 
 To run the frontend you can use:
+
 - cd client
 - npm install
 - npm start
 
 We will later move this into its own docker image.
-
 
 ### Scope
 
@@ -32,6 +33,9 @@ We will need to do `npm run commit` and then will get the prompts needed to star
 [![Add and commit with Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)
 
 ### Editor Settings for VSCode
+
+VScode's builtin **TypeScript and JavaScript Language Features** extension gives warning when Flow's keyword is used. Disabling the extension removes the warning.
+Go to [this link](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode) for guidance.
 
 ```bash
 update the VSCode settings with following
@@ -55,6 +59,8 @@ update the VSCode settings with following
  "css.validate": true
 }
 ```
+
+#### Flow Integration VSCode
 
 ### Resources
 
@@ -84,7 +90,6 @@ how well the old code works. This is Django2 with Django REST framework 3.8 and 
 - https://realpython.com/django-rest-framework-quick-start/
 - https://www.andreagrandi.it/2016/09/28/creating-production-ready-api-python-django-rest-framework-part-1/
 - https://github.com/Brobin/drf-generators
-
 
 #### React
 

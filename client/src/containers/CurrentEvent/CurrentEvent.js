@@ -68,7 +68,7 @@ class CurrentEvent extends Component<Props> {
   };
 
   render() {
-    let { event } = this.props.currentEvent;
+    const { event } = this.props.currentEvent;
 
     return (
       <div className="main-container">
