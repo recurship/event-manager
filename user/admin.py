@@ -6,6 +6,11 @@ from django.forms import PasswordInput
 from user.models import User
 
 class UserCreationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['user_permissions'].initial = 41 # where "41" is the permission id for organisation change
+        # TODO : NEED TO DISCUSS IF WE CAN USE PROPER ID MAPPING INSTEAD OF HARDCODING ID HERE
+
     class Meta:
         model = User
         fields = ('email',)
@@ -34,7 +39,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'password', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active')}
+            'fields': ('email', 'username', 'password', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active', 'user_permissions')}
             ),
         )
 
