@@ -10,7 +10,14 @@
 .col-padding {
   padding-bottom: 15px;
 }
-
+.col-padding a,
+.col-padding a:hover {
+  text-decoration: none;
+  color: black;
+}
+.text-dark {
+  overflow-wrap: break-word;
+}
 .App-header {
   background-color: #222;
   height: 150px;

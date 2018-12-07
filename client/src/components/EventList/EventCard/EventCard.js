@@ -16,8 +16,8 @@ const EventCard = props => {
   const card = props.event;
   return (
     <Col md="4" className="col-padding">
-      <Card>
-        <Link to={`/events/${props.event.id}`}>
+      <Link to={`/events/${props.event.id}`}>
+        <Card>
           <CardImg
             top
             width="100%"
@@ -25,17 +25,17 @@ const EventCard = props => {
             alt="Card image cap"
             height="180"
           />
-        </Link>
-        <CardBody>
-          <CardTitle>{card.title}</CardTitle>
-          <CardText>{card.description}</CardText>
-          <CardSubtitle>
-            <small className="text-muted">
-              {moment(card.startDatetime).format(DATE_FORMAT)}
-            </small>
-          </CardSubtitle>
-        </CardBody>
-      </Card>
+          <CardBody>
+            <CardTitle>{card.title}</CardTitle>
+            <CardText>{card.description}</CardText>
+            <CardSubtitle>
+              <small className="text-muted">
+                {moment(card.startDatetime).format(DATE_FORMAT)}
+              </small>
+            </CardSubtitle>
+          </CardBody>
+        </Card>
+      </Link>
     </Col>
   );
 };
