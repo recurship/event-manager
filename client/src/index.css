@@ -95,17 +95,3 @@ body {
   border-top: 1px solid #f5f5f5;
   padding: 10px;
 }
-
-.bgGradient {
-  font-family: robotto;
-  background: linear-gradient(
-    to top left,
-    rgba(225, 185, 185, 1),
-    rgba(254, 254, 233, 1)
-  );
-}
-
-.cardFormating {
-  width: 90%;
-  border-radius: 15px;
-}
