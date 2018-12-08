@@ -44,7 +44,7 @@ class EventViewTest(TestCase):
         event = Event.objects.create(title=title, description=description,
                                     start_datetime=timezone.now(), end_datetime=timezone.now(),
                                     organisation=cls.create_organisation(), location=cls.create_event_location())
-        event.sponser.add(cls.create_event_sponser())
+        event.sponsers.add(cls.create_event_sponser())
         event.save()
         return event
 

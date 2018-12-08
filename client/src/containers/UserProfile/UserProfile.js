@@ -12,13 +12,13 @@ class UserProfile extends Component {
   }
 
   fetchUserProfile() {
-    let userId = this.props.match.params.user_id;
+    const userId = this.props.match.params.user_id;
     const { dispatch } = this.props;
     dispatch(fetchUserProfile(userId));
   }
 
   getUserDetails(): AttendeeType {
-    let user = this.props.userProfile;
+    const user = this.props.userProfile;
     return user ? user : null;
   }
 

@@ -5,12 +5,12 @@ import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 import persistState from 'redux-localstorage';
 
-const configureStore = (preloadedState) => {
+const configureStore = preloadedState => {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      persistState(['userState', { key: 'eMgr'}]),
+      persistState(['userState', { key: 'eMgr' }]),
       applyMiddleware(thunk, createLogger()),
       DevTools.instrument()
     )

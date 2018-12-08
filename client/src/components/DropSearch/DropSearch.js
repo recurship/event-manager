@@ -66,6 +66,7 @@ class DropSearch extends Component<Props, State> {
   handleInputChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+    console.log('');
   };
 
   handleSelect = e => {
@@ -126,7 +127,7 @@ class DropSearch extends Component<Props, State> {
   };
 
   render() {
-    let { sortBy } = this.props;
+    const { sortBy } = this.props;
 
     return (
       <div id="drop-search">

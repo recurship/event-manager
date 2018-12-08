@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3x9=%n6b-s$ewkz%m=09q%=&43#qh!11t*n4_u95!3x1zd%gk9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True) 
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # TODO Disabled this csrf token for now, we will going to enable it afterwards
-    'event_manager.disablecsrf.DisableCSRF',    
+    'event_manager.disablecsrf.DisableCSRF',
 ]
 
 ROOT_URLCONF = 'event_manager.urls'

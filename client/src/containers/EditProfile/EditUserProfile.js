@@ -40,7 +40,7 @@ class EditUserProfile extends React.Component {
   };
 
   getUserDetails(): AttendeeType {
-    let user = this.props.userProfile;
+    const user = this.props.userProfile;
     return user ? user : null;
   }
 
