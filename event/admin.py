@@ -17,6 +17,13 @@ class EventAdmin(admin.ModelAdmin):
         org = Organisation.objects.filter(owner=request.user)
         return Event.objects.filter(organisation__in=org)
 
+    # Overriding event form to not allow user to create organisation at the time of creating event
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(EventAdmin, self).get_form(request, obj, **kwargs)
+        widget = form.base_fields['organisation'].widget
+        widget.can_add_related = False
+        return form
+
     # pylint: disable=W0222
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         # when we are creating or editing new event and the logged in user is not superuser

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from .models import Organisation
 from event.models import Event
+from event.serializers import EventSerializer
 from .serializer import OrganisationSerializer, OrganisationCreateSerializer
 # Create your views here.
 from rest_framework.response import Response
@@ -23,9 +24,10 @@ class OrganisationView(viewsets.ModelViewSet):
             queryset_organisation = Organisation.objects.get(pk=pk)
         except Organisation.DoesNotExist:
             raise Http404
-        queryset_event = Event.objects.filter(organisation=pk).values()
+        queryset_event = Event.objects.filter(organisation=pk)
+        serialized_data_events = EventSerializer(queryset_event, many=True)
         serialized_data_organisation = OrganisationSerializer(queryset_organisation)
-        data = { **serialized_data_organisation.data }
-        data['events'] = queryset_event
+        data = { **serialized_data_organisation.data}
+        data['events'] = serialized_data_events.data
 
         return Response(data, status=status.HTTP_200_OK)
