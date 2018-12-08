@@ -95,3 +95,17 @@ body {
   border-top: 1px solid #f5f5f5;
   padding: 10px;
 }
+.settings-btn {
+  float: right;
+}
+.comment-options .btn-group {
+  float: right;
+}
+.comment-options .dots-btn {
+  background: none;
+  color: #545b62;
+  border: none;
+}
+.comment-options .dropdown-menu {
+  min-width: 8rem;
+}
