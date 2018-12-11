@@ -16,21 +16,21 @@ export class EditUserForm extends React.Component {
 
   validationCases = {
     firstname: value => {
-      let errFirstName = this.checkFirstName(value);
+      const errFirstName = this.checkFirstName(value);
       this.setState({
         errorFirstName: errFirstName,
         isValidated: errFirstName === '',
       });
     },
     lastname: value => {
-      let errLastName = this.checkLastName(value);
+      const errLastName = this.checkLastName(value);
       this.setState({
         errorLastName: errLastName,
         isValidated: errLastName === '',
       });
     },
     username: value => {
-      let errUserName = this.checkUserName(value);
+      const errUserName = this.checkUserName(value);
       this.setState({
         errorUserName: errUserName,
         isValidated: errUserName === '',

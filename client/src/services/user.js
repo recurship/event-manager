@@ -5,7 +5,7 @@ const baseUriUser = '/api/user/';
 
 export default {
   editUser: user => {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('username', user.username.value);
     formData.append('first_name', user.firstname.value);
     formData.append('last_name', user.lastname.value);
@@ -24,7 +24,7 @@ export default {
   },
 
   avatarUpload: avatar => {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('avatar', avatar);
     return makeRequest(baseUriUser, { method: 'PUT', body: formData });
   },
