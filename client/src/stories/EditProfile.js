@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Provider } from 'react-redux';
 import { EditUserForm } from '../components/EditUserForm/EditUserForm';
 import { withInfo } from '@storybook/addon-info';
-import { store } from '../index';
+import store from '../store/configureStore';
 import { user } from './mock-data/data';
 
 storiesOf('Edit User Profile', module)

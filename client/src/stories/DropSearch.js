@@ -5,7 +5,7 @@ import '../containers/Login/Login.css';
 import { withInfo } from '@storybook/addon-info';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { store } from '../index';
+import store from '../store/configureStore';
 
 storiesOf('DropSearch', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
