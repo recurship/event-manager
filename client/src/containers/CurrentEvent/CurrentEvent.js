@@ -68,7 +68,7 @@ class CurrentEvent extends Component<Props> {
   };
 
   render() {
-    let { event } = this.props.currentEvent;
+    const { event } = this.props.currentEvent;
 
     return (
       <div className="main-container">
@@ -104,6 +104,7 @@ class CurrentEvent extends Component<Props> {
                 url={`/organisations/${event.organisation.id}/`}
                 iconName="fa fa-users fa-2x"
                 content={event.organisation.name}
+                logo={event.organisation.logo}
               />
             </Row>
             <DescriptionContainer description={event.description} />
@@ -133,7 +134,7 @@ class CurrentEvent extends Component<Props> {
               </Row>
             ) : null}
 
-            <ContentHeader heading="Organizer Details" />
+            <ContentHeader heading="Organiser Detail" />
             <Row className="block-content">
               <SummaryContainer
                 iconName="fa fa-envelope fa-2x"
@@ -143,17 +144,17 @@ class CurrentEvent extends Component<Props> {
               <SummaryContainer
                 iconName="fa fa-phone-square fa-2x"
                 url={null}
-                content={event.organisation.contact}
+                content={event.organisation.contactNumber}
               />
               <SummaryContainer
                 iconName="fa fa-facebook-square fa-2x"
-                url={`https://www.facebook.com/${event.organisation.facebook}`}
+                url={event.organisation.facebook}
                 content={event.organisation.facebook}
                 externalLink={true}
               />
               <SummaryContainer
                 iconName="fa fa-twitter-square fa-2x"
-                url={`https://www.twitter.com/${event.organisation.twitter}`}
+                url={event.organisation.twitter}
                 content={event.organisation.twitter}
                 externalLink={true}
               />

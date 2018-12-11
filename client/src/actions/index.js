@@ -165,7 +165,7 @@ export const fetchEvents = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   return EventService.getAll(query)
     .then(response => {
-      let camelCaseKeys = humps.camelizeKeys(response);
+      const camelCaseKeys = humps.camelizeKeys(response);
       dispatch(getEvents(normalize(camelCaseKeys, eventListSchema)));
       dispatch(endRequest(FETCH_EVENTS));
     })
@@ -177,7 +177,7 @@ export const fetchUserProfile = userId => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_USER));
   try {
     const user = await UserService.getUserProfile(userId);
-    let camelCaseKeys = humps.camelizeKeys(user);
+    const camelCaseKeys = humps.camelizeKeys(user);
     dispatch(getUserProfile(normalize(camelCaseKeys, userSchema)));
     dispatch(endRequest(FETCH_USER));
   } catch (e) {
@@ -188,7 +188,7 @@ export const fetchCurrentEvent = eventId => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENT_DETAIL));
   try {
     const event = await EventService.getCurrentEvent(eventId);
-    let camelCaseKeys = humps.camelizeKeys(event);
+    const camelCaseKeys = humps.camelizeKeys(event);
     dispatch(getCurrentEvent(normalize(camelCaseKeys, eventSchema)));
     dispatch(endRequest(FETCH_EVENT_DETAIL));
   } catch (e) {
@@ -205,7 +205,7 @@ export const fetchCurrentOrganisation = organisationId => async (
     const organisation = await OrganisationService.getCurrentOrganisation(
       organisationId
     );
-    let camelCaseKeys = humps.camelizeKeys(organisation);
+    const camelCaseKeys = humps.camelizeKeys(organisation);
     dispatch(
       getCurrentOrganisation(normalize(camelCaseKeys, organisationSchema))
     );
@@ -315,7 +315,7 @@ export const fetchOrganisation = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_ORGANISATIONS));
   try {
     const response = await OrganisationsService.getAll();
-    let normalized = humps.camelizeKeys(response.results);
+    const normalized = humps.camelizeKeys(response.results);
     dispatch(getOrganisations(normalized));
     dispatch(endRequest(FETCH_ORGANISATIONS));
   } catch (e) {
@@ -328,7 +328,7 @@ export const fetchSponsors = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_SPONSORS));
   try {
     const response = await SponsorsService.getAll();
-    let normalized = humps.camelizeKeys(response.results);
+    const normalized = humps.camelizeKeys(response.results);
     dispatch(getSponsors(normalized));
     dispatch(endRequest(FETCH_SPONSORS));
   } catch (e) {
@@ -341,7 +341,7 @@ export const fetchLocations = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_LOCATIONS));
   try {
     const response = await LocationService.getAll();
-    let normalized = humps.camelizeKeys(response.results);
+    const normalized = humps.camelizeKeys(response.results);
     dispatch(getLocations(normalized));
     dispatch(endRequest(FETCH_LOCATIONS));
   } catch (e) {
@@ -354,7 +354,7 @@ export const fetchTags = query => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_TAGS));
   try {
     const response = await TagsService.getAll();
-    let normalized = humps.camelizeKeys(response.results);
+    const normalized = humps.camelizeKeys(response.results);
     dispatch(getTags(normalized));
     dispatch(endRequest(FETCH_TAGS));
   } catch (e) {

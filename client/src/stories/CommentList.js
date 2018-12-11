@@ -2,25 +2,7 @@ import React from 'react';
 import CommentList from '../components/Comments/CommentList';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-
-const comments = [
-  {
-    id: 1,
-    commentedBy: {
-      avatar: '',
-      username: 'jack',
-    },
-    comment: 'Nice work guys',
-  },
-  {
-    id: 1,
-    commentedBy: {
-      avatar: '',
-      username: 'william',
-    },
-    comment: 'When is registration starting?',
-  },
-];
+import { comments } from './mock-data/data';
 
 storiesOf('CommentList', module).add(
   'CommentList',

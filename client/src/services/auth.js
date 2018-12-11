@@ -2,14 +2,14 @@ import { makeRequest } from './helper';
 
 export default {
   login(username, password) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
     return makeRequest('/api/token', { method: 'POST', body: formData });
   },
 
   signup(payload) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('firstname', payload.firstname);
     formData.append('lastname', payload.lastname);
     formData.append('username', payload.username);
@@ -18,7 +18,7 @@ export default {
     return makeRequest('/api/register/', { method: 'POST', body: formData });
   },
   resetPassword(email) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('email', email);
     return fakeApi(email);
   },

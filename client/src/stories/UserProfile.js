@@ -2,15 +2,7 @@ import React from 'react';
 import UserProfile from '../components/UserProfile/UserProfile';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { store } from '../index';
-import { Provider } from 'react-redux';
-
-const user = {
-  firstName: 'James',
-  lastName: 'John',
-  username: 'jam.jo',
-  email: 'john.james@gmail.com',
-};
+import { user } from './mock-data/data';
 
 storiesOf('UserProfile', module).add(
   'UserProfile',

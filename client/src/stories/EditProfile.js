@@ -1,19 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import EditUserProfile from '../containers/EditProfile/EditUserProfile';
 import { Provider } from 'react-redux';
-import configureStore from '../store/configureStore';
 import { EditUserForm } from '../components/EditUserForm/EditUserForm';
 import { withInfo } from '@storybook/addon-info';
-
-const store = configureStore();
-
-const user = {
-  firstName: 'Jav',
-  lastName: 'nisar',
-  username: 'Javaeria',
-  email: 'javeria@gmail.com',
-};
+import { store } from '../index';
+import { user } from './mock-data/data';
 
 storiesOf('Edit User Profile', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
