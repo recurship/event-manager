@@ -8,7 +8,7 @@ export const comments = [
     comment: 'Nice work guys',
   },
   {
-    id: 1,
+    id: 2,
     commentedBy: {
       avatar: '',
       username: 'william',
