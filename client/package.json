@@ -19,7 +19,7 @@
     "react-meta-tags": "^0.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.1.1",
     "react-select": "^1.2.1",
     "react-share": "^2.2.0",
     "react-toastify": "^4.1.0",
@@ -32,7 +32,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc",
+    "initTS": "tsc --init",
     "test": "react-scripts test --env=jsdom",
     "lint-fix": "eslint src --fix",
     "eject": "react-scripts eject",
@@ -59,9 +60,11 @@
     "@storybook/addon-storyshots": "^3.4.8",
     "@storybook/addons": "^3.4.8",
     "@storybook/react": "^3.4.8",
+    "@types/jquery": "^3.3.22",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
@@ -73,7 +76,6 @@
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
@@ -87,11 +89,18 @@
     "redux-devtools": "^3.4.1",
     "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "typescript": "^3.2.2"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
