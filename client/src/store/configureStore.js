@@ -1,5 +1,7 @@
+let defaultExport;
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./configureStore.prod');
+  defaultExport = require('./configureStore.prod').default;
 } else {
-  module.exports = require('./configureStore.dev');
+  defaultExport = require('./configureStore.dev').default;
 }
+export default defaultExport;

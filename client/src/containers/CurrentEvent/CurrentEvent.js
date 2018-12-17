@@ -25,7 +25,7 @@ import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component<Props> {
+class CurrentEvent extends Component {
   eventId;
   componentDidMount() {
     this.getCurrentEvent();
@@ -38,7 +38,7 @@ class CurrentEvent extends Component<Props> {
     dispatch(fetchCurrentEvent(eventId));
   };
 
-  getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
+  getAttendeesProfiles = attendees => {
     return (
       <Row>
         {attendees &&

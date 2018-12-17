@@ -16,8 +16,8 @@ class UserProfile extends Component {
     const { dispatch } = this.props;
     dispatch(fetchUserProfile(userId));
   }
-
-  getUserDetails(): AttendeeType {
+  // AttendeeType;
+  getUserDetails() {
     const user = this.props.userProfile;
     return user ? user : null;
   }

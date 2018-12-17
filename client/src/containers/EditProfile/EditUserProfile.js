@@ -39,7 +39,7 @@ class EditUserProfile extends React.Component {
     dispatch(userProfilePictureUpload(file));
   };
 
-  getUserDetails(): AttendeeType {
+  getUserDetails() {
     const user = this.props.userProfile;
     return user ? user : null;
   }

@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -18,15 +16,15 @@ import {
 import { userLogout } from '../actions';
 import User from '../types/multi-types';
 
-type Props = {
-  userState: User,
-};
+// type Props = {
+//   userState: User,
+// };
 
-type State = {
-  isOpen: boolean,
-};
+// type State = {
+//   isOpen: boolean,
+// };
 
-class EMNavbar extends Component<Props, State> {
+class EMNavbar extends Component {
   state = {
     isOpen: false,
   };

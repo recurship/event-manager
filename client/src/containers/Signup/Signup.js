@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import type { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
 import SignupForm from '../../components/SignupForm/SignupForm';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup } from '../../actions/index';
 
-type Props = BaseReduxPropTypes & {
-  userState: Object,
-};
+// type Props = BaseReduxPropTypes & {
+//   userState: Object,
+// };
 
-class Signup extends Component<Props> {
+class Signup extends Component {
   constructor() {
     super();
     this.state = { errors: [] };

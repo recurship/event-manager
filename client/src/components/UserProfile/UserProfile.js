@@ -4,15 +4,15 @@ import { Card, CardImg, Col, Row } from 'reactstrap';
 import { getFullname } from '../../utils/utils';
 import './UserProfile.css';
 
-type Props = {
-  user: AttendeeType,
-};
-type InfoGroupProps = {
-  name: string,
-  value: string,
-};
+// type Props = {
+//   user: AttendeeType,
+// };
+// type InfoGroupProps = {
+//   name: string,
+//   value: string,
+// };
 
-const InfoGroup = (e: InfoGroupProps) => {
+const InfoGroup = e => {
   return (
     <tr className="info-group">
       <td colSpan="2" className="label capitalize">
@@ -23,7 +23,7 @@ const InfoGroup = (e: InfoGroupProps) => {
   );
 };
 
-const UserProfile = (props: Props) => {
+const UserProfile = props => {
   const user = props.user;
   return user ? (
     <div id="user-profile">

@@ -5,15 +5,15 @@ import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchCurrentOrganisation } from '../../actions';
 import { isEmpty } from 'lodash';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
-import type { BaseReduxPropTypes } from '../../types/base-props-types';
+// import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 
-type Props = BaseReduxPropTypes & {
-  organisation: Object,
-};
+// type Props = BaseReduxPropTypes & {
+//   organisation: Object,
+// };
 
-class Organisation extends Component<Props> {
+class Organisation extends Component {
   constructor(props) {
     super(props);
     this.state = { organisation: {} };

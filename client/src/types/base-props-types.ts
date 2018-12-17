@@ -1,8 +1,9 @@
-// @flow
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { Action } from 'redux';
+
+interface ComponenTypes {
+
+}
 
 export type BasePropsTypes = {};
 
@@ -13,6 +14,6 @@ export type BaseReducerPropsTypes = BasePropsTypes & {
 };
 
 export type BaseReduxPropTypes = BasePropsTypes & {
-  dispatch: (action: Action) => mixed,
-  component?: React.ComponentType<PropTypes>,
+  dispatch: (action: Action) => any,
+  component?: React.ComponentType<ComponenTypes>,
 };

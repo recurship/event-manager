@@ -15,30 +15,30 @@ import { SponsorType } from '../../types/sponsor-types';
 import 'react-select/dist/react-select.min.css';
 import './DropSearch.css';
 
-type ReactSearchOptions = {
-  label: string,
-  value: string,
-};
+// type ReactSearchOptions = {
+//   label: string,
+//   value: string,
+// };
 
-type Props = BaseReduxPropTypes & {
-  organisations: Array<OrganisationType>,
-  events: Array<EventType>,
-  locations: Array<LocationType>,
-  sponsors: Array<SponsorType>,
-  handleSearchChange: Function,
-};
+// type Props = BaseReduxPropTypes & {
+//   organisations: Array<OrganisationType>,
+//   events: Array<EventType>,
+//   locations: Array<LocationType>,
+//   sponsors: Array<SponsorType>,
+//   handleSearchChange: Function,
+// };
 
-export type State = {
-  filterOrganisation: Array<Object>,
-  filterDateFrom: string,
-  filterDateTo: string,
-  filterLocation: Object,
-  filterSponsers: Array<Object>,
-  filterKeywords: string,
-  filterTags: Array<Object>,
-  filterTime: Array<Object>,
-};
-class DropSearch extends Component<Props, State> {
+// export type State = {
+//   filterOrganisation: Array<Object>,
+//   filterDateFrom: string,
+//   filterDateTo: string,
+//   filterLocation: Object,
+//   filterSponsers: Array<Object>,
+//   filterKeywords: string,
+//   filterTags: Array<Object>,
+//   filterTime: Array<Object>,
+// };
+class DropSearch extends Component {
   constructor(props) {
     super(props);
 
@@ -74,7 +74,7 @@ class DropSearch extends Component<Props, State> {
     this.setState({ [name]: value });
   };
 
-  mapStateToOptions: (key: string) => Array<ReactSearchOptions> = key => {
+  mapStateToOptions = key => {
     let target = this.props[key];
     target = target ? target[key] : [];
     return target.map(opt => ({ label: opt.name, value: opt.id }));
@@ -89,7 +89,7 @@ class DropSearch extends Component<Props, State> {
    * - and pass either undefined or extracted object to prop (handleSearchChange method)
    * @returns undefined.
    */
-  handleSearchChange = (e: SyntheticEvent<HTMLButtonElement>) => {
+  handleSearchChange = e => {
     e.preventDefault();
     let { handleSearchChange } = this.props,
       state = { ...this.state },

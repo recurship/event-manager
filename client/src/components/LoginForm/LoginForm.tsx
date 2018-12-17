@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import { Button } from 'reactstrap';
 import './LoginForm.css';
@@ -7,9 +5,9 @@ import { Field, reduxForm } from 'redux-form';
 import renderField from '../RenderField';
 import validate from './LoginValidator';
 
-// type LoginEvent = (Event<>;)
 type Props = {
-  onSubmit(e: SyntheticEvent): void,
+  onSubmit(e: React.SyntheticEvent): void,
+  valid: boolean,
 };
 
 let LoginForm = (props: Props) => {

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import type { BaseReduxPropTypes } from '../../types/base-props-types';
+// import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
@@ -10,17 +10,17 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-type Props = BaseReduxPropTypes & {
-  userState: Object,
-  appState: Object,
-  events: Object,
-};
+// type Props = BaseReduxPropTypes & {
+//   userState: Object,
+//   appState: Object,
+//   events: Object,
+// };
 
-type State = {
-  error: string,
-};
+// type State = {
+//   error: string,
+// };
 
-class Login extends Component<Props, State> {
+class Login extends Component {
   constructor() {
     super();
     this.state = { error: '' };

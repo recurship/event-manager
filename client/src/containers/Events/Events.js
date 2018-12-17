@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Container } from 'reactstrap';
 import { fetchEvents, postEvent } from '../../actions';
 import { makeQueryStringTransformable } from '../../utils/utils';
-import type { BaseReduxPropTypes } from '../../types/base-props-types';
+// import type { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import DropSearch, {
@@ -14,12 +14,12 @@ import DropSearch, {
 const mainTitle = 'Portal for Tech Communities';
 const eventNotFound = 'No events found.';
 
-type Props = BaseReduxPropTypes & {
-  userState: Object,
-  events: Object,
-};
+// type Props = BaseReduxPropTypes & {
+//   userState: Object,
+//   events: Object,
+// };
 
-class Events extends Component<Props> {
+class Events extends Component {
   componentDidMount() {
     this.getData();
   }
@@ -52,7 +52,7 @@ class Events extends Component<Props> {
     ];
   };
 
-  handleSearchChange = (searchParams: DropSearchState) => {
+  handleSearchChange = searchParams => {
     if (searchParams) searchParams = makeQueryStringTransformable(searchParams);
     this.getData(searchParams);
   };
@@ -62,7 +62,7 @@ class Events extends Component<Props> {
     dispatch(fetchEvents(e));
   };
 
-  handleSubmit = (event: any) => {
+  handleSubmit = event => {
     event.preventDefault();
 
     const {
