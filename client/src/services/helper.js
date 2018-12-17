@@ -1,4 +1,4 @@
-import { store } from '../../src';
+import store from '../store/configureStore';
 import { refreshToken } from '../actions';
 export const BASE_URL = ''; // or url for staging
 const makeFetchRequest = (path, options) => {
