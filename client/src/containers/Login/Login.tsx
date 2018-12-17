@@ -1,7 +1,5 @@
-// @flow
-
 import React, { Component } from 'react';
-// import type { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes, BaseReducerPropsTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { userLogin } from '../../actions';
 import { Redirect, Link } from 'react-router-dom';
@@ -10,19 +8,15 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container } from 'reactstrap';
 import './Login.css';
 
-// type Props = BaseReduxPropTypes & {
-//   userState: Object,
-//   appState: Object,
-//   events: Object,
-// };
+type Props = BaseReduxPropTypes & BaseReducerPropsTypes;
 
-// type State = {
-//   error: string,
-// };
+type State = {
+  error: string,
+};
 
-class Login extends Component {
-  constructor() {
-    super();
+class Login extends Component<Props, State> {
+  constructor(props) {
+    super(props);
     this.state = { error: '' };
   }
   login = async e => {
@@ -44,21 +38,21 @@ class Login extends Component {
   render() {
     return this.props.userState.token === undefined ||
       this.props.userState.token === null ? (
-      <Container className="login-container">
-        <h4>Login</h4>
-        <LoginForm onSubmit={this.login} />
-        <p className="error-message">{this.state.error}</p>
-        <Link className="forgot" to="/forgot-password">
-          Forgot Password?
+        <Container className="login-container">
+          <h4>Login</h4>
+          <LoginForm valid={false} onSubmit={this.login} />
+          <p className="error-message">{this.state.error}</p>
+          <Link className="forgot" to="/forgot-password">
+            Forgot Password?
         </Link>
-        <hr />
-        <p className="centralized">
-          Not registered yet? <Link to="/signup"> Sign Up </Link>
-        </p>
-      </Container>
-    ) : (
-      <Redirect to={{ pathname: '/' }} />
-    );
+          <hr />
+          <p className="centralized">
+            Not registered yet? <Link to="/signup"> Sign Up </Link>
+          </p>
+        </Container>
+      ) : (
+        <Redirect to={{ pathname: '/' }} />
+      );
   }
 }
 

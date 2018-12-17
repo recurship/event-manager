@@ -1,19 +1,22 @@
 import * as React from 'react';
-import { Action } from 'redux';
+import { Action, Dispatch } from 'redux';
 
 interface ComponenTypes {
 
 }
 
-export type BasePropsTypes = {};
+interface UserState {
+  token?: string;
+  currentUser?: Object;
+}
 
-export type BaseReducerPropsTypes = BasePropsTypes & {
-  // appState?: Object,
-  // userState?: Object,
-  // events?: Object
+export type BaseReducerPropsTypes = {
+  appState?: Object,
+  userState: UserState,
+  events?: Object
 };
 
-export type BaseReduxPropTypes = BasePropsTypes & {
-  dispatch: (action: Action) => any,
+export type BaseReduxPropTypes = {
+  dispatch: (dispatch: any, getState?: any) => Promise<any>,
   component?: React.ComponentType<ComponenTypes>,
 };
