@@ -9,7 +9,7 @@ import { comments as eventComments } from '../stories/mock-data/data';
 const WrappedComponent = ({ comments }) => {
   return (
     <Provider store={store}>
-      <CommentsBlock event={{ comments: comments }} />
+      <CommentsBlock event={{ comments }} />
     </Provider>
   );
 };
