@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes, BaseReducerPropsTypes } from '../../types/base-props-types';
 import SignupForm from '../../components/SignupForm/SignupForm';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup } from '../../actions/index';
+import { History } from '../../types/react-router-types';
 
-// type Props = BaseReduxPropTypes & {
-//   userState: Object,
-// };
+type Props = BaseReduxPropTypes & History & BaseReducerPropsTypes;
 
-class Signup extends Component {
-  constructor() {
-    super();
+type State = {
+  errors: Array<Object>,
+}
+
+class Signup extends Component<Props, State> {
+  constructor(props) {
+    super(props);
     this.state = { errors: [] };
   }
   signup = async e => {
     e.preventDefault();
     const {
-        username,
-        firstname,
-        lastname,
-        email,
-        password,
-      } = e.target.elements,
+      username,
+      firstname,
+      lastname,
+      email,
+      password,
+    } = e.target.elements,
       { dispatch, history } = this.props,
       payload = {
         firstname: firstname.value,
@@ -63,8 +66,8 @@ class Signup extends Component {
         </p>
       </Container>
     ) : (
-      <Redirect to={{ pathname: '/' }} />
-    );
+        <Redirect to={{ pathname: '/' }} />
+      );
   }
 }
 

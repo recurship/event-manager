@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-class SummaryContainer extends Component {
+type Props = {
+  url?: string | null,
+  content?: string,
+  externalLink?: boolean,
+  iconName?: string,
+  logo?: string,
+}
+
+class SummaryContainer extends Component<Props> {
   render() {
     return this.props.content || this.props.url ? (
       <Col md="3">
@@ -11,8 +19,8 @@ class SummaryContainer extends Component {
             {this.props.logo ? (
               <img id="organisation-logo" src={this.props.logo} />
             ) : (
-              <i className={this.props.iconName} />
-            )}
+                <i className={this.props.iconName} />
+              )}
           </Col>
           <Col md="10">
             {this.props.url === null ? (
@@ -26,12 +34,12 @@ class SummaryContainer extends Component {
                 </p>
               </a>
             ) : (
-              <Link to={this.props.url}>
-                <p className="text-dark font-weight-light">
-                  {this.props.content}
-                </p>
-              </Link>
-            )}
+                  <Link to={this.props.url}>
+                    <p className="text-dark font-weight-light">
+                      {this.props.content}
+                    </p>
+                  </Link>
+                )}
           </Col>
         </Row>
       </Col>

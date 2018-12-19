@@ -5,7 +5,18 @@ import { fetchUserProfile } from '../../actions';
 import Profile from './../../components/UserProfile/UserProfile';
 import { AttendeeType } from '../../types/attendee-types';
 import { Link } from 'react-router-dom';
-class UserProfile extends Component {
+import { BaseReduxPropTypes, BaseReducerPropsTypes } from '../../types/base-props-types';
+
+type Props = BaseReduxPropTypes & BaseReducerPropsTypes & {
+  match: {
+    params: {
+      user_id: string,
+    }
+  },
+  userProfile: AttendeeType,
+}
+
+class UserProfile extends Component<Props> {
   constructor(props) {
     super(props);
     this.fetchUserProfile();
@@ -16,15 +27,15 @@ class UserProfile extends Component {
     const { dispatch } = this.props;
     dispatch(fetchUserProfile(userId));
   }
-  // AttendeeType;
-  getUserDetails() {
+
+  getUserDetails(): AttendeeType | null {
     const user = this.props.userProfile;
     return user ? user : null;
   }
 
-  isUserLoggedIn = user => {
+  isUserLoggedIn = (user) => {
     const { token, currentUser } = this.props.userState;
-    return token && currentUser.id === user.id;
+    return !!(token && currentUser.id === user.id);
   };
 
   showEditButton = user => {
@@ -38,7 +49,7 @@ class UserProfile extends Component {
   };
 
   render() {
-    const { user } = this.getUserDetails();
+    const user = this.getUserDetails();
     return user ? (
       <div style={{ marginTop: '20px' }}>
         <div className="float-right mx-5">{this.showEditButton(user)}</div>

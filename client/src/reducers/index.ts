@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
 import {
   TRIGGER_REQUEST,
   TRIGGER_FAILURE,
@@ -16,7 +16,9 @@ import {
   FETCH_CURRENT_USER,
 } from '../actions';
 import { reducer as formReducer } from 'redux-form';
-const defaultAppState = {
+import { DefaultAppStateType, DefaultUserStateType, DefaultEventStateType, DefaultUserProfileStateType } from '../types/reducer-types';
+
+const defaultAppState: DefaultAppStateType = {
   loading: [],
   errors: [],
 };
@@ -46,7 +48,7 @@ const appState = (state = defaultAppState, action) => {
   }
 };
 
-const defaultUserState = {
+const defaultUserState: DefaultUserStateType = {
   token: null,
   currentUser: {},
 };
@@ -99,7 +101,7 @@ const resetPasswordState = (state = defaultResetPasswordState, action) => {
   }
 };
 
-const defaultEventState = {
+const defaultEventState: DefaultEventStateType = {
   events: [],
 };
 
@@ -121,7 +123,7 @@ const currentEvent = (state = defaultEventState, action) => {
   return state;
 };
 
-const defaultUserProfileState = {
+const defaultUserProfileState: DefaultUserProfileStateType = {
   user: null,
 };
 

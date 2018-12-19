@@ -3,8 +3,14 @@ import CommentBox from './CommentBox';
 import CommentList from './CommentList';
 import { connect } from 'react-redux';
 import { addComment } from '../../actions';
+import { BaseReduxPropTypes, BaseReducerPropsTypes } from '../../types/base-props-types';
+import { EventComments } from '../../types/comments-types';
 
-class CommentsBlock extends Component {
+type Props = BaseReduxPropTypes & BaseReducerPropsTypes & EventComments & {
+  eventID: string
+};
+
+class CommentsBlock extends Component<Props> {
   postComment = e => {
     e.preventDefault();
     const { dispatch } = this.props;
@@ -32,8 +38,8 @@ class CommentsBlock extends Component {
           {this.props.userState.token ? (
             <CommentBox onSubmit={this.postComment} />
           ) : (
-            <div>Sign in to comment here...</div>
-          )}
+              <div>Sign in to comment here...</div>
+            )}
         </div>
       </div>
     );

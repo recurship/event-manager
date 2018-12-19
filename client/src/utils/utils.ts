@@ -1,4 +1,3 @@
-// @flow
 import { AttendeeType } from '../types/attendee-types';
 /**
  * @author Saad Abbasi

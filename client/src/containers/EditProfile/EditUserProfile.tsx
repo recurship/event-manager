@@ -7,11 +7,21 @@ import {
   userProfilePictureUpload,
 } from '../../actions';
 import { EditUserForm } from '../../components/EditUserForm/EditUserForm';
-
 import { connect } from 'react-redux';
 import { AttendeeType } from '../../types/attendee-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
+import { History } from '../../types/react-router-types';
 
-class EditUserProfile extends React.Component {
+type Props = BaseReduxPropTypes & History & {
+  userProfile: Object,
+  match: {
+    params: {
+      user_id: string
+    }
+  },
+}
+
+class EditUserProfile extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.getCurrentUser();
@@ -39,7 +49,7 @@ class EditUserProfile extends React.Component {
     dispatch(userProfilePictureUpload(file));
   };
 
-  getUserDetails() {
+  getUserDetails = (): any => {
     const user = this.props.userProfile;
     return user ? user : null;
   }

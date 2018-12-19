@@ -1,8 +1,23 @@
 import React from 'react';
 import { Button, Input, Label, CardImg } from 'reactstrap';
 import { isEmpty, isLowercase } from 'validator';
+import { Owner } from '../../types/owner-types';
+import { SubmitVoid, InputChange, HTMLFormEvent } from '../../types/dom-events-types';
 
-export class EditUserForm extends React.Component {
+type Props = HTMLFormEvent & {
+  user: Owner,
+  handleImageUpload: (e: React.SyntheticEvent) => void,
+}
+
+type State = {
+  isValidated: boolean,
+  errorFirstName: string,
+  errorLastName: string,
+  errorUserName: string,
+  picture: string,
+}
+
+export class EditUserForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,7 +93,7 @@ export class EditUserForm extends React.Component {
           <div
             className="overlay"
             onClick={() => {
-              document.getElementById('user-thumb').click();
+              document.getElementById('user-thumb')!.click();
             }}
           >
             <Input type="file" id="user-thumb" onChange={handleImageUpload} />

@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import {
   Container,
@@ -19,13 +18,35 @@ import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
 import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
+import { EventType } from '../../types/event-types';
+import { MapLocation } from '../../types/multi-types';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component {
+type Tags = {
+  id: string,
+  name: string,
+}
+
+type Props = BaseReduxPropTypes & {
+  currentEvent: {
+    event: EventType & {
+      location: MapLocation,
+      tags: Array<Tags>,
+    },
+  },
+  match: {
+    params: {
+      event_id: string
+    }
+  },
+}
+
+class CurrentEvent extends Component<Props> {
   eventId;
   componentDidMount() {
     this.getCurrentEvent();
@@ -88,12 +109,12 @@ class CurrentEvent extends Component {
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
                 url={null}
-                content={moment(event.startDatetime).format(DATE_FORMAT)}
+                content={moment(event.startDateTime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-clock-o fa-2x"
                 url={null}
-                content={moment(event.endDatetime).format(DATE_FORMAT)}
+                content={moment(event.endDateTime).format(DATE_FORMAT)}
               />
               <SummaryContainer
                 iconName="fa fa-map-marker fa-2x"
@@ -164,8 +185,8 @@ class CurrentEvent extends Component {
             </Row>
           </Container>
         ) : (
-          <Container />
-        )}
+            <Container />
+          )}
       </div>
     );
   }

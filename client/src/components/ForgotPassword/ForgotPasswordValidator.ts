@@ -1,7 +1,11 @@
 import { isEmail } from 'validator';
 
+type Errors = {
+  email?: string
+}
+
 const validate = values => {
-  const errors = {},
+  const errors: Errors = {},
     { email } = values;
 
   if (!email) errors.email = '*Email Required';

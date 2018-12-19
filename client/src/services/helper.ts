@@ -24,7 +24,7 @@ const makeFetchRequest = (path, options) => {
   });
 };
 
-export const makeRequest = async (path, options) => {
+export const makeRequest = async (path, options?: Object) => {
   const response = await makeFetchRequest(path, options);
   if (response.status && response.status === 401) {
     const { refresh } = store.getState().userState,

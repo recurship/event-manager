@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import moment from 'moment';
 import avatar from '../../../src/avatar.jpg';
+import { Comment } from '../../types/comments-types';
 
-class CommentListItem extends Component {
+type Props = {
+  comment: Comment
+};
+
+class CommentListItem extends Component<Props> {
   render() {
     const comment = this.props.comment;
     return (

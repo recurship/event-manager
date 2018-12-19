@@ -5,9 +5,11 @@ interface ComponenTypes {
 
 }
 
-interface UserState {
+export interface UserState {
   token?: string;
-  currentUser?: Object;
+  currentUser: {
+    id: string,
+  };
 }
 
 export type BaseReducerPropsTypes = {

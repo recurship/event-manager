@@ -161,7 +161,7 @@ export const postComment = comment => ({
   comment,
 });
 
-export const fetchEvents = query => async (dispatch, getState) => {
+export const fetchEvents = (query?) => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENTS));
   return EventService.getAll(query)
     .then(response => {
@@ -311,7 +311,7 @@ export const getTags = tags => ({
   tags,
 });
 
-export const fetchOrganisation = query => async (dispatch, getState) => {
+export const fetchOrganisation = (query?) => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_ORGANISATIONS));
   try {
     const response = await OrganisationsService.getAll();
@@ -324,7 +324,7 @@ export const fetchOrganisation = query => async (dispatch, getState) => {
   }
 };
 
-export const fetchSponsors = query => async (dispatch, getState) => {
+export const fetchSponsors = (query?) => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_SPONSORS));
   try {
     const response = await SponsorsService.getAll();
@@ -337,7 +337,7 @@ export const fetchSponsors = query => async (dispatch, getState) => {
   }
 };
 
-export const fetchLocations = query => async (dispatch, getState) => {
+export const fetchLocations = (query?) => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_LOCATIONS));
   try {
     const response = await LocationService.getAll();
@@ -350,7 +350,7 @@ export const fetchLocations = query => async (dispatch, getState) => {
   }
 };
 
-export const fetchTags = query => async (dispatch, getState) => {
+export const fetchTags = (query?) => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_TAGS));
   try {
     const response = await TagsService.getAll();

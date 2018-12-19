@@ -10,35 +10,40 @@ import {
   fetchTags,
 } from '../../actions';
 import { OrganisationType } from '../../types/organisation-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
+import { LocationType } from '../../types/location-types'
 import { EventType } from '../../types/event-types';
 import { SponsorType } from '../../types/sponsor-types';
+import { InputChange } from '../../types/dom-events-types';
 import 'react-select/dist/react-select.min.css';
 import './DropSearch.css';
 
-// type ReactSearchOptions = {
-//   label: string,
-//   value: string,
-// };
+type ReactSearchOptions = {
+  label: string,
+  value: string,
+};
 
-// type Props = BaseReduxPropTypes & {
-//   organisations: Array<OrganisationType>,
-//   events: Array<EventType>,
-//   locations: Array<LocationType>,
-//   sponsors: Array<SponsorType>,
-//   handleSearchChange: Function,
-// };
+type Props = BaseReduxPropTypes & {
+  organisations: Array<OrganisationType>,
+  events: Array<EventType>,
+  locations: Array<LocationType>,
+  sponsors: Array<SponsorType>,
+  handleSearchChange: Function,
+  sortBy: string,
+};
 
-// export type State = {
-//   filterOrganisation: Array<Object>,
-//   filterDateFrom: string,
-//   filterDateTo: string,
-//   filterLocation: Object,
-//   filterSponsers: Array<Object>,
-//   filterKeywords: string,
-//   filterTags: Array<Object>,
-//   filterTime: Array<Object>,
-// };
-class DropSearch extends Component {
+export type State = {
+  filterOrganisation?: Array<Object>,
+  filterDateFrom?: string,
+  filterDateTo?: string,
+  filterLocation?: Object,
+  filterSponsers?: Array<Object>,
+  filterKeywords?: string,
+  filterTags?: Array<Object>,
+  filterTime?: Array<Object>,
+  sortBy?: string,
+};
+class DropSearch extends Component<Props, State> {
   constructor(props) {
     super(props);
 
@@ -51,6 +56,7 @@ class DropSearch extends Component {
       filterKeywords: '',
       filterTags: [],
       filterTime: [],
+      sortBy: ''
     };
     this.fetchDependencies();
   }
@@ -63,10 +69,9 @@ class DropSearch extends Component {
     dispatch(fetchTags());
   }
 
-  handleInputChange = e => {
+  handleInputChange = (e: InputChange<HTMLInputElement>) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log('');
   };
 
   handleSelect = e => {

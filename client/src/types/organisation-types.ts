@@ -6,4 +6,8 @@ export type OrganisationType = {
   owner: Owner,
   logo: string,
   description: string,
+  email: string,
+  contactNumber: string,
+  facebook: string,
+  twitter: string,
 };

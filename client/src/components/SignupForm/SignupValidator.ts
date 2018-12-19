@@ -1,7 +1,15 @@
 import { isEmail, isLowercase, isLength } from 'validator';
 
+type Errors = {
+  firstname?: string,
+  lastname?: string,
+  username?: string,
+  email?: string,
+  password?: string,
+}
+
 const validate = values => {
-  const errors = {},
+  const errors: Errors = {},
     { firstname, lastname, username, email, password } = values;
 
   if (!email) errors.email = '*Email Required';

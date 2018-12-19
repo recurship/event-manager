@@ -1,7 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 
-const ContentHeader = props => {
+type Props = {
+  heading: string
+};
+
+const ContentHeader = (props: Props) => {
   return (
     <Row className="block">
       <Col className="text-header">

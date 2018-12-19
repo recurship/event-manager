@@ -5,16 +5,21 @@ import {
   Map,
   Marker,
 } from 'google-maps-react';
-// import type { BaseReduxPropTypes } from '../types/base-props-types';
-import { GOOGLE_API_KEY } from '../../config.env';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
+import { MapLocation } from '../../types/multi-types';
 
-// type Props = BaseReduxPropTypes & {
-//   location: Object,
-//   google: Object,
-//   coordinates: Object,
-// };
+type Props = BaseReduxPropTypes & {
+  location: MapLocation,
+  google: Object,
+};
 
-class GoogleMap extends Component {
+type State = {
+  showingInfoWindow: boolean,
+  activeMarker: any,
+  selectedPlace: any,
+}
+
+class GoogleMap extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,5 +76,5 @@ class GoogleMap extends Component {
   }
 }
 export default apiWrapper({
-  apiKey: GOOGLE_API_KEY,
+  apiKey: process.env.GOOGLE_API_KEY,
 })(GoogleMap);

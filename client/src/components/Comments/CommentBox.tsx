@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { SubmitVoid } from '../../types/dom-events-types';
 
-class CommentBox extends Component {
+type Props = SubmitVoid;
+
+class CommentBox extends Component<Props> {
   render() {
     return (
       <form className="form-inline" onSubmit={this.props.onSubmit}>

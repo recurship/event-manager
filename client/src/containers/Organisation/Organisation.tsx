@@ -5,15 +5,24 @@ import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { fetchCurrentOrganisation } from '../../actions';
 import { isEmpty } from 'lodash';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
-// import type { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
+import { OrganisationType } from '../../types/organisation-types';
+import { Events } from '../../types/multi-types';
 
-// type Props = BaseReduxPropTypes & {
-//   organisation: Object,
-// };
+type Props = BaseReduxPropTypes & {
+  currentOrganisation: {
+    organisation: OrganisationType & Events,
+  },
+  match: {
+    params: {
+      organisation_id: string
+    }
+  },
+};
 
-class Organisation extends Component {
+class Organisation extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = { organisation: {} };
@@ -50,13 +59,13 @@ class Organisation extends Component {
               {organisation.events ? (
                 <EventList events={organisation.events} />
               ) : (
-                <p className="text-center">No Events</p>
-              )}
+                  <p className="text-center">No Events</p>
+                )}
             </Row>
           </Container>
         ) : (
-          <div />
-        )}
+            <div />
+          )}
       </div>
     );
   }

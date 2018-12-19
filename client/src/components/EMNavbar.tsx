@@ -14,17 +14,17 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import { userLogout } from '../actions';
-import User from '../types/multi-types';
+import { BaseReduxPropTypes, UserState } from '../types/base-props-types';
 
-// type Props = {
-//   userState: User,
-// };
+type Props = BaseReduxPropTypes & {
+  userState: UserState,
+};
 
-// type State = {
-//   isOpen: boolean,
-// };
+type State = {
+  isOpen: boolean,
+};
 
-class EMNavbar extends Component {
+class EMNavbar extends Component<Props, State> {
   state = {
     isOpen: false,
   };
@@ -73,10 +73,10 @@ class EMNavbar extends Component {
             {userState && userState.currentUser && userState.token ? (
               this.getMyProfile(userState.currentUser)
             ) : (
-              <NavItem>
-                <NavLink href="/login">Login</NavLink>
-              </NavItem>
-            )}
+                <NavItem>
+                  <NavLink href="/login">Login</NavLink>
+                </NavItem>
+              )}
           </Nav>
         </Collapse>
       </Navbar>

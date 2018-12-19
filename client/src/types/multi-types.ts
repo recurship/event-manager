@@ -1,4 +1,7 @@
 import { Action } from 'redux';
+import { Children } from 'react';
+import { LocationType } from './location-types';
+import { OrganisationType } from './organisation-types'
 
 export type UserState = {
   token: string,
@@ -19,20 +22,10 @@ type Owner = {
   avatar: string,
 };
 
-type Organisation = {
-  id: number,
+export type MapLocation = {
   name: string,
-  isActive: boolean,
-  description: string,
-  logo: string,
-  owner: Owner,
-};
-
-type location = {
-  id: number,
-  name: string,
-  address: string,
-  logo: string,
+  address?: string,
+  coordinates: Object
 };
 
 type sponsor = {
@@ -47,8 +40,8 @@ type Event = {
   description: string,
   startDateTime: string,
   endDateTime: string,
-  organisation: Organisation,
-  location: location,
+  organisation: OrganisationType,
+  location: LocationType,
   sponsor: Array<sponsor>,
 };
 

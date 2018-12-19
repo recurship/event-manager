@@ -1,10 +1,9 @@
-// @flow
-
 import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Container } from 'reactstrap';
 import { fetchEvents, postEvent } from '../../actions';
 import { makeQueryStringTransformable } from '../../utils/utils';
-// import type { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
+import { Events as EventsTypes } from '../../types/multi-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import DropSearch, {
@@ -14,12 +13,12 @@ import DropSearch, {
 const mainTitle = 'Portal for Tech Communities';
 const eventNotFound = 'No events found.';
 
-// type Props = BaseReduxPropTypes & {
-//   userState: Object,
-//   events: Object,
-// };
+type Props = BaseReduxPropTypes & {
+  userState: Object,
+  events: EventsTypes,
+};
 
-class Events extends Component {
+class Events extends Component<Props> {
   componentDidMount() {
     this.getData();
   }
@@ -57,7 +56,7 @@ class Events extends Component {
     this.getData(searchParams);
   };
 
-  getData = e => {
+  getData = (e?: string) => {
     const { dispatch } = this.props;
     dispatch(fetchEvents(e));
   };
@@ -105,10 +104,10 @@ class Events extends Component {
         {events.events.length ? (
           <EventList events={events.events} />
         ) : (
-          <Container>
-            <h4 className="text-center">{eventNotFound}</h4>
-          </Container>
-        )}
+            <Container>
+              <h4 className="text-center">{eventNotFound}</h4>
+            </Container>
+          )}
       </div>
     );
   }

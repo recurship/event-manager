@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import CommentListItem from './CommentListItem';
-const CommentList = props => {
+import { Comments } from '../../types/comments-types';
+
+type Props = Comments;
+
+const CommentList = (props: Props) => {
   return (
     <ul className="commentList">
       {props.comments.map(comment => (
-        <CommentListItem comment={comment} key={comment.id} />
+        <CommentListItem comment={comment} />
       ))}
     </ul>
   );

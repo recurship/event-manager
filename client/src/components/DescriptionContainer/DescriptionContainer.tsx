@@ -2,7 +2,11 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import SocialShare from '../SocialShare/SocialShare';
 
-const DescriptionContainer = props => {
+type Props = {
+  description: string,
+};
+
+const DescriptionContainer = (props: Props) => {
   return (
     <Row className="block-content text-justify">
       <Col md="9">
@@ -21,9 +25,7 @@ const DescriptionContainer = props => {
             </p>
           </Col>
         </Row>
-        <center>
-          <SocialShare />
-        </center>
+        <SocialShare />
       </Col>
     </Row>
   );
