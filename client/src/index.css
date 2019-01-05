@@ -109,3 +109,16 @@ body {
   width: 90%;
   border-radius: 15px;
 }
+
+.color-grey {
+  color: gray;
+}
+
+.date {
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.month {
+  font-size: 20px;
+}

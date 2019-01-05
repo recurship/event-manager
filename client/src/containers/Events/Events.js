@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Row, Col, Jumbotron, Container } from 'reactstrap';
 import { fetchEvents, postEvent } from '../../actions';
 import { makeQueryStringTransformable } from '../../utils/utils';
-import type { BaseReduxPropTypes } from '../../types/base-props-types';
+import { BaseReduxPropTypes } from '../../types/base-props-types';
 import { connect } from 'react-redux';
 import { EventList } from '../../components/EventList/EventList';
 import DropSearch, {

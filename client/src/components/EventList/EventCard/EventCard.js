@@ -11,8 +11,11 @@ import {
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const DATE_FORMAT = 'LL';
+// const DATE_FORMAT = 'LL';
 const TIME_FORMAT = 'HH.A';
+// const DATE_FORMAT = 'LL';
+const MONTH = 'MMM';
+const DAY = 'DD';
 const EventCard = props => {
   const card = props.event;
   return (
@@ -27,20 +30,32 @@ const EventCard = props => {
             height="180"
             className="mx-auto pt-3 cardFormating"
           />
-          <CardBody className="mx-auto cardFormating my-3 bg-white">
-            <CardTitle>{card.title}</CardTitle>
-            <span className="text-muted ">
+          <CardBody className="mx-auto text-justify cardFormating my-3 bg-white">
+            <CardSubtitle>
+              <small className="float-right mr-2 text-muted">
+                <span className="date">
+                  {moment(card.startDatetime).format(DAY)}
+                </span>
+                <br />
+                <span className="month">
+                  {moment(card.startDatetime).format(MONTH)}
+                </span>
+              </small>
+            </CardSubtitle>
+            <CardTitle>{card.title} </CardTitle>
+            <span className="text-muted mr-2">
               {moment(card.startDatetime).format(TIME_FORMAT)}
-            </span>{' '}
+            </span>
             - &nbsp;
             <span className="text-muted">
               {moment(card.endDatetime).format(TIME_FORMAT)}
             </span>
             <CardText>{card.description}</CardText>
             <CardSubtitle>
-              <small className="text-muted">
-                {moment(card.startDatetime).format(DATE_FORMAT)}
-              </small>
+              <span className="text-muted">
+                <i className="fas fa-map-marker-alt mr-1" />
+                {card.location.address}
+              </span>
             </CardSubtitle>
           </CardBody>
         </Card>
