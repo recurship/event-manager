@@ -10,8 +10,8 @@ export default {
 
   signup(payload) {
     const formData = new FormData();
-    formData.append('firstname', payload.firstname);
-    formData.append('lastname', payload.lastname);
+    formData.append('first_name', payload.firstname);
+    formData.append('last_name', payload.lastname);
     formData.append('username', payload.username);
     formData.append('email', payload.email);
     formData.append('password', payload.password);
