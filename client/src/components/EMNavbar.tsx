@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import { userLogout } from '../actions';
 import { BaseReduxPropTypes, UserState } from '../types/base-props-types';
+import { getFullname } from '../utils/utils';
 
 type Props = BaseReduxPropTypes & {
   userState: UserState,
@@ -39,13 +40,25 @@ class EMNavbar extends Component<Props, State> {
     });
   };
 
+  getDisplayName = user => {
+    const { first_name, last_name, username, email } = user;
+    if (first_name) {
+      return `${first_name} ${last_name}`
+    }
+    else if (username) {
+      return username
+    }
+    else return email
+  }
+
   getMyProfile = currentUser => {
-    const { username, id } = currentUser;
+    const { id } = currentUser;
+    const displayName = this.getDisplayName(currentUser);
     return (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle>
           <span className="fa fa-user-circle fa-lg" />
-          {` ${username}`}
+          {` ${displayName}`}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem href={`/users/${id}`}>My Profile</DropdownItem>
