@@ -1,0 +1,45 @@
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: 0.25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.dotspan {
+  opacity: 1;
+}
+
+.read-more-state:checked ~ .read-more-wrap .dotspan {
+  display: none;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'read more';
+  color: #0d7ec4;
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'read less';
+  color: #0d7ec4;
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: block;
+  padding: 0 0.5em;
+  color: #666;
+  height: 30px;
+  font-size: 0.9em;
+  line-height: 2;
+  text-align: right;
+}
