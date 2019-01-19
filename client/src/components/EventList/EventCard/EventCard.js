@@ -35,7 +35,7 @@ const EventCard = props => {
         <CardBody>
           <CardTitle>{card.title}</CardTitle>
           {startingDesc.length === 35 && (
-            <input type="checkbox" class="read-more-state" id={card.id} />
+            <input type="checkbox" className="read-more-state" id={card.id} />
           )}
           <CardText className="read-more-wrap">
             {startingDesc}
