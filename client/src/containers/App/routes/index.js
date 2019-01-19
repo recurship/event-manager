@@ -8,7 +8,7 @@ import Events from '../../Events/Events';
 import ForgotPassword from '../../ForgotPassword/ForgotPassword';
 import Organisation from '../../Organisation/Organisation';
 import EMNavbar from '../../../components/EMNavbar';
-import EventDetail from '../../EventDetail/EventDetail';
+import CurrentEvent from '../../CurrentEvent/CurrentEvent';
 import UserProfile from '../../UserProfile/UserProfile';
 
 // private routes
@@ -22,7 +22,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={BaseRedirection} />
       <Route exact path="/events" component={Events} />
-      <Route path="/events/:event_id" component={EventDetail} />
+      <Route path="/events/:event_id" component={CurrentEvent} />
       <Route path="/organisations/:organisation_id" component={Organisation} />
       <Route exact path="/users/:user_id" component={UserProfile} />
       <Route path="/login" component={Login} />

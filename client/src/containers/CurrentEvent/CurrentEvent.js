@@ -13,29 +13,29 @@ import {
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
-import { fetchEventDetail } from '../../actions';
+import { fetchCurrentEvent } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
-import './EventDetail.css';
+import './CurrentEvent.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
-class EventDetail extends Component<Props> {
+class CurrentEvent extends Component<Props> {
   eventId;
   componentDidMount() {
-    this.getEventDetail();
+    this.getCurrentEvent();
   }
 
-  getEventDetail = () => {
+  getCurrentEvent = () => {
     const eventId = this.props.match.params.event_id;
     this.eventId = eventId;
     const { dispatch } = this.props;
-    dispatch(fetchEventDetail(eventId));
+    dispatch(fetchCurrentEvent(eventId));
   };
 
   getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
@@ -68,7 +68,7 @@ class EventDetail extends Component<Props> {
   };
 
   render() {
-    const { event } = this.props.eventDetail;
+    const { event } = this.props.currentEvent;
 
     return (
       <div className="main-container">
@@ -107,18 +107,7 @@ class EventDetail extends Component<Props> {
                 logo={event.organisation.logo}
               />
             </Row>
-            <ContentHeader heading="Sponsers" />
-            <Row className="block-content">
-              {event.sponsers.map((sponser, index) => (
-                <SummaryContainer
-                  key={index}
-                  iconName="fa fa-clock-o fa-2x"
-                  url={null}
-                  logo={sponser.logo}
-                  content={sponser.name}
-                />
-              ))}
-            </Row>
+
             <DescriptionContainer description={event.description} />
 
             {event.attendees && event.attendees.length ? (
@@ -184,11 +173,11 @@ class EventDetail extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  const { eventDetail } = state;
-  return { eventDetail };
+  const { currentEvent } = state;
+  return { currentEvent };
 };
 
 export default connect(
   mapStateToProps,
   null
-)(EventDetail);
+)(CurrentEvent);

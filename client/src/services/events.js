@@ -25,7 +25,7 @@ export default {
     });
   },
 
-  getEventDetail: eventId => {
+  getCurrentEvent: eventId => {
     return makeRequest(`${baseUri}${eventId}/`);
   },
 

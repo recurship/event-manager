@@ -112,7 +112,7 @@ const events = (state = defaultEventState, action) => {
   return state;
 };
 
-const eventDetail = (state = defaultEventState, action) => {
+const currentEvent = (state = defaultEventState, action) => {
   if (action.event) {
     return {
       event: { ...Object.values(action.event.entities.events)[0] },
@@ -220,7 +220,7 @@ const reducer = combineReducers({
   userState,
   resetPasswordState,
   events,
-  eventDetail,
+  currentEvent,
   currentOrganisation,
   userProfile,
   organisations: organisationsState,
