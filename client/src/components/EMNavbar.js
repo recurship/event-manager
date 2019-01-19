@@ -63,7 +63,7 @@ class EMNavbar extends Component<Props, State> {
     return (
       <Navbar color="dark" dark expand="md">
         <NavbarToggler onClick={this.toggle} className="mr-2" />
-        <NavbarBrand href="/">community-manager</NavbarBrand>
+        <NavbarBrand href="/">Event Manager</NavbarBrand>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
