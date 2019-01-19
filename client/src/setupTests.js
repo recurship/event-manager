@@ -1,6 +1,7 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
-import './test/env-setup/mock-localstorage';
+import LocalStorageMock from './test/env-setup/mock-localstorage';
 
+global.localStorage = LocalStorageMock;
 configure({ adapter: new Adapter() });
