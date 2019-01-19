@@ -13,29 +13,29 @@ import {
 import MetaTagsComponent from '../../components/SocialShare/MetaTagsComponent';
 import SummaryContainer from '../../components/SummaryContainer/SummaryContainer';
 import { connect } from 'react-redux';
-import { fetchCurrentEvent } from '../../actions';
+import { fetchEventDetail } from '../../actions';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import moment from 'moment';
 import DescriptionContainer from '../../components/DescriptionContainer/DescriptionContainer';
 import { Link } from 'react-router-dom';
 import { AttendeeType } from '../../types/attendee-types';
-import './CurrentEvent.css';
+import './EventDetail.css';
 import GoogleMap from '../../components/GoogleMap/GoogleMap';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
 
 const DATE_FORMAT = 'LLLL';
 
-class CurrentEvent extends Component<Props> {
+class EventDetail extends Component<Props> {
   eventId;
   componentDidMount() {
-    this.getCurrentEvent();
+    this.getEventDetail();
   }
 
-  getCurrentEvent = () => {
+  getEventDetail = () => {
     const eventId = this.props.match.params.event_id;
     this.eventId = eventId;
     const { dispatch } = this.props;
-    dispatch(fetchCurrentEvent(eventId));
+    dispatch(fetchEventDetail(eventId));
   };
 
   getAttendeesProfiles = (attendees: Array<AttendeeType>) => {
@@ -68,7 +68,7 @@ class CurrentEvent extends Component<Props> {
   };
 
   render() {
-    const { event } = this.props.currentEvent;
+    const { event } = this.props.eventDetail;
 
     return (
       <div className="main-container">
@@ -106,6 +106,18 @@ class CurrentEvent extends Component<Props> {
                 content={event.organisation.name}
                 logo={event.organisation.logo}
               />
+            </Row>
+            <ContentHeader heading="Sponsers" />
+            <Row className="block-content">
+              {event.sponsers.map((sponser, index) => (
+                <SummaryContainer
+                  key={index}
+                  iconName="fa fa-clock-o fa-2x"
+                  url={null}
+                  logo={sponser.logo}
+                  content={sponser.name}
+                />
+              ))}
             </Row>
             <DescriptionContainer description={event.description} />
 
@@ -172,11 +184,11 @@ class CurrentEvent extends Component<Props> {
 }
 
 const mapStateToProps = state => {
-  const { currentEvent } = state;
-  return { currentEvent };
+  const { eventDetail } = state;
+  return { eventDetail };
 };
 
 export default connect(
   mapStateToProps,
   null
-)(CurrentEvent);
+)(EventDetail);
