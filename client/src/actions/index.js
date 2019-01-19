@@ -141,7 +141,7 @@ export const getEvents = events => ({
   events,
 });
 
-export const getCurrentEvent = event => ({
+export const getEventDetail = event => ({
   type: FETCH_EVENT_DETAIL,
   event,
 });
@@ -184,12 +184,12 @@ export const fetchUserProfile = userId => async (dispatch, getState) => {
     dispatch(triggerFailure(FETCH_USER, e.message));
   }
 };
-export const fetchCurrentEvent = eventId => async (dispatch, getState) => {
+export const fetchEventDetail = eventId => async (dispatch, getState) => {
   dispatch(triggerRequest(FETCH_EVENT_DETAIL));
   try {
-    const event = await EventService.getCurrentEvent(eventId);
+    const event = await EventService.getEventDetail(eventId);
     const camelCaseKeys = humps.camelizeKeys(event);
-    dispatch(getCurrentEvent(normalize(camelCaseKeys, eventSchema)));
+    dispatch(getEventDetail(normalize(camelCaseKeys, eventSchema)));
     dispatch(endRequest(FETCH_EVENT_DETAIL));
   } catch (e) {
     dispatch(triggerFailure(FETCH_EVENT_DETAIL, e));
@@ -258,7 +258,7 @@ export const addComment = (comment, eventID) => (dispatch, getState) => {
   return EventService.addComment(comment, eventID)
     .then(comment => {
       dispatch(postComment(comment));
-      dispatch(fetchCurrentEvent(eventID));
+      dispatch(fetchEventDetail(eventID));
       dispatch(endRequest(POST_COMMENT));
     })
     .catch(err => {
