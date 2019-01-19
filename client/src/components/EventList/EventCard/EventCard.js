@@ -10,12 +10,22 @@ import {
 } from 'reactstrap';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+// import injectSheet from 'react-jss';
+
+// const styles = {
+//   bgGradient: {
+//     background:{
+//       color: 'black',
+//     }
+//   },
+// };
 
 // const DATE_FORMAT = 'LL';
 const TIME_FORMAT = 'HH.A';
 // const DATE_FORMAT = 'LL';
 const MONTH = 'MMM';
 const DAY = 'DD';
+
 const EventCard = props => {
   const card = props.event;
   return (
@@ -63,4 +73,20 @@ const EventCard = props => {
     </Col>
   );
 };
+
+// const StyledCard = injectSheet(styles)(EventCard);
+// const App = () => <StyledCard />;
+
+// render(<App />, document.getElementById('root'));
+
 export default EventCard;
+
+// export function generateColors() {
+//   const letters = 'BCDEF'.split('');
+//   let color = '#';
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * letters.length)];
+//   }
+
+//   return color;
+// }

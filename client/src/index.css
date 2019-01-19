@@ -98,11 +98,7 @@ body {
 
 .bgGradient {
   font-family: robotto;
-  background: linear-gradient(
-    to top left,
-    rgba(225, 185, 185, 1),
-    rgba(254, 254, 233, 1)
-  );
+  background: linear-gradient(to top left, #003366, #add8e6);
 }
 
 .cardFormating {
