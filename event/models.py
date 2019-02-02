@@ -10,6 +10,8 @@ class EventLocation(models.Model):
 
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
+    latitute = models.DecimalField(max_digits=9, decimal_places=6, default=24.926294)
+    longitute = models.DecimalField(max_digits=9, decimal_places=6, default=67.022095)
     logo = models.FileField(upload_to='location/', blank=False, null=True,
                             validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])])
 

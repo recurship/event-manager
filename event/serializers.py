@@ -10,7 +10,7 @@ class EventLocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EventLocation
-        fields = ('id', 'name', 'address', 'logo')
+        fields = ('id', 'name', 'address', 'logo', 'latitute', 'longitute')
 
 
 # Event sponsers serializers
