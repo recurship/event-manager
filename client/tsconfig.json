@@ -6,6 +6,10 @@
     "declaration": false,
     "noImplicitAny": false,
     "sourceMap": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "jsx": "preserve",
     "noLib": false,
     "suppressImplicitAnyIndexErrors": true,
