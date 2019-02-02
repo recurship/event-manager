@@ -1,20 +1,27 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import validate from './ForgotPasswordValidator';
+// import validate from './ResetPasswordValidator';
 import renderField from '../RenderField';
 
-let ForgotPasswordForm = props => {
+let ResetPasswordForm = props => {
   const { onSubmit, valid } = props;
   return (
     <form id="forgot-password" onSubmit={onSubmit}>
       <div className="form-group">
-        <h6>Enter your email address to reset your password.</h6>
+        <h6>Enter your password & confirm password</h6>
         <Field
-          type="email"
-          name="email"
+          type="password"
+          name="password"
           className="form-control"
-          placeholder="Email"
+          placeholder="Password"
+          component={renderField}
+        />
+        <Field
+          type="password"
+          name="confirmPassword"
+          className="form-control"
+          placeholder="Confirm Password"
           component={renderField}
         />
       </div>
@@ -24,16 +31,16 @@ let ForgotPasswordForm = props => {
           disabled={!valid}
           className="btn btn-warning text-right"
         >
-          Submit
+          Reset Password
         </Button>
       </div>
     </form>
   );
 };
 
-ForgotPasswordForm = reduxForm({
-  form: 'forgetPassword',
-  validate,
-})(ForgotPasswordForm);
+ResetPasswordForm = reduxForm({
+  form: 'resetPassword',
+  // validate,
+})(ResetPasswordForm);
 
-export default ForgotPasswordForm;
+export default ResetPasswordForm;

@@ -17,10 +17,23 @@ export default {
     formData.append('password', payload.password);
     return makeRequest('/api/register/', { method: 'POST', body: formData });
   },
-  resetPassword(email) {
+  forgotPassword(email) {
     const formData = new FormData();
     formData.append('email', email);
-    return fakeApi(email);
+    return makeRequest('/api/reset-password/', {
+      method: 'POST',
+      body: formData,
+    });
+  },
+  resetPassword(payload) {
+    const formData = new FormData();
+    formData.append('password', payload.password);
+    formData.append('email', payload.email);
+    formData.append('token', payload.token);
+    return makeRequest('api/reset-password-confirm/', {
+      method: 'POST',
+      body: formData,
+    });
   },
 };
 
