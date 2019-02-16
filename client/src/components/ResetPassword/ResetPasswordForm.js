@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-// import validate from './ResetPasswordValidator';
+import validate from './ResetPasswordValidator';
 import renderField from '../RenderField';
 
 let ResetPasswordForm = props => {
   const { onSubmit, valid } = props;
+  console.log('props: ', props);
+  console.log('valid: ', valid);
   return (
     <form id="forgot-password" onSubmit={onSubmit}>
       <div className="form-group">
@@ -40,7 +42,7 @@ let ResetPasswordForm = props => {
 
 ResetPasswordForm = reduxForm({
   form: 'resetPassword',
-  // validate,
+  validate,
 })(ResetPasswordForm);
 
 export default ResetPasswordForm;
