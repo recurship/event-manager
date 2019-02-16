@@ -225,10 +225,15 @@ export const userSignup = payload => async (dispatch, getState) => {
     dispatch(triggerFailure(USER_SIGNUP, e));
   }
 };
-export const resetPassword = credentials => async (dispatch, getState) => {
+export const resetPassword = (credentials, resetPasswordParams) => async (
+  dispatch,
+  getState
+) => {
   dispatch(triggerRequest(RESET_PASSWORD));
   try {
-    const message = await AuthService.resetPassword(credentials.email);
+    const message = resetPasswordParams
+      ? await AuthService.resetPassword(credentials)
+      : await AuthService.forgotPassword(credentials.email);
     dispatch(resetPasswordSuccess(message));
     dispatch(endRequest(RESET_PASSWORD));
   } catch (e) {

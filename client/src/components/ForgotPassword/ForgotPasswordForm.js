@@ -24,7 +24,7 @@ let ForgotPasswordForm = props => {
           disabled={!valid}
           className="btn btn-warning text-right"
         >
-          Reset Password
+          Submit
         </Button>
       </div>
     </form>
@@ -32,7 +32,7 @@ let ForgotPasswordForm = props => {
 };
 
 ForgotPasswordForm = reduxForm({
-  form: 'resetPassword',
+  form: 'forgetPassword',
   validate,
 })(ForgotPasswordForm);
 
