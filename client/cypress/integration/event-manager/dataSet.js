@@ -46,3 +46,43 @@ export const userWithExistedEmail = {
   email: 'happy@person.com',
   username: `happyperson${getId()}`,
 };
+
+export const constants = {
+  WAITING_TIME: 30000,
+  BASE_URL: '/events',
+  TAGS_INPUT_FIELD:
+    ':nth-child(6) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  TIME_INPUT_FIELD:
+    ':nth-child(7) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  KEYWORDS_INPUT_FIELD: ':nth-child(8) > .form-control',
+  ORGANISATION_INPUT_FIELD:
+    ':nth-child(1)  .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  LOCATION_INPUT_FIELD:
+    ':nth-child(4) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  SPONSORS_INPUT_FIELD:
+    ':nth-child(5) .Select  .Select-control  .Select-arrow-zone  .Select-arrow',
+  TAGS_FIELD_OPTION_1: '#react-select-5--option-2',
+  TAGS_FIELD_OPTION_2: '#react-select-5--option-1',
+  ORGANISATION_FIELD_OPTION_1: '#react-select-2--option-0',
+  ORGANISATION_FIELD_OPTION_2: '#react-select-2--option-1',
+  LOCATION_FIELD_OPTION_1: '#react-select-3--option-0',
+  LOCATION_FIELD_OPTION_2: '#react-select-3--option-1',
+  SPONSORS_FIELD_OPTION_1: '#react-select-4--option-0',
+  SPONSORS_FIELD_OPTION_2: '#react-select-4--option-1',
+  TIME_FIELD_OPTION_1: '#react-select-6--option-0',
+  TIME_FIELD_OPTION_2: '#react-select-6--option-1',
+  EVENT_END_DATE: Cypress.moment()
+    .subtract('6', 'days')
+    .format('YYYY-MM-DD'),
+  EVENT_START_DATE: Cypress.moment()
+    .subtract('7', 'years')
+    .format('YYYY-MM-DD'),
+  TIME_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-6--value > div',
+  TAG_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-5--value > div',
+  ORGANISATION_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-2--value > div',
+  SPONSORS_FIELD_VALUE:
+    ' .Select > .Select-control > .Select-multi-value-wrapper#react-select-4--value > div',
+};
