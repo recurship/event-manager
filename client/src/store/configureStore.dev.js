@@ -4,6 +4,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 import persistState from 'redux-localstorage';
+const env = process.env.NODE_ENV;
 
 const configureStore = preloadedState => {
   const store = createStore(
@@ -11,7 +12,9 @@ const configureStore = preloadedState => {
     preloadedState,
     compose(
       persistState(['userState', { key: 'eMgr' }]),
-      applyMiddleware(thunk, createLogger()),
+      env === 'test'
+        ? applyMiddleware(thunk)
+        : applyMiddleware(thunk, createLogger()),
       DevTools.instrument()
     )
   );
@@ -26,4 +29,6 @@ const configureStore = preloadedState => {
   return store;
 };
 
-export default configureStore();
+const configured = configureStore();
+
+export default configured;
